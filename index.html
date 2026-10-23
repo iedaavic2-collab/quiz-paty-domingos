@@ -72,6 +72,7 @@ h2 { color: var(--ink); font-family: var(--display); font-size: clamp(18px, 3dvh
 .go { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
 .hl-money { color: var(--money); white-space: nowrap; }
 .hl-ouro { color: var(--ouro); }
+.sub-renda { color: var(--ink); font-size: clamp(15px, 2.5dvh, 19px); text-transform: none; font-weight: 800; line-height: 1.3; }
 .sub u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .lead { color: var(--ink); font-size: clamp(13px, 2dvh, 15px); text-align: center; margin: 0; text-wrap: pretty; }
 .badge { align-self: center; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--verde); background: var(--verde-soft); padding: 4px 9px; border-radius: 6px; }
@@ -600,9 +601,10 @@ const CANTO_TXT = { closet: "o guarda-roupa", cozinha: "a cozinha", lavanderia: 
 const S = [
   /* ================= FASE 1 · IDENTIFICAÇÃO ================= */
   { n: 1, render: () => `
-      <div class="banner" data-drop="2">Responda o teste e descubra sua nova profissão</div>
-      <h1>Aquilo que você faz em casa tem nome, tem técnica e paga de <span class="hl-money">R$400 a R$600</span> por dia</h1>
-      <p class="sub" data-drop="3">Descubra se você tem perfil para <u>transformar o seu capricho em profissão</u>.</p>
+      <div class="banner" data-drop="2">Paty Domingos · de empregada doméstica a organizadora de alto padrão</div>
+      <h1>Vou te ensinar organização do zero</h1>
+      <p class="sub sub-renda">E ela pode virar uma renda de <span class="hl-money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
+      <p class="sub" data-drop="3">Faça o teste e descubra se você tem perfil.</p>
       <div class="go" data-drop="1">↓ RESPONDA PARA COMEÇAR ↓</div>
       <h2>Para começar, qual é a sua idade?</h2>
       <div class="pics four idade fill">
@@ -702,7 +704,7 @@ const S = [
       }[A.pediram];
       return `
       <span class="badge" data-drop="5">Tem nome</span>
-      <h2>Você sabia que existe uma profissão <span class="hl-ouro">para quem tem esse capricho?</span></h2>
+      <h2>Você sabia que existe uma profissão <span class="hl-ouro">para quem gosta de organizar?</span></h2>
       <p class="lead">Ela se chama <b>Personal Organizer</b>: a profissional que organiza closets, cozinhas, mudanças e a rotina de famílias que não têm tempo ou não sabem por onde começar.</p>
       <ul class="facts">
         <li data-drop="3"><span class="ck">✓</span><span>Trabalha na casa da cliente, com dia e hora marcados</span></li>
@@ -712,7 +714,7 @@ const S = [
       ${echo ? `<div class="echo" data-drop="1">${echo}</div>` : ""}
       <div class="duo fill">
         <div class="media doc"><img src="img/prova-wa1.jpg" alt="Mensagem da aluna Lygia mostrando gavetas organizadas no laboratório feito em casa"></div>
-        <div class="quote" style="display:grid;align-content:center">Mulheres como você já transformaram esse capricho <b>em profissão.</b><cite>“Sou doida por organização… Treinar com você está sendo um divisor de águas.” Lygia, aluna do Método Organizadas</cite></div>
+        <div class="quote" style="display:grid;align-content:center">Mulheres como você já transformaram esse talento <b>em profissão.</b><cite>“Sou doida por organização… Treinar com você está sendo um divisor de águas.” Lygia, aluna do Método Organizadas</cite></div>
       </div>`; } },
 
   { n: 11, center: true, render: () => `
@@ -1118,7 +1120,7 @@ const S = [
       <p class="hint" style="margin:0" data-drop="2">Com base em tudo que você respondeu…</p>
       <h2>Você vai receber o <span class="hl-money">Plano Primeira Diária</span></h2>
       <div class="trilha fill" role="img" aria-label="Etapas do plano: hoje, entende a profissão, faz o primeiro laboratório, cobra a primeira diária">
-        <div class="tr-step"><i></i><b>Hoje</b><span>Você já tem o capricho</span></div>
+        <div class="tr-step"><i></i><b>Hoje</b><span>Você já sabe organizar</span></div>
         <div class="tr-step"><i></i><b>Entende a profissão</b><span>14 aulas curtas, de menos de 10 minutos</span></div>
         <div class="tr-step"><i></i><b>Primeiro laboratório</b><span>Na sua casa, trabalhando ${DIAS}</span></div>
         <div class="tr-step goal"><i></i><b>Primeira diária</b><span>De R$400 a R$600 por dia</span></div>
