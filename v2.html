@@ -571,6 +571,10 @@ img.ck-cover { padding: 0; display: block; }
 
 @keyframes in { from { opacity: .001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .screen { animation: none; } .bar > i { transition: none; } }
+/* V2: sem barra de progresso; na capa (voltar desativado) a linha do topo some */
+.top .bar { visibility: hidden; }
+.top:has(.back:disabled) { display: none; }
+.app:has(.back:disabled) { padding-top: 14px; }
 </style>
 </head>
 <body>
