@@ -861,7 +861,7 @@ const S = [
         <p class="err" id="f-err" role="alert" hidden></p>
         <button type="submit" hidden></button>
       </form>
-      <div class="media rosto fill" data-drop="2"><img src="${IMG("paty-natal-quadrada-v2.jpg")}" alt="Paty Domingos sorrindo" style="object-position: 50% 25%"></div>
+      <div class="media rosto fill" data-drop="2"><img src="${IMG("paty-natal-sofa-v1.jpg")}" alt="Paty Domingos sorrindo, sentada em um sofá em frente a uma árvore de Natal" style="object-position: 50% 22%"></div>
       <p class="legal" data-drop="1">Ao continuar, você autoriza o uso dos seus dados (nome, e-mail e WhatsApp) para receber o resultado do quiz e comunicações sobre o evento por e-mail e WhatsApp. Você pode cancelar quando quiser.</p>`,
     onShow: () => {
       const w = document.getElementById("f-whats");
@@ -1010,7 +1010,7 @@ function loader(steps) {
 }
 
 /* pré-carregamento das fotos, 4 por vez */
-const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
+const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
 const preloaded = new Set(), keep = [], queue = [];
 let busy = 0;
 function pump() {
