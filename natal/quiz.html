@@ -900,11 +900,11 @@ const S = [
       <div class="res-card">
         <span class="res-k">${A.nome ? esc(A.nome).toUpperCase() + ", O SEU PERFIL DE NATAL É:" : "O SEU PERFIL DE NATAL É:"}</span>
         <b class="res-nome">${R.perfil[0]}</b>
-        <span class="res-frase">${R.perfil[1]}</span>
+        <span class="res-frase" data-drop="1">${R.perfil[1]}</span>
         <div class="res-meter" data-drop="2"><div class="res-meter-top"><span>${R.meter}</span><b>${R.score}%</b></div><div class="res-bar"><i style="width:${R.score}%"></i></div></div>
       </div>
       <div class="diag ok"><span class="diag-k">✅ O que você já tem</span>${R.tem.map(t => `<p>${t}</p>`).join("")}</div>
-      <div class="diag falta" data-drop="1"><span class="diag-k">🔓 O que falta</span>${[].concat(R.falta).map(t => `<p>${t}</p>`).join("")}</div>
+      <div class="diag falta"><span class="diag-k">🔓 O que falta</span>${[].concat(R.falta).map(t => `<p>${t}</p>`).join("")}</div>
       <div class="diag passo"><span class="diag-k">👣 O seu próximo passo</span><p>${R.passo}</p></div>
       <p class="legal" data-drop="3">Perfil calculado a partir das suas respostas.</p>`; } },
 
