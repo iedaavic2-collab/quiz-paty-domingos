@@ -1071,7 +1071,9 @@ if (document.fonts) document.fonts.ready.then(fit);
 
 /* atalhos de revisão: #id-da-tela abre a tela com respostas de exemplo */
 const EX = { idade: "39-49", sit: "diarista", arvore: "nao-fica", dor: "vazia", ceia: "eu", elogio: "varias", cobrou: "gratis", objetivo: "renda-extra", tempo: "fds", nome: "Ana", email: "ana@exemplo.com", whats: "(11) 99999-8888" };
-if (location.hash.length > 1 && at(location.hash.slice(1)) >= 0) { Object.assign(A, EX); hist.push(0); show(at(location.hash.slice(1)), false); }
+/* ex.: #espelho ou #espelho:sit=fora */
+const [hId, hEx] = decodeURIComponent(location.hash.slice(1)).split(":");
+if (hId && at(hId) >= 0) { Object.assign(A, EX); (hEx || "").split(",").forEach(p => { const [k, v] = p.split("="); if (k && v) A[k] = v; }); hist.push(0); show(at(hId), false); }
 else show(0, false);
 </script>
 </body>
