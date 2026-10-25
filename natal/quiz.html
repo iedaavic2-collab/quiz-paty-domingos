@@ -904,7 +904,7 @@ const S = [
         <div class="res-meter" data-drop="2"><div class="res-meter-top"><span>${R.meter}</span><b>${R.score}%</b></div><div class="res-bar"><i style="width:${R.score}%"></i></div></div>
       </div>
       <div class="diag ok"><span class="diag-k">✅ O que você já tem</span>${R.tem.map(t => `<p>${t}</p>`).join("")}</div>
-      <div class="diag falta" data-drop="1"><span class="diag-k">🔓 O que falta</span><p>${R.falta}</p></div>
+      <div class="diag falta" data-drop="1"><span class="diag-k">🔓 O que falta</span>${[].concat(R.falta).map(t => `<p>${t}</p>`).join("")}</div>
       <div class="diag passo"><span class="diag-k">👣 O seu próximo passo</span><p>${R.passo}</p></div>
       <p class="legal" data-drop="3">Perfil calculado a partir das suas respostas.</p>`; } },
 
@@ -980,8 +980,9 @@ function resultado() {
   ].filter(Boolean).slice(0, 2);
   if (tem.length < 2) tem.push("Você <b>quer aprender</b>, e é por aí que todas começam.");
   const falta = { vazia: "Saber a <b>ordem certa da montagem</b>: galhos, pisca-pisca, laços e enfeites, cada um no momento certo para a árvore ficar cheia e elegante.", mesa: "A <b>composição da mesa posta</b>: lugares, travessas e centro de mesa.", guardar: "A <b>técnica de desmontar e guardar</b> os enfeites sem estragar nada.", tempo: "Um <b>passo a passo rápido</b> com técnica, para montar tudo em poucas horas." }[A.dor] || "A <b>técnica</b> que dá o efeito de vitrine.";
+  const faltaFinal = A.objetivo === "casa" ? ["Conhecer o <b>passo a passo da montagem</b> da árvore de Natal.", "Preparar a <b>mesa da ceia natalina</b> com técnicas simples, usando o que você já tem em casa."] : falta;
   const passo = `Participar da live <b>Natal que Encanta e Vende</b>, comigo, no próximo sábado, dia 31/10, para aprender a montar o seu melhor Natal${A.objetivo === "casa" ? "" : " e também quanto cobrar por isso"}.`;
-  return { perfil, score, meter, tem, falta, passo };
+  return { perfil, score, meter, tem, falta: faltaFinal, passo };
 }
 
 /* lead: envia para o webhook (se configurado) assim que a pessoa preenche */
