@@ -965,7 +965,7 @@ function esc(v) { return String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;
 /* resultado: perfil pelo objetivo, afinidade somada das respostas e próximo passo (a live de 31/10) */
 function resultado() {
   const perfil = {
-    casa: ["Anfitriã de Natal", "Você quer o Natal mais bonito da sua família. Falta só a técnica para chegar lá."],
+    casa: ["Anfitriã de Natal", "Você adora preparar o Natal e cuida de cada detalhe para a família. Que tal aprender técnicas simples para deixar tudo ainda mais encantador, com menos trabalho na montagem?"],
     "renda-extra": ["Natal que Rende", "Você tem o cuidado que as famílias procuram no fim do ano. Falta aprender a cobrar por ele."],
     comecar: ["Organizadora em Construção", "O Natal é a porta de entrada ideal para a sua nova profissão."],
     ampliar: ["Personal Organizer de Natal", "Você já tem clientes. O Natal é o serviço que faltava na sua lista."]
@@ -975,7 +975,7 @@ function resultado() {
   const score = Math.max(70, Math.min(96, pts));
   const meter = A.objetivo === "casa" ? "Afinidade com a decoração de Natal" : "Afinidade com o serviço de Natal";
   const tem = [
-    { amo: "Você <b>ama montar o Natal</b>: é o que faz o trabalho ficar bonito.", "nao-fica": "Você <b>já monta a sua árvore</b> e sabe o que quer. Falta um passo a passo prático e com técnica.", trabalho: "Você <b>sabe o trabalho que o Natal dá</b>, e é por isso que tanta família paga por ele.", outra: "Você <b>tem olhar para a decoração</b>, mesmo sem montar sozinha." }[A.arvore],
+    { amo: A.objetivo === "casa" ? "Você <b>ama montar o Natal</b>: é isso que deixa a sua casa especial nessa época." : "Você <b>ama montar o Natal</b>: é o que faz o trabalho ficar bonito.", "nao-fica": "Você <b>já monta a sua árvore</b> e sabe o que quer. Falta um passo a passo prático e com técnica.", trabalho: "Você <b>sabe o trabalho que o Natal dá</b>, e é por isso que tanta família paga por ele.", outra: "Você <b>tem olhar para a decoração</b>, mesmo sem montar sozinha." }[A.arvore],
     A.sit === "diarista" ? "Você <b>já conhece a rotina de uma casa</b> como poucas pessoas." : A.sit === "po" ? "Você <b>já tem clientes</b> para oferecer o serviço de Natal." : { varias: A.objetivo === "casa" ? "<b>Já pediram a sua ajuda várias vezes</b>: o seu Natal já encanta quem está perto." : "<b>Já pediram a sua ajuda várias vezes</b>: esse pedido vira cliente.", familia: "Você <b>já ajuda a família e as amigas</b>: é o mesmo cuidado, só que pago." }[A.elogio]
   ].filter(Boolean).slice(0, 2);
   if (tem.length < 2) tem.push("Você <b>quer aprender</b>, e é por aí que todas começam.");
