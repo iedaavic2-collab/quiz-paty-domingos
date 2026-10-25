@@ -851,7 +851,7 @@ const S = [
 
   { n: 0, id: "prova", cta: "CONTINUAR", render: () => `
       <h2>Aos 58 anos, ela fez <span class="hl-ouro">R$ 2.600 em 7 dias</span> com organização.</h2>
-      <div class="media doc fill"><img src="${IMG("prova-jane-2600.jpg")}" alt="Print de comentário real da Jane: depois de 15 dias fez uma pós-mudança remunerada, faturou 2.600 em 7 dias e está fazendo laboratórios aos 58 anos"></div>
+      <div class="media doc fill"><img src="${IMG("prova-jane-recorte.jpg")}" alt="Print de comentário real da Jane: depois de 15 dias fez uma pós-mudança remunerada, faturou 2.600 em 7 dias e está fazendo laboratórios aos 58 anos"></div>
       <div class="echo" data-drop="1">15 dias depois de começar, a Jane já fez <b>o primeiro serviço pago</b>. E segue praticando nos laboratórios.</div>
       <p class="legal" data-drop="2">Comentário real de aluna da Paty Domingos.</p>` },
 
@@ -1020,7 +1020,7 @@ function loader(steps) {
 }
 
 /* pré-carregamento das fotos, 4 por vez */
-const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-laco-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "natal-arvore-vazia-v1.jpg", "paty-natal-montando-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-sofa-largo-v1.jpg", "natal-guardar-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-jane-2600.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
+const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-laco-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "natal-arvore-vazia-v1.jpg", "paty-natal-montando-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-sofa-largo-v1.jpg", "natal-guardar-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-jane-recorte.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
 const preloaded = new Set(), keep = [], queue = [];
 let busy = 0;
 function pump() {
