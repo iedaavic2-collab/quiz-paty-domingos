@@ -767,7 +767,8 @@ const S = [
       return `
       <span class="badge" data-drop="3">Tem solução</span>
       <h2>${T[0]}</h2>
-      ${A.dor === "guardar" ? `<div class="media fill"><img src="${IMG("paty-natal-enfeites-v1.jpg")}" alt="Paty Domingos guardando enfeites de Natal em uma caixa com divisórias e papel de seda" style="object-position: 50% 40%"></div>` : `<div class="media fill"><img src="${IMG("paty-natal-v1.jpg")}" alt="Paty Domingos sorrindo em frente a uma árvore de Natal dourada" style="object-position: 50% 18%"></div>`}
+      ${(() => { const F = { guardar: ["paty-natal-enfeites-v1.jpg", "Paty Domingos guardando enfeites de Natal em uma caixa com divisórias e papel de seda", "50% 40%"], mesa: ["paty-natal-mesa-v1.jpg", "Paty Domingos arrumando um guardanapo verde com raminho de Natal em uma mesa posta", "50% 45%"] }[A.dor] || ["paty-natal-v1.jpg", "Paty Domingos sorrindo em frente a uma árvore de Natal dourada", "50% 18%"];
+        return `<div class="media fill"><img src="${IMG(F[0])}" alt="${F[1]}" style="object-position: ${F[2]}"></div>`; })()}
       <div class="echo" data-drop="1">${T[1]}</div>`; } },
 
   { n: 5, center: true, render: () => `
@@ -1010,7 +1011,7 @@ function loader(steps) {
 }
 
 /* pré-carregamento das fotos, 4 por vez */
-const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
+const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
 const preloaded = new Set(), keep = [], queue = [];
 let busy = 0;
 function pump() {
