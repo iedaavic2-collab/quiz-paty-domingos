@@ -976,9 +976,9 @@ function resultado() {
   const meter = A.objetivo === "casa" ? "Afinidade com a decoração de Natal" : "Afinidade com o serviço de Natal";
   const tem = [
     { amo: "Você <b>ama montar o Natal</b>: é o que faz o trabalho ficar bonito.", "nao-fica": "Você <b>já monta a sua árvore</b> e sabe o que quer. Falta um passo a passo prático e com técnica.", trabalho: "Você <b>sabe o trabalho que o Natal dá</b>, e é por isso que tanta família paga por ele.", outra: "Você <b>tem olhar para a decoração</b>, mesmo sem montar sozinha." }[A.arvore],
-    A.sit === "diarista" ? "Você <b>já conhece a rotina de uma casa</b> como poucas pessoas." : A.sit === "po" ? "Você <b>já tem clientes</b> para oferecer o serviço de Natal." : { varias: "<b>Já pediram a sua ajuda várias vezes</b>: esse pedido vira cliente.", familia: "Você <b>já ajuda a família e as amigas</b>: é o mesmo cuidado, só que pago." }[A.elogio]
+    A.sit === "diarista" ? "Você <b>já conhece a rotina de uma casa</b> como poucas pessoas." : A.sit === "po" ? "Você <b>já tem clientes</b> para oferecer o serviço de Natal." : { varias: A.objetivo === "casa" ? "<b>Já pediram a sua ajuda várias vezes</b>: o seu Natal já encanta quem está perto." : "<b>Já pediram a sua ajuda várias vezes</b>: esse pedido vira cliente.", familia: "Você <b>já ajuda a família e as amigas</b>: é o mesmo cuidado, só que pago." }[A.elogio]
   ].filter(Boolean).slice(0, 2);
-  if (!tem.length) tem.push("Você <b>tem vontade de aprender</b>, que é por onde todas começam.");
+  if (tem.length < 2) tem.push("Você <b>quer aprender</b>, e é por aí que todas começam.");
   const falta = { vazia: "Saber a <b>ordem certa da montagem</b>: galhos, pisca-pisca, laços e enfeites, cada um no momento certo para a árvore ficar cheia e elegante.", mesa: "A <b>composição da mesa posta</b>: lugares, travessas e centro de mesa.", guardar: "A <b>técnica de desmontar e guardar</b> os enfeites sem estragar nada.", tempo: "Um <b>passo a passo rápido</b> com técnica, para montar tudo em poucas horas." }[A.dor] || "A <b>técnica</b> que dá o efeito de vitrine.";
   const passo = `Participar da live <b>Natal que Encanta e Vende</b>, comigo, no próximo sábado, dia 31/10, para aprender a montar o seu melhor Natal${A.objetivo === "casa" ? "" : " e também quanto cobrar por isso"}.`;
   return { perfil, score, meter, tem, falta, passo };
