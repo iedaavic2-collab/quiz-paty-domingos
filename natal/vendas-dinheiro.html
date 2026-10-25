@@ -26,8 +26,8 @@ body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink)
 
 /* cabeçalho do card */
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.logo-img { display: block; width: 132px; height: auto; border-radius: 12px; flex: none; }
-@media (min-width: 880px) { .logo-img { width: 180px; } }
+.logo-img { display: block; width: 150px; height: auto; flex: none; filter: drop-shadow(0 4px 10px #0008); }
+@media (min-width: 880px) { .logo-img { width: 210px; } }
 .logo { font-family: var(--serif); line-height: 1; text-align: center; }
 .logo small { display: block; font-family: var(--font); font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
 .logo b { display: block; font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: .3px; }
@@ -73,10 +73,16 @@ h1 { margin: 6px 0 0; font-family: var(--font); font-size: clamp(30px, 8.4vw, 48
 h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: var(--gold); }
 .nw { white-space: nowrap; }
 .btn-wrap { display: block; margin-top: 18px; }
-.btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 17px 18px; border-radius: 12px; text-decoration: none; color: #22180a;
-  background: linear-gradient(180deg, #f5dc9c 0%, var(--gold) 45%, var(--gold-d) 100%); box-shadow: 0 10px 28px #b98e3e40, inset 0 1px 0 #fffb;
-  font-weight: 700; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; cursor: pointer; border: 0; width: 100%; font-family: inherit; }
-.btn:hover { filter: brightness(1.05); }
+.btn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 14px; border-radius: 10px; text-decoration: none; color: #2c1f06;
+  background: linear-gradient(100deg, #fcefc4 0%, #edcd82 24%, #dcae4c 54%, #c2942f 100%); border: 1px solid #f6dea4;
+  box-shadow: 0 22px 46px -16px #000e, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 26px -8px #e0b64f66;
+  font-weight: 700; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; cursor: pointer; width: 100%; font-family: inherit;
+  transition: transform .38s cubic-bezier(.2, .7, .3, 1), box-shadow .38s; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px #000f, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 46px -4px #e8be63; }
+.btn::after { content: ""; position: absolute; top: 0; left: -130%; width: 48%; height: 100%; transform: skewX(-22deg); background: linear-gradient(100deg, transparent, #ffffffcc, transparent); animation: sheen 5.5s ease-in-out infinite; pointer-events: none; }
+@keyframes sheen { 0%, 55% { left: -130%; } 80%, 100% { left: 160%; } }
+@media (prefers-reduced-motion: reduce) { .btn::after { animation: none; } }
+.btn svg { transition: transform .35s; } .btn:hover svg { transform: translateX(5px); }
 .btn svg { width: 18px; height: 18px; flex: none; }
 .hero-urg { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
 .hero-urg b { color: var(--ink); }
@@ -169,7 +175,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
   <div class="wrap">
     <div class="call-card rise">
       <div class="card-head">
-        <img class="logo-img" src="../img/logo-natal-encanta.jpg" width="396" height="256" alt="Natal que Encanta e Vende">
+        <img class="logo-img" src="../img/logo-natal-encanta.webp" width="620" height="401" alt="Natal que Encanta e Vende">
         <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · a partir das 14h30</span></span>
       </div>
 
