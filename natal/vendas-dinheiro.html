@@ -26,6 +26,8 @@ body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink)
 
 /* cabeçalho do card */
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.logo-img { display: block; width: 132px; height: auto; border-radius: 12px; flex: none; }
+@media (min-width: 880px) { .logo-img { width: 180px; } }
 .logo { font-family: var(--serif); line-height: 1; text-align: center; }
 .logo small { display: block; font-family: var(--font); font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
 .logo b { display: block; font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: .3px; }
@@ -163,7 +165,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
   <div class="wrap">
     <div class="call-card rise">
       <div class="card-head">
-        <div class="logo"><small>Paty Domingos</small><b>Natal que <em>Encanta</em><br>e Vende</b></div>
+        <img class="logo-img" src="../img/logo-natal-encanta.jpg" width="396" height="256" alt="Natal que Encanta e Vende">
         <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · a partir das 14h30</span></span>
       </div>
 
