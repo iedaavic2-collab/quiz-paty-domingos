@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Natal que Encanta e Vende · Paty Domingos · 31 de outubro</title>
+<meta name="description" content="Ao vivo com a Paty Domingos, sábado 31/10 a partir das 14h30, ao vivo pelo YouTube: árvore de Natal, mesa posta e organização dos enfeites. Ingresso R$ 19,90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08160f; --card: #0f2419; --card2: #132d20; --line: rgba(222, 186, 106, .32);
+  --gold: #e2c07a; --gold-d: #b98e3e; --red: #e0444c; --green: #35c46a;
+  --ink: #f6f0e2; --muted: #b9c4b9; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  background: radial-gradient(90% 60% at 50% 0%, #1a3a29 0%, var(--bg) 70%) fixed, var(--bg); }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 18px 14px 28px; }
+.call-card { position: relative; border-radius: 26px; padding: 18px 18px 22px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, #11291d 0%, #0b1c13 100%); box-shadow: 0 30px 80px #0009, inset 0 1px 0 #ffffff10; }
+.rise { animation: rise .7s ease-out both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* cabeçalho do card */
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.logo { font-family: var(--serif); line-height: 1; text-align: center; }
+.logo small { display: block; font-family: var(--font); font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
+.logo b { display: block; font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: .3px; }
+.logo b em { font-style: italic; color: var(--ink); }
+.live-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #0007; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex: none; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+.pill-h { display: none; }
+
+/* chamada */
+.call-grid { display: grid; gap: 18px; margin-top: 16px; }
+.incoming { display: grid; grid-template-columns: 56px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; column-gap: 12px; align-items: center;
+  padding: 12px 14px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #17372a, #0e2318); }
+.incoming .st { grid-area: st; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.incoming .st .live-dot { background: var(--green); width: 7px; height: 7px; }
+.av { grid-area: av; position: relative; width: 56px; height: 56px; }
+.av img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 18%; border: 2px solid var(--gold); }
+.rg { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); opacity: 0; animation: ring 2.4s ease-out infinite; }
+.rg.b { animation-delay: .8s; } .rg.c { animation-delay: 1.6s; }
+@keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+.nm { grid-area: nm; margin: 0; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb { grid-area: sb; margin: 0; font-size: 13px; color: var(--muted); }
+.acts { grid-area: acts; display: flex; gap: 10px; }
+.acts .no, .acts .yes { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; }
+.acts .no { background: var(--red); }
+.acts .yes { background: var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 #35c46aaa; } 70% { box-shadow: 0 0 0 12px #35c46a00; } 100% { box-shadow: 0 0 0 0 #35c46a00; } }
+.acts svg { width: 21px; height: 21px; fill: #fff; }
+.acts .no svg { transform: rotate(135deg); }
+.yes-link { display: block; border-radius: 50%; }
+
+.hero-ph { position: relative; width: 100%; margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
+.hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #08160fdd); }
+@media (min-width: 880px) { .hero-ph { max-width: none; } }
+/* copy */
+.call-copy { text-align: center; }
+h1 { margin: 6px 0 0; font-family: var(--font); font-size: clamp(30px, 8.4vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
+h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: var(--gold); }
+.nw { white-space: nowrap; }
+.btn-wrap { display: block; margin-top: 18px; }
+.btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 17px 18px; border-radius: 12px; text-decoration: none; color: #22180a;
+  background: linear-gradient(180deg, #f5dc9c 0%, var(--gold) 45%, var(--gold-d) 100%); box-shadow: 0 10px 28px #b98e3e40, inset 0 1px 0 #fffb;
+  font-weight: 700; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; cursor: pointer; border: 0; width: 100%; font-family: inherit; }
+.btn:hover { filter: brightness(1.05); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.hero-urg { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.hero-urg b { color: var(--ink); }
+.proof { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #e2c07a12; font-size: 13.5px; color: var(--muted); }
+.proof b { color: var(--gold); }
+.proof svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2; flex: none; }
+.call-copy p.txt { margin: 16px auto 0; max-width: 520px; font-size: 16.5px; color: var(--muted); }
+.call-copy p.txt b { color: var(--ink); }
+.pun { margin: 14px auto 0; max-width: 520px; font-size: 18px; font-weight: 600; color: var(--gold); }
+.pun b { color: var(--ink); }
+
+/* aprendizados */
+.learn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; text-align: left; }
+.learn li { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #0b1c13; font-size: 13.5px; line-height: 1.3; }
+.learn li i { font-style: normal; font-size: 18px; }
+
+/* depoimentos */
+.deps-l { margin-top: 30px; }
+.deps-t { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.deps-t::before, .deps-t::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line)); }
+.deps-t::after { background: linear-gradient(90deg, var(--line), transparent); }
+.deps-g { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -18px; padding: 0 18px 8px; scrollbar-width: none; }
+.deps-g::-webkit-scrollbar { display: none; }
+.deps-g figure { flex: 0 0 84%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
+.deps-g img { display: block; width: 100%; height: 300px; object-fit: contain; background: #fff; }
+.deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
+.deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* passos */
+.call-steps { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.call-steps li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card2); font-size: 16px; }
+.call-steps b { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #22180a; font-weight: 700; }
+.call-cta { margin-top: 8px; text-align: center; }
+.call-fine { margin: 22px 0 0; text-align: center; font-size: 11.5px; line-height: 1.55; color: #8d9b90; }
+
+@media (min-width: 880px) {
+  .wrap { padding: 40px 24px; }
+  .call-card { padding: 28px 40px 36px; }
+  .logo b { font-size: 22px; }
+  .pill-h { display: inline; }
+  .call-grid { grid-template-columns: 290px 1fr; gap: 48px; align-items: center; margin-top: 30px; }
+  .incoming { grid-template-columns: 1fr; grid-template-areas: "st" "av" "nm" "sb" "acts"; justify-items: center; text-align: center; row-gap: 10px; padding: 34px 20px 30px; border-radius: 40px; min-height: 420px; align-content: center; }
+  .av { width: 116px; height: 116px; margin: 16px 0 6px; }
+  .nm { font-size: 22px; }
+  .acts { gap: 46px; margin-top: 26px; }
+  .acts .no, .acts .yes { width: 60px; height: 60px; }
+  .acts svg { width: 27px; height: 27px; }
+  .call-copy { text-align: left; }
+  .call-copy p.txt, .pun { margin-left: 0; }
+  .btn-wrap { max-width: 520px; }
+  .hero-urg { text-align: left; }
+  .deps-g { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; overflow: visible; }
+  .deps-g img { height: 280px; }
+  .deps-sw { display: none; }
+  .call-steps { grid-template-columns: repeat(3, 1fr); }
+  .call-cta .btn-wrap { max-width: 520px; margin-left: auto; margin-right: auto; }
+}
+
+/* modal de cadastro */
+.lead-modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+.lead-modal.on { display: flex; }
+.lead-bd { position: absolute; inset: 0; background: #000b; }
+.lead-card { position: relative; width: 100%; max-width: 460px; max-height: 92vh; overflow: auto; padding: 24px 20px 22px; border-radius: 22px 22px 0 0; border: 1px solid var(--line); background: #0f2419; animation: up .25s ease-out; }
+@media (min-width: 600px) { .lead-modal { align-items: center; } .lead-card { border-radius: 22px; } }
+@keyframes up { from { transform: translateY(30px); opacity: 0; } }
+.lead-x { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff12; color: var(--ink); font-size: 22px; cursor: pointer; }
+.lead-ey { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+.lead-card h3 { margin: 6px 0 4px; font-size: 22px; line-height: 1.2; }
+.lead-card h3 em { font-family: var(--serif); color: var(--gold); }
+.lsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+.lead-card label { display: block; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-card input { display: block; width: 100%; margin-top: 5px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font: inherit; font-size: 16px; }
+.lead-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.lead-q { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-opts { display: grid; gap: 6px; margin-top: 6px; }
+.lead-opts label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font-weight: 500; font-size: 14px; cursor: pointer; }
+.lead-opts input { width: 18px; height: 18px; margin: 0; flex: none; accent-color: var(--gold); }
+.lead-opts label:has(input:checked) { border-color: var(--gold); background: #1a3a29; }
+.lead-hint { display: block; margin-top: 6px; font-size: 12px; color: #8d9b90; }
+.lead-go { margin-top: 16px; }
+.lead-err { margin: 10px 0 0; font-size: 13px; color: #ff9a9f; }
+.lead-sec { margin: 10px 0 0; text-align: center; font-size: 12px; color: #8d9b90; }
+</style>
+</head>
+<body>
+<main>
+<section id="ligacao">
+  <div class="wrap">
+    <div class="call-card rise">
+      <div class="card-head">
+        <div class="logo"><small>Paty Domingos</small><b>Natal que <em>Encanta</em><br>e Vende</b></div>
+        <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · a partir das 14h30</span></span>
+      </div>
+
+      <div class="call-grid">
+        <figure class="hero-ph"><img src="../img/paty-natal-v1.jpg" width="880" height="1100" alt="Paty Domingos sorrindo, sentada em uma poltrona ao lado de uma árvore de Natal dourada"></figure>
+
+        <div class="call-copy">
+          <h1>Monte o Natal mais bonito da sua casa. <em>Depois, cobre para montar o das suas clientes.</em></h1>
+          <div class="cta-m">
+            <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+            <p class="hero-urg">É neste <b>sábado, 31 de outubro, a partir das 14h30</b>, ao vivo pelo YouTube.</p>
+          </div>
+          <p class="proof"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>Mais de 10 mil alunas</b> já aprenderam com a Paty</span></p>
+          <p class="txt">Ao vivo, eu vou te ensinar a montar <b>árvores de Natal de vitrine de shopping</b>, do tamanho que a cliente quiser, e <b>mesas de ceia impecáveis</b>, com técnica de profissional. Primeiro na sua casa. Depois, para <b>cobrar por isso</b> e fazer uma <b>renda extra neste fim de ano</b>.</p>
+          <!--LIGACAO-->
+          <ul class="learn">
+            <li><i>🎄</i>Montagem da árvore com técnica</li>
+            <li><i>🍽️</i>Mesa posta natalina</li>
+            <li><i>📦</i>Desmontagem e conservação</li>
+            <li><i>💰</i>Como cobrar por esse serviço</li>
+          </ul>
+          <p class="pun">E garante a live ao vivo comigo: <b>sábado, 31 de outubro, a partir das 14h30, pelo YouTube.</b></p>
+        </div>
+      </div>
+
+      <div class="deps-l">
+        <p class="deps-t">Depoimentos reais das alunas</p>
+        <div class="deps-g">
+          <figure><img src="../img/prova-jane-2600.jpg" width="1000" height="577" alt="Print de mensagem real. Jane: fez uma pós-mudança remunerada e faturou 2.600 em 7 dias" loading="lazy" decoding="async"></figure>
+          <figure><img src="../img/prova-slide3a.jpg" width="984" height="1000" alt="Print de mensagem real de aluna: em 20 dias ganharam quase 4 mil reais" loading="lazy" decoding="async"></figure>
+          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real. Mary: tira de 3 a 4 mil por semana escolhendo os dias de trabalho" loading="lazy" decoding="async"></figure>
+        </div>
+        <p class="deps-sw">arraste para o lado →</p>
+        <p class="deps-n">Prints reais de alunas dos cursos da Paty.</p>
+      </div>
+
+      <ol class="call-steps">
+        <li><b>1</b><span>Garanta o seu ingresso.</span></li>
+        <li><b>2</b><span>Informe o WhatsApp certo, com DDD. É nele que chega o link da live.</span></li>
+        <li><b>3</b><span>Assista ao vivo pelo YouTube no sábado, 31/10, a partir das 14h30, do celular ou do computador.</span></li>
+      </ol>
+
+      <div class="call-cta">
+        <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+        <p class="hero-urg" style="text-align:center">O evento é neste <b>sábado, 31 de outubro, a partir das 14h30</b>, ao vivo pelo YouTube.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="lead-modal" id="leadModal" aria-hidden="true">
+  <div class="lead-bd" data-close></div>
+  <div class="lead-card" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <button class="lead-x" type="button" data-close aria-label="Fechar">&times;</button>
+    <p class="lead-ey">Falta 1 passo</p>
+    <h3 id="leadTitle">Garanta a sua vaga no <em>Natal que Encanta e Vende</em></h3>
+    <p class="lsub">Preencha e siga para o pagamento do seu ingresso.</p>
+    <form id="leadForm" novalidate>
+      <label>Nome<input type="text" name="nome" required autocomplete="name" placeholder="Seu nome"></label>
+      <label>E-mail<input type="email" name="email" required autocomplete="email" placeholder="seu@email.com"></label>
+      <label>WhatsApp<input type="tel" name="telefone" required autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999"></label>
+      <small class="lead-hint">Confira o número com DDD. É nele que chega o link da live.</small>
+      <p class="lead-q">Qual é o seu principal objetivo?</p>
+      <div class="lead-opts">
+        <label><input type="radio" name="objetivo" value="casa">Decorar e organizar o Natal da minha casa</label>
+        <label><input type="radio" name="objetivo" value="renda-extra">Descobrir uma oportunidade de renda extra</label>
+        <label><input type="radio" name="objetivo" value="comecar">Começar a trabalhar com organização</label>
+        <label><input type="radio" name="objetivo" value="ampliar">Ampliar meus serviços como personal organizer</label>
+      </div>
+      <p class="lead-err" id="leadErr" role="alert" hidden></p>
+      <button type="submit" class="btn lead-go">Ir para o pagamento <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <p class="lead-sec">&#128274; Seus dados estão seguros.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIGURAÇÃO ===== */
+var CHECKOUT_URL = '';   /* link do checkout do ingresso de R$ 19,90 (Greenn) */
+var WEBHOOK_URL = '';    /* opcional: recebe o lead (nome, e-mail, WhatsApp, objetivo) em JSON antes do checkout */
+
+var modal = document.getElementById('leadModal');
+var form = document.getElementById('leadForm');
+var err = document.getElementById('leadErr');
+function abrir(e) { e.preventDefault(); modal.classList.add('on'); modal.setAttribute('aria-hidden', 'false'); setTimeout(function () { form.nome.focus(); }, 50); }
+function fechar() { modal.classList.remove('on'); modal.setAttribute('aria-hidden', 'true'); }
+document.querySelectorAll('[data-cta]').forEach(function (a) { a.addEventListener('click', abrir); });
+document.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', fechar); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
+
+var tel = form.telefone;
+tel.addEventListener('input', function () {
+  var d = tel.value.replace(/\D/g, '').slice(0, 11);
+  tel.value = d.length > 6 ? '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4) : d.length > 2 ? '(' + d.slice(0, 2) + ') ' + d.slice(2) : d;
+});
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var nome = form.nome.value.trim(), email = form.email.value.trim(), fone = tel.value.replace(/\D/g, '');
+  var obj = (form.querySelector('input[name=objetivo]:checked') || {}).value || '';
+  var msg = !nome ? 'Preencha o seu nome.' : !/^\S+@\S+\.\S+$/.test(email) ? 'Confira o seu e-mail.' : fone.length < 10 ? 'Confira o WhatsApp com DDD.' : '';
+  if (msg) { err.textContent = msg; err.hidden = false; return; }
+  err.hidden = true;
+  var utms = {};
+  new URLSearchParams(location.search).forEach(function (v, k) { if (/^utm_|^src$|^sck$/.test(k)) utms[k] = v; });
+  if (WEBHOOK_URL) {
+    try { fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+      body: JSON.stringify({ nome: nome, email: email, telefone: fone, objetivo: obj, evento: 'natal-que-encanta-e-vende', utms: utms, data: new Date().toISOString() }) }); } catch (x) {}
+  }
+  if (!CHECKOUT_URL) { err.textContent = 'Checkout em configuração. Volte em instantes.'; err.hidden = false; return; }
+  var u = new URL(CHECKOUT_URL);
+  Object.keys(utms).forEach(function (k) { if (!u.searchParams.has(k)) u.searchParams.set(k, utms[k]); });
+  if (obj && !u.searchParams.has('utm_term')) u.searchParams.set('utm_term', 'objetivo-' + obj);
+  u.searchParams.set('name', nome); u.searchParams.set('email', email); u.searchParams.set('phone', fone);
+  location.href = u.toString();
+});
+</script>
+</body>
+</html>
