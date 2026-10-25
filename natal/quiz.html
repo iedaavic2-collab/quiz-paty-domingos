@@ -735,7 +735,7 @@ const S = [
       const T = SIT_ECO[A.sit] || SIT_ECO.busca;
       return `
       <h2>${T[0]}</h2>
-      <div class="media rosto fill"><img src="${IMG("paty-natal-arvore-v1.jpg")}" alt="Paty Domingos pendurando um enfeite dourado em uma árvore de Natal" style="object-position: 40% 18%"></div>
+      ${A.sit === "fora" ? `<div class="media rosto fill"><img src="${IMG("paty-natal-laco-v1.jpg")}" alt="Paty Domingos ajeitando um laço dourado em uma árvore de Natal" style="object-position: 45% 18%"></div>` : `<div class="media rosto fill"><img src="${IMG("paty-natal-arvore-v1.jpg")}" alt="Paty Domingos pendurando um enfeite dourado em uma árvore de Natal" style="object-position: 40% 18%"></div>`}
       <div class="echo" data-drop="1">${T[1]}</div>`; } },
 
   /* ================= O NATAL DELA ================= */
@@ -1011,7 +1011,7 @@ function loader(steps) {
 }
 
 /* pré-carregamento das fotos, 4 por vez */
-const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "paty-natal-sofa-v1.jpg", "natal-guardar-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
+const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-laco-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "paty-natal-sofa-v1.jpg", "natal-guardar-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
 const preloaded = new Set(), keep = [], queue = [];
 let busy = 0;
 function pump() {
