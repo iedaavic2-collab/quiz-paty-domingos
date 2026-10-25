@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Vaga garantida · Natal que Encanta e Vende · 31 de outubro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08160f; --card: #0f2419; --card2: #132d20; --line: rgba(222, 186, 106, .32);
+  --gold: #e2c07a; --gold-d: #b98e3e; --red: #e0444c; --green: #35c46a;
+  --ink: #f6f0e2; --muted: #b9c4b9; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  background: radial-gradient(90% 60% at 50% 0%, #1a3a29 0%, var(--bg) 70%) fixed, var(--bg); }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 18px 14px 28px; }
+.call-card { position: relative; border-radius: 26px; padding: 18px 18px 22px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, #11291d 0%, #0b1c13 100%); box-shadow: 0 30px 80px #0009, inset 0 1px 0 #ffffff10; }
+.rise { animation: rise .7s ease-out both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* cabeçalho do card */
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.logo-img { display: block; width: 150px; height: auto; flex: none; filter: drop-shadow(0 4px 10px #0008); }
+@media (min-width: 880px) { .logo-img { width: 210px; } }
+.logo { font-family: var(--serif); line-height: 1; text-align: center; }
+.logo small { display: block; font-family: var(--font); font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
+.logo b { display: block; font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: .3px; }
+.logo b em { font-style: italic; color: var(--ink); }
+.live-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #0007; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex: none; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+.pill-h { display: none; }
+
+/* chamada */
+.call-grid { display: grid; gap: 18px; margin-top: 16px; }
+.incoming { display: grid; grid-template-columns: 56px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; column-gap: 12px; align-items: center;
+  padding: 12px 14px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #17372a, #0e2318); }
+.incoming .st { grid-area: st; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.incoming .st .live-dot { background: var(--green); width: 7px; height: 7px; }
+.av { grid-area: av; position: relative; width: 56px; height: 56px; }
+.av img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 18%; border: 2px solid var(--gold); }
+.rg { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); opacity: 0; animation: ring 2.4s ease-out infinite; }
+.rg.b { animation-delay: .8s; } .rg.c { animation-delay: 1.6s; }
+@keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+.nm { grid-area: nm; margin: 0; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb { grid-area: sb; margin: 0; font-size: 13px; color: var(--muted); }
+.acts { grid-area: acts; display: flex; gap: 10px; }
+.acts .no, .acts .yes { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; }
+.acts .no { background: var(--red); }
+.acts .yes { background: var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 #35c46aaa; } 70% { box-shadow: 0 0 0 12px #35c46a00; } 100% { box-shadow: 0 0 0 0 #35c46a00; } }
+.acts svg { width: 21px; height: 21px; fill: #fff; }
+.acts .no svg { transform: rotate(135deg); }
+.yes-link { display: block; border-radius: 50%; }
+
+.hero-ph { position: relative; width: 100%; margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
+.hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #08160fdd); }
+@media (min-width: 880px) { .hero-ph { max-width: none; } }
+.countdown { margin: 10px 0 0; font-size: 13.5px; color: var(--gold); }
+.countdown b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.countdown[hidden] { display: none; }
+@media (min-width: 880px) { .cta-m .countdown { text-align: left; } }
+/* copy */
+.call-copy { text-align: center; }
+h1 { margin: 6px 0 0; font-family: var(--font); font-size: clamp(30px, 8.4vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
+h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: var(--gold); }
+.nw { white-space: nowrap; }
+.btn-wrap { display: block; margin-top: 18px; }
+.btn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 14px; border-radius: 10px; text-decoration: none; color: #2c1f06;
+  background: linear-gradient(100deg, #fcefc4 0%, #edcd82 24%, #dcae4c 54%, #c2942f 100%); border: 1px solid #f6dea4;
+  box-shadow: 0 22px 46px -16px #000e, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 26px -8px #e0b64f66;
+  font-weight: 700; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; cursor: pointer; width: 100%; font-family: inherit;
+  transition: transform .38s cubic-bezier(.2, .7, .3, 1), box-shadow .38s; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px #000f, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 46px -4px #e8be63; }
+.btn::after { content: ""; position: absolute; top: 0; left: -130%; width: 48%; height: 100%; transform: skewX(-22deg); background: linear-gradient(100deg, transparent, #ffffffcc, transparent); animation: sheen 5.5s ease-in-out infinite; pointer-events: none; }
+@keyframes sheen { 0%, 55% { left: -130%; } 80%, 100% { left: 160%; } }
+@media (prefers-reduced-motion: reduce) { .btn::after { animation: none; } }
+.btn svg { transition: transform .35s; } .btn:hover svg { transform: translateX(5px); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.hero-urg { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.hero-urg b { color: var(--ink); }
+.proof { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #e2c07a12; font-size: 13.5px; color: var(--muted); }
+.proof b { color: var(--gold); }
+.proof svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2; flex: none; }
+.call-copy p.txt { margin: 16px auto 0; max-width: 520px; font-size: 16.5px; color: var(--muted); }
+.call-copy p.txt b { color: var(--ink); }
+.pun { margin: 14px auto 0; max-width: 520px; font-size: 18px; font-weight: 600; color: var(--gold); }
+.pun b { color: var(--ink); }
+
+/* aprendizados */
+.learn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; text-align: left; }
+.learn li { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #0b1c13; font-size: 13.5px; line-height: 1.3; }
+.learn li i { font-style: normal; font-size: 18px; }
+
+/* depoimentos */
+.deps-l { margin-top: 30px; }
+.deps-t { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.deps-t::before, .deps-t::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line)); }
+.deps-t::after { background: linear-gradient(90deg, var(--line), transparent); }
+.deps-g { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -18px; padding: 0 18px 8px; scrollbar-width: none; }
+.deps-g::-webkit-scrollbar { display: none; }
+.deps-g figure { display: flex; flex-direction: column; flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
+.deps-g img { display: block; width: 100%; height: 440px; object-fit: contain; object-position: top; background: #fff; }
+.deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; flex: 1; }
+.deps-g figcaption b { color: #0f2419; }
+.deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
+.deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* passos */
+.call-steps { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.call-steps li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card2); font-size: 16px; }
+.call-steps b { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #22180a; font-weight: 700; }
+.call-cta { margin-top: 8px; text-align: center; }
+.call-fine { margin: 22px 0 0; text-align: center; font-size: 11.5px; line-height: 1.55; color: #8d9b90; }
+
+@media (min-width: 880px) {
+  .wrap { padding: 40px 24px; }
+  .call-card { padding: 28px 40px 36px; }
+  .logo b { font-size: 22px; }
+  .pill-h { display: inline; }
+  .call-grid { grid-template-columns: 290px 1fr; gap: 48px; align-items: center; margin-top: 30px; }
+  .incoming { grid-template-columns: 1fr; grid-template-areas: "st" "av" "nm" "sb" "acts"; justify-items: center; text-align: center; row-gap: 10px; padding: 34px 20px 30px; border-radius: 40px; min-height: 420px; align-content: center; }
+  .av { width: 116px; height: 116px; margin: 16px 0 6px; }
+  .nm { font-size: 22px; }
+  .acts { gap: 46px; margin-top: 26px; }
+  .acts .no, .acts .yes { width: 60px; height: 60px; }
+  .acts svg { width: 27px; height: 27px; }
+  .call-copy { text-align: left; }
+  .call-copy p.txt, .pun { margin-left: 0; }
+  .btn-wrap { max-width: 520px; }
+  .hero-urg { text-align: left; }
+  .deps-g { margin: 0; padding: 0 0 8px; }
+  .deps-g figure { flex: 0 0 300px; }
+  .deps-g img { height: 460px; }
+  .call-steps { grid-template-columns: repeat(3, 1fr); }
+  .call-cta .btn-wrap { max-width: 520px; margin-left: auto; margin-right: auto; }
+}
+
+/* modal de cadastro */
+.lead-modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+.lead-modal.on { display: flex; }
+.lead-bd { position: absolute; inset: 0; background: #000b; }
+.lead-card { position: relative; width: 100%; max-width: 460px; max-height: 92vh; overflow: auto; padding: 24px 20px 22px; border-radius: 22px 22px 0 0; border: 1px solid var(--line); background: #0f2419; animation: up .25s ease-out; }
+@media (min-width: 600px) { .lead-modal { align-items: center; } .lead-card { border-radius: 22px; } }
+@keyframes up { from { transform: translateY(30px); opacity: 0; } }
+.lead-x { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff12; color: var(--ink); font-size: 22px; cursor: pointer; }
+.lead-ey { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+.lead-card h3 { margin: 6px 0 4px; font-size: 22px; line-height: 1.2; }
+.lead-card h3 em { font-family: var(--serif); color: var(--gold); }
+.lsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+.lead-card label { display: block; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-card input { display: block; width: 100%; margin-top: 5px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font: inherit; font-size: 16px; }
+.lead-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.lead-q { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-opts { display: grid; gap: 6px; margin-top: 6px; }
+.lead-opts label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font-weight: 500; font-size: 14px; cursor: pointer; }
+.lead-opts input { width: 18px; height: 18px; margin: 0; flex: none; accent-color: var(--gold); }
+.lead-opts label:has(input:checked) { border-color: var(--gold); background: #1a3a29; }
+.lead-hint { display: block; margin-top: 6px; font-size: 12px; color: #8d9b90; }
+.lead-go { margin-top: 16px; }
+.lead-err { margin: 10px 0 0; font-size: 13px; color: #ff9a9f; }
+.lead-sec { margin: 10px 0 0; text-align: center; font-size: 12px; color: #8d9b90; }
+
+.ty-ok { display: grid; place-items: center; margin: 22px auto 0; width: 76px; height: 76px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #5be08a, #22a552); box-shadow: 0 0 0 8px #35c46a22, 0 16px 40px #0008; }
+.ty-ok svg { width: 40px; height: 40px; }
+.ty h1 { text-align: center; margin-top: 16px; }
+.ty .lead { margin: 12px auto 0; max-width: 520px; text-align: center; font-size: 17px; color: var(--muted); }
+.ty .lead b { color: var(--ink); }
+.ev { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 22px 0 0; }
+.ev div { padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: #0b1c13; text-align: center; }
+.ev small { display: block; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.ev b { display: block; margin-top: 2px; font-size: 16px; }
+.ev .full { grid-column: 1 / -1; }
+.cd-big { margin: 18px 0 0; text-align: center; }
+.cd-big small { display: block; font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+.cd-big .t { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+.cd-big .t span { min-width: 64px; padding: 10px 6px; border-radius: 12px; border: 1px solid var(--line); background: var(--card2); }
+.cd-big .t b { display: block; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
+.cd-big .t i { display: block; margin-top: 4px; font-style: normal; font-size: 11px; color: var(--muted); }
+.steps-t { margin: 30px 0 12px; text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.ty-steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.ty-steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card2); }
+.ty-steps li > b { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #22180a; font-weight: 700; }
+.ty-steps strong { display: block; font-size: 16px; }
+.ty-steps p { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.btn-wa { background: linear-gradient(100deg, #6ee69a 0%, #35c46a 50%, #1f9d4f 100%); border-color: #a8f0c4; color: #062612; }
+.btn-ghost { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 13px; border-radius: 10px; border: 1px solid var(--line); color: var(--gold); text-decoration: none; font-weight: 600; font-size: 14px; }
+.btn-ghost svg { width: 17px; height: 17px; }
+.grav { margin-top: 24px; padding: 16px; border-radius: 16px; border: 1px dashed var(--gold-d); background: #e2c07a0d; }
+.grav b { color: var(--gold); }
+.grav p { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.sign { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center; margin-top: 26px; }
+.sign img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; border: 2px solid var(--gold); }
+.sign p { margin: 0; font-size: 15px; color: var(--muted); }
+.sign p b { color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 18px; }
+.ty-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); padding: 10px 16px; border-radius: 10px; background: #000d; color: #fff; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.ty-toast.on { opacity: 1; }
+@media (min-width: 880px) { .ty { max-width: 640px; margin: 0 auto; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="wrap">
+    <div class="call-card rise">
+      <div class="card-head">
+        <img class="logo-img" src="../img/logo-natal-encanta.webp" width="620" height="401" alt="Natal que Encanta e Vende">
+        <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · a partir das 14h30</span></span>
+      </div>
+
+      <section class="ty">
+        <div class="ty-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h1><span data-nome></span>Sua vaga está <em>garantida!</em></h1>
+        <p class="lead">Que alegria ter você comigo neste Natal. Agora falta só <b>1 passo importante</b>: entrar no grupo do WhatsApp, que é por onde chega o link da live.</p>
+
+        <span class="btn-wrap"><a href="#" class="btn btn-wa" data-grupo>Entrar no grupo do WhatsApp <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+
+        <div class="ev">
+          <div><small>Data</small><b>Sábado, 31/10</b></div>
+          <div><small>Horário</small><b>A partir das 14h30</b></div>
+          <div class="full"><small>Onde</small><b>Ao vivo pelo YouTube · celular ou computador</b></div>
+        </div>
+        <a class="btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Natal+que+Encanta+e+Vende+%C2%B7+ao+vivo+com+Paty+Domingos&amp;dates=20261031T173000Z/20261031T200000Z&amp;details=O+link+da+live+chega+no+grupo+do+WhatsApp+e+no+seu+e-mail." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Salvar na minha agenda</a>
+
+        <div class="cd-big" data-cdbig>
+          <small>Faltam para a live</small>
+          <div class="t"><span><b data-d>0</b><i>dias</i></span><span><b data-h>00</b><i>horas</i></span><span><b data-m>00</b><i>min</i></span><span><b data-s>00</b><i>seg</i></span></div>
+        </div>
+
+        <p class="steps-t">Seus próximos passos</p>
+        <ol class="ty-steps">
+          <li><b>1</b><div><strong>Entre no grupo do WhatsApp</strong><p>É por lá que eu envio o link da live, os lembretes e os avisos do dia.</p></div></li>
+          <li><b>2</b><div><strong>Confira o seu e-mail</strong><p>Você recebe a confirmação da compra. Se não encontrar, olhe na caixa de spam ou promoções.</p></div></li>
+          <li><b>3</b><div><strong>Separe os seus enfeites</strong><p>Se quiser praticar comigo, deixe por perto a sua árvore, alguns enfeites e um caderno para anotar.</p></div></li>
+        </ol>
+
+        <div class="grav">
+          <b>🎥 Garantiu a gravação?</b>
+          <p>O acesso à gravação, por 1 ano, chega no seu e-mail depois da live. Assim você assiste quando puder e revê cada detalhe.</p>
+        </div>
+
+        <div class="sign">
+          <img src="../img/paty-natal-quadrada-v2.jpg" alt="Paty Domingos">
+          <p>Te espero no sábado para montarmos juntas o Natal mais bonito da sua família.<br><b>Paty Domingos</b></p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<div class="ty-toast" id="toast" role="status"></div>
+<script>
+/* ===== CONFIGURAÇÃO ===== */
+var GRUPO_URL = '';  /* link do grupo do WhatsApp do evento */
+
+var toastEl = document.getElementById('toast');
+document.querySelectorAll('[data-grupo]').forEach(function (a) {
+  if (GRUPO_URL) { a.href = GRUPO_URL; a.target = '_blank'; a.rel = 'noopener'; return; }
+  a.addEventListener('click', function (e) { e.preventDefault(); toastEl.textContent = 'Link do grupo em configuração'; toastEl.classList.add('on'); setTimeout(function () { toastEl.classList.remove('on'); }, 2400); });
+});
+
+/* nome vindo do checkout (?name= ou ?nome=), só o primeiro nome */
+(function () {
+  var q = new URLSearchParams(location.search), n = (q.get('nome') || q.get('name') || q.get('first_name') || '').trim().split(/\s+/)[0];
+  if (n && n.length < 25) { var el = document.querySelector('[data-nome]'); el.textContent = n.charAt(0).toUpperCase() + n.slice(1).toLowerCase() + ', '; el.nextSibling.textContent = 'sua vaga está '; }
+})();
+
+/* contagem até a live: 31/10, 14h30 (Brasília) */
+(function () {
+  var fim = new Date('2026-10-31T14:30:00-03:00').getTime(), box = document.querySelector('[data-cdbig]');
+  function dois(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var r = fim - Date.now();
+    if (r <= 0) { box.querySelector('small').textContent = 'A live já começou! Entre no grupo do WhatsApp para pegar o link'; box.querySelector('.t').hidden = true; return; }
+    box.querySelector('[data-d]').textContent = Math.floor(r / 864e5);
+    box.querySelector('[data-h]').textContent = dois(Math.floor(r / 36e5) % 24);
+    box.querySelector('[data-m]').textContent = dois(Math.floor(r / 6e4) % 60);
+    box.querySelector('[data-s]').textContent = dois(Math.floor(r / 1e3) % 60);
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
