@@ -799,7 +799,7 @@ const S = [
         <li data-drop="2"><span class="ck">📦</span><span><b>Desmontagem e organização</b> dos enfeites depois do Dia de Reis (6/1)</span></li>
       </ul>
       ${echo ? `<div class="echo" data-drop="1">${echo}</div>` : ""}
-      <div class="media fill"><img src="${IMG("paty-natal-v1.jpg")}" alt="Árvore de Natal dourada montada ao lado de uma poltrona" style="object-position: 50% 30%"></div>`; } },
+      <div class="media fill"><img src="${IMG("natal-guardar-enfeites-v1.jpg")}" alt="Galhos da árvore sendo guardados em uma bolsa e enfeites dourados em caixas organizadoras, com a árvore de Natal ao fundo" style="object-position: 50% 55%"></div>`; } },
 
   { n: 7, center: true, render: () => `
       <h2>Você já recebeu dinheiro por algum serviço de decoração ou organização?</h2>
@@ -1011,7 +1011,7 @@ function loader(steps) {
 }
 
 /* pré-carregamento das fotos, 4 por vez */
-const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "paty-natal-sofa-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
+const IMGS = ["avatar-18-29.jpg", "avatar-29-39.jpg", "avatar-39-49-v2.jpg", "avatar-50.jpg", "paty-natal-arvore-v1.jpg", "paty-natal-enfeites-v1.jpg", "paty-natal-mesa-v1.jpg", "paty-natal-sofa-v1.jpg", "natal-guardar-enfeites-v1.jpg", "paty-natal-v1.jpg", "paty-natal-quadrada-v2.jpg", "prova-elizete-destaque.jpg", "prova-wa6.jpg", "prova-dep2.jpg"].map(IMG);
 const preloaded = new Set(), keep = [], queue = [];
 let busy = 0;
 function pump() {
