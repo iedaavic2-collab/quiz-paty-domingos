@@ -63,6 +63,10 @@ body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink)
 .hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #08160fdd); }
 @media (min-width: 880px) { .hero-ph { max-width: none; } }
+.countdown { margin: 10px 0 0; font-size: 13.5px; color: var(--gold); }
+.countdown b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.countdown[hidden] { display: none; }
+@media (min-width: 880px) { .cta-m .countdown { text-align: left; } }
 /* copy */
 .call-copy { text-align: center; }
 h1 { margin: 6px 0 0; font-family: var(--font); font-size: clamp(30px, 8.4vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
@@ -176,6 +180,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
           <h1>Monte o melhor Natal da sua família. <em>E transforme isso em renda extra ainda neste final de ano.</em></h1>
           <div class="cta-m">
             <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+            <p class="countdown" data-countdown>Ingresso a R$&nbsp;19,90 até <b>sexta, 23h59</b> · faltam <b data-cd>…</b></p>
             <p class="hero-urg">É neste <b>sábado, 31 de outubro, a partir das 14h30</b>, ao vivo pelo YouTube.</p>
           </div>
           <p class="proof"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>Mais de 10 mil alunas</b> já aprenderam com a Paty</span></p>
@@ -187,7 +192,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
             <li><i>📦</i>Desmontagem e conservação</li>
             <li><i>💰</i>Como cobrar por esse serviço</li>
           </ul>
-          <p class="pun">E garante a live ao vivo comigo: <b>sábado, 31 de outubro, a partir das 14h30, pelo YouTube.</b></p>
+          <p class="pun">Garanta sua vaga: <b>sábado, 31/10, a partir das 14h30, ao vivo pelo YouTube.</b></p>
         </div>
       </div>
 
@@ -210,6 +215,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 
       <div class="call-cta">
         <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+        <p class="countdown" style="text-align:center" data-countdown>Ingresso a R$&nbsp;19,90 até <b>sexta, 23h59</b> · faltam <b data-cd>…</b></p>
         <p class="hero-urg" style="text-align:center">O evento é neste <b>sábado, 31 de outubro, a partir das 14h30</b>, ao vivo pelo YouTube.</p>
       </div>
     </div>
@@ -283,6 +289,22 @@ form.addEventListener('submit', function (e) {
   u.searchParams.set('name', nome); u.searchParams.set('email', email); u.searchParams.set('phone', fone);
   location.href = u.toString();
 });
+
+/* contagem do lote: R$ 19,90 até sexta, 30/10, 23h59 (horário de Brasília) */
+(function () {
+  var fim = new Date('2026-10-30T23:59:59-03:00').getTime();
+  var els = document.querySelectorAll('[data-countdown]');
+  function dois(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var r = fim - Date.now();
+    if (r <= 0) { els.forEach(function (e) { e.hidden = true; }); return; }
+    var d = Math.floor(r / 864e5), h = Math.floor(r / 36e5) % 24, m = Math.floor(r / 6e4) % 60, s = Math.floor(r / 1e3) % 60;
+    var t = (d ? d + 'd ' : '') + dois(h) + 'h ' + dois(m) + 'min ' + dois(s) + 's';
+    els.forEach(function (e) { e.querySelector('[data-cd]').textContent = t; });
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
 </script>
 </body>
 </html>
