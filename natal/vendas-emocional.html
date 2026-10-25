@@ -94,8 +94,10 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .deps-t::after { background: linear-gradient(90deg, var(--line), transparent); }
 .deps-g { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -18px; padding: 0 18px 8px; scrollbar-width: none; }
 .deps-g::-webkit-scrollbar { display: none; }
-.deps-g figure { flex: 0 0 84%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
-.deps-g img { display: block; width: 100%; height: 300px; object-fit: contain; background: #fff; }
+.deps-g figure { flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
+.deps-g img { display: block; width: 100%; height: 440px; object-fit: contain; object-position: top; background: #fff; }
+.deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; }
+.deps-g figcaption b { color: #0f2419; }
 .deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
 .deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
 
@@ -122,9 +124,9 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
   .call-copy p.txt, .pun { margin-left: 0; }
   .btn-wrap { max-width: 520px; }
   .hero-urg { text-align: left; }
-  .deps-g { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; overflow: visible; }
-  .deps-g img { height: 280px; }
-  .deps-sw { display: none; }
+  .deps-g { margin: 0; padding: 0 0 8px; }
+  .deps-g figure { flex: 0 0 300px; }
+  .deps-g img { height: 460px; }
   .call-steps { grid-template-columns: repeat(3, 1fr); }
   .call-cta .btn-wrap { max-width: 520px; margin-left: auto; margin-right: auto; }
 }
@@ -169,7 +171,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
         <figure class="hero-ph"><img src="../img/paty-natal-v1.jpg" width="880" height="1100" alt="Paty Domingos sorrindo, sentada em uma poltrona ao lado de uma árvore de Natal dourada"></figure>
 
         <div class="call-copy">
-          <h1>Monte o Natal mais bonito da sua casa. <em>Depois, cobre para montar o das suas clientes.</em></h1>
+          <h1>Monte o melhor Natal da sua família. <em>E transforme isso em renda extra ainda neste final de ano.</em></h1>
           <div class="cta-m">
             <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
             <p class="hero-urg">É neste <b>sábado, 31 de outubro, a partir das 14h30</b>, ao vivo pelo YouTube.</p>
@@ -190,9 +192,11 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
       <div class="deps-l">
         <p class="deps-t">Depoimentos reais das alunas</p>
         <div class="deps-g">
-          <figure><img src="../img/prova-jane-2600.jpg" width="1000" height="577" alt="Print de mensagem real. Jane: fez uma pós-mudança remunerada e faturou 2.600 em 7 dias" loading="lazy" decoding="async"></figure>
-          <figure><img src="../img/prova-slide3a.jpg" width="984" height="1000" alt="Print de mensagem real de aluna: em 20 dias ganharam quase 4 mil reais" loading="lazy" decoding="async"></figure>
-          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real. Mary: tira de 3 a 4 mil por semana escolhendo os dias de trabalho" loading="lazy" decoding="async"></figure>
+          <figure><img src="../img/prova-elizete-1.jpg" width="461" height="1000" alt="Print de mensagem real da Elizete: trabalhava em casa de família, chegava cansada e desmotivada" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · trabalhava em casa de família (1/3)</figcaption></figure>
+          <figure><img src="../img/prova-elizete-2.jpg" width="461" height="1000" alt="Print de mensagem real da Elizete: o primeiro dinheiro veio de uma amiga da patroa e ela fez a transição de carreira" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · do laboratório na casa da patroa à carreira (2/3)</figcaption></figure>
+          <figure><img src="../img/prova-elizete-3.jpg" width="461" height="1000" alt="Print de mensagem real da Elizete: ser personal organizer mudou a minha vida" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · "ser personal organizer mudou a minha vida" (3/3)</figcaption></figure>
+          <figure><img src="../img/prova-wa6.jpg" width="460" height="1000" alt="Print de mensagem real da Claudia: pensou em desistir e fechou um projeto de dez mil reais" loading="lazy" decoding="async"><figcaption><b>Claudia</b> · pensou em desistir e fechou um projeto de R$ 10 mil</figcaption></figure>
+          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real da Mary: era a menos indicada e hoje tira de 3 a 4 mil por semana" loading="lazy" decoding="async"><figcaption><b>Mary</b> · "eu era a menos indicada", pagou o curso no 1º projeto</figcaption></figure>
         </div>
         <p class="deps-sw">arraste para o lado →</p>
         <p class="deps-n">Prints reais de alunas dos cursos da Paty.</p>
