@@ -671,6 +671,16 @@ body:has(.screen.scroll) .cta { background: linear-gradient(100deg, #fcefc4 0%, 
 .cv-deps figcaption { flex: 1; padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; }
 .cv-deps figcaption b { color: #0f2419; }
 .cv-sw { margin: -6px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
+
+/* tela de resultado: caixas ocupam a altura da tela */
+.res-hint { margin: 0; text-align: center; font-size: clamp(16px, 2.4dvh, 19px); color: var(--ink); }
+.screen:has(.res-card) { justify-content: space-between; }
+.screen:has(.res-card) > .res-card, .screen:has(.res-card) > .diag { flex: 1 1 auto; align-content: center; }
+.screen:has(.res-card) > .res-card { gap: clamp(4px, 1dvh, 10px); }
+.screen:has(.res-card) .res-nome { font-size: clamp(24px, 4dvh, 34px); }
+.screen:has(.res-card) .diag { gap: clamp(4px, .9dvh, 8px); padding: clamp(8px, 1.6dvh, 18px) 14px; }
+.screen:has(.res-card) .diag p { font-size: clamp(13.5px, 2.05dvh, 16.5px); line-height: 1.35; }
+.screen:has(.res-card) .diag-k { font-size: clamp(11.5px, 1.7dvh, 13px); }
 </style>
 </head>
 <body>
@@ -886,17 +896,17 @@ const S = [
   { n: 0, id: "resultado", cta: "CONTINUAR", render: () => {
       const R = resultado();
       return `
-      <p class="hint" style="margin:0">Aqui está o seu resultado…</p>
+      <p class="res-hint">Aqui está o seu resultado…</p>
       <div class="res-card">
         <span class="res-k">${A.nome ? esc(A.nome).toUpperCase() + ", O SEU PERFIL DE NATAL É:" : "O SEU PERFIL DE NATAL É:"}</span>
         <b class="res-nome">${R.perfil[0]}</b>
         <span class="res-frase">${R.perfil[1]}</span>
-        <div class="res-meter" data-drop="3"><div class="res-meter-top"><span>${R.meter}</span><b>${R.score}%</b></div><div class="res-bar"><i style="width:${R.score}%"></i></div></div>
+        <div class="res-meter" data-drop="2"><div class="res-meter-top"><span>${R.meter}</span><b>${R.score}%</b></div><div class="res-bar"><i style="width:${R.score}%"></i></div></div>
       </div>
       <div class="diag ok"><span class="diag-k">✅ O que você já tem</span>${R.tem.map(t => `<p>${t}</p>`).join("")}</div>
-      <div class="diag falta" data-drop="2"><span class="diag-k">🔓 O que falta</span><p>${R.falta}</p></div>
+      <div class="diag falta" data-drop="1"><span class="diag-k">🔓 O que falta</span><p>${R.falta}</p></div>
       <div class="diag passo"><span class="diag-k">👣 O seu próximo passo</span><p>${R.passo}</p></div>
-      <p class="legal" data-drop="1">Perfil calculado a partir das suas respostas.</p>`; } },
+      <p class="legal" data-drop="3">Perfil calculado a partir das suas respostas.</p>`; } },
 
   /* ================= CONVITE (rola; botão fixo) ================= */
   { n: 0, id: "convite", scroll: true, cta: "GARANTIR MEU INGRESSO · R$ 19,90", render: () => {
@@ -969,10 +979,8 @@ function resultado() {
     A.sit === "diarista" ? "Você <b>já conhece a rotina de uma casa</b> como poucas pessoas." : A.sit === "po" ? "Você <b>já tem clientes</b> para oferecer o serviço de Natal." : { varias: "<b>Já pediram a sua ajuda várias vezes</b>: esse pedido vira cliente.", familia: "Você <b>já ajuda a família e as amigas</b>: é o mesmo cuidado, só que pago." }[A.elogio]
   ].filter(Boolean).slice(0, 2);
   if (!tem.length) tem.push("Você <b>tem vontade de aprender</b>, que é por onde todas começam.");
-  const falta = { vazia: "A <b>ordem certa da montagem</b>: galhos, luzes e enfeites, para a árvore ficar cheia e elegante.", mesa: "A <b>composição da mesa posta</b>: lugares, travessas e centro de mesa.", guardar: "A <b>técnica de desmontar e guardar</b> os enfeites sem estragar nada.", tempo: "Um <b>passo a passo rápido</b>, para montar tudo em poucas horas." }[A.dor] || "A <b>técnica</b> que dá o efeito de vitrine.";
-  const passo = A.objetivo === "casa"
-    ? `Participar da live <b>Natal que Encanta e Vende</b>, no sábado, 31/10, e montar o Natal mais bonito da sua família.`
-    : `Participar da live <b>Natal que Encanta e Vende</b>, no sábado, 31/10, e aprender a montar o Natal${A.objetivo === "ampliar" ? " das suas clientes" : ""} e quanto cobrar por isso${A.tempo === "fds" ? ", nos fins de semana de dezembro" : ""}.`;
+  const falta = { vazia: "A <b>ordem certa da montagem</b>: galhos, luzes e enfeites, para a árvore ficar cheia e elegante.", mesa: "A <b>composição da mesa posta</b>: lugares, travessas e centro de mesa.", guardar: "A <b>técnica de desmontar e guardar</b> os enfeites sem estragar nada.", tempo: "Um <b>passo a passo rápido</b> com técnica, para montar tudo em poucas horas." }[A.dor] || "A <b>técnica</b> que dá o efeito de vitrine.";
+  const passo = `Participar da live <b>Natal que Encanta e Vende</b>, comigo, no próximo sábado, dia 31/10, para aprender a montar o seu melhor Natal${A.objetivo === "casa" ? "" : " e também quanto cobrar por isso"}.`;
   return { perfil, score, meter, tem, falta, passo };
 }
 
