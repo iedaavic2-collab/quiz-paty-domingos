@@ -94,9 +94,9 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .deps-t::after { background: linear-gradient(90deg, var(--line), transparent); }
 .deps-g { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -18px; padding: 0 18px 8px; scrollbar-width: none; }
 .deps-g::-webkit-scrollbar { display: none; }
-.deps-g figure { flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
+.deps-g figure { display: flex; flex-direction: column; flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
 .deps-g img { display: block; width: 100%; height: 440px; object-fit: contain; object-position: top; background: #fff; }
-.deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; }
+.deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; flex: 1; }
 .deps-g figcaption b { color: #0f2419; }
 .deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
 .deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
