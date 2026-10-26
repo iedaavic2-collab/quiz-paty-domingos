@@ -174,6 +174,17 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
   .hero-ph img { height: 100%; min-height: 520px; aspect-ratio: auto; object-fit: cover; object-position: 50% 30%; }
   h1 { font-size: 42px; }
 }
+
+/* celular: logo e faixa do topo na mesma linha; card de chamada compacto */
+@media (max-width: 879px) {
+  .logo-img { width: 118px; }
+  .live-pill { padding: 7px 11px; font-size: 10.5px; letter-spacing: 1.2px; white-space: nowrap; }
+  .ph-d { display: none; }
+  .incoming { column-gap: 10px; padding: 12px; }
+  .nm { font-size: 16.5px; }
+  .acts { gap: 8px; }
+  .acts .no, .acts .yes { width: 40px; height: 40px; }
+}
 </style>
 </head>
 <body>
@@ -183,7 +194,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
     <div class="call-card rise">
       <div class="card-head">
         <img class="logo-img" src="../img/logo-natal-encanta.webp" width="620" height="401" alt="Natal que Encanta e Vende">
-        <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · a partir das 14h30</span></span>
+        <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 31/10 · <span class="ph-d">a partir das </span>14h30</span></span>
       </div>
 
       <div class="call-grid">
