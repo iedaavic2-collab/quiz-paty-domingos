@@ -23,7 +23,7 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
   background: radial-gradient(1.5px 1.5px at 12% 18%, #fff8 50%, transparent 51%), radial-gradient(1px 1px at 78% 9%, #fff6 50%, transparent 51%),
   radial-gradient(1.5px 1.5px at 64% 38%, #fff5 50%, transparent 51%), radial-gradient(1px 1px at 30% 62%, #fff5 50%, transparent 51%),
   radial-gradient(1.5px 1.5px at 88% 74%, #fff6 50%, transparent 51%), radial-gradient(1px 1px at 8% 88%, #fff5 50%, transparent 51%); }
-.wrap { position: relative; max-width: 480px; margin: 0 auto; padding: 16px 16px 110px; }
+.wrap { position: relative; max-width: 480px; margin: 0 auto; padding: 16px 16px 40px; }
 @media (min-width: 720px) { .wrap { border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; background: linear-gradient(180deg, var(--bg2), var(--bg) 40%); } }
 
 .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -119,9 +119,6 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
 .faq p { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
 
 .legal { margin-top: 30px; font-size: 11.5px; color: #8fa196; text-align: center; }
-.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: linear-gradient(180deg, transparent, #0d241bee 30%); transform: translateY(110%); transition: transform .25s; }
-.sticky.on { transform: none; }
-.sticky .cta { max-width: 448px; margin: 0 auto; padding: 15px; font-size: 15px; }
 #toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); z-index: 10; padding: 10px 16px; border-radius: 10px; background: #000d; color: #fff; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
 #toast.on { opacity: 1; }
 </style>
@@ -153,6 +150,7 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
     <li><span class="ic">📦</span><div><b>Desmontagem e conservação</b><span>Como desmontar e guardar os enfeites para eles durarem muitos Natais.</span></div></li>
     <li><span class="ic">💰</span><div><b>Como transformar isso em renda</b><span>Montar árvores e mesas é um serviço que muitas famílias pagam para ter no fim do ano.</span></div></li>
   </ul>
+  <a class="cta" href="#" data-buy>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
   <h2><small>Para quem é</small>Duas mulheres, um mesmo Natal</h2>
   <div class="duo">
@@ -160,6 +158,8 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
     <div><b>Para quem quer <em>ganhar dinheiro</em> com organização</b><p>Você quer começar na organização profissional ou já é personal organizer e quer oferecer mais um serviço às suas clientes.</p></div>
   </div>
 
+
+  <a class="cta" href="#" data-buy>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
   <h2><small>Quem vai te ensinar</small>Paty Domingos</h2>
   <div class="bio">
@@ -172,13 +172,17 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
     <div><b>Brasil</b>e exterior</div>
   </div>
 
+  <a class="cta" href="#" data-buy>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+
   <h2><small>Quem já aprendeu com a Paty</small>Alunas que viraram profissionais</h2>
   <div class="prints">
     <img src="../img/prova-wa2.jpg" alt="Print de mensagem de aluna da Paty" loading="lazy">
     <img src="../img/prova-elizete-wa-v1.jpg" alt="Print de mensagem da aluna Elizete" loading="lazy">
     <img src="../img/prova-wa1.jpg" alt="Print de mensagem de aluna da Paty" loading="lazy">
   </div>
-  <p class="note">Prints reais de alunas dos cursos da Paty. Os resultados dependem de cada pessoa.</p>
+  <p class="note">Prints reais de alunas dos cursos da Paty.</p>
+
+  <a class="cta" href="#" data-buy>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
   <h2><small>Como participar</small>3 passos simples</h2>
   <ol class="steps">
@@ -190,7 +194,6 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
 
 </main>
 
-<div class="sticky" id="sticky"><a class="cta" href="#" data-buy>Garanta seu ingresso · R$&nbsp;19,90</a></div>
 
 <script>
 /* Link do checkout do ingresso (R$ 19,90, Greenn). */
@@ -214,15 +217,6 @@ document.querySelectorAll('[data-buy]').forEach(function (a) {
   });
 });
 
-/* Barra fixa: aparece depois do primeiro botão e some quando outro botão de compra está na tela. */
-var sticky = document.getElementById('sticky');
-var ctas = document.querySelectorAll('main .cta');
-function onScroll() {
-  var passou = ctas[0].getBoundingClientRect().bottom < 0;
-  var outroNaTela = Array.prototype.some.call(ctas, function (c) { var r = c.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; });
-  sticky.classList.toggle('on', passou && !outroNaTela);
-}
-addEventListener('scroll', onScroll, { passive: true }); onScroll();
 </script>
 </body>
 </html>
