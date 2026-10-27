@@ -26,7 +26,7 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
 @media (min-width: 720px) { .wrap { border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; background: linear-gradient(180deg, var(--bg2), var(--bg) 40%); } }
 
 .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.brand { font-family: var(--serif); font-size: 18px; font-weight: 800; letter-spacing: .3px; line-height: 1.05; }
+.brand { font-family: var(--serif); font-size: 18px; font-weight: 700; letter-spacing: .3px; line-height: 1.05; }
 .brand small { display: block; font-family: var(--font); font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
 .live { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--gold); background: #0008; white-space: nowrap; }
 .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 var(--red); animation: pulse 1.6s infinite; }
@@ -46,7 +46,7 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
 @keyframes ringbtn { 0% { box-shadow: 0 0 0 0 #2fbf5baa; } 70% { box-shadow: 0 0 0 12px #2fbf5b00; } 100% { box-shadow: 0 0 0 0 #2fbf5b00; } }
 .call a.atender svg { width: 24px; height: 24px; fill: #fff; }
 
-.eyebrow { margin: 26px 0 6px; text-align: center; font-size: 12px; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.eyebrow { margin: 26px 0 6px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 h1 { margin: 0; text-align: center; font-family: var(--font); font-size: clamp(30px, 8.4vw, 42px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
 h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: var(--gold); }
 .logo-img { display: block; width: 150px; height: auto; filter: drop-shadow(0 4px 10px #0008); }
@@ -55,19 +55,19 @@ h1 em { font-style: italic; color: var(--gold); }
 .lead b { color: var(--ink); }
 
 .cta { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 22px 0 0; padding: 18px 16px; border-radius: 14px; text-decoration: none; text-align: center;
-  background: linear-gradient(180deg, #f3d995, var(--gold2)); color: #2a1d05; font-weight: 800; font-size: 16px; letter-spacing: .4px; text-transform: uppercase; box-shadow: 0 8px 24px #c9a24a44, inset 0 1px 0 #fff8; }
+  background: linear-gradient(180deg, #f3d995, var(--gold2)); color: #2a1d05; font-weight: 700; font-size: 16px; letter-spacing: .4px; text-transform: uppercase; box-shadow: 0 8px 24px #c9a24a44, inset 0 1px 0 #fff8; }
 .cta:active { transform: translateY(1px); }
 .cta svg { width: 18px; height: 18px; flex: none; }
 .when { margin: 10px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
 .when b { color: var(--ink); }
 
-.hero-img { margin: 24px -16px 0; position: relative; }
-.hero-img img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; }
+.hero-img { margin: 24px auto 0; max-width: 340px; position: relative; border-radius: 20px; overflow: hidden; }
+.hero-img img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 22%; }
 .hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--bg)); }
 .hero-img figcaption { position: absolute; left: 16px; right: 16px; bottom: 10px; z-index: 1; font-size: 13px; color: var(--ink); font-weight: 600; }
 
-h2 { margin: 34px 0 14px; text-align: center; font-family: var(--serif); font-size: 26px; line-height: 1.15; font-weight: 800; }
-h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+h2 { margin: 34px 0 14px; text-align: center; font-family: var(--font); font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -.3px; }
+h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 .list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .list li { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
 .list li .ic { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #0d241b; font-size: 21px; }
@@ -102,7 +102,7 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
 
 .steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
 .steps li { counter-increment: s; display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); font-size: 15px; }
-.steps li::before { content: counter(s); flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #2a1d05; background: var(--gold); }
+.steps li::before { content: counter(s); flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #2a1d05; background: var(--gold); }
 
 .faq details { border-bottom: 1px solid var(--line); padding: 14px 2px; }
 .faq summary { cursor: pointer; font-weight: 700; font-size: 15px; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
@@ -164,7 +164,7 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
 
   <h2><small>Quem vai te ensinar</small>Paty Domingos</h2>
   <div class="bio">
-    <img src="../img/paty-sorrindo-v1.jpg" alt="Paty Domingos sentada em um sofá, sorrindo">
+    <img src="../img/paty-natal-arvore-v1.jpg" alt="Paty Domingos ao lado de uma árvore de Natal">
     <p>Comecei como <b>empregada doméstica</b> e hoje sou <b>organizadora de alto padrão</b> e criadora do Método Organizadas. Todo fim de ano, as minhas clientes me chamam para montar o Natal delas. Agora eu vou te mostrar como eu faço.</p>
   </div>
   <div class="stats">
