@@ -1,0 +1,1398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Profissão Personal Organizer · Quiz Paty Domingos</title>
+<link rel="preload" as="image" href="img/avatar-18-29.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="img/avatar-29-39.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="img/avatar-39-49-v2.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="img/avatar-50.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: uma tela = uma altura de celular (base técnica do quiz Wesley/Home Sales).
+   Identidade da Paty Domingos: verde-floresta do Clube Organizadas, off-white rosado, dourado nos destaques,
+   títulos em serifa (Playfair) como no feed dela; verde-dinheiro só para valores em R$.
+   Tema único claro, escolhido de propósito (todas as cores declaradas, fundo explícito). */
+:root {
+  color-scheme: light;
+  --bg: #fcf6f1;
+  --ink: #2a1019;
+  --muted: #6f6469;
+  --line: #e8d8cf;
+  --soft: #f7ede7;
+  --verde: #4a0e22;
+  --verde-soft: #f8edf0;
+  --ouro: #b88a3f;
+  --ouro-soft: #f8edd8;
+  --money: #8a1b3c;
+  --money-soft: #fbeff2;
+  --money-line: #ecc6cf;
+  --alert: #c2410c;
+  --alert-soft: #fff4ee;
+  --alert-line: #fed7c3;
+  --navy: #4a0e22;
+  --navy-soft: #f8edf0;
+  --ph-bg: #f7f4f1;
+  --ph-line: #c9bdb4;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --gap: clamp(8px, 1.6dvh, 14px);
+  --pad: clamp(9px, 1.7dvh, 14px);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; overflow: hidden; }
+body { margin: 0; background: var(--bg); color: var(--muted); font-family: var(--font); font-size: 16px; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+.app { height: 100%; max-width: 480px; margin: 0 auto; padding-inline: 16px; display: flex; flex-direction: column; }
+
+.top { flex: none; display: grid; grid-template-columns: 32px 1fr 32px; align-items: center; gap: 8px; padding-block: clamp(6px, 1.4dvh, 12px); }
+.back { width: 32px; height: 32px; border: 0; background: transparent; color: var(--ink); font-size: 20px; cursor: pointer; border-radius: 8px; }
+.back:disabled { visibility: hidden; }
+.back:focus-visible, .opt:focus-visible, .pic:focus-visible, .cta:focus-visible { outline: 2px solid var(--verde); outline-offset: 2px; }
+.bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--verde); border-radius: 99px; transition: width .35s ease; }
+
+main { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
+.screen { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: var(--gap); padding-bottom: 12px; overflow: hidden; animation: in .28s ease both; }
+.screen > * { flex: none; }
+.screen > .fill { flex: 1 1 0; min-height: 110px; }
+.pics.four.fill { min-height: 190px; }
+.pics.two.fill { min-height: clamp(200px, 38dvh, 440px); }
+.screen.center-y { justify-content: center; }
+
+.banner { background: var(--ouro-soft); color: #7a5520; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-align: center; padding: 6px 10px; border-radius: 8px; }
+h1 { color: var(--ink); font-family: var(--display); font-size: clamp(21px, 3.7dvh, 30px); line-height: 1.12; font-weight: 800; letter-spacing: 0; text-transform: uppercase; text-align: center; margin: 0; text-wrap: balance; }
+h2 { color: var(--ink); font-family: var(--display); font-size: clamp(18px, 3dvh, 22px); line-height: 1.22; font-weight: 700; text-align: center; margin: 0; text-wrap: balance; }
+.sub { text-align: center; font-size: clamp(12px, 1.9dvh, 14px); font-weight: 800; text-transform: uppercase; color: #4b5563; margin: 0; text-wrap: balance; }
+.hint { text-align: center; font-size: 13px; margin: -4px 0 0; }
+.go { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--muted); }
+.hl-money { color: var(--money); white-space: nowrap; }
+.hl-ouro { color: var(--ouro); }
+.sub-renda { color: var(--ink); font-size: clamp(15px, 2.5dvh, 19px); text-transform: none; font-weight: 800; line-height: 1.3; }
+.sub u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.lead { color: var(--ink); font-size: clamp(13px, 2dvh, 15px); text-align: center; margin: 0; text-wrap: pretty; }
+.badge { align-self: center; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--verde); background: var(--verde-soft); padding: 4px 9px; border-radius: 6px; }
+
+.opts { display: grid; gap: clamp(6px, 1.1dvh, 10px); }
+.opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: inherit; font-size: 14px; font-weight: 500; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: var(--pad) 14px; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .1s; }
+.opt:hover { border-color: #b9aea6; }
+.opt:active { transform: scale(.99); }
+.opt.on { border-color: var(--verde); box-shadow: 0 0 0 1px var(--verde); background: var(--verde-soft); }
+.opt .em { font-size: 20px; width: 26px; text-align: center; flex: none; }
+.opt .tx { min-width: 0; }
+.opt .tx small { display: block; color: var(--muted); font-size: 11.5px; margin-top: 1px; }
+
+.pics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pics.two { grid-template-rows: minmax(0, 1fr); }
+.pics.four { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.pic { display: flex; flex-direction: column; min-height: 0; padding: 0; overflow: hidden; border-radius: 14px; border: 1px solid #4b5563; box-shadow: 0 4px 0 #4b5563; background: #fff; cursor: pointer; font: inherit; color: var(--ink); transition: border-color .15s, box-shadow .15s; }
+.pic:hover { border-color: #b9aea6; }
+.pic.on { border-color: var(--verde); box-shadow: 0 0 0 1px var(--verde); }
+.pic .ph-img { flex: 1 1 0; min-height: 0; background: var(--soft); }
+.pic img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
+.pic .lbl { flex: none; padding: clamp(10px, 1.9dvh, 16px) 8px; font-size: 16px; font-weight: 500; text-align: center; background: #030712; color: #fff; }
+
+.media { border-radius: 12px; overflow: hidden; background: var(--verde); }
+.media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+/* prints: a moldura acompanha o tamanho do print, sem faixa branca em volta */
+.media.doc { background: none; border: 0; border-radius: 0; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.media.doc img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: unset; border: 1px solid var(--line); border-radius: 12px; }
+.media.rosto img { object-position: 50% 18%; }
+.media.vid { background: #000; position: relative; }
+.media.vid video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.media.vid.contain { flex: none; aspect-ratio: 16 / 9; }
+.media.vid.contain video { object-fit: cover; object-position: 50% 50%; }
+.unmute { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); border: 0; border-radius: 999px; background: rgba(29, 42, 36, .82); color: #fff; font: inherit; font-size: 13px; font-weight: 700; padding: 9px 14px; cursor: pointer; white-space: nowrap; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.duo > * { min-height: 0; height: 100%; }
+.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vs-col { display: grid; gap: 3px; align-content: start; border-radius: 10px; padding: clamp(8px, 1.4dvh, 12px) 11px; font-size: 12.5px; color: var(--ink); }
+.vs-col b { font-size: 13px; margin-bottom: 2px; }
+.vs-col big { font-size: clamp(22px, 3.6dvh, 28px); font-weight: 900; line-height: 1.1; }
+.vs-col.bad { background: #fff4ee; border: 1px solid #fed7c3; }
+.vs-col.bad big { color: var(--alert); }
+.vs-col.good { background: var(--money-soft); border: 1px solid var(--money-line); }
+.vs-col.good big { color: var(--money); }
+.calc { display: grid; justify-items: center; gap: 4px; border: 2px solid var(--money); border-radius: 14px; padding: clamp(12px, 2.4dvh, 20px) 14px; text-align: center; background: #fff; }
+.calc span { color: var(--ink); font-size: clamp(24px, 4.4dvh, 34px); font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.calc small { font-size: 13px; color: var(--muted); }
+.load { display: grid; gap: 8px; }
+.load-top { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--ink); }
+.load-top b { font-variant-numeric: tabular-nums; }
+.load-bar { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.load-bar i { display: block; height: 100%; width: 0; background: var(--money); border-radius: 99px; }
+.lead-form { display: grid; gap: 10px; }
+.lead-form label { display: grid; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.lead-form input { font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1px solid #cfc8c3; border-radius: 10px; padding: 11px 12px; width: 100%; }
+.lead-form input:focus { outline: 2px solid var(--verde); outline-offset: 1px; border-color: var(--verde); }
+.err { margin: 0; color: var(--alert); font-size: 13px; font-weight: 600; }
+.selo { background: var(--money); color: #fff; font-weight: 800; font-size: clamp(13px, 2.1dvh, 16px); line-height: 1.25; text-align: center; padding: clamp(9px, 1.6dvh, 13px) 14px; border-radius: 12px; text-wrap: balance; }
+.ad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ad-col { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 8px 8px 10px; background: #fff; }
+.ad-col.good { border-color: var(--money); box-shadow: 0 0 0 1px var(--money); }
+.who { position: relative; flex: 1 1 0; min-height: 64px; border-radius: 8px; overflow: hidden; background: var(--soft); }
+.who img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.who.bad::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(124, 45, 18, .5), rgba(124, 45, 18, 0) 55%); }
+.who.good::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 83, 45, .55), rgba(20, 83, 45, 0) 55%); }
+.who .cap { position: absolute; z-index: 1; left: 6px; right: 6px; bottom: 6px; color: #fff; font-size: 11px; font-weight: 700; line-height: 1.2; text-align: center; }
+.cmp-h { font-size: 12px; text-align: center; padding: 5px; border-radius: 6px; }
+.cmp-h.bad { background: #fff4ee; color: var(--alert); }
+.cmp-h.good { background: var(--money-soft); color: var(--money); }
+.br { display: grid; gap: 3px; font-size: 11.5px; color: var(--ink); }
+.br-t { height: 7px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.br-t i { display: block; height: 100%; border-radius: 99px; }
+.br-t i.bad { background: var(--alert); }
+.br-t i.good { background: var(--money); }
+.said li { align-items: center; }
+.said .ck { font-size: 18px; width: 24px; text-align: center; }
+.ba { display: grid; grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr); gap: 6px; }
+.ba-row { display: grid; grid-template-columns: minmax(0, 36%) 1fr; gap: 10px; align-items: stretch; border: 1px solid var(--line); border-radius: 12px; padding: 8px; min-height: 0; }
+.ba-row.bad { background: #fff4ee; border-color: #fed7c3; }
+.ba-row.good { background: var(--money-soft); border-color: var(--money); }
+.ba-pic { position: relative; border-radius: 8px; overflow: hidden; min-height: 0; }
+.ba-pic img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+.ba-pic span { position: absolute; left: 6px; top: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; color: #fff; padding: 3px 7px; border-radius: 5px; }
+.bad .ba-pic span { background: var(--alert); } .good .ba-pic span { background: var(--money); }
+.ba-arrow { text-align: center; font-size: 12px; font-weight: 700; color: var(--money); }
+.ba-list { list-style: none; margin: 0; padding: 0; display: grid; align-content: center; gap: clamp(4px, 1dvh, 10px); min-width: 0; }
+.ba-list li { position: relative; padding-left: 22px; font-size: clamp(12px, 1.9dvh, 14.5px); line-height: 1.3; color: var(--ink); }
+.ba-list.x li::before { content: "✕"; position: absolute; left: 2px; top: 0; color: var(--alert); font-weight: 800; }
+.ba-list.ok li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 4px; background: var(--money); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
+.rot { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: r; }
+.rot li { counter-increment: r; display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: clamp(9px, 1.6dvh, 13px) 12px; color: var(--ink); background: #fff; }
+.rot li::before { content: counter(r); grid-row: span 2; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--verde); color: #fff; font-weight: 800; }
+.rot li b { font-size: 15px; }
+.rot li span { font-size: 12.5px; color: var(--muted); }
+.rot li.me { border-color: var(--money); box-shadow: 0 0 0 1px var(--money); background: var(--money-soft); }
+.rot li.me::before { background: var(--money); }
+.trilha { display: grid; grid-template-rows: repeat(4, minmax(0, 1fr)); border-left: 3px solid var(--line); margin-left: 10px; padding-left: 18px; }
+.tr-step { position: relative; display: grid; align-content: center; gap: 1px; }
+.tr-step i { position: absolute; left: -27px; top: 50%; width: 15px; height: 15px; margin-top: -8px; border-radius: 50%; background: var(--bg); border: 3px solid var(--verde); }
+.tr-step b { color: var(--ink); font-size: 14px; }
+.tr-step span { font-size: 12px; }
+.tr-step.goal i { background: var(--money); border-color: var(--money); }
+.tr-step.goal b { color: var(--money); }
+/* tela da faxina: comparação à esquerda, print alto da aluna à direita, ocupando a altura livre */
+.tela-faxina { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+.pilha { display: grid; gap: 8px; align-content: start; min-height: 0; overflow: hidden; }
+.quote.mini { font-size: clamp(12px, 1.8dvh, 13.5px); padding: 10px 11px; }
+.quote.mini cite { margin-top: 4px; }
+/* tela da faxina v2: comparação em uma linha e o print em largura total, cortado no topo para o texto ficar legível */
+.troca { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+.troca span { display: grid; gap: 1px; text-align: center; border-radius: 10px; padding: 8px 6px; }
+.troca small { font-size: 11px; font-weight: 600; line-height: 1.2; }
+.troca b { font-size: clamp(20px, 3.2dvh, 26px); font-weight: 900; line-height: 1.1; }
+.troca .t-bad { background: var(--alert-soft); border: 1px solid var(--alert-line); color: var(--alert); }
+.troca .t-good { background: var(--money-soft); border: 1px solid var(--money-line); color: var(--money); }
+.troca i { font-style: normal; font-weight: 900; color: var(--money); font-size: 20px; }
+.screen > .media.print-hero { min-height: 40dvh; }
+.media.print-hero { position: relative; background: #f2efe9; border: 1px solid var(--line); }
+.media.print-hero img { object-fit: cover; object-position: 50% 0%; }
+.media.print-hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; background: linear-gradient(to top, #f2efe9 18%, rgba(242, 239, 233, 0)); }
+.print-tag { position: absolute; z-index: 1; left: 10px; bottom: 10px; background: var(--verde); color: #fff; font-size: 11.5px; font-weight: 700; padding: 5px 9px; border-radius: 6px; }
+/* vídeo curto da Paty com legenda própria (a legenda original fica numa trilha que o navegador não mostra) */
+.gancho-duo { grid-template-columns: 46% minmax(0, 1fr); align-items: stretch; min-height: 40dvh; }
+.media.gancho { height: 100%; min-height: 0; }
+.media.gancho video { object-fit: cover; object-position: 50% 50%; }
+.gancho-facts { align-content: center; gap: 6px; min-height: 0; overflow: hidden; }
+.gancho-facts li { font-size: clamp(11.5px, min(2.1dvh, 3.7vw), 16px); line-height: 1.3; padding: 10px 10px; gap: 7px; }
+.gancho-facts li b { display: block; font-size: 1.12em; white-space: nowrap; }
+.echo.ponte { font-size: clamp(14px, 2.2dvh, 16px); }
+.legenda { position: absolute; left: 10px; right: 10px; bottom: 12px; text-align: center; color: #fff; font-weight: 800; font-size: clamp(12.5px, 2dvh, 15px); line-height: 1.2; text-shadow: 0 1px 3px rgba(0,0,0,.6); background: rgba(29, 42, 36, .55); border-radius: 8px; padding: 6px 8px; pointer-events: none; }
+.media.gancho .unmute { bottom: auto; top: 10px; }
+/* entrada: 4 cards de idade no formato do modelo enviado (rótulo claro, borda bege) */
+.pics.idade .pic { border: 1.5px solid #e7ddd0; border-radius: 16px; box-shadow: none; }
+.pics.idade .pic.on { border-color: var(--ouro); box-shadow: 0 0 0 1px var(--ouro); }
+.pics.idade .pic img { object-position: 50% 30%; }
+.pics.idade .pic .lbl { background: #fff; color: var(--ink); font-weight: 800; font-size: clamp(13px, 2dvh, 16px); padding: clamp(8px, 1.5dvh, 13px) 6px; }
+/* versão "antes" da avatar: mesma foto, apagada */
+.who.bad img, .ba-row.bad .ba-pic img, .v-pic.antes img { filter: grayscale(.85) brightness(.92) contrast(.95); }
+/* tela 12: foto deitada da Paty apontando, em largura total, números lado a lado */
+.media.paty-aponta { background: #cfcbd6; }
+.media.paty-aponta img { object-position: 62% 20%; }
+.gancho-facts.lado { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.gancho-facts.lado li { min-width: 0; font-size: clamp(11px, min(2.1dvh, 3.5vw), 15px); }
+/* resultado (diagnóstico) */
+.res-card { display: grid; gap: 4px; text-align: center; background: var(--verde); color: #fff; border-radius: 14px; padding: clamp(10px, 1.8dvh, 16px) 14px; }
+.res-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #ecd6db; }
+.res-nome { font-size: clamp(22px, 3.6dvh, 28px); font-weight: 900; line-height: 1.1; color: #fff; }
+.res-frase { font-size: clamp(12.5px, 1.9dvh, 14px); color: #f7e8ec; }
+.res-meter { display: grid; gap: 5px; margin-top: 6px; text-align: left; }
+.res-meter-top { display: flex; justify-content: space-between; font-size: 12px; color: #f7e8ec; }
+.res-meter-top b { color: #fff; font-size: 15px; font-variant-numeric: tabular-nums; }
+.res-bar { height: 9px; background: rgba(255,255,255,.18); border-radius: 99px; overflow: hidden; }
+.res-bar i { display: block; height: 100%; background: linear-gradient(90deg, #d8b26a, #f1d79c); border-radius: 99px; }
+.res-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.res-pic { position: relative; margin: 0; border-radius: 12px; overflow: hidden; min-height: 0; }
+.res-pic img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.res-pic.antes img { filter: grayscale(.85) brightness(.92); }
+.res-pic figcaption { position: absolute; left: 0; right: 0; bottom: 0; display: grid; gap: 1px; padding: 18px 8px 8px; text-align: center; color: #fff; }
+.res-pic.antes figcaption { background: linear-gradient(to top, rgba(124,45,18,.85), rgba(124,45,18,0)); }
+.res-pic.depois figcaption { background: linear-gradient(to top, rgba(20,83,45,.9), rgba(20,83,45,0)); }
+.res-pic small { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .9; }
+.res-pic b { font-size: clamp(12px, 1.9dvh, 14px); line-height: 1.2; }
+.res-pot { display: grid; gap: 2px; text-align: center; border: 2px solid var(--money); background: var(--money-soft); border-radius: 12px; padding: clamp(8px, 1.4dvh, 12px); }
+.res-pot small { font-size: 12.5px; color: var(--ink); }
+.res-pot b { font-size: clamp(19px, 3dvh, 24px); font-weight: 900; color: var(--money); font-variant-numeric: tabular-nums; }
+.diag { display: grid; gap: 4px; border-radius: 12px; padding: clamp(9px, 1.6dvh, 13px) 13px; border: 1px solid var(--line); background: #fff; }
+.diag p { margin: 0; font-size: clamp(13px, 2dvh, 14.5px); color: var(--ink); line-height: 1.35; }
+.diag-k { font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.diag.ok { border-color: var(--money-line); background: var(--money-soft); } .diag.ok .diag-k { color: var(--money); }
+.diag.falta { border-color: #ecd9b4; background: var(--ouro-soft); } .diag.falta .diag-k { color: #8a6424; }
+.diag.passo { border-color: var(--verde); } .diag.passo .diag-k { color: var(--verde); }
+.diag-prova { display: grid; grid-template-columns: 54px 1fr; gap: 10px; align-items: center; border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 8px 10px; }
+.diag-prova img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; display: block; }
+.diag-prova p { margin: 0; font-size: clamp(12.5px, 1.9dvh, 14px); color: var(--ink); line-height: 1.35; }
+.ponte-cta { text-align: center; font-weight: 800; color: var(--money); font-size: clamp(13px, 2dvh, 15px); }
+.garantia { display: grid; justify-items: center; gap: 10px; border: 2px solid var(--money-line); background: var(--money-soft); border-radius: 16px; padding: 18px 14px; margin-top: 28px !important; }
+.gar-selo { width: 120px; height: 120px; display: block; }
+.gar-selo-img { width: 170px; height: 170px; display: block; clip-path: circle(44% at 50% 51%); }
+.gar-selo text { font-family: var(--font); }
+.gar-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.gar-lista li { position: relative; padding-left: 24px; font-size: 14px; color: var(--ink); font-weight: 600; }
+.gar-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--money); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
+.gar-mini { margin: 4px 0 0; text-align: center; font-size: 13px; color: var(--ink); }
+.ph { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; text-align: center; padding: 10px; background: var(--ph-bg); border: 1.5px dashed var(--ph-line); border-radius: 12px; color: #6b5a4e; font-size: 11.5px; line-height: 1.3; overflow: hidden; }
+.ph .tag { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; color: var(--verde); background: var(--verde-soft); padding: 3px 6px; border-radius: 4px; }
+.ph strong { color: var(--ink); font-size: 12.5px; font-weight: 600; }
+
+.facts { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.facts li { display: flex; gap: 9px; align-items: flex-start; font-size: clamp(12.5px, 1.9dvh, 14px); color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: clamp(7px, 1.2dvh, 10px) 11px; }
+.facts .ck { color: var(--money); font-weight: 800; flex: none; }
+.quote { background: var(--verde); color: #fff; border-radius: 12px; padding: clamp(10px, 1.7dvh, 15px) 15px; font-family: var(--font); font-weight: 500; font-size: clamp(13.5px, 2.05dvh, 15px); line-height: 1.4; }
+.quote cite { display: block; margin-top: 6px; font-family: var(--font); font-style: normal; font-size: 11.5px; color: #ecd6db; }
+.echo { background: var(--ouro-soft); border: 1px solid #ecd9b4; color: #5c4119; border-radius: 10px; padding: clamp(8px, 1.4dvh, 12px) 12px; font-size: 13.5px; text-align: center; }
+.echo b { color: var(--ink); }
+.tbd { display: inline-block; background: #fef3c7; color: #92400e; border: 1px dashed #f59e0b; border-radius: 6px; padding: 1px 6px; font-size: .85em; font-weight: 700; white-space: nowrap; }
+.legal { font-size: 10.5px; color: #8b928e; text-align: center; margin: 0; }
+
+.foot { flex: none; padding-block: 8px calc(14px + env(safe-area-inset-bottom, 0px)); }
+.cta { display: block; width: 100%; border: 0; border-radius: 10px; background: var(--verde); color: #fff; font: inherit; font-size: 15px; font-weight: 700; letter-spacing: .04em; padding: clamp(12px, 2dvh, 15px); cursor: pointer; }
+.cta:disabled { background: #cfc8c3; cursor: not-allowed; }
+
+.vars { width: 100%; border-collapse: collapse; font-size: 13px; color: var(--ink); }
+.vars td { border-bottom: 1px solid var(--line); padding: 6px 4px; vertical-align: top; }
+.vars td:first-child { color: var(--muted); font-size: 12px; width: 40%; }
+.restart { align-self: center; font: inherit; font-size: 13px; font-weight: 600; color: var(--verde); background: none; border: 1px solid var(--verde); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+
+/* ===== Fase 4 · vendas, checkout e obrigado (base: quiz Wesley/Home Sales) ===== */
+.screen.scroll { display: block; overflow-y: auto; overflow-x: hidden; padding-bottom: 24px; color: var(--p-muted); scrollbar-width: none; }
+.screen.scroll::-webkit-scrollbar { display: none; }
+#toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); opacity: 0; pointer-events: none; background: #111827; color: #fff; font-size: 13.5px; padding: 10px 16px; border-radius: 10px; transition: opacity .2s, transform .2s; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
+#toast.on { opacity: 1; transform: translate(-50%, 0); }
+/* ===== Fase 5 · página de vendas clonada do Home Sales (claro, CTA verde fixo) ===== */
+.screen.scroll { color: var(--muted); }
+.screen.scroll > * + * { margin-top: 16px; }
+.v-h1 { color: var(--ink); font-size: clamp(19px, 5.2vw, 23px); line-height: 1.2; font-weight: 800; text-transform: uppercase; text-align: center; margin: 0; text-wrap: balance; }
+.v-h2 { color: var(--ink); font-size: clamp(18px, 5vw, 21px); line-height: 1.25; font-weight: 800; text-align: center; margin: 32px 0 0 !important; text-wrap: balance; }
+.v-h3 { color: var(--ink); font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 0; }
+.v-p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
+.v-p.center, .center { text-align: center; }
+.v-big { margin: 0; color: var(--ink); font-size: 19px; line-height: 1.3; font-weight: 800; text-align: center; text-wrap: balance; }
+.v-ad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; }
+.v-ad > div { display: grid; gap: 4px; }
+.v-ad b { text-align: center; color: var(--ink); font-size: 16px; font-weight: 800; }
+.v-pic { aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: var(--soft); }
+.v-pic img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
+.v-pic svg { display: block; width: 100%; height: 100%; }
+.v-pic svg text { font-family: var(--font); }
+.v-ad span { color: var(--ink); font-size: 13px; font-weight: 600; }
+.v-ad small { font-size: 12px; font-weight: 600; }
+.v-ad small.neg { color: var(--alert); } .v-ad small.pos { color: var(--money); }
+.v-sl { display: block; height: 6px; border-radius: 99px; background: var(--line); position: relative; }
+.v-sl::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; }
+.v-sl::after { content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: #fff; border: 2px solid #9ca3af; }
+.v-sl.neg::before { width: 18%; background: var(--alert); } .v-sl.neg::after { left: 15%; }
+.v-sl.pos::before { width: 88%; background: var(--money); } .v-sl.pos::after { left: calc(88% - 10px); }
+.v-scroll { background: var(--alert-soft); border: 1px solid var(--alert-line); color: var(--alert); border-radius: 10px; text-align: center; font-size: 12.5px; font-weight: 700; padding: 12px; line-height: 1.7; }
+.v-ph { min-height: 160px; }
+.v-img { border-radius: 14px; overflow: hidden; }
+.v-img img { display: block; width: 100%; height: auto; }
+.v-stats { display: grid; gap: 8px; }
+.v-stats div { background: var(--navy); color: #dfe5f3; border-radius: 10px; padding: 12px 14px; font-size: 13px; text-align: center; line-height: 1.4; }
+.v-stats b { color: #fff; }
+.v-need { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.v-need li { display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 10px; padding: 12px; color: var(--ink); font-size: 13.5px; font-weight: 700; }
+.v-need li span { font-size: 22px; }
+.v-quiz { display: grid; gap: 6px; background: var(--money-soft); border: 1px solid var(--money-line); border-radius: 12px; padding: 14px; color: #4a0e22; font-size: 14px; }
+.v-quiz b { color: var(--ink); }
+.v-ok { margin: 0; text-align: center; background: var(--money); color: #fff; font-weight: 800; border-radius: 10px; padding: 12px; font-size: 16px; }
+.v-best { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.v-best li { color: var(--ink); font-weight: 700; font-size: 14px; padding-left: 26px; position: relative; }
+.v-best li::before { content: "✓"; position: absolute; left: 0; color: var(--money); font-weight: 800; }
+.v-brand { display: grid; justify-items: center; background: var(--navy); color: #fff; border-radius: 14px; padding: 18px; }
+.v-brand small { color: #c7d0e6; font-size: 12px; }
+.v-brand b { font-size: 26px; letter-spacing: .01em; }
+.v-src { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 6px; }
+.v-src b { color: var(--ink); font-size: 15px; }
+.v-src p { margin: 0; font-size: 13px; color: var(--muted); }
+.v-range { margin: 0; text-align: center; font-size: 30px; font-weight: 800; color: var(--money); }
+.v-all { display: grid; gap: 6px; text-align: center; color: var(--ink); font-size: 14px; font-weight: 600; }
+.v-all b { font-size: 15px; }
+.v-step { border-left: 4px solid var(--money); background: #f9fafb; border-radius: 0 10px 10px 0; padding: 12px 14px; }
+.v-step b { color: var(--ink); font-size: 15px; }
+.v-step p { margin: 4px 0 0; font-size: 13.5px; }
+.v-bns { display: grid; gap: 14px; }
+.v-bn { position: relative; display: grid; gap: 6px; border: 1px solid var(--line); border-radius: 14px; padding: 12px; text-align: center; }
+.v-bn.hot { border-color: var(--money); box-shadow: 0 0 0 1px var(--money); }
+.v-pill { justify-self: center; background: var(--money); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; padding: 4px 10px; border-radius: 999px; }
+.v-bn-img { aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: #0b1b2e; }
+.v-bn-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.v-bn-img .ph { height: 100%; border-radius: 10px; }
+.v-bn b { color: var(--ink); font-size: 15px; }
+.v-bn p { margin: 0; font-size: 12.5px; }
+.v-bn small { font-size: 13px; color: var(--ink); font-weight: 600; }
+.v-stack { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 12px; }
+.v-stack li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 12.5px; color: var(--ink); font-weight: 600; }
+.v-stack li:last-child { border-bottom: 0; }
+.tbd { display: inline-block; background: #fef3c7; color: #92400e; border: 1px dashed #f59e0b; border-radius: 6px; padding: 1px 6px; font-size: .85em; font-weight: 700; white-space: nowrap; }
+.v-timer { display: flex; justify-content: center; align-items: baseline; gap: 4px; color: var(--alert); }
+.v-timer b { font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.v-timer small { font-size: 12px; } .v-timer span { font-size: 28px; font-weight: 800; }
+.v-price { display: grid; gap: 8px; justify-items: center; text-align: center; border: 2px solid var(--money); border-radius: 16px; padding: 16px; }
+.v-off { background: var(--alert); color: #fff; font-size: 11.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; }
+.v-off .tbd { background: #fff; }
+.v-price > b { color: var(--ink); font-size: 15px; }
+.v-47 { margin: 0; color: var(--money); font-size: 46px; font-weight: 800; line-height: 1; }
+.v-47 small { font-size: 15px; color: var(--muted); font-weight: 600; }
+.v-buy { width: 100%; border: 0; border-radius: 10px; background: var(--money); color: #fff; font: inherit; font-size: 16px; font-weight: 800; padding: 16px; cursor: pointer; }
+.v-guar { display: grid; justify-items: center; gap: 6px; text-align: center; }
+.v-guar svg { width: 90px; height: 90px; } .v-guar svg text { font-family: var(--font); }
+.v-faq { display: grid; gap: 8px; }
+.v-faq details { border: 1px solid var(--line); border-radius: 10px; padding: 0 14px; }
+.v-faq summary { cursor: pointer; padding: 13px 0; color: var(--ink); font-weight: 700; font-size: 14px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.v-faq summary::-webkit-details-marker { display: none; }
+.v-faq summary::after { content: "+"; color: var(--money); font-weight: 800; }
+.v-faq details[open] summary::after { content: "–"; }
+.v-faq p { margin: 0 0 14px; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+.v-foot { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 28px !important; display: grid; gap: 8px; font-size: 11px; color: var(--muted); text-align: center; }
+.v-foot p { margin: 0; line-height: 1.5; }
+body:has(.screen.scroll) .cta { background: var(--money); font-weight: 800; letter-spacing: .02em; }
+.ba { display: grid; grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr); gap: 6px; }
+.ba-row { display: grid; grid-template-columns: minmax(0, 38%) 1fr; gap: 10px; align-items: stretch; border: 1px solid var(--line); border-radius: 12px; padding: 8px; min-height: 0; }
+.ba-row.bad { background: var(--alert-soft); border-color: var(--alert-line); }
+.ba-row.good { background: var(--money-soft); border-color: var(--money); }
+.ba-pic { position: relative; border-radius: 8px; overflow: hidden; min-height: 0; }
+.ba-pic img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+.ba-row:has(.phone) { grid-template-columns: auto 1fr; align-items: center; }
+.ba-pic.phone { background: #dcc3c9; height: clamp(130px, 30dvh, 300px); aspect-ratio: 140 / 220; width: auto; }
+.ba-pic.phone svg { display: block; width: 100%; height: 100%; }
+.ba-pic.phone svg text { font-family: var(--font); }
+.ba-pic span { position: absolute; left: 6px; top: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; color: #fff; padding: 3px 7px; border-radius: 5px; }
+.bad .ba-pic span { background: var(--alert); } .good .ba-pic span { background: var(--money); }
+.ba-bars { display: grid; align-content: center; gap: clamp(3px, .8dvh, 8px); min-width: 0; }
+.ba-arrow { text-align: center; font-size: 12px; font-weight: 700; color: var(--money); }
+
+/* ===== Checkout (protótipo) ===== */
+.ck-top { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--money); font-weight: 700; }
+.ck-prod { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+.ck-cover { width: 100%; object-fit: cover; aspect-ratio: 3 / 4; border-radius: 8px; background: linear-gradient(160deg, #1b2c52, #0b1b2e); color: #fff; display: grid; align-content: center; justify-items: center; text-align: center; padding: 6px; }
+img.ck-cover { padding: 0; display: block; }
+.ck-cover span { font-size: 8px; color: #c7d0e6; } .ck-cover b { font-size: 13px; line-height: 1.1; color: #4ade80; }
+.ck-prod b { color: var(--ink); font-size: 14px; } .ck-prod small { display: block; font-size: 12px; margin-top: 2px; }
+.ck-price { margin: 6px 0 0; color: var(--money); font-size: 22px; font-weight: 800; } .ck-price s { color: var(--muted); font-size: 14px; font-weight: 500; margin-right: 4px; }
+.ck-form { display: grid; gap: 10px; }
+.ck-h { margin: 8px 0 0; color: var(--ink); font-size: 15px; }
+.ck-form label { display: grid; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--ink); min-width: 0; }
+.ck-form input[type=text], .ck-form input[type=email], .ck-form input[type=tel], .ck-form select { font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1px solid #d1d5db; border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0; }
+.ck-form input:disabled, .ck-form select:disabled { background: var(--soft); color: var(--muted); }
+.ck-form input:focus, .ck-form select:focus { outline: 2px solid var(--money); outline-offset: 1px; }
+.ck-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ck-pay { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.ck-pay button { font: inherit; font-size: 14px; font-weight: 700; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 11px 6px; cursor: pointer; }
+.ck-pay button.on { border-color: var(--money); box-shadow: 0 0 0 1px var(--money); color: var(--money); background: var(--money-soft); }
+.ck-panel { display: grid; gap: 10px; } .ck-panel p { margin: 0; font-size: 13px; color: var(--ink); }
+.ck-note { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 10px; color: #92400e !important; font-size: 12px !important; }
+.ck-bump { display: grid !important; grid-template-columns: auto 1fr; gap: 10px !important; align-items: start; border: 2px dashed var(--alert); background: #fffbeb; border-radius: 12px; padding: 12px; cursor: pointer; }
+.ck-bump input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--money); }
+.ck-bump span { display: grid; gap: 4px; } .ck-bump b { color: var(--alert); font-size: 13.5px; } .ck-bump small { font-weight: 400; color: var(--muted); font-size: 12px; } .ck-bump em { font-style: normal; color: var(--money); font-weight: 800; }
+.ck-sum { border: 1px solid var(--line); border-radius: 12px; padding: 4px 12px; }
+.ck-sum div { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; font-size: 13.5px; color: var(--ink); border-bottom: 1px solid var(--line); }
+.ck-sum div:last-child { border-bottom: 0; } .ck-sum .tot b { color: var(--money); font-size: 17px; }
+.ck-err { margin: 0; color: var(--alert); font-size: 13px; font-weight: 600; }
+.ck-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ck-trust div { border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: grid; gap: 2px; text-align: center; }
+.ck-trust b { color: var(--ink); font-size: 13px; } .ck-trust small { font-size: 11.5px; }
+.ck-legal { margin: 0; font-size: 11px; text-align: center; color: var(--muted); }
+.ck-hint { font-weight: 400; font-size: 12px; color: var(--muted); }
+.ck-bumps { display: grid; gap: 10px; }
+.ck-bump.on { border-style: solid; border-color: var(--money); background: var(--money-soft); }
+.ck-bump em s { color: var(--alert); font-weight: 600; margin-right: 4px; }
+.ck-bump .ck-anc { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.ck-bump .ck-anc i { font-style: normal; font-size: 11.5px; font-weight: 600; color: var(--money); background: var(--money-soft); border-radius: 6px; padding: 2px 7px; }
+.ck-clock { display: grid; gap: 6px; border: 1px solid var(--alert-line); background: var(--alert-soft); border-radius: 10px; padding: 10px 12px; }
+.ck-clock-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--alert); }
+.ck-clock-top b { font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.ck-thermo { height: 8px; border-radius: 99px; background: #fff; overflow: hidden; border: 1px solid var(--alert-line); }
+.ck-thermo i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #f59e0b, var(--alert)); border-radius: 99px; transition: width 1s linear; }
+.v-guar-img { max-width: 320px; width: 100%; }
+.ty-ok { display: grid; justify-items: center; } .ty-ok svg { width: 64px; height: 64px; }
+.ty-prod { border-color: var(--money-line); } .ty-prod .v-pill { justify-self: start; margin-bottom: 4px; display: inline-block; } .ty-prod b { display: block; }
+.ty-vid { aspect-ratio: 9 / 16; max-height: 72dvh; margin-inline: auto; width: auto; border-radius: 14px; }
+.ty-box { border: 1px solid var(--money-line); background: var(--money-soft); border-radius: 12px; padding: 14px; display: grid; gap: 8px; color: var(--ink); }
+.ty-steps { margin: 0; padding: 0; list-style: none; counter-reset: t; display: grid; gap: 10px; }
+.ty-steps li { counter-increment: t; display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; align-items: start; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.ty-steps li::before { content: counter(t); grid-row: span 2; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--money); color: #fff; font-weight: 800; }
+.ty-steps b { color: var(--ink); font-size: 14.5px; } .ty-steps span { font-size: 13px; line-height: 1.45; }
+.ty-vip { display: grid; gap: 12px; border: 2px solid var(--navy); border-radius: 16px; padding: 16px; background: var(--navy-soft); margin-top: 28px !important; }
+.ty-vip .v-best li { font-weight: 600; }
+.ty-insta { display: grid; gap: 4px; text-align: center; border: 1px solid var(--line); border-radius: 12px; padding: 12px; color: var(--ink); font-size: 13.5px; }
+.w32-h { font-size: clamp(16px, 2.7dvh, 21px); }
+.screen > .w32-img { min-height: 72px; }
+.w32-p { margin: 0; color: var(--ink); font-size: clamp(12.5px, 1.95dvh, 15px); line-height: 1.4; text-align: center; text-wrap: pretty; }
+.w32-e { font-size: clamp(12.5px, 1.95dvh, 14px); line-height: 1.4; }
+.pl-h1 { color: var(--ink); font-size: clamp(20px, 5.4vw, 24px); line-height: 1.25; font-weight: 800; margin: 4px 0 0; text-wrap: balance; }
+.pl-p { margin: 0; color: var(--ink); font-size: 15px; line-height: 1.55; }
+.pl-lead { margin: 0; color: var(--ink); font-size: 16px; font-weight: 800; }
+.pl-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: pl; }
+.pl-step { counter-increment: pl; position: relative; display: grid; gap: 4px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 14px 56px; }
+.pl-step::before { content: counter(pl); position: absolute; left: 14px; top: 14px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-size: 14px; }
+.pl-step b { color: var(--ink); font-size: 15px; line-height: 1.3; }
+.pl-step span { font-size: 13.5px; line-height: 1.5; }
+.pl-step.hot { border-color: var(--money); box-shadow: 0 0 0 1px var(--money); background: var(--money-soft); }
+.pl-step.hot::before { background: var(--money); }
+.pl-step .pl-tag { justify-self: start; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--money); padding: 3px 8px; border-radius: 999px; line-height: 1.4; }
+.pl-dream { border-radius: 14px; padding: 16px; background: var(--navy); color: #dfe5f3; display: grid; gap: 6px; }
+.pl-dream b { color: #fff; font-size: 17px; line-height: 1.3; }
+.pl-dream p { margin: 0; font-size: 14px; line-height: 1.55; }
+.pl-end { margin: 0; text-align: center; color: var(--ink); font-size: 16px; font-weight: 800; text-wrap: balance; }
+.pl-res { display: grid; gap: 8px; border: 2px solid var(--money); background: var(--money-soft); border-radius: 14px; padding: 14px; }
+.pl-res-k { justify-self: start; background: var(--money); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .08em; padding: 4px 10px; border-radius: 999px; }
+.pl-res b { color: var(--ink); font-size: 17px; line-height: 1.3; }
+.pl-res ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: #4a0e22; font-size: 13.5px; font-weight: 600; }
+.pl-fig { margin: 0; display: grid; gap: 8px; }
+.pl-fig img { display: block; width: 100%; height: clamp(150px, 26dvh, 260px); object-fit: cover; object-position: 50% 20%; border-radius: 14px; }
+.pl-fig figcaption { font-size: 12.5px; line-height: 1.45; text-align: center; color: var(--muted); }
+.pl-fig figcaption b { color: var(--ink); }
+.v-brand small:last-child { margin-top: 4px; }
+.media.vid.sv { aspect-ratio: 9 / 14; max-height: 70dvh; }
+.v-apoio { text-align: left; background: var(--navy-soft); border-color: var(--navy) !important; }
+.v-apoio b { text-align: center; }
+.v-apoio ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13px; color: var(--ink); }
+.v-apoio small { text-align: center; }
+.v-bn small s, .v-stack b, .v-total s { color: var(--alert); }
+.v-total { margin: 0; text-align: center; color: var(--ink); font-size: 17px; font-weight: 800; }
+.rot.rot-ico li { grid-template-columns: clamp(42px, 8.5dvh, 92px) 1fr; column-gap: 12px; padding: clamp(8px, 1.4dvh, 12px) 12px; }
+.rot.rot-ico li::before { display: none; }
+.rot.rot-ico li img { grid-row: span 2; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; display: block; }
+.rot.rot-ico li b { align-self: end; }
+.rot.rot-ico li span { align-self: start; }
+@media (max-height: 600px) { .rot.rot-ico li { grid-template-columns: 1fr; } .rot.rot-ico li img { display: none; } }
+
+/* ===== Página de vendas no formato da página do Pablo (Mente Milionária) ===== */
+.mm-h1 { color: var(--ink); font-size: clamp(22px, 6.4vw, 28px); line-height: 1.15; font-weight: 800; text-transform: uppercase; text-align: center; margin: 4px 0 0; text-wrap: balance; }
+.mm-ad { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; row-gap: 10px; }
+.mm-ad-h { text-align: center; font-size: 22px; font-weight: 800; }
+.mm-ad-h.bad { color: var(--alert); } .mm-ad-h.good { color: var(--money); }
+.lv { display: grid; gap: 2px; color: var(--ink); }
+.lv b { font-size: 13.5px; } .lv span { font-size: 13px; color: var(--muted); }
+.lv-t { position: relative; display: block; height: 8px; border-radius: 99px; background: var(--line); margin: 6px 0 4px; }
+.lv-t u { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; text-decoration: none; }
+.lv-t.bad u { background: var(--alert); } .lv-t.good u { background: var(--money); }
+.lv-t s { position: absolute; top: 50%; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; background: #fff; border: 3px solid #d1d5db; }
+.mm-name { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; color: var(--ink); font-size: 24px; font-weight: 800; }
+.mm-vid { aspect-ratio: 9 / 13; max-height: 70dvh; border-radius: 14px; }
+.mm-sign { margin: 0; text-align: center; color: var(--ink); font-size: 22px; font-weight: 800; font-style: italic; }
+.mm-sub { margin: -8px 0 0; text-align: center; color: var(--ink); font-size: 15px; }
+.mm-h2 { color: var(--ink); font-size: clamp(19px, 5.4vw, 23px); line-height: 1.2; font-weight: 800; text-align: center; margin: 30px 0 0 !important; text-wrap: balance; }
+.mm-h2.bad { color: var(--alert); } .mm-h2.good { color: var(--money); }
+.mm-card { display: grid; gap: 8px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; padding-bottom: 14px; text-align: center; }
+.mm-card > img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 30% 25%; display: block; }
+.mm-card > img.mm-face { aspect-ratio: 4 / 3; object-position: 50% 15%; }
+.mm-card > b { color: var(--ink); font-size: 17px; font-weight: 800; padding: 10px 14px 0; line-height: 1.25; }
+.mm-card > p { margin: 0; padding: 0 14px; font-size: 14px; line-height: 1.5; }
+.mm-icons { display: flex; justify-content: center; gap: 10px; padding: 14px 10px 0; }
+.mm-icons img { width: 28%; max-width: 110px; aspect-ratio: 1 / 1; object-fit: contain; }
+.mm-steps { margin: 0; padding: 0 14px 0 34px; text-align: left; display: grid; gap: 6px; color: var(--ink); font-size: 14px; }
+.mm-steps li.hot { font-weight: 700; color: var(--money); }
+.mm-steps em { font-style: normal; font-size: 11px; background: var(--money); color: #fff; padding: 1px 6px; border-radius: 999px; white-space: nowrap; }
+.mm-soft { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; color: #4b5563; font-size: 19px; font-weight: 700; line-height: 1.3; }
+.mm-green { background: #7a1633; color: #fff; border-radius: 12px; padding: 18px 14px; text-align: center; font-size: 22px; font-weight: 800; line-height: 1.2; text-wrap: balance; }
+.mm-lightgreen { background: var(--money-soft); border: 1px solid var(--money-line); border-radius: 12px; padding: 12px; text-align: center; color: var(--money); font-size: 17px; font-weight: 800; }
+.mm-red { background: #dc2626; color: #fff; border-radius: 12px; padding: 18px 14px; text-align: center; font-size: 24px; font-weight: 800; line-height: 1.2; margin-top: 28px !important; text-wrap: balance; }
+.mm-calm { margin: 0; text-align: center; color: var(--ink); font-size: 20px; font-weight: 800; line-height: 1.3; text-wrap: balance; }
+.mm-bh { background: #e8efff; border: 1px solid #c7d6fb; border-radius: 12px; padding: 12px; text-align: center; color: #1d4ed8; font-size: 18px; font-weight: 800; line-height: 1.25; }
+.mm-bonus { position: relative; display: grid; gap: 8px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; padding-bottom: 16px; text-align: center; margin-top: 8px !important; }
+.mm-bonus img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center top; display: block; }
+.mm-bonus b { color: var(--ink); font-size: 21px; font-weight: 800; padding: 12px 14px 0; line-height: 1.2; }
+.mm-bonus p { margin: 0; padding: 0 14px; font-size: 14.5px; line-height: 1.5; }
+.mm-bl { display: grid; gap: 18px; margin-top: 4px !important; }
+.mm-bl article { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; }
+.mm-bl i { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--brand, #4a0e22); color: #fff; }
+.mm-bl i.gold { background: #b98b3e; }
+.mm-bl i svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.mm-bl b { display: block; color: var(--ink); font-size: 16.5px; font-weight: 800; line-height: 1.25; }
+.mm-bl p { margin: 4px 0 8px; font-size: 14.5px; line-height: 1.5; }
+.mm-bl em { font-style: normal; display: inline-block; background: var(--money-soft); color: var(--money); font-weight: 800; font-size: 12px; letter-spacing: .08em; border-radius: 999px; padding: 4px 12px; }
+.mm-val { color: var(--alert); font-size: 20px; font-weight: 800; }
+.mm-val s { color: var(--alert); }
+.mm-tag { position: absolute; top: 10px; left: 10px; font-style: normal; background: var(--money); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+.mm-lapis { margin: 28px 0 0 !important; text-align: center; color: var(--ink); font-size: 16px; font-weight: 800; }
+.mm-stack { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.mm-stack li { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1.5px solid #f87171; border-radius: 12px; padding: 12px 14px; }
+.mm-stack b { color: var(--ink); font-size: 13.5px; line-height: 1.3; }
+.mm-stack span { flex: none; background: var(--soft); border-radius: 8px; padding: 6px 10px; color: var(--ink); font-weight: 800; font-size: 16px; }
+.mm-total { margin: 0; text-align: center; font-size: 40px; font-weight: 800; color: var(--alert); }
+.mm-total s { color: var(--alert); }
+.mm-porem { margin: 0; text-align: center; color: var(--ink); font-size: 18px; font-weight: 800; line-height: 1.25; text-wrap: balance; }
+.mm-pack { width: 100%; margin-top: 8px !important; }
+.mm-pack img { display: block; width: 100%; height: auto; }
+.mm-price { border: 2px solid #1d4ed8; border-radius: 14px; overflow: hidden; }
+.mm-price-h { background: #1d4ed8; color: #fff; text-align: center; font-weight: 800; font-size: 15px; padding: 8px; }
+.mm-price-b { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 14px; }
+.mm-price-b > b { color: var(--ink); font-size: 18px; line-height: 1.25; font-weight: 800; }
+.mm-price-v { display: grid; justify-items: center; text-align: center; background: var(--soft); border-radius: 10px; padding: 8px 10px; }
+.mm-price-v small { font-size: 12px; color: var(--muted); }
+.mm-price-v strong { color: var(--ink); font-size: 30px; line-height: 1.1; font-weight: 800; }
+.mm-pay { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
+.mm-x, .mm-ok { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.mm-x li, .mm-ok li { border-radius: 12px; padding: 12px 14px 12px 42px; position: relative; font-size: 15px; line-height: 1.4; color: var(--ink); }
+.mm-x li { background: var(--alert-soft); border: 1px solid var(--alert-line); }
+.mm-ok li { background: var(--money-soft); border: 1px solid var(--money-line); }
+.mm-x li::before { content: "✕"; position: absolute; left: 14px; top: 11px; color: var(--alert); font-weight: 800; font-size: 17px; }
+.mm-ok li::before { content: "✓"; position: absolute; left: 12px; top: 10px; width: 20px; height: 20px; border-radius: 5px; background: var(--money); color: #fff; font-size: 13px; font-weight: 800; display: grid; place-items: center; }
+@media (max-width: 360px) { .mm-price-b { grid-template-columns: 1fr; } }
+.mm-price-why { list-style: none; margin: 0; padding: 0 14px 10px; display: grid; gap: 6px; }
+.mm-price-why li { position: relative; padding-left: 22px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+.mm-price-why li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--money); font-weight: 800; }
+.mm-price-up { margin: 0; background: #fffbeb; border-top: 1px solid #fde68a; color: #92400e; font-size: 12.5px; font-weight: 700; text-align: center; padding: 8px 12px; }
+.mm-why { display: grid; gap: 8px; background: var(--navy); color: #dfe5f3; border-radius: 14px; padding: 16px; }
+.mm-why b { color: #fff; font-size: 20px; } .mm-why p { margin: 0; font-size: 14.5px; line-height: 1.55; } .mm-why span { justify-self: end; font-style: italic; font-weight: 700; color: #fff; }
+.mm-obj { border: 1px solid var(--alert-line); background: var(--alert-soft); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; }
+.mm-obj b { color: var(--alert); font-size: 16px; } .mm-obj p { margin: 0; color: var(--ink); font-size: 14px; line-height: 1.45; }
+.ba-list { list-style: none; margin: 0; padding: 0; display: grid; align-content: center; gap: clamp(4px, 1dvh, 10px); min-width: 0; }
+.ba-list li { position: relative; padding-left: 22px; font-size: clamp(12px, 1.9dvh, 14.5px); line-height: 1.3; color: var(--ink); }
+.ba-list.x li::before { content: "✕"; position: absolute; left: 2px; top: 0; color: var(--alert); font-weight: 800; }
+.ba-list.ok li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 4px; background: var(--money); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
+
+@keyframes in { from { opacity: .001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .screen { animation: none; } .bar > i { transition: none; } }
+/* sem barra de progresso; na capa (voltar desativado) a linha do topo some */
+.top .bar { visibility: hidden; }
+.top:has(.back:disabled) { display: none; }
+.app:has(.back:disabled) { padding-top: 14px; }
+.ev-card { display: grid; gap: 2px; text-align: center; border: 2px solid var(--verde); border-radius: 14px; padding: 12px; background: var(--verde-soft); }
+.ev-card b { color: var(--verde); font-size: 18px; font-weight: 800; }
+.ev-card span { color: var(--ink); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <button class="back" id="back" type="button" aria-label="Voltar">&#8592;</button>
+    <div class="bar" aria-hidden="true"><i id="prog"></i></div>
+    <span></span>
+  </div>
+  <main id="app" aria-live="polite"></main>
+  <div class="foot" id="foot" hidden><button class="cta" id="cta" type="button">CONTINUAR</button></div>
+</div>
+
+<script>
+const at = id => S.findIndex(x => x.id === id);
+const A = {};
+const hist = [];
+/* textos que mudam pelo estado civil e pela idade dos filhos (telas 2 e 3) */
+const ROTINA_FAM = () => ({ pequenos: "no horário em que as crianças estão na escola", maiores: "agora que os filhos já são maiores e você tem mais tempo" }[A.filhos] || "no seu horário");
+const temFilhos = () => A.filhos === "pequenos" || A.filhos === "maiores";
+const sexo = () => A.genero === "homem" ? "homem" : "mulher";
+
+const SIT_TXT = { casa: "cuida da casa e da família", diarista: "faz faxina ou diária em casas de família", fora: "trabalha fora de casa", busca: "está buscando uma nova atividade" };
+const SERV_TXT = { closet: "organizar closets e guarda-roupas", cozinha: "organizar cozinhas, despensas e lavanderias", mudanca: "ajudar famílias na mudança", mala: "organizar malas de viagem", loja: "organizar lojas e estoques" };
+const CANTO_TXT = { closet: "o guarda-roupa", cozinha: "a cozinha", lavanderia: "a lavanderia", gavetas: "as gavetas" };
+
+/* data-drop="N": se a tela não couber na altura do celular, some primeiro o maior N */
+const S = [
+  /* ================= FASE 1 · IDENTIFICAÇÃO ================= */
+  { n: 1, render: () => `
+      <div class="banner" data-drop="2">Paty Domingos · de empregada doméstica a organizadora de alto padrão</div>
+      <h1>Em 2 dias, vou te ensinar a organizar como uma profissional</h1>
+      <p class="sub sub-renda">Primeiro na sua casa, depois na casa das clientes, num trabalho que paga de <span class="hl-money">R$400 a R$600 por dia</span>.</p>
+      <p class="sub" data-drop="3">Faça o teste e descubra se você tem perfil.</p>
+      <div class="go" data-drop="1">↓ RESPONDA PARA COMEÇAR ↓</div>
+      <h2>Para começar, qual é a sua idade?</h2>
+      <div class="pics four idade fill">
+        ${pic("idade", "18-29", "18 a 29 anos", "img/avatar-18-29.jpg")}
+        ${pic("idade", "29-39", "30 a 39 anos", "img/avatar-29-39.jpg")}
+        ${pic("idade", "39-49", "40 a 49 anos", "img/avatar-39-49-v2.jpg")}
+        ${pic("idade", "50+", "50 anos ou mais", "img/avatar-50.jpg")}
+      </div>` },
+
+  { n: 3, center: true, render: () => `
+      <h2>Você tem filhos?</h2>
+      <div class="opts">
+        ${opt("filhos", "nao", "🙋‍♀️", "Não")}
+        ${opt("filhos", "pequenos", "🧒", "Sim, pequenos (até 10 anos)")}
+        ${opt("filhos", "maiores", "👧", "Sim, maiores de 10 anos")}
+      </div>` },
+
+  { n: 4, center: true, render: () => `
+      <h2>Como é a sua rotina hoje?</h2>
+      <div class="opts">
+        ${opt("sit", "casa", "🏠", "Cuido da casa e da família")}
+        ${opt("sit", "diarista", "🧹", "Faço faxina ou diária em casas de família")}
+        ${opt("sit", "fora", "💼", "Trabalho fora de casa")}
+        ${opt("sit", "busca", "🧭", "Estou buscando uma nova atividade")}
+      </div>` },
+
+  /* inserção de retenção logo depois da rotina: espelha a resposta da tela 4 (foto a definir pelo time da Paty) */
+  { n: 0, id: "espelho", cta: "CONTINUAR", render: () => {
+      const T = {
+        diarista: [`Você já trabalha em casa de família. <span class="hl-ouro">Falta só ser paga pelo que sabe fazer.</span>`, `Muitas alunas da Paty <b>saíram da faxina para a organização</b>, com o mesmo cuidado e outro valor.`],
+        casa: [`Você já organiza uma casa <span class="hl-ouro">todo dia, de graça.</span>`, `Esse cuidado que você tem com a sua casa <b>é exatamente o que muitas famílias pagam para ter</b>.`],
+        fora: [`Dá para começar <span class="hl-ouro">nos fins de semana</span>, sem largar o seu emprego.`, `Na organização, <b>você escolhe os dias em que vai atender</b>.`],
+        busca: [`Existe uma profissão <span class="hl-ouro">que muita gente ainda não conhece.</span>`, `E ela pode ser <b>a sua próxima atividade</b>.`]
+      }[A.sit] || [`Existe uma profissão <span class="hl-ouro">que muita gente ainda não conhece.</span>`, `E ela pode ser <b>a sua próxima atividade</b>.`];
+      return `
+      <h2>${T[0]}</h2>
+      <div class="media rosto fill"><img src="img/m-paty-autoridade.jpg" alt="Paty Domingos organizando as prateleiras de um closet" style="object-position: 50% 45%"></div>
+      <div class="echo" data-drop="2">${T[1]}</div>
+      <p class="lead" data-drop="1">Continue: no final você descobre <b>quanto o seu dia de trabalho pode valer</b>.</p>`; } },
+
+  { n: 5, center: true, render: () => `
+      <h2>Como você se sente quando organiza um espaço?</h2>
+      <div class="opts">
+        ${opt("sente", "amo", "😍", "Amo, me dá paz")}
+        ${opt("sente", "tempo", "⏳", "Gosto, mas me falta tempo")}
+        ${opt("sente", "manter", "😅", "Gosto, mas não consigo manter")}
+        ${opt("sente", "aprender", "🌱", "Tenho vontade de aprender")}
+      </div>` },
+
+  { n: 9, center: true, render: () => `
+      <h2>Alguém já pediu sua ajuda para organizar ou disse <span class="hl-ouro">“você devia cobrar por isso”</span>?</h2>
+      <div class="opts">
+        ${opt("pediram", "varias", "🙋‍♀️", "Sim, várias vezes")}
+        ${opt("pediram", "familia", "🤝", "Já ajudei amigas e família")}
+        ${opt("pediram", "nunca", "🤔", "Nunca")}
+      </div>` },
+
+  { n: 10, id: "prova1", cta: "CONTINUAR", render: () => {
+      const echo = {
+        varias: `Você contou que <b>já pediram sua ajuda várias vezes</b>. Na profissão, esse pedido vira cliente.`,
+        familia: `Você <b>já ajuda amigas e família</b>. Na profissão, esse mesmo cuidado vira serviço pago.`,
+        nunca: `Ninguém pediu ainda? Tudo bem. <b>A técnica se aprende do zero.</b>`
+      }[A.pediram];
+      return `
+      <span class="badge" data-drop="5">Tem nome</span>
+      <h2>Você sabia que existe uma profissão <span class="hl-ouro">para quem gosta de organizar?</span></h2>
+      <p class="lead">Ela se chama <b>Personal Organizer</b>: a profissional que organiza closets, cozinhas, mudanças e a rotina de famílias que não têm tempo ou não sabem por onde começar.</p>
+      <ul class="facts">
+        <li data-drop="3"><span class="ck">✓</span><span>Trabalha na casa da cliente, com dia e hora marcados</span></li>
+        <li data-drop="4"><span class="ck">✓</span><span>Usa técnica: categorização, desapego e dobras com gabarito</span></li>
+        <li data-drop="2"><span class="ck">✓</span><span>Cobra por dia de trabalho ou por projeto</span></li>
+      </ul>
+      ${echo ? `<div class="echo" data-drop="1">${echo}</div>` : ""}
+      <div class="duo fill">
+        <div class="media doc"><img src="img/prova-wa1.jpg" alt="Mensagem da aluna Lygia mostrando gavetas organizadas no laboratório feito em casa"></div>
+        <div class="quote" style="display:grid;align-content:center">Mulheres como você já transformaram esse talento <b>em profissão.</b><cite>“Sou doida por organização… Treinar com você está sendo um divisor de águas.” Lygia, aluna do Método Organizadas</cite></div>
+      </div>`; } },
+
+  { n: 12, cta: "CONTINUAR", render: () => {
+      const ponte = {
+        diarista: `Ela começou <b>exatamente onde você está hoje</b>.`,
+        casa: `Ela começou do zero. Você <b>já organiza a sua casa todo dia</b>.`
+      }[A.sit] || `Se ela começou do zero, <b>você também pode</b>.`;
+      return `
+      <h2>A Paty começou como empregada doméstica. <span class="hl-ouro">Hoje é organizadora de alto padrão.</span></h2>
+      <div class="media fill paty-aponta"><img src="img/m-paty-retrato.jpg" alt="Paty Domingos sorrindo e apontando para cima"></div>
+      <ul class="facts gancho-facts lado" data-fit>
+        <li><span class="ck">✓</span><span><b class="hl-money">R$400 a R$600</b> por dia para quem está começando</span></li>
+        <li><span class="ck">✓</span><span><b>R$30 a 40 mil</b> por projeto no alto padrão</span></li>
+      </ul>
+      <div class="echo ponte">${ponte}</div>`; } },
+
+  /* ===== A PROFISSÃO: onde ela atua, como é o trabalho, o resultado ===== */
+  { n: 0, id: "servico", center: true, render: () => `
+      <h2>Uma personal organizer atende vários tipos de serviço. <span class="hl-ouro">Qual você se imagina fazendo?</span></h2>
+      <p class="hint" data-drop="1">Todos são serviços pagos que a Paty ensina</p>
+      <div class="opts">
+        ${opt("servico", "closet", "👗", "Organizar closets e guarda-roupas")}
+        ${opt("servico", "cozinha", "🍽️", "Organizar cozinhas, despensas e lavanderias")}
+        ${opt("servico", "mudanca", "📦", "Ajudar famílias antes e depois da mudança")}
+        ${opt("servico", "mala", "🧳", "Organizar malas de viagem")}
+        ${opt("servico", "loja", "🏬", "Organizar lojas e estoques")}
+      </div>` },
+
+  { n: 0, cta: "CONTINUAR", center: true, render: () => `
+      <span class="badge" data-drop="3">Tem técnica</span>
+      <h2>Como é um dia de trabalho de uma <span class="hl-ouro">personal organizer</span></h2>
+      <ol class="rot">
+        <li><b>Visita técnica</b><span>Conhece a casa, a rotina da família e combina o que vai ser feito.</span></li>
+        <li><b>Categorização e desapego</b><span>Separa tudo por tipo e ajuda a cliente a decidir o que sai.</span></li>
+        <li><b>Organização com técnica</b><span>Dobras com gabarito e um lugar certo para cada coisa.</span></li>
+        <li><b>A revelação</b><span>Entrega o espaço pronto e ensina a cliente a manter.</span></li>
+      </ol>
+      ${SERV_TXT[A.servico] ? `<div class="echo" data-drop="1">É o mesmo passo a passo para <b>${SERV_TXT[A.servico]}</b>, o serviço que você escolheu.</div>` : ""}` },
+
+  { n: 0, cta: "CONTINUAR", render: () => `
+      <span class="badge" data-drop="3">O resultado</span>
+      <h2>É isso que a cliente paga para ver: <span class="hl-ouro">o antes e o depois</span></h2>
+      <div class="media" style="flex:none;aspect-ratio:3/2;background:#fff"><img src="img/antes-depois-closet-v2.jpg" alt="Closet antes da organização, com roupas amontoadas e sapatos no chão, e depois, com roupas dobradas por cor, cabides padronizados e sapatos alinhados" style="object-fit:contain"></div>
+      <div class="echo" data-drop="1">${A.canto === "closet" ? "Você disse que gosta de cuidar do <b>guarda-roupa</b>. Um closet como esse é um dos serviços mais pedidos." : "Mesmo armário, mesmas roupas. A diferença é <b>a técnica</b>: categorizar, padronizar cabides e dar um lugar para cada coisa."}</div>` },
+
+  /* ================= FASE 2 · DOR ================= */
+  { n: 13, id: "fase2", center: true, render: () => `
+      <h2>Quanto você ganha hoje, por mês?</h2>
+      <p class="hint" data-drop="1">Fica só entre nós. Serve para calcular o seu potencial</p>
+      <div class="opts">
+        ${opt("renda", "sem", "🫙", "Não tenho renda própria")}
+        ${opt("renda", "ate1500", "💵", "Até R$1.500")}
+        ${opt("renda", "1500a3000", "💰", "De R$1.500 a R$3.000")}
+        ${opt("renda", "3000+", "📈", "Mais de R$3.000")}
+      </div>` },
+
+  { n: 20, cta: "CONTINUAR", render: () => {
+      const hoje = { ate150: "até R$150", "150a250": "R$150 a R$250", "250+": "mais de R$250" }[A.diaria];
+      const echo = A.sit === "diarista" && hoje
+        ? `Você cobra hoje <b>${hoje}</b> por dia. Organizando, o mesmo dia pode valer <b>R$400 a R$600</b>.`
+        : A.reconhecida === "sempre" || A.reconhecida === "asvezes"
+          ? `Você sente que <b>não é reconhecida</b>. Na organização, a cliente vê o antes e o depois, e paga por ele.` : "";
+      return `
+      <span class="badge" data-drop="4">Paga de R$400 a R$600 por dia</span>
+      <h2>A personal organizer <span class="hl-ouro">não faz faxina.</span> Ela organiza, e cobra por isso.</h2>
+      <div class="troca">
+        <span class="t-bad"><small>Diária de faxina</small><b>R$200</b></span>
+        <i aria-hidden="true">→</i>
+        <span class="t-good"><small>Diária de Personal Organizer</small><b>R$600</b></span>
+      </div>
+      <div class="media print-hero fill"><img src="img/prova-elizete-wa-v1.jpg" alt="Mensagem da aluna Elizete contando que trabalhava em casa de família e começou a fazer laboratórios depois das aulas da Paty"><span class="print-tag">Elizete, aluna da Paty</span></div>
+      ${echo ? `<div class="echo" data-drop="1">${echo}</div>` : ""}`; } },
+
+  { n: 23, cta: "CONTINUAR", render: () => {
+      const echo = { passo: "Você não sabe qual é o primeiro passo. Ela também não sabia, e fez o curso primeiro para a própria casa.", conteudo: "Muito conteúdo solto confunde. Com um método, ela organizou primeiro a própria casa e depois atendeu.", adio: "Ela também tinha motivo para adiar. Mesmo assim começou.", busco: "Você já está buscando orientação. É o mesmo passo que ela deu." }[A.comeco];
+      return `
+      <h2>“Com o meu primeiro projeto, já tinha pagado o curso inteiro”</h2>
+      <div class="media doc fill"><img src="img/prova-slide3b.jpg" alt="Comentário da aluna maryorganiza_ contando que tira de 3 a 4 mil por semana e que o primeiro projeto pagou o curso"></div>
+      ${echo ? `<div class="echo" data-drop="1">${echo}</div>` : ""}
+      <p class="legal" data-drop="2">Comentário real de aluna (@maryorganiza_).</p>`; } },
+
+  { n: 26, id: "trava", center: true, render: () => `
+      <h2>O que mais te trava para começar nessa profissão?</h2>
+      <div class="opts">
+        ${opt("trava", "comecar", "🤔", "Não sei por onde começar")}
+        ${opt("trava", "perfil", "😅", "Acho que não tenho perfil")}
+        ${opt("trava", "caro", "💸", "Acho que custa caro começar")}
+        ${opt("trava", "clientes", "😨", "Medo de não conseguir clientes")}
+        ${opt("trava", "tempo", "⏳", "Não tenho tempo")}
+      </div>` },
+
+  { n: 27, cta: "CONTINUAR", render: () => {
+      const T = {
+        comecar: [`Tem um <span class="hl-ouro">passo a passo</span>, do primeiro armário à primeira cliente.`, "img/prova-wa4.jpg", "Mensagem da aluna Thaian com foto dela dentro de um closet organizado", "A Thaian seguiu o passo a passo e hoje manda para a Paty as fotos dos closets que organiza."],
+        perfil: [`A Paty era <span class="hl-ouro">a mais bagunçada da família.</span>`, "img/m-paty-tecnica.jpg", "Paty Domingos sorrindo", "Hoje são mais de 11 anos de profissão e mais de 10 mil alunas. Organização se aprende."],
+        caro: [`Dá para começar <span class="hl-ouro">sem comprar organizadores caros.</span>`, "img/prova-jane-2600.jpg", "Comentário da aluna jane_organizer1 contando que faturou R$2.600 em 7 dias", "A técnica de gabarito com custo baixo faz parte do caminho. A jane, de 58 anos, faturou R$2.600 em 7 dias."],
+        clientes: [`A primeira cliente costuma vir <span class="hl-ouro">de quem já te conhece.</span>`, "img/prova-wa5.jpg", "Mensagem da aluna Claudia contando que fechou um projeto de dez mil reais", "A Claudia fechou um projeto de R$10 mil e montou uma equipe para uma pós-mudança."],
+        tempo: [`Dá para começar <span class="hl-ouro">aos poucos, sem largar o que você faz hoje.</span>`, "img/prova-elizete-2.jpg", "Mensagem da aluna Elizete contando que o primeiro closet pago veio de uma amiga da patroa e que depois fez a transição de carreira", "A Elizete começou com laboratórios enquanto ainda trabalhava em casa de família. O primeiro closet pago veio de uma amiga da patroa."]
+      }[A.trava] || [`Cada trava tem um caminho.`, "img/m-paty-tecnica.jpg", "Paty Domingos sorrindo", ""];
+      const midia = /\.mp4$/.test(T[1])
+        ? `<div class="media vid fill"><video src="${vsrc(T[1])}" poster="${T[2]}" playsinline preload="auto" data-nopause></video></div>`
+        : `<div class="media ${/prova/.test(T[1]) ? "doc" : "rosto"} fill"><img src="${T[1]}" alt="${T[2]}"></div>`;
+      return `
+      <h2>${T[0]}</h2>
+      ${midia}
+      ${T[3] ? `<div class="echo">${T[3]}</div>` : ""}
+      <p class="legal" data-drop="1">Depoimentos reais de alunas do Método Organizadas.</p>`; } },
+
+  { n: 29, center: true, render: () => `
+      <h2>Se organizar casas virasse a sua profissão, como você gostaria de trabalhar?</h2>
+      <div class="opts">
+        ${opt("modo", "renda-extra", "🌤️", "Começar com alguns atendimentos e ter uma renda extra")}
+        ${opt("modo", "profissao", "💼", "Construir uma nova profissão e viver desse trabalho")}
+        ${opt("modo", "descobrindo", "✨", "Ainda estou descobrindo se essa carreira combina comigo")}
+      </div>` },
+
+  { n: 30, center: true, render: () => `
+      <h2>Quantos dias por semana você teria para trabalhar?</h2>
+      <div class="opts">
+        ${opt("dias", "1", "1️⃣", "1 dia por semana")}
+        ${opt("dias", "2-3", "📅", "2 a 3 dias por semana")}
+        ${opt("dias", "fds", "🌅", "Só nos fins de semana")}
+        ${opt("dias", "4+", "🔥", "4 dias ou mais")}
+      </div>` },
+
+  { n: 31, cta: "CONTINUAR", render: () => {
+      const P = { "1": ["1 dia por semana", "R$1.600 a R$2.400"], "2-3": ["2 a 3 dias por semana", "R$3.200 a R$7.200"], fds: ["só nos fins de semana", "R$3.200 a R$4.800"], "4+": ["4 dias ou mais por semana", "R$6.400 a R$9.600"] }[A.dias] || ["2 a 3 dias por semana", "R$3.200 a R$7.200"];
+      return `
+      <span class="badge" data-drop="2">Seu potencial</span>
+      <h2>Trabalhando <span class="hl-ouro">${P[0]}</span>, isso pode representar:</h2>
+      <div class="calc"><span>${P[1]}</span><small>por mês, cobrando de R$400 a R$600 por dia</small></div>
+      ${A.filhos === "pequenos" ? `<div class="echo" data-drop="1">Com filhos pequenos, você escolhe os dias e <b>encaixa os atendimentos no horário da escola</b>.</div>` : ""}
+      <div class="media rosto fill" data-drop="3"><img src="img/m-paty-fatura.jpg" alt="Paty Domingos sentada em uma poltrona"></div>
+      <p class="legal">Cálculo de potencial, não promessa. O resultado depende de dedicação, região e quantidade de clientes.</p>`; } },
+
+  { n: 34, center: true, render: () => `
+      <h2>Qual é a sua maior motivação hoje?</h2>
+      <div class="opts">
+        ${opt("motivo", "dinheiro", "💰", "Ter o meu próprio dinheiro")}
+        ${opt("motivo", "pesado", "🧹", "Sair do trabalho pesado")}
+        ${opt("motivo", "reconhecida", "🏅", "Ser reconhecida pelo que faço bem")}
+        ${opt("motivo", "horario", "🕰️", "Trabalhar no meu horário")}
+      </div>` },
+
+  { n: 36, cta: "CONTINUAR", render: () => {
+      const idadeEcho = A.idade === "50+" ? `Você tem mais de 50 anos. A jane começou aos 58.` : A.idade === "39-49" ? `Nunca é tarde: a jane começou aos 58.` : `Ela começou aos 58. Você está começando antes.`;
+      return `
+      <h2>“Comprei, depois de 15 dias fiz uma pós-mudança remunerada”</h2>
+      <div class="media doc fill"><img src="img/prova-jane-2600.jpg" alt="Comentário da aluna jane_organizer1 contando que faturou R$2.600 em 7 dias aos 58 anos"></div>
+      <div class="echo" data-drop="1">${idadeEcho} <b>Faturou R$2.600 em 7 dias.</b></div>
+      <p class="legal" data-drop="2">Comentário real de aluna (@jane_organizer1).</p>`; } },
+
+  /* ================= FASE 3 · CAPTURA E DIAGNÓSTICO ================= */
+  { n: 37, id: "fase3", auto: true, center: true, render: () => `
+      <h2>Analisando suas respostas…</h2>
+      <div class="load"><div class="load-top"><span id="ld-txt">Cruzando sua rotina e o seu jeito de organizar</span><b id="ld-pct">0%</b></div><div class="load-bar"><i id="ld-bar"></i></div></div>
+      <p class="lead" data-drop="1">Estamos comparando o seu perfil com o de quem já trabalha como organizadora.</p>`,
+    onShow: () => loader(["Cruzando sua rotina e o seu jeito de organizar", "Calculando o seu potencial por dia", "Montando o seu diagnóstico"]) },
+
+  { n: 38, cta: "CONTINUAR", render: () => `
+      <h2>Seu diagnóstico está pronto!</h2>
+      <p class="lead">Falta só um passo para ver o seu resultado.</p>
+      <form id="lead" class="lead-form" novalidate>
+        <label for="f-nome">Primeiro nome<input id="f-nome" name="nome" type="text" autocomplete="given-name" placeholder="Digite seu primeiro nome" value="${esc(A.nome)}"></label>
+        <label for="f-email">E-mail<input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Digite seu melhor e-mail" value="${esc(A.email)}"></label>
+        <label for="f-whats">WhatsApp<input id="f-whats" name="whats" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="(11) 99999-9999" value="${esc(A.whats)}"></label>
+        <p class="err" id="f-err" role="alert" hidden></p>
+        <button type="submit" hidden></button>
+      </form>
+      <div class="media rosto fill" data-drop="4"><img src="img/m-paty-mentalidade.jpg" alt="Paty Domingos sorrindo, sentada no sofá" style="object-position: 50% 22%"></div>
+      <p class="legal" data-drop="1">Ao clicar no botão, você autoriza o uso dos seus dados (nome, e-mail e WhatsApp) para receber o resultado do quiz, conteúdos gratuitos e comunicações por e-mail e WhatsApp, conforme a Política de Privacidade e os Termos de Uso. Você pode cancelar quando quiser.</p>`,
+    onShow: () => {
+      const w = document.getElementById("f-whats");
+      w.addEventListener("input", () => { const d = w.value.replace(/\D/g, "").slice(0, 11); w.value = d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d; });
+      document.getElementById("lead").addEventListener("submit", e => { e.preventDefault(); cta.click(); });
+    },
+    onCta: () => {
+      const nome = document.getElementById("f-nome").value.trim();
+      const email = document.getElementById("f-email").value.trim();
+      const whats = document.getElementById("f-whats").value.replace(/\D/g, "");
+      const err = document.getElementById("f-err");
+      const fail = (msg, id) => { err.textContent = msg; err.hidden = false; document.getElementById(id).focus(); fit(); return false; };
+      if (nome.length < 2) return fail("Digite seu primeiro nome.", "f-nome");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return fail("Confira o e-mail: falta o @ ou o domínio.", "f-email");
+      if (whats.length < 10) return fail("Digite o WhatsApp com DDD.", "f-whats");
+      Object.assign(A, { nome: nome.split(" ")[0], email, whats: document.getElementById("f-whats").value });
+      return true;
+    } },
+
+  { n: 39, cta: "CONTINUAR", render: () => {
+      const R = resultado();
+      return `
+      <p class="hint" style="margin:0">Aqui está o seu resultado…</p>
+      <div class="res-card">
+        <span class="res-k">${A.nome ? esc(A.nome).toUpperCase() + ", SEU JEITO DE ORGANIZAR TEM NOME:" : "SEU JEITO DE ORGANIZAR TEM NOME:"}</span>
+        <b class="res-nome">${R.perfil[0]}</b>
+        <span class="res-frase">${R.perfil[1]}</span>
+        <div class="res-meter" data-drop="3"><div class="res-meter-top"><span>Compatibilidade com a profissão</span><b>${R.score}%</b></div><div class="res-bar"><i style="width:${R.score}%"></i></div></div>
+      </div>
+      <div class="res-duo fill">
+        <figure class="res-pic antes"><img src="${personImg(true)}" alt=""><figcaption><small>Hoje</small><b>${A.sit === "diarista" ? "Diária de faxina" : "Organiza de graça"}</b></figcaption></figure>
+        <figure class="res-pic depois"><img src="${personImg(false)}" alt=""><figcaption><small>Como organizadora</small><b>R$400 a R$600 por dia</b></figcaption></figure>
+      </div>
+      <div class="res-pot"><small>Seu potencial trabalhando ${R.pot[0]}</small><b>${R.pot[1]} por mês</b></div>
+      <p class="legal" data-drop="1">Compatibilidade calculada a partir das suas respostas. O potencial é uma projeção, não uma garantia.</p>`; } },
+
+  { n: 40, cta: "CONTINUAR", center: true, render: () => {
+      const R = resultado();
+      return `
+      <h2>${A.nome ? esc(A.nome) + ", o seu" : "O seu"} diagnóstico</h2>
+      <div class="diag ok"><span class="diag-k">✅ O que você já tem</span>${R.tem.map(t => `<p>${t}</p>`).join("")}</div>
+      <div class="diag falta"><span class="diag-k">🔓 O que falta</span><p>${R.falta}</p></div>
+      <div class="diag passo"><span class="diag-k">👣 O seu primeiro passo</span><p>${R.passo}</p></div>
+      <div class="diag-prova" data-drop="2"><img src="${R.prova[0]}" alt="" style="object-position:${R.prova[2] || "50% 15%"}"><p>${R.prova[1]}</p></div>
+      <div class="ponte-cta">Continue: o seu plano para dar esse primeiro passo está quase pronto →</div>`; } },
+
+  { n: 42, cta: "CONTINUAR", center: true, render: () => `
+      <h2>Veja a diferença <span style="color:var(--alert)">ANTES</span> × <span class="hl-money">DEPOIS</span> de aprender a profissão</h2>
+      <div class="ba">
+        <div class="ba-row bad"><div class="ba-pic"><img src="${personImg(true)}" alt=""><span>ANTES</span></div>
+          <ul class="ba-list x"><li>Organiza a casa de graça</li><li>${A.sit === "diarista" ? "Diária de faxina, trabalho pesado" : A.civil === "casada" ? "Depende da renda do marido" : A.civil === "divorciada" ? "Segura as contas sozinha" : "Depende de outra renda"}</li><li>Talento que ninguém valoriza</li><li>Não sabe por onde começar</li></ul></div>
+        <div class="ba-arrow" aria-hidden="true">↓ com a técnica e o primeiro passo</div>
+        <div class="ba-row good"><div class="ba-pic"><img src="${personImg(false)}" alt=""><span>DEPOIS</span></div>
+          <ul class="ba-list ok"><li>Cobra pelo que já sabe fazer</li><li>R$400 a R$600 por dia de trabalho</li><li>Trabalha nos dias que escolher</li><li>Orgulho de uma profissão</li></ul></div>
+      </div>
+      <p class="legal" data-drop="1">Representação ilustrativa. Não é garantia de resultado.</p>` },
+
+  { n: 43, cta: "CONTINUAR", center: true, render: () => `
+      <span class="badge" data-drop="3">Quem vai te ensinar</span>
+      <h2>Veja o que <span class="hl-ouro">o Pablo Marçal</span> fala sobre a Paty Domingos</h2>
+      <div class="media vid contain"><video src="${vsrc("video/pablo-v3.mp4")}" playsinline preload="auto" data-nopause></video></div>
+      <ul class="facts">
+        <li><span class="ck">✓</span><span>Mais de <b>11 anos</b> como personal organizer</span></li>
+        <li data-drop="2"><span class="ck">✓</span><span>Mais de <b>10 mil alunas</b> no Brasil e no exterior</span></li>
+        <li data-drop="1"><span class="ck">✓</span><span>Criadora do <b>Método Organizadas</b> e organizadora de alto padrão</span></li>
+      </ul>` },
+
+  { n: 46, cta: "CONTINUAR", center: true, render: () => {
+      const R = A.conhece === "nunca" || A.conhece === "nome" ? 1 : A.dificil ? 2 : 3;
+      return `
+      <h2>Ser organizadora <span class="hl-money">não é dom.</span> É um caminho de 3 passos:</h2>
+      <ol class="rot">
+        <li${R === 1 ? ' class="me"' : ""}><b>Entender a profissão</b><span>O que faz uma personal organizer, onde atua e quanto se cobra.</span></li>
+        <li${R === 2 ? ' class="me"' : ""}><b>Dominar os fundamentos</b><span>Categorização, desapego e descarte, gabarito e o olhar para o armário.</span></li>
+        <li${R === 3 ? ' class="me"' : ""}><b>Fazer o primeiro laboratório</b><span>A primeira prática, na sua casa, antes da primeira cliente.</span></li>
+      </ol>
+      <div class="echo" data-drop="1">${R === 1 ? "Você <b>não conhecia a profissão de perto</b>: o passo 1 é o seu ponto de partida." : R === 2 ? "Você disse que tem dificuldade em uma etapa da organização: <b>o passo 2</b> resolve isso." : "Você já acompanha conteúdos de organização: o seu foco é <b>o passo 3</b>."}</div>`; } },
+
+  { n: 47, render: () => {
+      const DIAS = { "1": "1 dia por semana", "2-3": "2 a 3 dias por semana", fds: "fins de semana", "4+": "4 dias ou mais" }[A.dias] || "no seu ritmo";
+      return `
+      <p class="hint" style="margin:0" data-drop="2">Com base em tudo que você respondeu…</p>
+      <h2>O seu próximo passo é o <span class="hl-money" style="white-space:normal">${EVENTO}</span></h2>
+      <div class="trilha fill" role="img" aria-label="Etapas: hoje, dia 1 do evento, dia 2 do evento, primeira diária">
+        <div class="tr-step"><i></i><b>Hoje</b><span>Você já sabe organizar</span></div>
+        <div class="tr-step"><i></i><b>7/11 · Dia 1</b><span>A profissão e a técnica, ao vivo com a Paty</span></div>
+        <div class="tr-step"><i></i><b>8/11 · Dia 2</b><span>Como conseguir as primeiras clientes, trabalhando ${DIAS}</span></div>
+        <div class="tr-step goal"><i></i><b>Primeira diária</b><span>De R$400 a R$600 por dia</span></div>
+      </div>
+      <h2 style="font-size:clamp(15px,2.4dvh,18px)">Você acredita que conseguiria depois desses 2 dias com a Paty?</h2>
+      <div class="opts">
+        ${opt("acredita", "pronta", "🙌", "Sim, estou pronta")}
+        ${opt("acredita", "direcao", "🧭", "Com certeza, só preciso de direção")}
+        ${opt("acredita", "tentar", "🤞", "Acho que sim, quero tentar")}
+      </div>`; } },
+
+  { n: 48, auto: true, center: true, render: () => `
+      <h2>Preparando o seu convite…</h2>
+      <div class="load"><div class="load-top"><span id="ld-txt">Analisando o seu perfil</span><b id="ld-pct">0%</b></div><div class="load-bar"><i id="ld-bar"></i></div></div>`,
+    onShow: () => loader(["Analisando o seu perfil", "Separando o conteúdo do evento para você", "Finalizando o seu convite"]) },
+
+  /* ================= FASE 4 · PÁGINA DE VENDAS (rola; botão fixo) ================= */
+  { n: 0, id: "fase4", scroll: true, cta: "QUERO GARANTIR MINHA VAGA", render: () => {
+      const nome = esc(A.nome || "");
+      const TBD = `<span class="tbd">a definir</span>`;
+      const lvl = (label, val, pct, kind) => `<div class="lv"><b>${label}</b><span>${val}</span><i class="lv-t ${kind}"><u style="width:${pct}%"></u><s style="left:calc(${pct}% - 9px)"></s></i></div>`;
+      const quando = `<div class="ev-card"><b>📅 7 e 8 de novembro</b><span>sábado e domingo · à noite · ao vivo e online</span><span>Horário: ${TBD}</span></div>`;
+      const priceBox = `<div class="mm-price">
+          <div class="mm-price-h">INGRESSO · ${EVENTO.toUpperCase()}</div>
+          <div class="mm-price-b"><b>Ingresso para ${nome || "você"} participar dos 2 dias ao vivo com a Paty</b>
+            <div class="mm-price-v"><small>pagamento único</small><strong>${brl(PRECO)}</strong><small>7 e 8/11 · ao vivo</small></div></div>
+          <ul class="mm-price-why">
+            <li>Menos do que <b>uma diária de faxina</b></li>
+            <li>2 noites ao vivo com a criadora do <b>Método Organizadas</b></li>
+          </ul>
+        </div>
+        <p class="mm-pay">Cartão de crédito · Pix</p>
+        <p class="gar-mini">🛡️ <b>Garantia de 7 dias:</b> não gostou, devolvemos 100% do valor.</p>`;
+      const DIA1 = [["O que faz uma personal organizer e onde ela atua", ""], ["Os fundamentos: categorização, desapego e descarte, gabarito", "x"], ["O que é o laboratório e por que ele é o primeiro passo", ""], ["Por que o fim e o começo do ano são a época de maior procura", ""]];
+      const faq = [
+        ["Preciso ter experiência?", "Não. O evento é para quem nunca trabalhou com organização e quer conhecer a profissão do zero."],
+        ["Onde vai ser?", "Online e ao vivo. Você assiste pelo celular. O link chega por e-mail e WhatsApp depois da compra."],
+        ["Que horas vai ser?", "À noite, nos dias 7 e 8 de novembro. O horário exato chega por e-mail e no grupo do WhatsApp."],
+        ["E se eu não puder assistir ao vivo?", "No checkout você pode garantir a gravação dos 2 dias para assistir quando puder."],
+        ["Preciso comprar algum material?", "Não. Você só precisa do celular e de um espaço da sua casa para praticar."],
+        ["E se eu não gostar?", "Você tem 7 dias de garantia. Se não fizer sentido para você, devolvemos 100% do valor."]
+      ];
+      return `
+      <h1 class="mm-h1">${nome ? `${nome}, o seu` : "O seu"} próximo passo é o <span class="hl-money" style="white-space:normal">${EVENTO}</span></h1>
+      ${quando}
+
+      <div class="mm-ad">
+        <b class="mm-ad-h bad">ANTES</b><b class="mm-ad-h good">DEPOIS</b>
+        <div class="v-pic antes"><img src="${personImg(true)}" alt=""></div>
+        <div class="v-pic"><img src="${personImg(false)}" alt=""></div>
+        ${lvl("Valor do seu trabalho", "Organiza de graça", 8, "bad")}${lvl("Valor do seu trabalho", "R$400 a R$600 por dia", 85, "good")}
+        ${lvl("Técnica", "No improviso", 25, "bad")}${lvl("Técnica", "Com método", 88, "good")}
+        ${lvl("Reconhecimento", "Baixo", 22, "bad")}${lvl("Reconhecimento", "Profissão com nome", 86, "good")}
+      </div>
+
+      <div class="mm-name">${nome || "E agora"}…</div>
+      <div class="v-img"><img src="img/m-paty-carta.jpg" alt="Paty Domingos sorrindo, apoiada no encosto de uma poltrona"></div>
+      <p class="mm-sign">Paty Domingos, aqui!</p>
+      <p class="mm-sub">Nesses 2 dias, ao vivo, eu vou te ensinar ↓</p>
+
+      <article class="mm-card"><b>DIA 1 · 7/11 · A PROFISSÃO E A TÉCNICA</b><ol class="mm-steps">
+        ${DIA1.map(([t, k]) => `<li class="${k && A.dificil ? "hot" : ""}">${t}${k && A.dificil ? ` <em>resolve a sua dificuldade</em>` : ""}</li>`).join("")}</ol></article>
+      <article class="mm-card"><b>DIA 2 · 8/11 · AS PRIMEIRAS CLIENTES</b><ol class="mm-steps" start="5">
+        <li>Como cobrar pela visita técnica</li><li>O primeiro laboratório, até na casa da patroa ou de uma amiga, e como ele vira indicação</li><li>Postura e posicionamento para cobrar de R$400 a R$600 por dia</li><li>A minha história: de empregada doméstica a organizadora de alto padrão</li></ol></article>
+
+      <div class="mm-green">VOCÊ SAI SABENDO O QUE A PROFISSÃO FAZ, COMO SE TRABALHA E COMO CONSEGUIR AS PRIMEIRAS CLIENTES</div>
+      <div class="v-img"><img src="img/antes-depois-closet-v2.jpg" alt="Closet antes e depois da organização"></div>
+
+      <div class="mm-red">“PATY, E SE EU NÃO PUDER ASSISTIR AO VIVO?”</div>
+      <p class="mm-calm">FIQUE TRANQUILA!<br>No checkout você pode garantir a gravação dos 2 dias.</p>
+
+      <h2 class="mm-h2">QUEM JÁ COMEÇOU</h2>
+      <div class="media vid mm-vid">${A.sit === "diarista" ? `<video src="${vsrc("video/elizete-v4.mp4")}" data-nopause data-inview playsinline preload="metadata" aria-label="Depoimento da aluna Elizete"></video>` : `<video src="${vsrc("video/rosane-v2.mp4")}" data-nopause data-inview playsinline preload="metadata" aria-label="Depoimento da aluna Rosane"></video>`}</div>
+      <div class="v-img"><img src="img/prova-slide3a.jpg" alt="Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"></div>
+
+      <div class="mm-obj"><b>“E se eu não tiver tempo?”</b><p>São 2 noites, ao vivo, pelo celular. Depois você pratica na sua própria casa, no seu ritmo.</p></div>
+      <div class="mm-obj"><b>“E se não for para mim?”</b><p>Você tem 7 dias de garantia. Se não fizer sentido, devolvemos 100% do seu dinheiro.</p></div>
+
+      <p class="mm-lapis">O que você garante hoje:</p>
+      <ul class="mm-stack">
+        <li><b>INGRESSO ${EVENTO.toUpperCase()} · 2 DIAS AO VIVO</b></li>
+        <li><b>DIA 1: A PROFISSÃO E A TÉCNICA</b><span>7/11</span></li>
+        <li><b>DIA 2: AS PRIMEIRAS CLIENTES</b><span>8/11</span></li>
+      </ul>
+      <p class="mm-porem">TUDO ISSO POR UM INGRESSO DE…</p>
+      ${priceBox}
+
+      <div class="mm-why">
+        <b>A técnica é o início</b>
+        <p>“A técnica é o início, a mentalidade é o que sustenta e a execução é que vai ajudar ela a se tornar uma grande profissional.”</p>
+        <span>Paty Domingos</span>
+      </div>
+
+      <h2 class="mm-h2">QUEM VAI TE ENSINAR</h2>
+      <div class="v-img"><img src="img/m-paty-tablet.jpg" alt="Paty Domingos segurando um tablet"></div>
+      <div class="v-stats">
+        <div>MAIS DE <b>11 ANOS</b> COMO PERSONAL ORGANIZER</div>
+        <div>MAIS DE <b>10 MIL ALUNAS</b> NO BRASIL E NO EXTERIOR</div>
+        <div>CRIADORA DO <b>MÉTODO ORGANIZADAS</b> E ORGANIZADORA DE ALTO PADRÃO</div>
+      </div>
+
+      <h2 class="mm-h2">GARANTA A SUA VAGA NO <span class="hl-money" style="white-space:normal">${EVENTO.toUpperCase()}</span></h2>
+      ${quando}
+      ${priceBox}
+
+      <section class="garantia">
+        <img class="gar-selo-img" src="img/selo-garantia-7-dias.jpg" alt="Selo de satisfação garantida: 7 dias ou seu dinheiro de volta">
+        <h2 class="mm-h2 good" style="margin-top:0 !important">GARANTIA DE 7 DIAS DE DEVOLUÇÃO DO DINHEIRO</h2>
+        <p class="v-p center">Participe do evento. Se em até 7 dias você achar que não é para você, é só pedir: devolvemos <b>100% do seu dinheiro</b>, sem perguntas.</p>
+        <ul class="gar-lista"><li>Risco zero para você</li><li>Pedido simples, por e-mail ou WhatsApp</li><li>Reembolso integral do valor pago</li></ul>
+      </section>
+
+      <h2 class="mm-h2">PERGUNTAS FREQUENTES</h2>
+      <div class="v-faq">${faq.map(f => `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
+
+      <footer class="v-foot">
+        <p>Copyright © 2026 · Paty Domingos · Todos os direitos reservados.</p>
+        <p><b>Razão social ${TBD}</b> · CNPJ ${TBD}</p>
+        <p><b>Aviso legal:</b> evento online educacional. Não há garantia de resultados: eles dependem da dedicação e da aplicação de cada aluna. Garantia legal de 7 dias (art. 49 do CDC).</p>
+      </footer>`; } },
+
+  /* ================= CHECKOUT (protótipo visual) ================= */
+  { n: 0, id: "checkout", scroll: true, cta: "FINALIZAR COMPRA", render: () => {
+      const TBD = `<span class="tbd">a definir</span>`;
+      const bumps = bumpOrder();
+      return `
+      <div class="ck-top"><span>🔒 Pagamento 100% seguro</span><span>Plataforma ${TBD}</span></div>
+      <div class="ck-prod">
+        <img class="ck-cover" src="img/m-paty-tablet.jpg" alt="Paty Domingos">
+        <div><b>Ingresso · ${EVENTO}</b><small>7 e 8/11 · ao vivo e online · link por e-mail e WhatsApp</small><p class="ck-price">${brl(PRECO)}</p></div>
+      </div>
+      <form class="ck-form" id="ck" novalidate>
+        <h3 class="ck-h">1. Seus dados</h3>
+        <label for="ck-nome">Nome completo<input id="ck-nome" type="text" autocomplete="name" value="${esc(A.nome || "")}" placeholder="Seu nome completo"></label>
+        <label for="ck-email">E-mail<input id="ck-email" type="email" autocomplete="email" value="${esc(A.email || "")}" placeholder="Seu melhor e-mail"></label>
+        <div class="ck-2">
+          <label for="ck-cpf">CPF<input id="ck-cpf" type="text" inputmode="numeric" placeholder="000.000.000-00"></label>
+          <label for="ck-whats">WhatsApp<input id="ck-whats" type="tel" value="${esc(A.whats || "")}" placeholder="(11) 99999-9999"></label>
+        </div>
+        <h3 class="ck-h">2. Pagamento</h3>
+        <div class="ck-pay" role="tablist">
+          <button type="button" class="on" data-pay="pix" role="tab" aria-selected="true">Pix</button>
+          <button type="button" data-pay="cartao" role="tab" aria-selected="false">Cartão</button>
+        </div>
+        <div class="ck-panel" data-panel="pix"><p>✓ Aprovação imediata. O QR Code aparece depois de finalizar.</p></div>
+        <div class="ck-panel" data-panel="cartao" hidden>
+          <p class="ck-note">No protótipo os campos do cartão ficam desativados. Na página real eles vêm da plataforma de pagamento.</p>
+          <label>Número do cartão<input type="text" disabled placeholder="•••• •••• •••• ••••"></label>
+          <div class="ck-2"><label>Validade<input type="text" disabled placeholder="MM/AA"></label><label>CVV<input type="text" disabled placeholder="•••"></label></div>
+        </div>
+        <h3 class="ck-h">3. Leve também <small class="ck-hint">(ofertas exclusivas desta página)</small></h3>
+        <div class="ck-bumps">${bumps.map(i => `<label class="ck-bump" for="ck-bump-${i}">
+          <input id="ck-bump-${i}" type="checkbox" data-bump="${i}">
+          <span><b>SIM, quero o ${BUMPS[i][0]}</b><small>${BUMPS[i][1]}</small><em>${BUMPS[i][4] ? `<s>${brl(BUMPS[i][4])}</s>` : ""}somente hoje por ${BUMPS[i][2] ? brl(BUMPS[i][2]) : TBD}</em>${bumpAnc(i)}</span>
+        </label>`).join("")}</div>
+        <div class="ck-sum">
+          <div><span>Ingresso · ${EVENTO}</span><b>${brl(PRECO)}</b></div>
+          ${bumps.map(i => `<div id="ck-line-${i}" hidden><span>${BUMPS[i][0]}</span><b>${BUMPS[i][2] ? brl(BUMPS[i][2]) : TBD}</b></div>`).join("")}
+          <div class="tot"><span>Total</span><b id="ck-total">${brl(PRECO)}</b></div>
+        </div>
+        <p class="ck-err" id="ck-err" role="alert" hidden></p>
+      </form>
+      <div class="ck-trust">
+        <div><b>🛡️ Garantia de 7 dias</b><small>100% do seu dinheiro de volta</small></div>
+        <div><b>📲 Link do evento</b><small>por e-mail e WhatsApp</small></div>
+      </div>
+      <p class="ck-legal">Ao finalizar, você concorda com os Termos de Uso e a Política de Privacidade. Vendido por ${TBD} · CNPJ ${TBD}.</p>`; },
+    onShow: () => {
+      app.querySelectorAll("[data-pay]").forEach(b => b.addEventListener("click", () => {
+        app.querySelectorAll("[data-pay]").forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", x === b); });
+        app.querySelectorAll("[data-panel]").forEach(pnl => pnl.hidden = pnl.dataset.panel !== b.dataset.pay);
+      }));
+      app.querySelectorAll("[data-bump]").forEach(c => c.addEventListener("change", () => {
+        if (c.checked) app.querySelectorAll("[data-bump]").forEach(x => { if (x !== c && (+c.dataset.bump === COMBO || +x.dataset.bump === COMBO) && x.checked) { x.checked = false; x.closest(".ck-bump").classList.remove("on"); } });
+        const on = [...app.querySelectorAll("[data-bump]")].filter(x => x.checked);
+        app.querySelectorAll("[data-bump]").forEach(x => document.getElementById("ck-line-" + x.dataset.bump).hidden = !x.checked);
+        const t = PRECO + on.reduce((s, x) => s + (BUMPS[x.dataset.bump][2] || 0), 0);
+        document.getElementById("ck-total").textContent = brl(t) + (on.some(x => !BUMPS[x.dataset.bump][2]) ? " + bumps" : "");
+        c.closest(".ck-bump").classList.toggle("on", c.checked);
+      }));
+      const cpf = document.getElementById("ck-cpf");
+      cpf.addEventListener("input", () => { const d = cpf.value.replace(/\D/g, "").slice(0, 11); cpf.value = d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); });
+      document.getElementById("ck").addEventListener("submit", e => { e.preventDefault(); cta.click(); });
+    },
+    onCta: () => {
+      const err = document.getElementById("ck-err");
+      const miss = [["ck-nome", "o nome completo"], ["ck-email", "o e-mail"], ["ck-cpf", "o CPF"]].find(([id]) => !document.getElementById(id).value.trim());
+      if (miss) { err.textContent = `Preencha ${miss[1]} para continuar.`; err.hidden = false; document.getElementById(miss[0]).focus(); return false; }
+      err.hidden = true;
+      A.bumps = [...app.querySelectorAll("[data-bump]")].filter(x => x.checked).map(x => BUMPS[x.dataset.bump][0]);
+      A.nome = (document.getElementById("ck-nome").value.trim().split(" ")[0]) || A.nome;
+      return true;
+    } },
+
+  /* ================= OBRIGADO ================= */
+  { n: 0, id: "obrigado", scroll: true, cta: "ENTRAR NO GRUPO DO WHATSAPP", render: () => {
+      const TBD = `<span class="tbd">a definir</span>`;
+      const nome = esc(A.nome || "");
+      const itens = [`Ingresso ${EVENTO} · 7 e 8/11 ao vivo`, ...(A.bumps || [])];
+      return `
+      <div class="ty-ok"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--money)"/><path d="M19 33l9 9 17-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1 class="v-h1">${nome ? nome + ", sua" : "Sua"} vaga está garantida!</h1>
+      <p class="v-p center">Bem-vinda ao ${EVENTO}. Nos dias 7 e 8 de novembro, à noite, a Paty te ensina ao vivo a profissão de personal organizer.</p>
+      <div class="ck-prod ty-prod">
+        <img class="ck-cover" src="img/m-paty-tablet.jpg" alt="Paty Domingos">
+        <div><span class="v-pill">VAGA CONFIRMADA</span><b>${EVENTO}</b><small>7 e 8/11 · à noite · horário ${TBD}</small></div>
+      </div>
+      <div class="ty-box"><b>O que você garantiu</b><ul class="v-best">${itens.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>
+      <h2 class="v-h2">SEUS PRÓXIMOS 3 PASSOS</h2>
+      <ol class="ty-steps">
+        <li><b>Entre no grupo do WhatsApp do evento</b><span>É por lá que chegam o link das aulas, o horário e os lembretes. Link do grupo: ${TBD}.</span></li>
+        <li><b>Anote na agenda: 7 e 8 de novembro, à noite</b><span>Deixe o celular carregado e um caderno do lado.</span></li>
+        <li><b>Escolha o espaço do seu primeiro laboratório</b><span>Uma gaveta ou um guarda-roupa da sua casa. A Paty vai usar isso nas aulas.</span></li>
+      </ol>
+      <button type="button" class="v-buy" data-vip>ENTRAR NO GRUPO DO WHATSAPP</button>
+      <p class="v-p center" style="font-size:13px">Confirmação também enviada para ${esc(A.email || "o seu e-mail")}. Confira a caixa de spam.</p>
+      <div class="ty-insta"><b>Siga a Paty no Instagram</b><span>@patydomingos01</span></div>
+      <footer class="v-foot"><p>Dúvidas sobre o ingresso: suporte ${TBD}</p></footer>`; },
+    onShow: () => app.querySelectorAll("[data-vip]").forEach(b => b.addEventListener("click", () => cta.click())),
+    onCta: () => { toast("Link do grupo do WhatsApp · a definir"); return false; } }
+];
+
+
+/* componentes */
+function ph(tag, title, note, cls) { return `<div class="ph ${cls || ""}"><span class="tag">INSERÇÃO · ${tag}</span><strong>${title}</strong><span>${note}</span></div>`; }
+function pic(key, val, label, src) {
+  return `<button type="button" class="pic${A[key] === val ? " on" : ""}" data-k="${key}" data-v="${val}"><span class="ph-img"><img src="${src}" alt=""></span><span class="lbl">${label}</span></button>`;
+}
+function opt(key, val, em, label, small) {
+  return `<button type="button" class="opt${A[key] === val ? " on" : ""}" data-k="${key}" data-v="${val}"><span class="em">${em}</span><span class="tx">${label}${small ? `<small data-drop="1">${small}</small>` : ""}</span></button>`;
+}
+/* oferta: valores provisórios para revisão (preço do teste e bumps a confirmar) */
+const EVENTO = "Profissão Personal Organizer";
+const PRODUTO = "Ingresso " + EVENTO;
+const PRECO = 19.9;
+const BUMPS = [
+/* [nome, descrição, preço do bump, chave, preço cheio riscado, nº de aulas] · bumps do ingresso */
+  ["acesso à gravação dos 2 dias (por 30 dias)", "Assista quando puder: ideal se você trabalha à noite ou no fim de semana.", 27, "gravacao", null, 2],
+  ["curso Imersão Mesa Posta (2h34)", "Aula gravada da Paty: mais um serviço para oferecer às suas clientes.", 47, "mesa", null, 1]
+];
+const COMBO = -1;
+const bumpAnc = () => "";
+const bumpHit = k => k === A.servico || (k === "empregada" && A.sit === "diarista");
+const bumpOrder = () => BUMPS.map((b, i) => i).filter(i => i !== COMBO).sort((x, y) => bumpHit(BUMPS[y][3]) - bumpHit(BUMPS[x][3])).concat(COMBO >= 0 ? [COMBO] : []);
+const brl = v => "R$" + Number(v).toFixed(2).replace(".", ",").replace(",00", "");
+function toast(msg) {
+  let t = document.getElementById("toast");
+  if (!t) { t = document.createElement("div"); t.id = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2600);
+}
+/* resultado do diagnóstico: perfil, compatibilidade (somada das respostas), potencial e próximos passos */
+function resultado() {
+  const perfil = A.sit === "diarista"
+    ? ["Profissional em Transição", "Você já trabalha em casa de família. Falta ser paga pelo que sabe fazer."]
+    : (A.sente === "amo" || A.pediram === "varias")
+      ? ["Organizadora Natural", "Você já tem o olhar. Falta a técnica e a coragem de cobrar."]
+      : ["Organizadora em Construção", "Você tem perfil, e a técnica completa o resto."];
+  // vai de ~68% (pouca afinidade) a 96% (muita); cada resposta pesa
+  const pts = 52 + ({ amo: 14, tempo: 10, manter: 7, aprender: 6 }[A.sente] || 5) + ({ varias: 12, familia: 8, nunca: 2 }[A.pediram] || 2)
+    + ({ sempre: 6, asvezes: 4, nunca: 1 }[A.videos] || 2) + ({ dia: 6, semana: 4, acumula: 1 }[A.freq] || 2) + (A.servico ? 2 : 0) + (A.sit === "diarista" ? 4 : 0);
+  const score = Math.max(68, Math.min(96, pts));
+  const pot = { "1": ["1 dia por semana", "R$1.600 a R$2.400"], "2-3": ["2 a 3 dias por semana", "R$3.200 a R$7.200"], fds: ["nos fins de semana", "R$3.200 a R$4.800"], "4+": ["4 dias ou mais", "R$6.400 a R$9.600"] }[A.dias] || ["2 a 3 dias por semana", "R$3.200 a R$7.200"];
+  const tem = [
+    { amo: "Você <b>ama organizar</b>: é o que faz uma organizadora aguentar um dia inteiro de trabalho.", tempo: "Você <b>gosta de organizar</b>: falta só tempo, e a profissão deixa você escolher os dias.", manter: "Você <b>gosta de organizar</b> e quer aprender a manter: isso é técnica.", aprender: "Você <b>tem vontade de aprender</b>, que é por onde todas começam." }[A.sente],
+    A.sit === "diarista" ? "Você <b>já conhece a rotina de uma casa</b> como poucas pessoas." : { varias: "<b>Já pediram a sua ajuda várias vezes</b>: na profissão, esse pedido vira cliente.", familia: "Você <b>já ajuda amigas e família</b>: é o mesmo cuidado, só que pago." }[A.pediram],
+    A.servico ? `Você se imagina <b>${SERV_TXT[A.servico]}</b>, um serviço que já tem procura.` : ""
+  ].filter(Boolean).slice(0, 2);
+  const falta = { comecar: "Um <b>passo a passo</b> para saber por onde começar.", perfil: "Acreditar que <b>organização é técnica</b>, e técnica se aprende.", caro: "Saber que dá para começar <b>sem organizadores caros</b>, com gabarito de custo baixo.", clientes: "Entender que a <b>primeira cliente costuma vir de quem já te conhece</b>.", tempo: "Ver que dá para começar <b>aos poucos</b>, sem largar o que você faz hoje." }[A.trava] || "Um <b>passo a passo</b> para saber por onde começar.";
+  const aula = { decidir: "Diferença entre desapego e descarte", categorias: "O que é categorização", lugar: "O que é gabarito", manter: "Conhecendo o armário" }[A.dificil];
+  const passo = aula ? `Participar do <b>${EVENTO}</b> (7 e 8/11), onde a Paty ensina <b>“${aula}”</b>, e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.` : `Entender a profissão e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.`;
+  const prova = A.sit === "diarista"
+    ? ["img/prova-elizete-wa-v1.jpg", "A <b>Elizete</b> trabalhava em casa de família e fez essa mesma virada."]
+    : (A.sente === "amo" || A.pediram === "varias")
+      ? ["img/prova-wa1.jpg", "A <b>Lygia</b> começou pelo laboratório, nas gavetas da própria casa.", "50% 74%"]
+      : ["img/m-paty-tecnica.jpg", "A <b>Paty</b> também era a mais bagunçada da família, e hoje é organizadora de alto padrão."];
+  return { perfil, score, pot, tem, falta, passo, prova };
+}
+/* selo da garantia de 7 dias, desenhado em SVG nas cores da Paty */
+function seloGarantia() {
+  return `<svg class="gar-selo" viewBox="0 0 160 160" role="img" aria-label="Selo de garantia de 7 dias">
+    <defs><linearGradient id="g-ouro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d79c"/><stop offset="1" stop-color="#b98b3e"/></linearGradient>
+    <path id="g-arco" d="M 30 80 A 50 50 0 0 1 130 80"/></defs>
+    <circle cx="80" cy="80" r="76" fill="url(#g-ouro)"/>
+    <circle cx="80" cy="80" r="66" fill="#4a0e22"/>
+    <circle cx="80" cy="80" r="60" fill="none" stroke="#f1d79c" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <text font-size="11" font-weight="800" letter-spacing="3" fill="#f1d79c"><textPath href="#g-arco" startOffset="50%" text-anchor="middle">GARANTIA</textPath></text>
+    <text x="80" y="100" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">7</text>
+    <text x="80" y="120" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="2" fill="#f1d79c">DIAS</text>
+  </svg>`;
+}
+function personImg(triste) { const a = { "18-29": "18-29", "29-39": "29-39", "39-49": "39-49", "50+": "50" }[A.idade] || "29-39"; return `img/avatar-${a === "39-49" ? "39-49-v2" : a}.jpg`; }
+function who(kind, cap) { return `<div class="who ${kind}"><img src="${personImg(kind === "bad")}" alt=""><span class="cap">${cap}</span></div>`; }
+function bar(label, pct, kind) { return `<div class="br"><span>${label}</span><div class="br-t"><i class="${kind}" style="width:${pct}%"></i></div></div>`; }
+/* carregamento: 25 passos de 4% a cada 120 ms = 3 s (sem foto) */
+function loader(steps) {
+  let p = 0;
+  const tick = setInterval(() => {
+    p = Math.min(100, p + 4);
+    const b = document.getElementById("ld-bar");
+    if (!b) return clearInterval(tick);
+    b.style.width = p + "%";
+    document.getElementById("ld-pct").textContent = p + "%";
+    document.getElementById("ld-txt").textContent = steps[Math.min(steps.length - 1, Math.floor(p / (100 / steps.length + 0.01)))];
+    if (p >= 100) { clearInterval(tick); setTimeout(next, 200); }
+  }, 120);
+}
+function esc(v) { return String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function row(k, v) { return `<tr><td>${esc(k)}</td><td>${esc(v) || "—"}</td></tr>`; }
+
+/* pré-carregamento: 4 fotos por vez, na ordem das telas */
+const IMGS = ["avatar-18-29", "avatar-29-39", "avatar-39-49-v2", "avatar-50",
+  "paty-tablet", "paty-sorriso", "paty-relogio-v1", "paty-closet-v1", "paty-sorrindo-v1", "paty-apontando-v1", "paty-em-pe", "prova-slide3b", "paty-notebook", "paty-sorriso2", "prova-wa1", "prova-jane-2600", "prova-wa5", "prova-wa7", "paty-poltrona2", "paty-poltrona", "prova-wa6", "prova-wa8", "prova-slide3a", "antes-depois-closet-v2", "prova-elizete-wa-v1", "prova-wa4", "prova-elizete-2", "selo-garantia-7-dias"].map(n => `img/${n}.jpg`);
+const VBLOB = {}, vjobs = {};
+const vsrc = src => VBLOB[src] || src;
+function preloadVideo(src) {
+  return vjobs[src] || (vjobs[src] = fetch(src).then(r => r.ok ? r.blob() : null).then(b => { if (b && b.size) VBLOB[src] = URL.createObjectURL(b); }).catch(() => {}));
+}
+/* vídeos começam sozinhos; sem controles e sem pausa; se o som for bloqueado, toca mudo com botão de som */
+/* vídeo da página de vendas (data-inview): só começa quando a pessoa rola até ele */
+function playVideo(v) {
+  v.muted = false;
+  v.play().catch(() => {
+    v.muted = true;
+    v.play().catch(() => {});
+    const box = v.parentElement;
+    if (box.querySelector(".unmute")) return;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "unmute"; b.textContent = "🔊 Toque para ativar o som";
+    b.addEventListener("click", ev => { ev.stopPropagation(); v.muted = false; v.currentTime = 0; v.play().catch(() => {}); b.remove(); });
+    box.appendChild(b);
+  });
+}
+function autoplay() {
+  app.querySelectorAll("video[data-inview]").forEach(v => {
+    v.playsInline = true;
+    if (!v.dataset.bound) {
+      v.dataset.bound = "1";
+      v.parentElement.addEventListener("click", () => { if (v.muted) { v.muted = false; v.parentElement.querySelector(".unmute")?.remove(); } if (v.paused) v.play().catch(() => {}); });
+    }
+    // toca quando 60% do vídeo estiver visível na rolagem da página de vendas
+    const sc = v.closest(".screen");
+    const check = () => {
+      const r = v.getBoundingClientRect();
+      const vis = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+      if (r.height && vis > r.height * 0.6) { sc.removeEventListener("scroll", check); playVideo(v); }
+    };
+    sc.addEventListener("scroll", check, { passive: true });
+    check();
+  });
+  app.querySelectorAll("video:not([data-inview])").forEach(v => {
+    v.playsInline = true;
+    if (!v.dataset.bound) {
+      v.dataset.bound = "1";
+      v.parentElement.addEventListener("click", () => { if (v.muted) { v.muted = false; v.parentElement.querySelector(".unmute")?.remove(); } if (v.paused) v.play().catch(() => {}); });
+    }
+    v.muted = false;
+    v.play().catch(() => {
+      v.muted = true;
+      v.play().catch(() => {});
+      const box = v.parentElement;
+      if (box.querySelector(".unmute")) return;
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "unmute"; b.textContent = "🔊 Toque para ativar o som";
+      b.addEventListener("click", ev => { ev.stopPropagation(); v.muted = false; v.currentTime = 0; v.play().catch(() => {}); b.remove(); });
+      box.appendChild(b);
+    });
+  });
+}
+const preloaded = new Set(), keep = [], queue = [];
+let busy = 0;
+function pump() {
+  while (busy < 4 && queue.length) {
+    const src = queue.shift(); busy++;
+    const i = new Image(); i.decoding = "async"; keep.push(i);
+    i.onload = i.onerror = () => { busy--; if (i.decode) i.decode().catch(() => {}); pump(); };
+    i.src = src;
+  }
+}
+function preloadImgs(list) { list.forEach(src => { if (preloaded.has(src)) return; preloaded.add(src); queue.push(src); }); pump(); }
+setTimeout(() => preloadImgs(IMGS), 0);
+
+/* regra: a tela tem que caber sem rolar */
+function fit() {
+  const sec = app.querySelector(".screen");
+  if (!sec || sec.classList.contains("scroll")) return;
+  sec.querySelectorAll("[data-drop]").forEach(el => el.hidden = false);
+  const drops = [...sec.querySelectorAll("[data-drop]")].sort((a, b) => b.dataset.drop - a.dataset.drop);
+  const inner = () => [...sec.querySelectorAll("[data-fit]")].some(el => el.scrollHeight > el.clientHeight + 1);
+  while ((sec.scrollHeight > sec.clientHeight || inner()) && drops.length) drops.shift().hidden = true;
+}
+
+const app = document.getElementById("app");
+const foot = document.getElementById("foot");
+const cta = document.getElementById("cta");
+const back = document.getElementById("back");
+let cur = 0;
+
+S.forEach((x, i) => { x.n = i + 1; });
+const TOTAL = S.length;
+function show(i, push = true) {
+  if (push && cur !== i) hist.push(cur);
+  cur = i;
+  const s = S[i];
+  app.innerHTML = `<section class="screen${s.center ? " center-y" : ""}${s.scroll ? " scroll" : ""}">${s.render()}</section>`;
+  document.getElementById("prog").style.width = Math.min(100, (s.n / TOTAL) * 100) + "%";
+  back.disabled = hist.length === 0;
+  foot.hidden = !s.cta;
+  if (s.cta) cta.textContent = s.cta;
+  fit();
+  if (s.onShow) s.onShow();
+  autoplay();
+  // vídeos baixam inteiros em segundo plano depois que o lead passa da tela 10
+  if (i >= at("fase3")) preloadVideo("video/pablo-v3.mp4");
+  app.querySelectorAll("img").forEach(img => img.complete || img.addEventListener("load", fit, { once: true }));
+  const r = document.getElementById("restart");
+  if (r) r.onclick = () => { for (const k in A) delete A[k]; hist.length = 0; cur = 0; show(0, false); };
+}
+function next() { if (cur < S.length - 1) show(cur + 1); }
+
+app.addEventListener("click", e => {
+  const single = e.target.closest("[data-k]");
+  if (!single) return;
+  A[single.dataset.k] = single.dataset.v;
+  app.querySelectorAll(`[data-k="${single.dataset.k}"]`).forEach(b => b.classList.toggle("on", b === single));
+  setTimeout(next, 180);
+});
+cta.addEventListener("click", () => { const s = S[cur]; if (s.onCta && !s.onCta()) return; next(); });
+back.addEventListener("click", () => { let i = hist.pop(); while (i !== undefined && S[i].auto && hist.length) i = hist.pop(); if (i !== undefined) show(i, false); });
+addEventListener("resize", fit);
+if (document.fonts) document.fonts.ready.then(fit);
+
+/* atalhos de revisão: #tN abre a tela N com respostas de exemplo */
+const EX1 = { servico: "closet", genero: "mulher", idade: "39-49", civil: "casada", filhos: "pequenos", sit: "diarista", sente: "amo", canto: "closet", freq: "dia", videos: "sempre", pediram: "varias", conhece: "nunca" };
+const EX2 = { renda: "ate1500", contente: "contas", abriu: "muito", depende: "asvezes", preocupa: "dia", diaria: "150a250", tentou: "pensei", comeco: "passo", dificil: "categorias", trava: "perfil", modo: "renda-extra", dias: "2-3", dif: "muita", pagamento: "filhos", motivo: "dinheiro", mudaria: "independencia" };
+const tN = /^#t(\d+)$/.exec(location.hash);
+function boot(data) {
+  if (data && data.cur != null && S[data.cur]) {
+    Object.assign(A, data.A || {}); hist.length = 0; hist.push(...(data.hist || [])); cur = data.cur; show(cur, false);
+  } else if (location.hash.length > 1 && at(location.hash.slice(1)) >= 0) {
+    Object.assign(A, EX1, EX2, { nome: "Ana", email: "ana@exemplo.com", whats: "(11) 99999-8888", disposicao: "total", acredita: "pronta" });
+    hist.push(0); show(at(location.hash.slice(1)), false);
+  } else if (tN) {
+    const idx = Number(tN[1]) - 1;
+    Object.assign(A, EX1, EX2, Number(tN[1]) > 38 ? { nome: "Ana", email: "ana@exemplo.com", whats: "(11) 99999-8888", disposicao: "total" } : {}); hist.push(0); show(idx >= 0 ? idx : 0, false);
+  } else show(0, false);
+}
+const HOT = window.claude && window.claude.hot;
+if (HOT && HOT.snapshot) HOT.snapshot(() => ({ A, cur, hist: hist.slice() }));
+if (HOT && HOT.ready) HOT.ready(boot); else boot(HOT && HOT.data);
+</script>
+</body>
+</html>
