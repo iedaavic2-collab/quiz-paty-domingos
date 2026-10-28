@@ -20,12 +20,12 @@
 :root {
   color-scheme: light;
   --bg: #fdfbfa;
-  --ink: #1d2a24;
-  --muted: #66706b;
+  --ink: #2b1820;
+  --muted: #6f6469;
   --line: #e7e1dd;
   --soft: #f4efec;
-  --verde: #24362d;
-  --verde-soft: #eef2ef;
+  --verde: #5a1228;
+  --verde-soft: #f8edf0;
   --ouro: #b98b3e;
   --ouro-soft: #fbf4e6;
   --money: #15803d;
@@ -34,8 +34,8 @@
   --alert: #c2410c;
   --alert-soft: #fff4ee;
   --alert-line: #fed7c3;
-  --navy: #24362d;
-  --navy-soft: #eef2ef;
+  --navy: #5a1228;
+  --navy-soft: #f8edf0;
   --ph-bg: #f7f4f1;
   --ph-line: #c9bdb4;
   --display: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -218,11 +218,11 @@ h2 { color: var(--ink); font-family: var(--display); font-size: clamp(18px, 3dvh
 .gancho-facts.lado li { min-width: 0; font-size: clamp(11px, min(2.1dvh, 3.5vw), 15px); }
 /* resultado (diagnóstico) */
 .res-card { display: grid; gap: 4px; text-align: center; background: var(--verde); color: #fff; border-radius: 14px; padding: clamp(10px, 1.8dvh, 16px) 14px; }
-.res-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #cfdcd4; }
+.res-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #ecd6db; }
 .res-nome { font-size: clamp(22px, 3.6dvh, 28px); font-weight: 900; line-height: 1.1; color: #fff; }
-.res-frase { font-size: clamp(12.5px, 1.9dvh, 14px); color: #e7efe9; }
+.res-frase { font-size: clamp(12.5px, 1.9dvh, 14px); color: #f7e8ec; }
 .res-meter { display: grid; gap: 5px; margin-top: 6px; text-align: left; }
-.res-meter-top { display: flex; justify-content: space-between; font-size: 12px; color: #e7efe9; }
+.res-meter-top { display: flex; justify-content: space-between; font-size: 12px; color: #f7e8ec; }
 .res-meter-top b { color: #fff; font-size: 15px; font-variant-numeric: tabular-nums; }
 .res-bar { height: 9px; background: rgba(255,255,255,.18); border-radius: 99px; overflow: hidden; }
 .res-bar i { display: block; height: 100%; background: linear-gradient(90deg, #d8b26a, #f1d79c); border-radius: 99px; }
@@ -264,7 +264,7 @@ h2 { color: var(--ink); font-family: var(--display); font-size: clamp(18px, 3dvh
 .facts li { display: flex; gap: 9px; align-items: flex-start; font-size: clamp(12.5px, 1.9dvh, 14px); color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: clamp(7px, 1.2dvh, 10px) 11px; }
 .facts .ck { color: var(--money); font-weight: 800; flex: none; }
 .quote { background: var(--verde); color: #fff; border-radius: 12px; padding: clamp(10px, 1.7dvh, 15px) 15px; font-family: var(--font); font-weight: 500; font-size: clamp(13.5px, 2.05dvh, 15px); line-height: 1.4; }
-.quote cite { display: block; margin-top: 6px; font-family: var(--font); font-style: normal; font-size: 11.5px; color: #cfdcd4; }
+.quote cite { display: block; margin-top: 6px; font-family: var(--font); font-style: normal; font-size: 11.5px; color: #ecd6db; }
 .echo { background: var(--ouro-soft); border: 1px solid #ecd9b4; color: #5c4119; border-radius: 10px; padding: clamp(8px, 1.4dvh, 12px) 12px; font-size: 13.5px; text-align: center; }
 .echo b { color: var(--ink); }
 .tbd { display: inline-block; background: #fef3c7; color: #92400e; border: 1px dashed #f59e0b; border-radius: 6px; padding: 1px 6px; font-size: .85em; font-weight: 700; white-space: nowrap; }
@@ -522,7 +522,7 @@ img.ck-cover { padding: 0; display: block; }
 .mm-bonus p { margin: 0; padding: 0 14px; font-size: 14.5px; line-height: 1.5; }
 .mm-bl { display: grid; gap: 18px; margin-top: 4px !important; }
 .mm-bl article { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; }
-.mm-bl i { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--brand, #24362d); color: #fff; }
+.mm-bl i { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--brand, #5a1228); color: #fff; }
 .mm-bl i.gold { background: #b98b3e; }
 .mm-bl i svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .mm-bl b { display: block; color: var(--ink); font-size: 16.5px; font-weight: 800; line-height: 1.25; }
@@ -1360,7 +1360,7 @@ function opt(key, val, em, label, small) {
   return `<button type="button" class="opt${A[key] === val ? " on" : ""}" data-k="${key}" data-v="${val}"><span class="em">${em}</span><span class="tx">${label}${small ? `<small data-drop="1">${small}</small>` : ""}</span></button>`;
 }
 /* oferta: valores provisórios para revisão (preço do teste e bumps a confirmar) */
-const EVENTO = "Organizadas que Faturam";
+const EVENTO = "Profissão Personal Organizer";
 const PRODUTO = "Ingresso " + EVENTO;
 const PRECO = 19.9;
 const BUMPS = [
@@ -1412,7 +1412,7 @@ function seloGarantia() {
     <defs><linearGradient id="g-ouro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d79c"/><stop offset="1" stop-color="#b98b3e"/></linearGradient>
     <path id="g-arco" d="M 30 80 A 50 50 0 0 1 130 80"/></defs>
     <circle cx="80" cy="80" r="76" fill="url(#g-ouro)"/>
-    <circle cx="80" cy="80" r="66" fill="#24362d"/>
+    <circle cx="80" cy="80" r="66" fill="#5a1228"/>
     <circle cx="80" cy="80" r="60" fill="none" stroke="#f1d79c" stroke-width="1.5" stroke-dasharray="3 4"/>
     <text font-size="11" font-weight="800" letter-spacing="3" fill="#f1d79c"><textPath href="#g-arco" startOffset="50%" text-anchor="middle">GARANTIA</textPath></text>
     <text x="80" y="100" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">7</text>
