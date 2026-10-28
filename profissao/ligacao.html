@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>A Paty está te chamando | Profissão Personal Organizer · 7 e 8 de novembro</title>
-<meta name="description" content="Profissão Personal Organizer: 2 dias ao vivo e online com a Paty Domingos, 7 e 8 de novembro. Aprenda a organizar como uma profissional, da sua casa até a sua profissão.">
+<meta name="description" content="Profissão Personal Organizer: 2 dias ao vivo e online com a Paty Domingos, 7 e 8 de novembro. Conheça os primeiros passos para transformar seu interesse por organização em um serviço profissional. Ingresso para os dois dias: R$ 19,90.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -182,7 +182,23 @@ h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; f
   .acts { gap: 8px; }
   .acts .no, .acts .yes { width: 40px; height: 40px; }
 }
-</style>
+
+/* Revisão de oferta: leitura e inscrição */
+.hero-sub{font-size:18px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:600px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.hero-facts span{border:1px solid var(--line);border-radius:30px;padding:6px 12px;font-size:13px;color:var(--gold)}
+.offer-section{padding-top:38px;margin-top:30px;border-top:1px solid var(--line)}
+.offer-section h2{font-size:clamp(25px,5.5vw,35px);line-height:1.2;margin:0 0 16px;color:var(--ink)}
+.section-intro{color:var(--muted);max-width:740px;font-size:17px}.offer-grid{display:grid;gap:14px;margin-top:22px}.offer-box{padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--card2)}
+.offer-box h3{margin:0 0 8px;font-size:19px;color:var(--gold)}.offer-box p{margin:0;color:var(--muted)}
+.offer-list{padding-left:21px;color:var(--muted)}.offer-list li{padding:6px 0}.offer-note{font-size:13px;color:var(--muted);line-height:1.6}
+.price-box{text-align:center;padding:28px 20px;background:#220712;border:1px solid var(--gold);border-radius:20px;margin-top:28px}.price-box .price{display:block;color:var(--gold);font-size:54px;font-weight:700;line-height:1.2;margin:10px}.price-box h2{margin-bottom:8px}.price-box .btn-wrap{max-width:540px;margin:20px auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{font-size:17px;font-weight:600;cursor:pointer}.faq details p{color:var(--muted);max-width:760px;margin:12px 0 0}
+.mobile-buy{display:none}.btn:focus-visible,summary:focus-visible,[role=button]:focus-visible{outline:3px solid white;outline-offset:4px}
+@media(min-width:720px){.offer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:719px){body{padding-bottom:96px}.mobile-buy{display:block;position:fixed;bottom:0;left:0;right:0;z-index:20;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#2a0813f5;border-top:1px solid var(--line)}.mobile-buy .btn{padding:14px 10px;font-size:12px;letter-spacing:.5px}.hero-sub{font-size:16px}.hero-ph img{aspect-ratio:5/4;object-position:center 25%}.offer-section{padding-top:28px;margin-top:24px}.call-card{padding-left:16px;padding-right:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.incoming{min-width:0;grid-template-columns:56px minmax(0,1fr) auto}.incoming .st{letter-spacing:.6px}.incoming .sb{overflow-wrap:anywhere;font-size:12px}.call-copy{min-width:0}</style>
 </head>
 <body>
 <main>
@@ -195,47 +211,62 @@ h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; f
       </div>
 
       <div class="call-grid">
-        <div class="incoming" data-cta role="button" tabindex="0" aria-label="Atender a chamada da Paty: garantir a minha vaga" style="cursor:pointer">
-          <span class="st" aria-hidden="true"><i class="live-dot"></i>Chamada recebida</span>
+        <div class="incoming" data-cta role="button" tabindex="0" aria-label="Ver inscrição no encontro com Paty" style="cursor:pointer">
+          <span class="st" aria-hidden="true"><i class="live-dot"></i>Um convite da Paty</span>
           <div class="av" aria-hidden="true"><span class="rg"></span><span class="rg b"></span><span class="rg c"></span><img src="../img/paty-profissao-avatar2.jpg" width="480" height="480" alt=""></div>
           <p class="nm">Paty Domingos</p>
-          <p class="sb" aria-hidden="true">chamando você...</p>
+          <p class="sb" aria-hidden="true">para conhecer uma nova profissão</p>
           <div class="acts">
             <span class="no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
-            <a class="yes-link" href="#" data-cta aria-label="Atender: garantir a minha vaga"><span class="yes"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span></a>
+            <a class="yes-link" href="#" data-cta aria-label="Ver inscrição"><span class="yes"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span></a>
           </div>
         </div>
 
         <div class="call-copy">
-          <p class="eyebrow">Paty Domingos · de empregada doméstica a organizadora de alto padrão</p>
-          <h1>Em 2 dias, vou te ensinar a organizar como uma profissional. <em>Primeiro na sua casa, depois na casa das clientes, num trabalho que paga de R$400 a R$600 por dia.</em></h1>
+          <p class="eyebrow">Profissão Personal Organizer · Com Paty Domingos</p>
+          <h1>Você gosta de organizar? <em>Conheça o caminho para transformar esse interesse em profissão.</em></h1>
+          <p class="hero-sub">Em dois dias com Paty Domingos, conheça o trabalho de uma personal organizer, a técnica por trás da organização e os primeiros passos para começar a aprender.</p>
+          <div class="hero-facts"><span>7 e 8 de novembro</span><span>Ao vivo e online</span><span>Dois dias por R$ 19,90</span></div>
           <div class="cta-m">
             <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
             <p class="countdown" data-countdown>Ingresso de 2 dias por R$&nbsp;19,90 · faltam <b data-cd>…</b></p>
             <p class="hero-urg">São <b>2 dias, 7 e 8 de novembro</b>, ao vivo e online.</p>
           </div>
           <p class="proof"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>Mais de 10 mil alunas</b> já aprenderam com a Paty</span></p>
-          <p class="txt">Ao vivo, em 2 dias, vou te ensinar a <b>organizar como uma profissional</b>: primeiro <b>na sua casa</b>, depois <b>na casa das suas clientes</b>, num trabalho que paga de <b>R$ 400 a R$ 600 por dia</b>, até a organização virar a <b>sua profissão</b>. Eu comecei como empregada doméstica e hoje sou organizadora de alto padrão. Vou te mostrar o caminho.</p>
-          <!--LIGACAO-->
-          <ul class="learn">
-            <li><i>🧠</i>A técnica de organização das profissionais</li>
-            <li><i>🏠</i>Como aplicar na sua casa</li>
-            <li><i>💰</i>Quanto cobrar e como conseguir clientes</li>
-            <li><i>🚀</i>O caminho para fazer disso a sua profissão</li>
-          </ul>
+          <p class="txt">Você pode começar a observar e praticar na sua casa. Para organizar para um cliente, o próximo passo é aprender a entender as necessidades dele e escolher soluções que funcionem naquela rotina.</p>
+          <ul class="learn"><li><i>🧠</i>Conheça a lógica da organização profissional</li><li><i>🏠</i>Entenda como começar a praticar em casa</li><li><i>🤝</i>Veja o que envolve atender um cliente</li><li><i>🧭</i>Encontre uma direção para continuar aprendendo</li></ul>
           <p class="pun">Garanta sua vaga: <b>7 e 8 de novembro, ao vivo e online.</b></p>
         </div>
       </div>
 
+
+<section class="offer-section" aria-labelledby="why-title">
+<p class="eyebrow">Da habilidade ao serviço profissional</p>
+<h2 id="why-title">Gostar de organizar pode ser o começo. Aprender a atender é o próximo passo.</h2>
+<p class="section-intro">Na sua casa, você conhece os hábitos e sabe o que funciona para você. Na casa de um cliente, precisa observar outra rotina, entender as necessidades daquela pessoa e explicar suas escolhas.</p>
+<p class="section-intro">É esse olhar que você vai começar a conhecer no Profissão Personal Organizer: organização com técnica, intenção e foco em quem usa o espaço.</p>
+<div class="offer-grid">
+<article class="offer-box"><h3>Entender o trabalho</h3><p>Conheça o que uma personal organizer faz e o que muda quando a organização passa a ser oferecida como serviço.</p></article>
+<article class="offer-box"><h3>Conhecer a técnica</h3><p>Entenda a lógica de separar por categorias, definir lugares e facilitar o uso dos objetos na rotina.</p></article>
+<article class="offer-box"><h3>Começar pela prática</h3><p>Veja como usar um espaço da sua casa para começar a observar e aplicar o que está aprendendo.</p></article>
+<article class="offer-box"><h3>Enxergar a continuidade</h3><p>Conheça os primeiros passos para desenvolver essa atividade e os temas envolvidos em atender, apresentar o serviço e cobrar.</p></article>
+</div>
+</section>
+<section class="offer-section" aria-labelledby="for-title">
+<h2 id="for-title">Você pode começar conhecendo a profissão.</h2>
+<ul class="offer-list"><li>Você gosta de organizar e quer explorar esse interesse como trabalho.</li><li>Você busca uma nova atividade, mas ainda não sabe como funciona o atendimento de uma personal organizer.</li><li>Você acompanha conteúdos de organização e sente falta de uma direção para começar a aprender.</li><li>Você quer entender o caminho antes de decidir por uma formação mais aprofundada.</li></ul>
+<p class="offer-note">Este é um encontro introdutório. Os dois dias apresentam os primeiros passos; desenvolver a atuação profissional exige estudo, prática e continuidade.</p>
+</section>
+
       <div class="deps-l">
-        <p class="deps-t">Depoimentos reais de alunas da Paty Domingos</p>
+        <p class="deps-t">Histórias de quem já estudou com a Paty</p>
         <div class="deps-g">
-          <figure><img src="../img/prova-elizete-destaque.jpg" width="461" height="782" alt="Print de mensagem real da Elizete: trabalhava em casa de família, o primeiro dinheiro com a organização veio de uma amiga da patroa e ela seguiu a carreira de personal organizer" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · de casa de família à carreira de personal organizer</figcaption></figure>
-          <figure><img src="../img/prova-wa6.jpg" width="460" height="1000" alt="Print de mensagem real da Claudia: pensou em desistir e fechou um projeto de dez mil reais" loading="lazy" decoding="async"><figcaption><b>Claudia</b> · pensou em desistir e fechou um projeto de R$ 10 mil</figcaption></figure>
-          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real da Mary: era a menos indicada e hoje tira de 3 a 4 mil por semana" loading="lazy" decoding="async"><figcaption><b>Mary</b> · "eu era a menos indicada", pagou o curso no 1º projeto</figcaption></figure>
+          <figure><img src="../img/prova-elizete-destaque.jpg" width="461" height="782" alt="Print de mensagem real da Elizete: trabalhava em casa de família, o primeiro dinheiro com a organização veio de uma amiga da patroa e ela seguiu a carreira de personal organizer" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · trajetória na organização profissional</figcaption></figure>
+          <figure><img src="../img/prova-wa6.jpg" width="460" height="1000" alt="Print de mensagem real da Claudia: pensou em desistir e fechou um projeto de dez mil reais" loading="lazy" decoding="async"><figcaption><b>Claudia</b> · experiência com um projeto de organização</figcaption></figure>
+          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real da Mary: era a menos indicada e hoje tira de 3 a 4 mil por semana" loading="lazy" decoding="async"><figcaption><b>Mary</b> · relato sobre seu aprendizado e sua atuação</figcaption></figure>
         </div>
         <p class="deps-sw">arraste para o lado →</p>
-        <p class="deps-n">Prints reais de alunas dos cursos da Paty.</p>
+        <p class="deps-n">Relatos de alunas de outros cursos da Paty. Não são resultados deste encontro de dois dias. Cada trajetória depende de formação, prática e contexto individual.</p>
       </div>
 
       <ol class="call-steps">
@@ -244,10 +275,16 @@ h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; f
         <li><b>3</b><span>Assista ao vivo nos dias 7 e 8 de novembro, do celular ou do computador.</span></li>
       </ol>
 
-      <div class="call-cta">
-        <span class="btn-wrap"><a href="#" class="btn" data-cta>Garanta seu ingresso por R$&nbsp;19,90 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
-        <p class="countdown" style="text-align:center" data-countdown>Ingresso de 2 dias por R$&nbsp;19,90 · faltam <b data-cd>…</b></p>
-      </div>
+
+<section class="offer-section faq" aria-labelledby="faq-title"><h2 id="faq-title">Antes de garantir sua vaga</h2>
+<details><summary>Preciso ter experiência com organização?</summary><p>O encontro foi pensado para quem quer conhecer a atividade e os primeiros passos, inclusive quem ainda não atende clientes.</p></details>
+<details><summary>Quando e onde acontece?</summary><p>Nos dias 7 e 8 de novembro de 2026, ao vivo e online. Você poderá acompanhar pelo celular ou pelo computador com acesso à internet.</p></details>
+<details><summary>R$ 19,90 inclui os dois dias?</summary><p>Sim. O ingresso anunciado dá acesso aos dois dias do Profissão Personal Organizer.</p></details>
+<details><summary>Como recebo o acesso?</summary><p>Informe seu WhatsApp com DDD corretamente na inscrição. O link das aulas será enviado por esse contato após a confirmação do ingresso.</p></details>
+<details><summary>Vou sair pronta para atender clientes em dois dias?</summary><p>O objetivo é apresentar a profissão e os primeiros passos do aprendizado. A preparação para atender depende do desenvolvimento técnico e da prática de cada pessoa.</p></details>
+</section>
+<div class="price-box"><p class="eyebrow">Seu primeiro contato com a profissão</p><h2>Profissão Personal Organizer</h2><p>7 e 8 de novembro · Ao vivo e online</p><span class="price">R$ 19,90</span><p>Ingresso para os dois dias com Paty Domingos.</p><span class="btn-wrap"><a href="#" class="btn" data-cta>Quero garantir minha vaga</a></span></div>
+
     </div>
   </div>
 </section>
@@ -272,6 +309,7 @@ h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; f
   </div>
 </div>
 
+<div class="mobile-buy"><a href="#" class="btn" data-cta>Garantir minha vaga · R$ 19,90</a></div>
 <script>
 /* ===== CONFIGURAÇÃO ===== */
 var CHECKOUT_URL = '';   /* link do checkout do ingresso de R$ 19,90 (Greenn) */
