@@ -11,16 +11,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #08160f; --card: #0f2419; --card2: #132d20; --line: rgba(222, 186, 106, .32);
+  --bg: #2a0813; --card: #3b0d1c; --card2: #4a1226; --line: rgba(222, 186, 106, .32);
   --gold: #e2c07a; --gold-d: #b98e3e; --red: #e0444c; --green: #35c46a;
-  --ink: #f6f0e2; --muted: #b9c4b9; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif;
+  --ink: #f6f0e2; --muted: #dcc7cb; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif;
 }
 * { box-sizing: border-box; }
 body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
-  background: radial-gradient(90% 60% at 50% 0%, #1a3a29 0%, var(--bg) 70%) fixed, var(--bg); }
+  background: radial-gradient(90% 60% at 50% 0%, #5e1a31 0%, var(--bg) 70%) fixed, var(--bg); }
 .wrap { max-width: 1060px; margin: 0 auto; padding: 18px 14px 28px; }
 .call-card { position: relative; border-radius: 26px; padding: 18px 18px 22px; border: 1px solid var(--line);
-  background: linear-gradient(180deg, #11291d 0%, #0b1c13 100%); box-shadow: 0 30px 80px #0009, inset 0 1px 0 #ffffff10; }
+  background: linear-gradient(180deg, #430f22 0%, #340a19 100%); box-shadow: 0 30px 80px #0009, inset 0 1px 0 #ffffff10; }
 .rise { animation: rise .7s ease-out both; }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 
@@ -40,7 +40,7 @@ body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink)
 /* chamada */
 .call-grid { display: grid; gap: 18px; margin-top: 16px; }
 .incoming { display: grid; grid-template-columns: 56px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; column-gap: 12px; align-items: center;
-  padding: 12px 14px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #17372a, #0e2318); }
+  padding: 12px 14px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #561730, #380b1b); }
 .incoming .st { grid-area: st; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
 .incoming .st .live-dot { background: var(--green); width: 7px; height: 7px; }
 .av { grid-area: av; position: relative; width: 56px; height: 56px; }
@@ -60,8 +60,8 @@ body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink)
 .yes-link { display: block; border-radius: 50%; }
 
 .hero-ph { position: relative; width: 100%; margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
-.hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-.hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #08160fdd); }
+.hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% 20%; }
+.hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #2a0813dd); }
 @media (min-width: 880px) { .hero-ph { max-width: none; } }
 .countdown { margin: 10px 0 0; font-size: 13.5px; color: var(--gold); }
 .countdown b { color: var(--ink); font-variant-numeric: tabular-nums; }
@@ -96,7 +96,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 
 /* aprendizados */
 .learn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; text-align: left; }
-.learn li { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #0b1c13; font-size: 13.5px; line-height: 1.3; }
+.learn li { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #340a19; font-size: 13.5px; line-height: 1.3; }
 .learn li i { font-style: normal; font-size: 18px; }
 
 /* depoimentos */
@@ -109,7 +109,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .deps-g figure { display: flex; flex-direction: column; flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
 .deps-g img { display: block; width: 100%; height: 440px; object-fit: contain; object-position: top; background: #fff; }
 .deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; flex: 1; }
-.deps-g figcaption b { color: #0f2419; }
+.deps-g figcaption b { color: #3b0d1c; }
 .deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
 .deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
 
@@ -118,7 +118,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .call-steps li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card2); font-size: 16px; }
 .call-steps b { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #22180a; font-weight: 700; }
 .call-cta { margin-top: 8px; text-align: center; }
-.call-fine { margin: 22px 0 0; text-align: center; font-size: 11.5px; line-height: 1.55; color: #8d9b90; }
+.call-fine { margin: 22px 0 0; text-align: center; font-size: 11.5px; line-height: 1.55; color: #bfa6ac; }
 
 @media (min-width: 880px) {
   .wrap { padding: 40px 24px; }
@@ -147,7 +147,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .lead-modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: flex-end; justify-content: center; }
 .lead-modal.on { display: flex; }
 .lead-bd { position: absolute; inset: 0; background: #000b; }
-.lead-card { position: relative; width: 100%; max-width: 460px; max-height: 92vh; overflow: auto; padding: 24px 20px 22px; border-radius: 22px 22px 0 0; border: 1px solid var(--line); background: #0f2419; animation: up .25s ease-out; }
+.lead-card { position: relative; width: 100%; max-width: 460px; max-height: 92vh; overflow: auto; padding: 24px 20px 22px; border-radius: 22px 22px 0 0; border: 1px solid var(--line); background: #3b0d1c; animation: up .25s ease-out; }
 @media (min-width: 600px) { .lead-modal { align-items: center; } .lead-card { border-radius: 22px; } }
 @keyframes up { from { transform: translateY(30px); opacity: 0; } }
 .lead-x { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff12; color: var(--ink); font-size: 22px; cursor: pointer; }
@@ -156,22 +156,22 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
 .lead-card h3 em { font-family: var(--serif); color: var(--gold); }
 .lsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
 .lead-card label { display: block; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
-.lead-card input { display: block; width: 100%; margin-top: 5px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font: inherit; font-size: 16px; }
+.lead-card input { display: block; width: 100%; margin-top: 5px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #2a0813; color: var(--ink); font: inherit; font-size: 16px; }
 .lead-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 .lead-q { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .lead-opts { display: grid; gap: 6px; margin-top: 6px; }
-.lead-opts label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #08160f; color: var(--ink); font-weight: 500; font-size: 14px; cursor: pointer; }
+.lead-opts label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #2a0813; color: var(--ink); font-weight: 500; font-size: 14px; cursor: pointer; }
 .lead-opts input { width: 18px; height: 18px; margin: 0; flex: none; accent-color: var(--gold); }
-.lead-opts label:has(input:checked) { border-color: var(--gold); background: #1a3a29; }
-.lead-hint { display: block; margin-top: 6px; font-size: 12px; color: #8d9b90; }
+.lead-opts label:has(input:checked) { border-color: var(--gold); background: #5e1a31; }
+.lead-hint { display: block; margin-top: 6px; font-size: 12px; color: #bfa6ac; }
 .lead-go { margin-top: 16px; }
 .lead-err { margin: 10px 0 0; font-size: 13px; color: #ff9a9f; }
-.lead-sec { margin: 10px 0 0; text-align: center; font-size: 12px; color: #8d9b90; }
+.lead-sec { margin: 10px 0 0; text-align: center; font-size: 12px; color: #bfa6ac; }
 /* computador: foto maior, alinhada ao topo do texto (não afeta o celular) */
 @media (min-width: 880px) {
   .call-grid { grid-template-columns: minmax(360px, 440px) 1fr; gap: 44px; align-items: stretch; }
   .hero-ph { height: 100%; }
-  .hero-ph img { height: 100%; min-height: 520px; aspect-ratio: auto; object-fit: cover; object-position: 50% 30%; }
+  .hero-ph img { height: 100%; min-height: 520px; aspect-ratio: auto; object-fit: cover; object-position: 55% 25%; }
   h1 { font-size: 42px; }
 }
 
@@ -198,7 +198,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: 
       </div>
 
       <div class="call-grid">
-        <figure class="hero-ph"><img src="../img/paty-cadeira-v1.jpg" width="599" height="900" fetchpriority="high" decoding="async" alt="Paty Domingos sorrindo, sentada em uma poltrona"></figure>
+        <figure class="hero-ph"><img src="../img/paty-profissao-sofa.jpg" width="858" height="900" fetchpriority="high" decoding="async" alt="Paty Domingos sorrindo, sentada em um sofá, ao lado de uma planta"></figure>
 
         <div class="call-copy">
           <h1>Em 2 dias, aprenda a organizar como uma profissional. <em>Da sua casa até a sua profissão.</em></h1>
