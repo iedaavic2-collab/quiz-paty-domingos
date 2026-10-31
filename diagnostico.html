@@ -82,6 +82,10 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .area-bar i { display: block; height: 100%; background: var(--pri); border-radius: 99px; }
 .area p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.45; }
 /* comparação */
+.ad-img { position: relative; flex: 1 1 0; min-height: 150px; max-height: 118vw; border-radius: 16px; overflow: hidden; background: var(--soft); }
+.ad-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.ad-img b { position: absolute; top: 8px; left: 8px; background: rgba(17,24,39,.82); color: #fff; font-size: 11px; letter-spacing: .06em; padding: 4px 8px; border-radius: 6px; }
+.ad-img b.dp { left: calc(50% + 8px); background: var(--verde); }
 .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 clamp(8px, 1.6dvh, 14px); }
 .cmp > div { border-radius: 16px; padding: 12px; }
 .cmp .a { background: var(--red-soft); }
@@ -111,6 +115,11 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .dots i.on { background: var(--pri); width: 18px; border-radius: 4px; }
 .swipe { text-align: center; color: var(--muted); font-size: 13px; margin: 6px 0 0; }
 .proofs img { width: 100%; border-radius: 14px; margin-bottom: 10px; display: block; }
+.vid { position: relative; }
+.vid video { pointer-events: none; }
+.v-som { position: absolute; inset: 0; margin: auto; width: max-content; height: max-content; border: 0; border-radius: 999px; background: rgba(17,24,39,.85); color: #fff; font: inherit; font-weight: 800; font-size: 16px; padding: 14px 20px; cursor: pointer; }
+.v-som[hidden] { display: none; }
+.v-re { position: absolute; right: 10px; bottom: 10px; border: 0; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--ink); font: inherit; font-weight: 700; font-size: 13px; padding: 8px 12px; cursor: pointer; }
 .vid video { width: 100%; max-height: 62vh; border-radius: 16px; display: block; background: #000; object-fit: contain; }
 .tbd { background: #fef3c7; color: #92400e; border-radius: 6px; padding: 0 6px; font-weight: 700; font-size: .9em; }
 #toast { position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; transition: opacity .2s; z-index: 9; pointer-events: none; }
@@ -129,6 +138,7 @@ const CONFIG = {
   EVENTO: "Profissão Personal Organizer",
   DATAS: "7 e 8 de novembro",
   PRECO: "R$19,90",
+  HORARIO: "das 9h às 15h",
   CHECKOUT_URL: "",   /* link do checkout do ingresso (nome, e-mail e WhatsApp vão na URL) */
   WEBHOOK_URL: ""     /* recebe o lead do formulário (POST JSON) */
 };
@@ -261,7 +271,7 @@ const STEPS = [
   { id: "resultado", type: "result" },
   { id: "motivada", type: "q", title: "Quão motivado(a) você está para começar a cobrar pela organização?",
     options: [{ v: "a", label: "🧐 Só estou curiosa para tentar." }, { v: "b", label: "😔 Ainda não tenho certeza se consigo." }, { v: "c", label: "🔥 Não vou parar até conseguir." }] },
-  { id: "i_cmp", type: "compare" },
+  { id: "i_cmp", type: "compare", fill: true },
   { id: "i_prova", type: "info", title: "Agora veja o que aconteceu com quem aprendeu com a Paty...",
     body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"], ["img/prova-elizete-destaque.jpg", "Depoimento da aluna Elizete"]]) },
   { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse esse passo a passo nas mãos?",
@@ -357,7 +367,7 @@ function render() {
     h = `<h2>Veja a diferença entre quem organiza de graça e quem organiza como profissional</h2>
       <div class="cmp"><div class="a"><h3>DE GRAÇA</h3><ul><li>Ajuda todo mundo e não recebe nada</li><li>Organiza no improviso</li><li>"Ajudante", sem reconhecimento</li><li>Trabalho pesado e mal pago</li><li>Horário decidido pelos outros</li></ul></div>
       <div class="b"><h3>PROFISSIONAL</h3><ul><li>Cobra de R$400 a R$600 por dia</li><li>Trabalha com técnica e método</li><li>Personal organizer, profissão com nome</li><li>Clientes por indicação</li><li>Escolhe os dias de trabalho</li></ul></div></div>
-      <img class="info-img" style="height:clamp(90px, 21dvh, 240px);object-fit:contain;background:var(--soft)" src="img/antes-depois-closet-v2.jpg" alt="Closet antes e depois da organização">`;
+      <div class="ad-img"><img src="img/antes-depois-closet-v2.jpg" alt="Closet antes e depois da organização"><b>ANTES</b><b class="dp">DEPOIS</b></div>`;
     setCta("Continuar");
   } else if (s.type === "sales") {
     h = sales(); setCta(null);
@@ -376,10 +386,26 @@ function render() {
   if (car) car.addEventListener("scroll", () => { const k = Math.round(car.scrollLeft / (car.firstElementChild.offsetWidth + 10)); car.nextElementSibling.querySelectorAll("i").forEach((d, j) => d.classList.toggle("on", j === k)); }, { passive: true });
   app.classList.toggle("sales", s.type === "sales");
   app.classList.toggle("fill", !!s.fill);
+  if (s.type === "sales") videoVSL();
   app.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", buy));
   if (s.type === "form") document.getElementById("f").addEventListener("submit", e => { e.preventDefault(); btn.click(); });
 }
 
+/* vídeo da página de vendas: começa sozinho, sem pausar nem avançar; só dá para recomeçar.
+   O navegador só deixa tocar com som depois de um toque: se bloquear, toca mudo e mostra "Toque para ouvir". */
+function videoVSL() {
+  const v = app.querySelector("#vid video"), som = document.getElementById("v-som"), re = document.getElementById("v-re");
+  if (!v) return;
+  const tocar = () => v.play().catch(() => {});
+  v.muted = false;
+  v.play().catch(() => { v.muted = true; som.hidden = false; tocar(); });
+  v.addEventListener("pause", () => { if (!v.ended) tocar(); });
+  let ultimo = 0;
+  v.addEventListener("timeupdate", () => { if (!v.seeking) ultimo = v.currentTime; });
+  v.addEventListener("seeking", () => { if (v.currentTime > ultimo + 1) v.currentTime = ultimo; });
+  som.addEventListener("click", () => { v.muted = false; v.currentTime = 0; som.hidden = true; tocar(); });
+  re.addEventListener("click", () => { v.currentTime = 0; ultimo = 0; v.muted = false; som.hidden = true; tocar(); });
+}
 function carrossel(list) {
   return `<div class="car" id="car">${list.map(([src, alt]) => `<img src="${src}" alt="${alt}">`).join("")}</div>
     <div class="dots">${list.map((_, k) => `<i${k ? "" : ' class="on"'}></i>`).join("")}</div><p class="swipe">Arraste para o lado →</p>`;
@@ -395,13 +421,15 @@ function buy() {
 function sales() {
   const TBD = `<span class="tbd">a definir</span>`;
   const price = `<div class="price"><div class="bn">🎟️ INGRESSO · ${CONFIG.EVENTO.toUpperCase()}</div>
-    <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS} · horário ${TBD}</small>
+    <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS} · ${CONFIG.HORARIO}</small>
     <small>💳 Cartão · Pix · 🛡️ Garantia de 7 dias</small>
     <button type="button" data-buy>Garantir minha vaga · ${CONFIG.PRECO}</button></div>`;
   return `<p class="s-eyebrow">WORKSHOP AO VIVO COM A PATY DOMINGOS</p>
     <h1>Ei ${nome() || "você"}...</h1>
     <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Em 2 dias, a Paty vai te ensinar organização do zero. E ela pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
-    <div class="vid"><video src="video/diagnostico-paty-v1.mp4" controls playsinline preload="metadata" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video></div>
+    <div class="vid" id="vid"><video src="video/diagnostico-paty-v1.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
+      <button type="button" class="v-som" id="v-som" hidden>🔊 Toque para ouvir</button>
+      <button type="button" class="v-re" id="v-re" aria-label="Recomeçar o vídeo">↺ Recomeçar</button></div>
     ${price}
     <div class="s-box"><h3>A SUA VIDA ANTES DO WORKSHOP:</h3><ul>
       <li>❌ Organizar de graça para a família e as amigas</li><li>❌ Trabalho pesado e mal pago</li><li>❌ Achar que "isso não é para mim"</li>
