@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Diagnóstico da Organizadora · Paty Domingos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Estrutura clonada do quiz "Mapa da Alma" (fundo branco, barra fina no topo, botões em pílula,
+   cards com foto em grade, captura na 7ª tela, resultado em 4 áreas, página de vendas do evento).
+   Conteúdo e fotos: Paty Domingos. Tema claro único, de propósito. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --ink: #111827;
+  --muted: #4b5563;
+  --line: #e5e7eb;
+  --soft: #f9fafb;
+  --pri: #fbbf24;
+  --pri-ink: #111827;
+  --verde: #15803d;
+  --verde-soft: #ecfdf5;
+  --red: #b91c1c;
+  --red-soft: #fef2f2;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+.prog { position: fixed; top: 0; left: 0; right: 0; height: 6px; background: #f3f4f6; z-index: 5; }
+.prog i { display: block; height: 100%; width: 0; background: var(--pri); transition: width .35s ease; }
+.back { position: fixed; top: calc(8px + env(safe-area-inset-top)); left: calc(6px + env(safe-area-inset-left)); line-height: 1; z-index: 6; border: 0; background: none; font-size: 22px; color: var(--muted); padding: 6px 10px; cursor: pointer; }
+.back[hidden] { display: none; }
+main { max-width: 480px; margin: 0 auto; padding: calc(44px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(86px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left)); }
+/* tela com foto que ocupa o espaço livre (sem rolar): a foto estica até o botão, rosto centralizado */
+main.fill { display: flex; flex-direction: column; height: 100dvh; }
+main.fill .info-img { flex: 1 1 0; min-height: 140px; height: auto; max-height: none; object-position: 50% 45%; }
+main.sales { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
+h1 { font-size: clamp(20px, min(6.4vw, 3.9dvh), 28px); line-height: 1.2; margin: 8px 0 10px; text-align: center; font-weight: 800; }
+h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin: 4px 0 clamp(8px, 1.6dvh, 14px); text-align: center; font-weight: 800; }
+.sub { text-align: center; color: var(--muted); font-size: clamp(13.5px, 2.2dvh, 15px); line-height: 1.4; margin: 0 0 clamp(10px, 2dvh, 18px); }
+.foot { text-align: center; color: var(--muted); font-size: 13px; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card { border: 2px solid var(--line); border-radius: 18px; background: #fff; padding: 10px 10px 12px; text-align: center; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .1s; }
+.card img { width: 100%; aspect-ratio: 1; max-height: 24dvh; object-fit: cover; border-radius: 12px; display: block; background: var(--soft); }
+.card b { display: block; margin-top: 8px; font-size: 15.5px; }
+.card:active, .opt:active { transform: scale(.98); }
+.card.on, .opt.on { border-color: var(--pri); background: #fffbeb; }
+.opts { display: grid; gap: clamp(7px, 1.3dvh, 10px); }
+.opt { width: 100%; text-align: left; border: 2px solid var(--line); background: #fff; border-radius: 14px; padding: clamp(10px, 1.9dvh, 15px) 14px; font: inherit; font-size: clamp(14px, 2.2dvh, 15.5px); line-height: 1.3; color: var(--ink); cursor: pointer; display: flex; gap: 10px; align-items: center; }
+.opt .ck { margin-left: auto; width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--line); flex: none; }
+.opt.on .ck { background: var(--pri); border-color: var(--pri); }
+.cta { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(transparent, #fff 30%); z-index: 4; }
+.cta button { display: block; width: 100%; max-width: 448px; margin: 0 auto; border: 0; border-radius: 999px; background: var(--pri); color: var(--pri-ink); font: inherit; font-weight: 800; font-size: 16px; padding: 17px; cursor: pointer; box-shadow: 0 6px 18px rgba(251,191,36,.35); text-transform: uppercase; letter-spacing: .02em; }
+.cta button:disabled { opacity: .45; box-shadow: none; }
+.cta[hidden] { display: none; }
+.form { display: grid; gap: 10px; }
+.form input { width: 100%; border: 2px solid var(--line); border-radius: 14px; padding: 15px 16px; font: inherit; font-size: 16px; }
+.form input:focus { outline: none; border-color: var(--pri); }
+.err { color: var(--red); font-size: 14px; text-align: center; margin: 4px 0 0; }
+.info-img { width: 100%; height: clamp(120px, 28dvh, 260px); object-fit: cover; object-position: 50% 25%; border-radius: 16px; display: block; margin: 4px 0 clamp(8px, 1.6dvh, 14px); }
+.sales .info-img { height: auto; }
+.body { font-size: clamp(14px, 2.3dvh, 16px); line-height: 1.45; color: #1f2937; }
+.body p { margin: 0 0 clamp(6px, 1.3dvh, 12px); }
+.hl { background: #fef3c7; padding: 0 3px; border-radius: 4px; font-weight: 700; }
+.money { color: var(--verde); font-weight: 800; }
+.loading { text-align: center; padding-top: 18vh; }
+.ring { width: 120px; height: 120px; margin: 0 auto 18px; position: relative; }
+.ring svg { transform: rotate(-90deg); }
+.ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 26px; }
+/* resultado */
+.res-h { text-align: center; font-size: 13px; letter-spacing: .08em; font-weight: 800; color: var(--muted); margin-top: 6px; }
+.scale { margin: 8px 0 clamp(8px, 1.6dvh, 18px); }
+.scale-bar { height: 12px; border-radius: 999px; background: linear-gradient(90deg, #fde68a, #fbbf24, #f59e0b, #16a34a); position: relative; }
+.scale-bar s { position: absolute; top: -6px; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 4px solid var(--ink); transform: translateX(-50%); }
+.scale-lbl { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+.area { border: 1px solid var(--line); border-radius: 14px; padding: clamp(8px, 1.4dvh, 12px) 12px; margin-bottom: clamp(6px, 1dvh, 8px); background: var(--soft); }
+.top-area { border: 2px solid var(--pri); background: #fffbeb; border-radius: 14px; padding: 10px 12px; margin: 0 0 clamp(8px, 1.4dvh, 12px); font-size: clamp(13px, 2dvh, 14.5px); line-height: 1.4; }
+.area-t { display: flex; justify-content: space-between; font-weight: 800; font-size: 14px; }
+.area-bar { height: 8px; border-radius: 99px; background: #e5e7eb; margin: 6px 0 0; overflow: hidden; }
+.area-bar i { display: block; height: 100%; background: var(--pri); border-radius: 99px; }
+.area p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.45; }
+/* comparação */
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 clamp(8px, 1.6dvh, 14px); }
+.cmp > div { border-radius: 16px; padding: 12px; }
+.cmp .a { background: var(--red-soft); }
+.cmp .b { background: var(--verde-soft); }
+.cmp h3 { margin: 0 0 8px; font-size: 13px; text-align: center; letter-spacing: .04em; }
+.cmp .a h3 { color: var(--red); } .cmp .b h3 { color: var(--verde); }
+.cmp li { font-size: clamp(12.5px, 1.9dvh, 13.5px); line-height: 1.3; margin-bottom: clamp(4px, .9dvh, 8px); }
+.cmp ul { margin: 0; padding-left: 16px; }
+/* vendas */
+.s-eyebrow { text-align: center; font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #b45309; }
+.s-box { border: 2px solid var(--line); border-radius: 18px; padding: 16px; margin: 16px 0; }
+.s-box h3 { margin: 0 0 10px; font-size: 15px; line-height: 1.3; }
+.s-box ul { margin: 0; padding: 0; list-style: none; }
+.s-box li { padding: 7px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.4; }
+.s-box li:first-child { border-top: 0; }
+.s-check b { display: block; } .s-check span { color: var(--muted); font-size: 14px; }
+.price { border: 2px solid var(--pri); border-radius: 18px; overflow: hidden; margin: 18px 0; text-align: center; }
+.price .bn { background: var(--pri); font-weight: 800; padding: 9px; font-size: 14px; }
+.price .pv { font-size: 40px; font-weight: 800; margin: 10px 0 0; }
+.price small { display: block; color: var(--muted); font-size: 13px; padding: 4px 12px; }
+.price button { margin: 12px 16px 16px; width: calc(100% - 32px); border: 0; border-radius: 999px; background: var(--verde); color: #fff; font: inherit; font-weight: 800; font-size: 16px; padding: 16px; cursor: pointer; text-transform: uppercase; }
+.car { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+.car::-webkit-scrollbar { display: none; }
+.car img { flex: 0 0 84%; height: clamp(260px, 58dvh, 560px); object-fit: contain; background: var(--soft); border-radius: 14px; scroll-snap-align: center; }
+.dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+.dots i { width: 7px; height: 7px; border-radius: 50%; background: #d1d5db; transition: background .2s, width .2s; }
+.dots i.on { background: var(--pri); width: 18px; border-radius: 4px; }
+.swipe { text-align: center; color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.proofs img { width: 100%; border-radius: 14px; margin-bottom: 10px; display: block; }
+.vid video { width: 100%; max-height: 62vh; border-radius: 16px; display: block; background: #000; object-fit: contain; }
+.tbd { background: #fef3c7; color: #92400e; border-radius: 6px; padding: 0 6px; font-weight: 700; font-size: .9em; }
+#toast { position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; transition: opacity .2s; z-index: 9; pointer-events: none; }
+#toast.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"><i id="prog"></i></div>
+<button class="back" id="back" type="button" aria-label="Voltar" hidden>&#8592;</button>
+<main id="app" aria-live="polite"></main>
+<div class="cta" id="cta" hidden><button type="button" id="ctaBtn">Continuar</button></div>
+<div id="toast" role="status"></div>
+<script>
+/* ===================== CONFIGURAÇÃO ===================== */
+const CONFIG = {
+  EVENTO: "Profissão Personal Organizer",
+  DATAS: "7 e 8 de novembro",
+  PRECO: "R$19,90",
+  CHECKOUT_URL: "",   /* link do checkout do ingresso (nome, e-mail e WhatsApp vão na URL) */
+  WEBHOOK_URL: ""     /* recebe o lead do formulário (POST JSON) */
+};
+
+/* ===================== TELAS =====================
+   Ordem e tipos espelham o Mapa da Alma. Cada opção de pergunta soma pontos em uma das 4 áreas (dim). */
+const DIMS = {
+  financeiro: { label: "FINANCEIRO", emoji: "💰", desc: "Você trabalha muito e recebe pouco pelo que sabe fazer. Organização é um serviço que paga de R$400 a R$600 por dia, e você ainda não cobra por ele." },
+  tecnica: { label: "TÉCNICA", emoji: "🧺", desc: "Você já tem o olhar e o cuidado no dia a dia, mas organiza no improviso. Falta o método: categorização, desapego e descarte, gabarito." },
+  reconhecimento: { label: "RECONHECIMENTO", emoji: "👑", desc: "Todo mundo pede a sua ajuda, mas ninguém trata isso como profissão. Falta você se posicionar e ser paga como profissional." },
+  liberdade: { label: "LIBERDADE", emoji: "🗓️", desc: "A sua rotina hoje é decidida pelos outros. Como personal organizer, você escolhe os dias e monta a agenda em volta da sua família." }
+};
+const IMG = g => ({ a1: `img/${g}-18-29.jpg`, a2: `img/${g}-29-39.jpg`, a3: `img/${g}-39-49.jpg`, a4: `img/${g}-50.jpg` });
+
+const STEPS = [
+  { id: "genero", type: "grid",
+    title: "Não é falta de talento: é falta de método.",
+    sub: "Descubra em menos de 2 minutos se você tem perfil para transformar organização em profissão e quanto isso pode render. Comece escolhendo:",
+    foot: "⭐ Mais de 10 mil alunas da Paty · Leva menos de 2 minutos · Grátis e sigiloso",
+    options: [{ v: "homem", label: "Homem", img: "img/genero-homem.jpg" }, { v: "mulher", label: "Mulher", img: "img/genero-mulher.jpg" }] },
+  { id: "idade", type: "grid", title: "Qual a sua idade?",
+    options: g => { const i = IMG(g.genero === "homem" ? "homem" : "mulher"); return [{ v: "18-29", label: "18 a 29", img: i.a1 }, { v: "30-39", label: "30 a 39", img: i.a2 }, { v: "40-49", label: "40 a 49", img: i.a3 }, { v: "50+", label: "50+", img: i.a4 }]; } },
+  { id: "diarista", type: "q", title: "Você trabalha como diarista ou empregada doméstica?",
+    options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
+  { id: "casada", type: "q", title: "Você é casado(a)?",
+    options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
+  { id: "filhos", type: "q", title: "Você tem filhos?",
+    options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
+  { id: "lead", type: "form", title: "Já estamos montando o seu Diagnóstico da Organizadora...",
+    sub: "Deixe seus dados para receber o seu diagnóstico completo no final.",
+    foot: "Usamos seu WhatsApp só para te enviar o seu resultado e o seu caminho. Sem spam.",
+    cta: "RECEBER MEU DIAGNÓSTICO" },
+  { id: "i_diaria", type: "info", img: "img/paty-closet-v1.jpg",
+    title: "Você sabia que uma personal organizer cobra de R$400 a R$600 por dia?",
+    body: g => `<p>É o mesmo trabalho que você já faz em casa: arrumar o guarda-roupa, a cozinha, as gavetas.</p>
+      <p>A diferença é que a personal organizer faz isso <span class="hl">com técnica e com método</span>, e é paga como profissional.</p>
+      ${g.diarista === "sim" ? `<p>Para quem já trabalha em casa de família, a virada é ainda mais natural: <b>você já conhece a rotina de uma casa como poucas pessoas</b>.</p>` : `<p>E a primeira cliente costuma vir de quem já te conhece: uma amiga, uma vizinha, alguém da família.</p>`}` },
+  { id: "frase", type: "q", title: "Qual frase mais ressoa com você?",
+    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Trabalho muito, mas o dinheiro nunca é suficiente." },
+      { v: "b", dim: "reconhecimento", label: "😐 Organizo para todo mundo, mas ninguém me paga por isso." },
+      { v: "c", dim: "tecnica", label: "🤔 Gosto de organizar, mas não sei se tenho técnica." },
+      { v: "d", dim: "liberdade", label: "😔 Queria trabalhar nos meus horários e ficar mais com a família." }] },
+  { id: "trabalho", type: "q", title: "No seu trabalho hoje, o que mais pesa?",
+    options: [{ v: "a", dim: "financeiro", label: "😩 Trabalho pesado e mal pago." },
+      { v: "b", dim: "reconhecimento", label: "😞 Não sou valorizada pelo que faço." },
+      { v: "c", dim: "liberdade", label: "⏰ Não tenho controle dos meus horários." },
+      { v: "d", dim: "financeiro", label: "🏠 Hoje não trabalho fora e dependo da renda de outra pessoa." }] },
+  { id: "dinheiro", type: "q", title: "Com o dinheiro, o que mais frustra?",
+    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Chega o fim do mês e não sobra nada." },
+      { v: "b", dim: "financeiro", label: "😨 Depender de outra pessoa para as minhas coisas." },
+      { v: "c", dim: "reconhecimento", label: "😐 Saber que eu poderia cobrar mais pelo que faço." },
+      { v: "d", dim: "liberdade", label: "😔 Não conseguir dar aos meus filhos o que eu queria." }] },
+  { id: "i_paty", type: "info", fill: true, img: "img/paty-verde-rosto-v1.jpg",
+    title: "A Paty começou como empregada doméstica.",
+    body: () => `<p>Hoje ela é <b>organizadora de alto padrão</b>, com mais de 11 anos de profissão e mais de 10 mil alunas no Brasil e no exterior.</p>
+      <p>Ela não nasceu sabendo. Ela aprendeu a técnica, fez o primeiro laboratório e começou a cobrar.</p>
+      <p><span class="hl">O que faltava não era talento. Era o método.</span></p>` },
+  { id: "familia", type: "q", title: "Em casa e com a família, o que mais dói?",
+    options: [{ v: "a", dim: "reconhecimento", label: "😔 Ninguém vê o quanto eu me esforço." },
+      { v: "b", dim: "liberdade", label: "😢 Passar pouco tempo com quem eu amo." },
+      { v: "c", dim: "financeiro", label: "😞 Não poder ajudar mais em casa com dinheiro." },
+      { v: "d", dim: "reconhecimento", label: "🫠 Cuido de todo mundo, mas ninguém cuida de mim." }] },
+  { id: "organizar", type: "q", title: "Quando você organiza, o que mais trava?",
+    options: [{ v: "decidir", dim: "tecnica", label: "🤷‍♀️ Decidir o que fica e o que sai." },
+      { v: "categorias", dim: "tecnica", label: "🧩 Separar tudo por categorias." },
+      { v: "lugar", dim: "tecnica", label: "📦 Definir o lugar de cada coisa." },
+      { v: "manter", dim: "tecnica", label: "🔁 Manter organizado depois." }] },
+  { id: "impede", type: "q", title: "O que te impede de dar esse passo?",
+    options: [{ v: "a", dim: "tecnica", label: "😕 Não sei por onde começar." },
+      { v: "b", dim: "reconhecimento", label: "🤨 Não sei se isso é para mim." },
+      { v: "c", dim: "financeiro", label: "💸 Acho que preciso de organizadores caros." },
+      { v: "d", dim: "reconhecimento", label: "😞 Tenho vergonha de cobrar." }] },
+  { id: "acordar", type: "q", title: "Se você pudesse acordar amanhã com uma coisa diferente, o que seria?",
+    options: [{ v: "a", dim: "financeiro", label: "🤑 Ter o meu próprio dinheiro, sem depender de ninguém." },
+      { v: "b", dim: "reconhecimento", label: "😎 Ser chamada de profissional, não de ajudante." },
+      { v: "c", dim: "liberdade", label: "🗓️ Escolher os dias em que vou trabalhar." },
+      { v: "d", dim: "liberdade", label: "😁 Dar uma vida melhor para a minha família." }] },
+  { id: "i_pedem", type: "info",
+    title: "Você já percebeu que todo mundo pede a sua ajuda para organizar?",
+    body: () => `<p>O guarda-roupa da irmã. A cozinha da amiga. A mudança da vizinha.</p>
+      <p>"Você faz isso tão bem!" Mas no fim do dia, <b>ninguém paga</b>, e você volta para casa cansada e sem reconhecimento.</p>
+      <p>Esse pedido tem nome: <span class="hl">é uma cliente</span>. Só falta você aprender a trabalhar e a cobrar como profissional.</p>` },
+  { id: "repetir", type: "q", title: "O que você quer parar de repetir?",
+    options: [{ v: "a", dim: "reconhecimento", label: "😮‍💨 Organizar de graça para todo mundo." },
+      { v: "b", dim: "financeiro", label: "😨 Trabalhar o mês inteiro e não ver o dinheiro." },
+      { v: "c", dim: "tecnica", label: "😫 Começar a organizar e desistir no meio." },
+      { v: "d", dim: "liberdade", label: "🫠 Viver no horário dos outros." }] },
+  { id: "ouviu", type: "multi", title: "Quais dessas frases você já ouviu?",
+    options: [{ v: "a", dim: "reconhecimento", label: "😠 \"Arrumar casa não é profissão.\"" },
+      { v: "b", dim: "reconhecimento", label: "🙁 \"Isso é serviço de empregada.\"" },
+      { v: "c", dim: "financeiro", label: "😮 \"Ninguém vai te pagar para arrumar armário.\"" },
+      { v: "d", dim: "tecnica", label: "🥰 \"Organiza o meu também? Você faz tão bem!\"" },
+      { v: "x", label: "❌ Nenhuma das anteriores", none: true }] },
+  { id: "pediram", type: "q", title: "Alguém já pediu a sua ajuda para organizar alguma coisa?",
+    options: [{ v: "a", dim: "reconhecimento", label: "🙋‍♀️ Sim, vivem me pedindo." },
+      { v: "b", dim: "reconhecimento", label: "👭 Já ajudei amigas e a família." },
+      { v: "c", dim: "tecnica", label: "🏠 Só organizo a minha casa." },
+      { v: "d", dim: "tecnica", label: "🤔 Nunca pediram." }] },
+  { id: "tempo", type: "q", title: "Há quanto tempo você trabalha muito e sente que ganha pouco?",
+    options: [{ v: "a", dim: "financeiro", label: "😔 Desde sempre." },
+      { v: "b", dim: "financeiro", label: "😐 Faz anos." },
+      { v: "c", dim: "liberdade", label: "🙂 Começou há pouco tempo." },
+      { v: "d", dim: "reconhecimento", label: "😅 Não trabalho fora, mas trabalho muito em casa." }] },
+  { id: "cobrar", type: "q", title: "Quando você pensa em cobrar para organizar, o que acontece?",
+    options: [{ v: "a", dim: "reconhecimento", label: "😳 Dá vergonha, parece que não mereço." },
+      { v: "b", dim: "tecnica", label: "🧐 Não sei quanto cobrar." },
+      { v: "c", dim: "reconhecimento", label: "😧 Uma voz diz que ninguém vai pagar." },
+      { v: "d", dim: "financeiro", label: "😎 Eu cobraria hoje se soubesse como começar." }] },
+  { id: "ano", type: "q", title: "Se daqui a um ano nada mudar, como vai se sentir?",
+    options: [{ v: "a", label: "😔 Conformada: vou aceitar que é assim." },
+      { v: "b", label: "😰 Frustrada, mas vou continuar tentando." },
+      { v: "c", label: "😟 Arrependida: sabia que tinha algo a fazer." },
+      { v: "d", label: "😕 Igual a hoje. E isso já me assusta." }] },
+  { id: "mudaria", type: "q", title: "O que mudaria se você soubesse exatamente por onde começar?",
+    options: [{ v: "a", label: "✅ Pararia de organizar de graça e começaria a cobrar." },
+      { v: "b", label: "🙂 Faria o meu primeiro laboratório ainda este mês." },
+      { v: "c", label: "💪 Teria coragem de oferecer o meu trabalho." },
+      { v: "d", label: "😍 Teria o meu próprio dinheiro." }] },
+  { id: "quanto", type: "q", title: "Quanto tempo você ainda vai organizar de graça?",
+    options: [{ v: "a", label: "😡 Cheguei no limite, não quero mais." },
+      { v: "b", label: "🙂 Sei que preciso mudar, só me falta o caminho." },
+      { v: "c", label: "😐 Tenho tentado sozinha, e isso cansa." },
+      { v: "d", label: "😭 Uma parte quer esperar, outra sabe que esperar é o problema." }] },
+  { id: "sentir", type: "multi", title: "Como você quer se sentir depois dessa virada?",
+    options: [{ v: "a", dim: "reconhecimento", label: "Valorizada, sendo paga pelo que sabe fazer." },
+      { v: "b", dim: "financeiro", label: "Independente, com o meu próprio dinheiro." },
+      { v: "c", dim: "liberdade", label: "Livre, trabalhando nos dias que eu escolher." },
+      { v: "d", dim: "tecnica", label: "Segura, com técnica e método." }] },
+  { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 4500 },
+  { id: "resultado", type: "result" },
+  { id: "motivada", type: "q", title: "Quão motivado(a) você está para começar a cobrar pela organização?",
+    options: [{ v: "a", label: "🧐 Só estou curiosa para tentar." }, { v: "b", label: "😔 Ainda não tenho certeza se consigo." }, { v: "c", label: "🔥 Não vou parar até conseguir." }] },
+  { id: "i_cmp", type: "compare" },
+  { id: "i_prova", type: "info", title: "Agora veja o que aconteceu com quem aprendeu com a Paty...",
+    body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"], ["img/prova-elizete-destaque.jpg", "Depoimento da aluna Elizete"]]) },
+  { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse esse passo a passo nas mãos?",
+    options: [{ v: "a", label: "✅ Sim, estou pronta para isso." }, { v: "b", label: "😃 Com certeza, só preciso de direção." }, { v: "c", label: "🤔 Acho que sim... quero tentar." }] },
+  { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3000 },
+  { id: "vendas", type: "sales" }
+];
+
+/* ===================== MOTOR ===================== */
+const A = {};
+let i = 0;
+const hist = [];
+const app = document.getElementById("app"), cta = document.getElementById("cta"), btn = document.getElementById("ctaBtn"), back = document.getElementById("back");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const toast = m => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2600); };
+const opts = s => typeof s.options === "function" ? s.options(A) : s.options;
+const nome = () => esc((A.nome || "").split(" ")[0]);
+
+function scores() {
+  const sc = { financeiro: 0, tecnica: 0, reconhecimento: 0, liberdade: 0 };
+  STEPS.forEach(s => {
+    if (!s.options || typeof s.options === "function") return;
+    const val = A[s.id];
+    (Array.isArray(val) ? val : [val]).forEach(v => { const o = s.options.find(x => x.v === v); if (o && o.dim) sc[o.dim]++; });
+  });
+  const max = Math.max(1, ...Object.values(sc));
+  /* potencial por área entre 58% e 94%, proporcional às respostas */
+  const pct = {}; Object.keys(sc).forEach(k => pct[k] = Math.round(58 + 36 * sc[k] / max));
+  return pct;
+}
+
+function go(n) { if (n !== i) hist.push(i); i = n; render(); window.scrollTo(0, 0); }
+function next() { go(Math.min(i + 1, STEPS.length - 1)); }
+back.addEventListener("click", () => { if (!hist.length) return; i = hist.pop(); render(); });
+btn.addEventListener("click", () => { const s = STEPS[i]; if (s.onCta && s.onCta() === false) return; next(); });
+
+function setCta(label, enabled) { cta.hidden = !label; btn.textContent = label || ""; btn.disabled = enabled === false; }
+
+function render() {
+  const s = STEPS[i];
+  document.getElementById("prog").style.width = Math.round(100 * i / (STEPS.length - 1)) + "%";
+  back.hidden = i === 0 || s.type === "loading" || s.type === "sales";
+  let h = "";
+  if (s.type === "grid") {
+    h = `${i === 0 ? `<h1>${s.title}</h1>` : `<h2>${s.title}</h2>`}${s.sub ? `<p class="sub">${s.sub}</p>` : ""}
+      <div class="grid">${opts(s).map(o => `<button type="button" class="card${A[s.id] === o.v ? " on" : ""}" data-v="${o.v}"><img src="${o.img}" alt=""><b>${o.label}</b></button>`).join("")}</div>
+      ${s.foot ? `<p class="foot">${s.foot}</p>` : ""}`;
+    setCta(null);
+  } else if (s.type === "q") {
+    h = `<h2>${s.title}</h2><div class="opts">${opts(s).map(o => `<button type="button" class="opt${A[s.id] === o.v ? " on" : ""}" data-v="${o.v}">${o.label}</button>`).join("")}</div>`;
+    setCta(null);
+  } else if (s.type === "multi") {
+    const cur = A[s.id] || [];
+    h = `<h2>${s.title}</h2><p class="sub">Pode marcar mais de uma.</p><div class="opts">${opts(s).map(o => `<button type="button" class="opt${cur.includes(o.v) ? " on" : ""}" data-m="${o.v}"${o.none ? " data-none" : ""}>${o.label}<span class="ck"></span></button>`).join("")}</div>`;
+    setCta("Continuar", cur.length > 0);
+  } else if (s.type === "form") {
+    h = `<h2>${s.title}</h2><p class="sub">${s.sub}</p>
+      <form class="form" id="f" novalidate>
+        <input id="f-nome" type="text" autocomplete="given-name" placeholder="Primeiro nome" value="${esc(A.nome || "")}">
+        <input id="f-email" type="email" autocomplete="email" placeholder="E-mail" value="${esc(A.email || "")}">
+        <input id="f-whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp com DDD" value="${esc(A.whats || "")}">
+      </form><p class="err" id="f-err" hidden></p><p class="foot">${s.foot}</p>`;
+    setCta(s.cta);
+    s.onCta = () => {
+      const n = document.getElementById("f-nome").value.trim(), e = document.getElementById("f-email").value.trim(), w = document.getElementById("f-whats").value.replace(/\D/g, "");
+      const err = document.getElementById("f-err");
+      const bad = !n ? "Preencha o seu nome." : !/^\S+@\S+\.\S+$/.test(e) ? "Confira o seu e-mail." : w.length < 10 ? "Confira o seu WhatsApp com DDD." : "";
+      if (bad) { err.textContent = bad; err.hidden = false; return false; }
+      Object.assign(A, { nome: n, email: e, whats: w });
+      if (CONFIG.WEBHOOK_URL) fetch(CONFIG.WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origem: "diagnostico-organizadora", ...A }), keepalive: true }).catch(() => {});
+      return true;
+    };
+  } else if (s.type === "info") {
+    h = `${s.title ? `<h2>${s.title}</h2>` : ""}${s.img ? `<img class="info-img" src="${s.img}" alt="">` : ""}<div class="body">${s.body(A)}</div>`;
+    setCta("Continuar");
+  } else if (s.type === "loading") {
+    h = `<div class="loading"><div class="ring"><svg viewBox="0 0 120 120" width="120" height="120"><circle cx="60" cy="60" r="52" stroke="#f3f4f6" stroke-width="10" fill="none"/><circle id="arc" cx="60" cy="60" r="52" stroke="#fbbf24" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327"/></svg><b id="pct">0%</b></div><h2>${s.title}</h2></div>`;
+    setCta(null);
+    const t0 = performance.now(), here = i;
+    const tick = now => { if (i !== here) return; const p = Math.min(1, (now - t0) / s.ms); document.getElementById("pct").textContent = Math.round(p * 100) + "%"; document.getElementById("arc").style.strokeDashoffset = 327 * (1 - p); p < 1 ? requestAnimationFrame(tick) : setTimeout(next, 300); };
+    requestAnimationFrame(tick);
+  } else if (s.type === "result") {
+    const p = scores(); const avg = Math.round(Object.values(p).reduce((a, b) => a + b, 0) / 4);
+    const ord = Object.keys(p).sort((a, b) => p[b] - p[a]);
+    h = `<p class="res-h">${nome() ? nome().toUpperCase() + ", ESTE É O SEU RESULTADO" : "O SEU RESULTADO"}</p>
+      <h2>Resultado: Perfil de Organizadora com Potencial ${avg >= 80 ? "Muito Alto" : "Alto"}</h2>
+      <p class="sub">O seu potencial para virar personal organizer:</p>
+      <div class="scale"><div class="scale-bar"><s style="left:${avg}%"></s></div><div class="scale-lbl"><span>Baixo</span><span>Normal</span><span>Médio</span><span>Alto</span><span>Muito alto</span></div></div>
+      <div class="top-area"><b>${DIMS[ord[0]].emoji} Sua maior virada: ${DIMS[ord[0]].label.toLowerCase()}.</b> ${DIMS[ord[0]].desc}</div>
+      ${ord.map(k => `<div class="area"><div class="area-t"><span>${DIMS[k].emoji} ${DIMS[k].label}</span><span>${p[k]}%</span></div><div class="area-bar"><i style="width:${p[k]}%"></i></div></div>`).join("")}`;
+    setCta("Continuar");
+  } else if (s.type === "compare") {
+    h = `<h2>Veja a diferença entre quem organiza de graça e quem organiza como profissional</h2>
+      <div class="cmp"><div class="a"><h3>DE GRAÇA</h3><ul><li>Ajuda todo mundo e não recebe nada</li><li>Organiza no improviso</li><li>"Ajudante", sem reconhecimento</li><li>Trabalho pesado e mal pago</li><li>Horário decidido pelos outros</li></ul></div>
+      <div class="b"><h3>PROFISSIONAL</h3><ul><li>Cobra de R$400 a R$600 por dia</li><li>Trabalha com técnica e método</li><li>Personal organizer, profissão com nome</li><li>Clientes por indicação</li><li>Escolhe os dias de trabalho</li></ul></div></div>
+      <img class="info-img" style="height:clamp(90px, 21dvh, 240px);object-fit:contain;background:var(--soft)" src="img/antes-depois-closet-v2.jpg" alt="Closet antes e depois da organização">`;
+    setCta("Continuar");
+  } else if (s.type === "sales") {
+    h = sales(); setCta(null);
+  }
+  app.innerHTML = h;
+  app.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => { A[s.id] = b.dataset.v; b.classList.add("on"); setTimeout(next, 220); }));
+  app.querySelectorAll("[data-m]").forEach(b => b.addEventListener("click", () => {
+    let cur = A[s.id] || []; const v = b.dataset.m;
+    if (b.hasAttribute("data-none")) cur = cur.includes(v) ? [] : [v];
+    else { cur = cur.filter(x => x !== "x"); cur = cur.includes(v) ? cur.filter(x => x !== v) : [...cur, v]; }
+    A[s.id] = cur;
+    app.querySelectorAll("[data-m]").forEach(x => x.classList.toggle("on", cur.includes(x.dataset.m)));
+    btn.disabled = !cur.length;
+  }));
+  const car = document.getElementById("car");
+  if (car) car.addEventListener("scroll", () => { const k = Math.round(car.scrollLeft / (car.firstElementChild.offsetWidth + 10)); car.nextElementSibling.querySelectorAll("i").forEach((d, j) => d.classList.toggle("on", j === k)); }, { passive: true });
+  app.classList.toggle("sales", s.type === "sales");
+  app.classList.toggle("fill", !!s.fill);
+  app.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", buy));
+  if (s.type === "form") document.getElementById("f").addEventListener("submit", e => { e.preventDefault(); btn.click(); });
+}
+
+function carrossel(list) {
+  return `<div class="car" id="car">${list.map(([src, alt]) => `<img src="${src}" alt="${alt}">`).join("")}</div>
+    <div class="dots">${list.map((_, k) => `<i${k ? "" : ' class="on"'}></i>`).join("")}</div><p class="swipe">Arraste para o lado →</p>`;
+}
+function buy() {
+  if (!CONFIG.CHECKOUT_URL) { toast("Link do checkout · a definir"); return; }
+  const u = new URL(CONFIG.CHECKOUT_URL);
+  if (A.nome) u.searchParams.set("name", A.nome); if (A.email) u.searchParams.set("email", A.email); if (A.whats) u.searchParams.set("phone", A.whats);
+  new URLSearchParams(location.search).forEach((v, k) => { if (k.startsWith("utm_") && !u.searchParams.has(k)) u.searchParams.set(k, v); });
+  location.href = u.toString();
+}
+
+function sales() {
+  const TBD = `<span class="tbd">a definir</span>`;
+  const price = `<div class="price"><div class="bn">🎟️ INGRESSO · ${CONFIG.EVENTO.toUpperCase()}</div>
+    <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS}, à noite · horário ${TBD}</small>
+    <small>💳 Cartão · Pix · 🛡️ Garantia de 7 dias</small>
+    <button type="button" data-buy>Garantir minha vaga · ${CONFIG.PRECO}</button></div>`;
+  return `<p class="s-eyebrow">WORKSHOP AO VIVO COM A PATY DOMINGOS</p>
+    <h1>Ei ${nome() || "você"}...</h1>
+    <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Em 2 dias, a Paty vai te ensinar organização do zero. E ela pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
+    <div class="vid"><video src="video/diagnostico-paty-v1.mp4" controls playsinline preload="metadata" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video></div>
+    ${price}
+    <div class="s-box"><h3>A SUA VIDA ANTES DO WORKSHOP:</h3><ul>
+      <li>❌ Organizar de graça para a família e as amigas</li><li>❌ Trabalho pesado e mal pago</li><li>❌ Achar que "isso não é para mim"</li>
+      <li>❌ Não saber por onde começar nem quanto cobrar</li><li>❌ Depender da renda de outra pessoa</li><li>❌ Viver no horário dos outros</li></ul></div>
+    <div class="s-box"><h3>EM 2 DIAS, VOCÊ VAI APRENDER:</h3><ul>
+      <li>✅ O que faz uma personal organizer e onde ela atua</li><li>✅ Os fundamentos da técnica: categorização, desapego e descarte, gabarito${A.organizar ? " <b>(resolve a sua dificuldade)</b>" : ""}</li>
+      <li>✅ O que é o laboratório e por que ele é o primeiro passo</li><li>✅ Como conseguir as primeiras clientes por indicação</li>
+      <li>✅ Como cobrar pela visita técnica e chegar a R$400 a R$600 por dia</li><li>✅ A história da Paty: de empregada doméstica a organizadora de alto padrão</li></ul></div>
+    <div class="s-box s-check"><h3>AO VIVO. NÃO É UM CURSO GRAVADO.</h3><ul>
+      <li><b>✅ Aprendizado ao vivo</b><span>Você acompanha a Paty em tempo real, pelo celular.</span></li>
+      <li><b>✅ Do zero</b><span>Feito para quem nunca trabalhou com organização.</span></li>
+      <li><b>✅ Prática na sua casa</b><span>Você começa por um guarda-roupa, sem comprar organizadores caros.</span></li></ul></div>
+    <div class="s-box"><h3>A SUA VIDA DEPOIS DO WORKSHOP:</h3><ul>
+      <li>✅ Saber exatamente por onde começar</li><li>✅ Ter coragem de cobrar pelo que você já sabe fazer</li><li>✅ Ser chamada de profissional, não de ajudante</li>
+      <li>✅ Ter o seu próprio dinheiro</li><li>✅ Escolher os dias de trabalho e ficar mais com a família</li></ul></div>
+    <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
+    <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"><img src="img/prova-wa3.jpg" alt="Mensagem de aluna"></div>
+    <h2>Quem vai te ensinar</h2>
+    <img class="info-img" src="img/paty-vinho-sofa-v1.jpg" alt="Paty Domingos sorrindo, sentada no sofá">
+    <div class="s-box"><ul><li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li><li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li><li>🏆 Criadora do <b>Método Organizadas</b> e organizadora de alto padrão</li></ul></div>
+    ${price}
+    <p class="foot">Evento online educacional. Garantia legal de 7 dias (art. 49 do CDC).</p>`;
+}
+
+render();
+</script>
+</body>
+</html>
