@@ -36,15 +36,16 @@ main { max-width: 480px; margin: 0 auto; padding: calc(44px + env(safe-area-inse
 /* tela com foto que ocupa o espaço livre (sem rolar): a foto estica até o botão, rosto centralizado */
 main.fill { display: flex; flex-direction: column; height: 100dvh; }
 main.fill .info-img { flex: 1 1 0; min-height: 140px; height: auto; max-height: none; object-position: 50% 45%; }
+main.nocta { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
 main.sales { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 h1 { font-size: clamp(20px, min(6.4vw, 3.9dvh), 28px); line-height: 1.2; margin: 8px 0 10px; text-align: center; font-weight: 800; }
 h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin: 4px 0 clamp(8px, 1.6dvh, 14px); text-align: center; font-weight: 800; }
 .sub { text-align: center; color: var(--muted); font-size: clamp(13.5px, 2.2dvh, 15px); line-height: 1.4; margin: 0 0 clamp(10px, 2dvh, 18px); }
-.foot { text-align: center; color: var(--muted); font-size: 13px; margin-top: 18px; }
+.foot { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: clamp(8px, 1.6dvh, 18px); }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.card { border: 2px solid var(--line); border-radius: 18px; background: #fff; padding: 10px 10px 12px; text-align: center; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .1s; }
-.card img { width: 100%; aspect-ratio: 1; max-height: 24dvh; object-fit: cover; border-radius: 12px; display: block; background: var(--soft); }
-.card b { display: block; margin-top: 8px; font-size: 15.5px; }
+.card { border: 2px solid var(--line); border-radius: 18px; background: #fff; padding: 8px 8px clamp(6px, 1.2dvh, 12px); text-align: center; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .1s; }
+.card img { width: 100%; aspect-ratio: 1; max-height: 22dvh; object-fit: cover; border-radius: 12px; display: block; background: var(--soft); }
+.card b { display: block; margin-top: clamp(4px, .9dvh, 8px); font-size: 15.5px; }
 .card:active, .opt:active { transform: scale(.98); }
 .card.on, .opt.on { border-color: var(--pri); background: #fffbeb; }
 .opts { display: grid; gap: clamp(7px, 1.3dvh, 10px); }
@@ -151,19 +152,16 @@ const DIMS = {
   reconhecimento: { label: "RECONHECIMENTO", emoji: "👑", desc: "Todo mundo pede a sua ajuda, mas ninguém trata isso como profissão. Falta você se posicionar e ser paga como profissional." },
   liberdade: { label: "LIBERDADE", emoji: "🗓️", desc: "A sua rotina hoje é decidida pelos outros. Como personal organizer, você escolhe os dias e monta a agenda em volta da sua família." }
 };
-const IMG = g => ({ a1: `img/${g}-18-29.jpg`, a2: `img/${g}-29-39.jpg`, a3: `img/${g}-39-49.jpg`, a4: `img/${g}-50.jpg` });
 
 const STEPS = [
-  { id: "genero", type: "grid",
+  { id: "idade", type: "grid",
     title: "Não é falta de talento: é falta de método.",
-    sub: "Descubra em menos de 2 minutos se você tem perfil para transformar organização em profissão e quanto isso pode render. Comece escolhendo:",
+    sub: "Descubra em menos de 2 minutos se você tem perfil para transformar organização em profissão. Comece pela sua idade:",
     foot: "⭐ Mais de 10 mil alunas da Paty · Leva menos de 2 minutos · Grátis e sigiloso",
-    options: [{ v: "homem", label: "Homem", img: "img/genero-homem.jpg" }, { v: "mulher", label: "Mulher", img: "img/genero-mulher.jpg" }] },
-  { id: "idade", type: "grid", title: "Qual a sua idade?",
-    options: g => { const i = IMG(g.genero === "homem" ? "homem" : "mulher"); return [{ v: "18-29", label: "18 a 29", img: i.a1 }, { v: "30-39", label: "30 a 39", img: i.a2 }, { v: "40-49", label: "40 a 49", img: i.a3 }, { v: "50+", label: "50+", img: i.a4 }]; } },
+    options: [{ v: "18-29", label: "18 a 29", img: "img/idade-mulher-1.webp" }, { v: "30-39", label: "30 a 39", img: "img/idade-mulher-2.webp" }, { v: "40-49", label: "40 a 49", img: "img/idade-mulher-3.webp" }, { v: "50+", label: "50+", img: "img/idade-mulher-4.webp" }] },
   { id: "diarista", type: "q", title: "Você trabalha como diarista ou empregada doméstica?",
     options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
-  { id: "casada", type: "q", title: "Você é casado(a)?",
+  { id: "casada", type: "q", title: "Você é casada?",
     options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
   { id: "filhos", type: "q", title: "Você tem filhos?",
     options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
@@ -269,7 +267,7 @@ const STEPS = [
       { v: "d", dim: "tecnica", label: "Segura, com técnica e método." }] },
   { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 4500 },
   { id: "resultado", type: "result" },
-  { id: "motivada", type: "q", title: "Quão motivado(a) você está para começar a cobrar pela organização?",
+  { id: "motivada", type: "q", title: "Quão motivada você está para começar a cobrar pela organização?",
     options: [{ v: "a", label: "🧐 Só estou curiosa para tentar." }, { v: "b", label: "😔 Ainda não tenho certeza se consigo." }, { v: "c", label: "🔥 Não vou parar até conseguir." }] },
   { id: "i_cmp", type: "compare", fill: true },
   { id: "i_prova", type: "info", title: "Agora veja o que aconteceu com quem aprendeu com a Paty...",
@@ -308,7 +306,7 @@ function next() { go(Math.min(i + 1, STEPS.length - 1)); }
 back.addEventListener("click", () => { if (!hist.length) return; i = hist.pop(); render(); });
 btn.addEventListener("click", () => { const s = STEPS[i]; if (s.onCta && s.onCta() === false) return; next(); });
 
-function setCta(label, enabled) { cta.hidden = !label; btn.textContent = label || ""; btn.disabled = enabled === false; }
+function setCta(label, enabled) { app.classList.toggle("nocta", !label); cta.hidden = !label; btn.textContent = label || ""; btn.disabled = enabled === false; }
 
 function render() {
   const s = STEPS[i];
