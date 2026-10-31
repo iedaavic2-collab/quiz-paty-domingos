@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="robots" content="noindex, nofollow">
 <title>Diagnóstico da Organizadora · Paty Domingos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .foot { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: clamp(8px, 1.6dvh, 18px); }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .card { border: 2px solid var(--line); border-radius: 18px; background: #fff; padding: 8px 8px clamp(6px, 1.2dvh, 12px); text-align: center; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .1s; }
-.card img { width: 100%; aspect-ratio: 1; max-height: 22dvh; object-fit: cover; border-radius: 12px; display: block; background: var(--soft); }
+.card img { width: 100%; aspect-ratio: 1; max-height: 17.5dvh; object-fit: cover; border-radius: 12px; display: block; background: var(--soft); }
 .card b { display: block; margin-top: clamp(4px, .9dvh, 8px); font-size: 15.5px; }
 .card:active, .opt:active { transform: scale(.98); }
 .card.on, .opt.on { border-color: var(--pri); background: #fffbeb; }
@@ -155,8 +155,8 @@ const DIMS = {
 
 const STEPS = [
   { id: "idade", type: "grid",
-    title: "Não é falta de talento: é falta de método.",
-    sub: "Descubra em menos de 2 minutos se você tem perfil para transformar organização em profissão. Comece pela sua idade:",
+    title: "Seu talento para organizar pode se transformar em uma profissão",
+    sub: "Responda ao teste, descubra seu perfil e veja os primeiros passos para começar a atuar como Personal Organizer — mesmo que você ainda não saiba por onde começar.",
     foot: "⭐ Mais de 10 mil alunas da Paty · Leva menos de 2 minutos · Grátis e sigiloso",
     options: [{ v: "18-29", label: "18 a 29", img: "img/idade-mulher-1.webp" }, { v: "30-39", label: "30 a 39", img: "img/idade-mulher-2.webp" }, { v: "40-49", label: "40 a 49", img: "img/idade-mulher-3.webp" }, { v: "50+", label: "50+", img: "img/idade-mulher-4.webp" }] },
   { id: "diarista", type: "q", title: "Você trabalha como diarista ou empregada doméstica?",
