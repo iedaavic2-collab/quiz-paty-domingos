@@ -192,25 +192,23 @@ const STEPS = [
     body: () => `<p>Hoje ela é <b>organizadora de alto padrão</b>, com mais de 11 anos de profissão e mais de 10 mil alunas no Brasil e no exterior.</p>
       <p>Ela não nasceu sabendo. Ela aprendeu a técnica, fez o primeiro laboratório e começou a cobrar.</p>
       <p><span class="hl">O que faltava não era talento. Era o método.</span></p>` },
-  { id: "pediram", type: "q", title: "Alguém já pediu a sua ajuda para organizar alguma coisa?",
-    options: [{ v: "a", dim: "reconhecimento", label: "🙋‍♀️ Sim, vivem me pedindo." },
-      { v: "b", dim: "reconhecimento", label: "👭 Já ajudei amigas e a família." },
-      { v: "c", dim: "tecnica", label: "🏠 Só organizo a minha casa." },
-      { v: "d", dim: "tecnica", label: "🤔 Nunca pediram." }] },
   { id: "cobrar", type: "q", title: "Quando você pensa em cobrar para organizar, o que acontece?",
     options: [{ v: "a", dim: "reconhecimento", label: "😳 Dá vergonha, parece que não mereço." },
       { v: "b", dim: "tecnica", label: "🧐 Não sei quanto cobrar." },
       { v: "c", dim: "reconhecimento", label: "😧 Uma voz diz que ninguém vai pagar." },
       { v: "d", dim: "financeiro", label: "😎 Eu cobraria hoje se soubesse como começar." }] },
-  { id: "lead", type: "form", title: "Para onde eu envio o seu diagnóstico?",
-    sub: "O seu resultado está pronto. Deixe seu nome e WhatsApp para ver agora e receber o seu caminho.",
-    foot: "Usamos seu WhatsApp só para te enviar o seu resultado e o seu caminho. Sem spam.",
-    cta: "VER MEU DIAGNÓSTICO" },
   { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 3500 },
   { id: "resultado", type: "result" },
   { id: "i_cmp", type: "compare", fill: true },
   { id: "i_prova", type: "info", title: "Agora veja o que aconteceu com quem aprendeu com a Paty...",
     body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"], ["img/prova-elizete-destaque.jpg", "Depoimento da aluna Elizete"]]) },
+  { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse esse passo a passo nas mãos?",
+    options: [{ v: "a", label: "✅ Sim, estou pronta para isso." }, { v: "b", label: "😃 Com certeza, só preciso de direção." }, { v: "c", label: "🤔 Acho que sim... quero tentar." }] },
+  { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3000 },
+  { id: "lead", type: "form", title: "Falta pouco! Preencha seus dados para receber o seu Diagnóstico da Organizadora.",
+    sub: "",
+    foot: "Usamos seu WhatsApp só pra confirmar sua vaga e te enviar seu caminho. Sem spam.",
+    cta: "RECEBER MEU CAMINHO" },
   { id: "vendas", type: "sales" }
 ];
 
@@ -262,11 +260,11 @@ function render() {
     h = `<h2>${s.title}</h2><p class="sub">Pode marcar mais de uma.</p><div class="opts">${opts(s).map(o => `<button type="button" class="opt${cur.includes(o.v) ? " on" : ""}" data-m="${o.v}"${o.none ? " data-none" : ""}>${o.label}<span class="ck"></span></button>`).join("")}</div>`;
     setCta("Continuar", cur.length > 0);
   } else if (s.type === "form") {
-    h = `<h2>${s.title}</h2><p class="sub">${s.sub}</p>
+    h = `<h2>${s.title}</h2>${s.sub ? `<p class="sub">${s.sub}</p>` : ""}
       <form class="form" id="f" novalidate>
         <input id="f-nome" name="name" type="text" autocomplete="given-name" placeholder="Primeiro nome" value="${esc(A.nome || "")}">
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="E-mail" value="${esc(A.email || "")}">
         <input id="f-whats" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp com DDD" value="${esc(A.whats || "")}">
-        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="E-mail (opcional)" value="${esc(A.email || "")}">
       </form><p class="err" id="f-err" hidden></p><p class="foot">${s.foot}</p>`;
     setCta(s.cta);
     /* o botão de baixo dispara o submit do <form>, para o pixel contar o cadastro */
@@ -274,7 +272,7 @@ function render() {
     s.onSubmit = () => {
       const n = document.getElementById("f-nome").value.trim(), e = document.getElementById("f-email").value.trim(), w = document.getElementById("f-whats").value.replace(/\D/g, "");
       const err = document.getElementById("f-err");
-      const bad = !n ? "Preencha o seu nome." : w.length < 10 ? "Confira o seu WhatsApp com DDD." : e && !/^\S+@\S+\.\S+$/.test(e) ? "Confira o seu e-mail." : "";
+      const bad = !n ? "Preencha o seu nome." : !/^\S+@\S+\.\S+$/.test(e) ? "Confira o seu e-mail." : w.length < 10 ? "Confira o seu WhatsApp com DDD." : "";
       if (bad) { err.textContent = bad; err.hidden = false; return; }
       Object.assign(A, { nome: n, email: e, whats: w });
       const query = {}; new URLSearchParams(location.search).forEach((val, k) => query[k] = val);
