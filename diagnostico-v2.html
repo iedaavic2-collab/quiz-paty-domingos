@@ -187,7 +187,7 @@ const STEPS = [
       { v: "b", dim: "financeiro", label: "😨 Depender de outra pessoa para as minhas coisas." },
       { v: "c", dim: "reconhecimento", label: "😐 Saber que eu poderia cobrar mais pelo que faço." },
       { v: "d", dim: "liberdade", label: "😔 Não conseguir dar aos meus filhos o que eu queria." }] },
-  { id: "i_paty", type: "info", fill: true, img: "img/paty-verde-rosto-v1.jpg",
+  { id: "i_paty", type: "info", fill: true, img: "img/paty-verde-rosto-v2.jpg", pos: "50% 20%",
     title: "A Paty começou como empregada doméstica.",
     body: () => `<p>Hoje ela é <b>organizadora de alto padrão</b>, com mais de 11 anos de profissão e mais de 10 mil alunas no Brasil e no exterior.</p>
       <p>Ela não nasceu sabendo. Ela aprendeu a técnica, fez o primeiro laboratório e começou a cobrar.</p>
@@ -282,7 +282,7 @@ function render() {
       setTimeout(next, 300);
     };
   } else if (s.type === "info") {
-    h = `${s.title ? `<h2>${s.title}</h2>` : ""}${s.img ? `<img class="info-img" src="${s.img}" alt="">` : ""}<div class="body">${s.body(A)}</div>`;
+    h = `${s.title ? `<h2>${s.title}</h2>` : ""}${s.img ? `<img class="info-img" src="${s.img}" alt=""${s.pos ? ` style="object-position:${s.pos}"` : ""}>` : ""}<div class="body">${s.body(A)}</div>`;
     setCta("Continuar");
   } else if (s.type === "loading") {
     h = `<div class="loading"><div class="ring"><svg viewBox="0 0 120 120" width="120" height="120"><circle cx="60" cy="60" r="52" stroke="#f3f4f6" stroke-width="10" fill="none"/><circle id="arc" cx="60" cy="60" r="52" stroke="#fbbf24" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327"/></svg><b id="pct">0%</b></div><h2>${s.title}</h2></div>`;
