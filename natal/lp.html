@@ -157,6 +157,11 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
 .bump b { display: block; margin: 2px 0 4px; font-size: 16px; }
 .bump p { margin: 0; font-size: 13.5px; color: var(--muted); }
 .bump p em { font-style: normal; color: var(--ink); font-weight: 700; }
+.guar { display: flex; gap: 14px; align-items: center; margin-top: 4px; padding: 16px 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+.guar .gs { flex: none; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: #0d241b; border: 2px solid var(--gold); font-size: 28px; }
+.guar p { margin: 0; font-size: 14.5px; color: var(--muted); }
+.guar p b { color: var(--gold); }
+.offer .gline { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); }
 .offer { margin-top: 34px; padding: 20px 16px; border-radius: 18px; background: linear-gradient(180deg, #1d4536, #12301f); border: 1px solid var(--gold2); text-align: center; }
 .offer h3 { margin: 0 0 12px; font-size: 18px; }
 .offer ul { margin: 0 0 14px; padding: 0; list-style: none; text-align: left; display: grid; gap: 8px; }
@@ -178,7 +183,7 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
   <h1>Natal Organizado: <em>aprenda comigo a técnica e o passo a passo para faturar ainda esse ano</em></h1>
   <p class="lead">Monte árvores, guirlandas e mesa posta para o Natal, <b>cobre certo</b> e continue faturando depois das festas com a <b>desmontagem e a conservação</b> dos enfeites. <b>Inicie 2027 já com agenda cheia.</b></p>
   <a class="cta" href="#" data-buy>Quero entrar por R$&nbsp;697 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <p class="when">De <s>R$&nbsp;1.997</s> por <b>R$&nbsp;697</b> · acesso por 1 ano, pelo celular, quando quiser</p>
+  <p class="when">De <s>R$&nbsp;1.997</s> por <b>R$&nbsp;697</b> ou <b>12x de R$&nbsp;72</b> · acesso por 1 ano</p>
 
   <figure class="hero-img">
     <img src="../img/paty-natal-hero-sq.jpg" width="680" height="680" fetchpriority="high" decoding="async" alt="Paty Domingos sorrindo, sentada em uma poltrona ao lado de uma árvore de Natal dourada">
@@ -241,6 +246,9 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
     <li>Assista ao workshop e às aulas e acesse os bônus na sua área de membros.</li>
   </ol>
 
+  <h2><small>Garantia</small>7 dias para decidir, sem risco</h2>
+  <div class="guar"><div class="gs" aria-hidden="true">🛡️</div><p><b>Garantia de 7 dias.</b> Entre, assista às aulas e use os materiais. Se em até 7 dias você sentir que não é para você, devolvemos 100% do valor, sem perguntas.</p></div>
+
   <section class="offer">
     <h3>Tudo o que você leva</h3>
     <ul>
@@ -257,8 +265,9 @@ h2 small { display: block; margin-bottom: 6px; font-family: var(--font); font-si
       <span class="bx" aria-hidden="true"></span>
       <div class="bbody"><img class="bimg" src="../img/bump-primeiros-passos.jpg" width="359" height="640" loading="lazy" alt="Capa de Primeiros Passos da Personal Organizer"><div><small>Sim, quero adicionar ao meu pedido</small><b>Primeiros Passos da Personal Organizer</b><p>10 aulas que apresentam a profissão de personal organizer, para você começar do jeito certo. De <s>R$ 697</s> por apenas <em>R$ 197</em>.</p></div></div>
     </label>
-    <p class="price"><small id="plabel">De <s>R$ 1.997</s> por</small><span id="total" style="display:inline;margin:0;font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:inherit">R$&nbsp;697</span><span>pagamento único · acesso por 1 ano</span></p>
+    <p class="price"><small id="plabel">De <s>R$ 1.997</s> por</small><span id="total" style="display:inline;margin:0;font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:inherit">R$&nbsp;697</span><span id="psub">à vista ou 12x de R$&nbsp;72 · acesso por 1 ano</span></p>
     <a class="cta" href="#" data-buy>Quero entrar agora <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <p class="gline">🛡️ Garantia de 7 dias · pagamento seguro</p>
   </section>
 
 </main>
@@ -296,6 +305,7 @@ document.querySelectorAll('[data-buy]').forEach(function (a) {
   if (bump && total) bump.addEventListener('change', function () {
     total.innerHTML = bump.checked ? 'R$&nbsp;894' : 'R$&nbsp;697';
     document.getElementById('plabel').innerHTML = bump.checked ? 'Total do pedido' : 'De <s>R$ 1.997</s> por';
+    document.getElementById('psub').innerHTML = bump.checked ? 'à vista · parcelamento calculado no checkout' : 'à vista ou 12x de R$&nbsp;72 · acesso por 1 ano';
   });
 })();
 </script>
