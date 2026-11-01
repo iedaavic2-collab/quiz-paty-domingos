@@ -73,6 +73,7 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .body { font-size: clamp(14px, 2.3dvh, 16px); line-height: 1.45; color: #1f2937; }
 .body p { margin: 0 0 clamp(6px, 1.3dvh, 12px); }
 .hl { background: #fef3c7; padding: 0 3px; border-radius: 4px; font-weight: 700; }
+.fam-emoji { font-size: 44px; line-height: 1; text-align: center; margin: 6px 0 2px; }
 .exe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: clamp(10px, 2dvh, 18px); }
 .exe span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 10px 6px; border-radius: 14px; background: #fef3c7; text-align: center; font-size: 12px; line-height: 1.25; color: var(--ink); }
 .exe b { font-size: 18px; line-height: 1.1; }
@@ -218,6 +219,20 @@ const STEPS = [
       <div class="exe"><span><b>+10 mil</b>alunas</span><span><b>🌎</b>Brasil e exterior</span><span><b>🫂</b>Comunidade Paty Organizer</span></div>` },
   { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 3500 },
   { id: "resultado", type: "result" },
+  { id: "i_familia", type: "info",
+    body: g => {
+      const c = g.casada === "sim", f = g.filhos === "sim", n = nome();
+      const q = c && f ? ["🏡", "Você está deixando de ter tempo com o seu esposo e com os seus filhos por causa do trabalho?", "Você chega em casa cansada, com o corpo dolorido, e o pouco tempo que sobra vai embora rápido. Como personal organizer, você escolhe os dias de trabalho e monta a sua agenda em volta da sua família, sem deixar de ganhar."]
+        : c ? ["👩‍❤️‍👨", "Você está deixando de ter tempo com o seu esposo por causa do trabalho?", "Quando o trabalho pesa no corpo, falta energia até para estar junto de quem divide a vida com você. Como personal organizer, você escolhe os dias de trabalho e volta a ter tempo para o seu casamento."]
+        : f ? ["👧", "Você está deixando de passar tempo com os seus filhos por causa do trabalho?", "Eles crescem rápido, e a rotina pesada rouba os momentos que não voltam. Como personal organizer, você escolhe os dias de trabalho e monta a agenda em volta da rotina deles."]
+        : ["⏰", "Você está deixando de ter tempo para você por causa do trabalho?", "Descansar, estudar, cuidar de si. Como personal organizer, você escolhe os dias de trabalho e o seu tempo volta a ser seu."];
+      const fecho = c || f ? "Trabalhar menos pesado, ganhar mais e ter tempo para quem você ama." : "Trabalhar menos pesado, ganhar mais e ter tempo para cuidar de você.";
+      return `<p class="res-h">${n ? n.toUpperCase() + ", O SEU DIAGNÓSTICO MOSTROU MAIS UMA COISA..." : "O SEU DIAGNÓSTICO MOSTROU MAIS UMA COISA..."}</p>
+        <div class="fam-emoji" aria-hidden="true">${q[0]}</div>
+        <h2>${q[1]}</h2>
+        <p>${q[2]}</p>
+        <p><span class="hl">${fecho}</span></p>`;
+    } },
   { id: "i_cmp", type: "compare", fill: true },
   { id: "i_prova", type: "info", title: "Agora veja o que aconteceu com quem aprendeu com a Paty...",
     body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"], ["img/prova-elizete-destaque.jpg", "Depoimento da aluna Elizete"]]) },
@@ -402,7 +417,7 @@ function sales() {
       <li><b>✅ Prática na sua casa</b><span>Você começa por um guarda-roupa, sem comprar organizadores caros.</span></li></ul></div>
     <div class="s-box"><h3>A SUA VIDA DEPOIS DO WORKSHOP:</h3><ul>
       <li>✅ Saber exatamente por onde começar</li><li>✅ Ter coragem de cobrar pelo que você já sabe fazer</li><li>✅ Ser chamada de profissional, não de ajudante</li>
-      <li>✅ Ter o seu próprio dinheiro</li><li>✅ Escolher os dias de trabalho e ficar mais com a família</li></ul></div>
+      <li>✅ Ter o seu próprio dinheiro</li><li>✅ Escolher os dias de trabalho e ${A.casada === "sim" && A.filhos === "sim" ? "ter mais tempo com o seu esposo e os seus filhos" : A.casada === "sim" ? "ter mais tempo com o seu esposo" : A.filhos === "sim" ? "ter mais tempo com os seus filhos" : "ter mais tempo para cuidar de você"}</li></ul></div>
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
     <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"><img src="img/prova-wa3.jpg" alt="Mensagem de aluna"></div>
     <h2>Quem vai te ensinar</h2>
