@@ -203,7 +203,21 @@ h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; f
 @media(max-width:719px){body{padding-bottom:96px}.mobile-buy{display:block;position:fixed;bottom:0;left:0;right:0;z-index:20;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#2a0813f5;border-top:1px solid var(--line)}.mobile-buy .btn{padding:14px 10px;font-size:12px;letter-spacing:.5px}.hero-sub{font-size:16px}.hero-ph img{aspect-ratio:5/4;object-position:center 25%}.offer-section{padding-top:28px;margin-top:24px}.call-card{padding-left:16px;padding-right:16px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-.incoming{min-width:0;grid-template-columns:56px minmax(0,1fr) auto}.incoming .st{letter-spacing:.6px}.incoming .sb{overflow-wrap:anywhere;font-size:12px}.call-copy{min-width:0}</style>
+.incoming{min-width:0;grid-template-columns:56px minmax(0,1fr) auto}.incoming .st{letter-spacing:.6px}.incoming .sb{overflow-wrap:anywhere;font-size:12px}.call-copy{min-width:0}
+/* desktop: card de ligação deitado em cima da foto (coluna da esquerda), texto à direita */
+@media (min-width: 880px) {
+  .call-grid { grid-template-areas: "call copy" "photo copy"; grid-template-rows: auto 1fr; row-gap: 18px; }
+  .call-grid > .incoming { grid-area: call; grid-template-columns: 64px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; justify-items: start; text-align: left; row-gap: 0; padding: 14px 16px; border-radius: 20px; min-height: 0; }
+  .call-grid > .incoming .av { width: 64px; height: 64px; margin: 0; }
+  .call-grid > .incoming .nm { font-size: 19px; }
+  .call-grid > .incoming .acts { gap: 10px; margin-top: 0; }
+  .call-grid > .incoming .acts .no, .call-grid > .incoming .acts .yes { width: 46px; height: 46px; }
+  .call-grid > .incoming .acts svg { width: 21px; height: 21px; }
+  .call-grid > .hero-ph { grid-area: photo; }
+  .call-grid > .call-copy { grid-area: copy; align-self: center; }
+  .hero-ph img { min-height: 420px; }
+}
+</style>
 </head>
 <body>
 <main>
