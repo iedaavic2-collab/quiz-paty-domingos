@@ -63,6 +63,10 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .form { display: grid; gap: 10px; }
 .form input { width: 100%; border: 2px solid var(--line); border-radius: 14px; padding: 15px 16px; font: inherit; font-size: 16px; }
 .form input:focus { outline: none; border-color: var(--pri); }
+.form .tel { display: flex; align-items: stretch; border: 2px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
+.form .tel:focus-within { border-color: var(--pri); }
+.form .tel .ddi { display: flex; align-items: center; padding: 0 12px; border-right: 2px solid var(--line); font-weight: 600; font-size: 15px; white-space: nowrap; }
+.form .tel input { border: 0; border-radius: 0; flex: 1; min-width: 0; }
 .err { color: var(--red); font-size: 14px; text-align: center; margin: 4px 0 0; }
 .info-img { width: 100%; height: clamp(120px, 28dvh, 260px); object-fit: cover; object-position: 50% 25%; border-radius: 16px; display: block; margin: 4px 0 clamp(8px, 1.6dvh, 14px); }
 .sales .info-img { height: auto; }
@@ -167,21 +171,24 @@ const STEPS = [
     options: [{ v: "18-29", label: "18 a 29", img: "img/idade-mulher-1.webp" }, { v: "30-39", label: "30 a 39", img: "img/idade-mulher-2.webp" }, { v: "40-49", label: "40 a 49", img: "img/idade-mulher-3.webp" }, { v: "50+", label: "50+", img: "img/idade-mulher-4.webp" }] },
   { id: "diarista", type: "q", title: "Você trabalha como diarista ou empregada doméstica?",
     options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
-  { id: "frase", type: "q", title: "Qual frase mais ressoa com você?",
-    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Trabalho muito, mas o dinheiro nunca é suficiente." },
-      { v: "b", dim: "reconhecimento", label: "😐 Organizo para todo mundo, mas ninguém me paga por isso." },
-      { v: "c", dim: "tecnica", label: "🤔 Gosto de organizar, mas não sei se tenho técnica." },
-      { v: "d", dim: "liberdade", label: "😔 Queria trabalhar nos meus horários e ficar mais com a família." }] },
-  { id: "trabalho", type: "q", title: "No seu trabalho hoje, o que mais pesa?",
-    options: [{ v: "a", dim: "financeiro", label: "😩 Trabalho pesado e mal pago." },
-      { v: "b", dim: "reconhecimento", label: "😞 Não sou valorizada pelo que faço." },
-      { v: "c", dim: "liberdade", label: "⏰ Não tenho controle dos meus horários." },
-      { v: "d", dim: "financeiro", label: "🏠 Hoje não trabalho fora e dependo da renda de outra pessoa." }] },
+  { id: "casada", type: "q", title: "Você é casada?",
+    options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
+  { id: "filhos", type: "q", title: "Você tem filhos?",
+    options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
+  { id: "lead", type: "form", title: "Já estamos traçando o seu Diagnóstico da Organizadora...",
+    sub: "Deixe seus dados para receber o seu diagnóstico completo no final.",
+    foot: "Usamos seu WhatsApp só pra confirmar sua vaga e te enviar seu caminho. Sem spam.",
+    cta: "RECEBER MEU CAMINHO" },
   { id: "i_diaria", type: "info", fill: true, img: "img/organizando-closet-v1.jpg",
     title: "Você sabia que uma personal organizer cobra de R$400 a R$600 por dia?",
     body: g => `<p>É o mesmo trabalho que você já faz em casa: arrumar o guarda-roupa, a cozinha, as gavetas.</p>
       <p>A diferença é que a personal organizer faz isso <span class="hl">com técnica e com método</span>, e é paga como profissional.</p>
       ${g.diarista === "sim" ? `<p>Para quem já trabalha em casa de família, a virada é ainda mais natural: <b>você já conhece a rotina de uma casa como poucas pessoas</b>.</p>` : `<p>E a primeira cliente costuma vir de quem já te conhece: uma amiga, uma vizinha, alguém da família.</p>`}` },
+  { id: "frase", type: "q", title: "Qual frase mais ressoa com você?",
+    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Trabalho muito, mas o dinheiro nunca é suficiente." },
+      { v: "b", dim: "reconhecimento", label: "😐 Organizo para todo mundo, mas ninguém me paga por isso." },
+      { v: "c", dim: "tecnica", label: "🤔 Gosto de organizar, mas não sei se tenho técnica." },
+      { v: "d", dim: "liberdade", label: "😔 Queria trabalhar nos meus horários e ficar mais com a família." }] },
   { id: "dinheiro", type: "q", title: "Com o dinheiro, o que mais frustra?",
     options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Chega o fim do mês e não sobra nada." },
       { v: "b", dim: "financeiro", label: "😨 Depender de outra pessoa para as minhas coisas." },
@@ -205,10 +212,6 @@ const STEPS = [
   { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse esse passo a passo nas mãos?",
     options: [{ v: "a", label: "✅ Sim, estou pronta para isso." }, { v: "b", label: "😃 Com certeza, só preciso de direção." }, { v: "c", label: "🤔 Acho que sim... quero tentar." }] },
   { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3000 },
-  { id: "lead", type: "form", title: "Falta pouco! Preencha seus dados para receber o seu Diagnóstico da Organizadora.",
-    sub: "",
-    foot: "Usamos seu WhatsApp só pra confirmar sua vaga e te enviar seu caminho. Sem spam.",
-    cta: "RECEBER MEU CAMINHO" },
   { id: "vendas", type: "sales" }
 ];
 
@@ -264,9 +267,9 @@ function render() {
       <form class="form" id="f" novalidate>
         <input id="f-nome" name="name" type="text" autocomplete="given-name" placeholder="Primeiro nome" value="${esc(A.nome || "")}">
         <input id="f-email" name="email" type="email" autocomplete="email" placeholder="E-mail" value="${esc(A.email || "")}">
-        <input id="f-whats" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp com DDD" value="${esc(A.whats || "")}">
+        <div class="tel"><span class="ddi">🇧🇷 +55</span><input id="f-whats" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="WhatsApp" value="${esc(A.whats || "")}"></div>
       </form><p class="err" id="f-err" hidden></p><p class="foot">${s.foot}</p>`;
-    setCta(s.cta);
+    setCta(s.cta, false);
     /* o botão de baixo dispara o submit do <form>, para o pixel contar o cadastro */
     s.onCta = () => { document.getElementById("f").requestSubmit(); return false; };
     s.onSubmit = () => {
@@ -274,7 +277,7 @@ function render() {
       const err = document.getElementById("f-err");
       const bad = !n ? "Preencha o seu nome." : !/^\S+@\S+\.\S+$/.test(e) ? "Confira o seu e-mail." : w.length < 10 ? "Confira o seu WhatsApp com DDD." : "";
       if (bad) { err.textContent = bad; err.hidden = false; return; }
-      Object.assign(A, { nome: n, email: e, whats: w });
+      Object.assign(A, { nome: n, email: e, whats: w.length > 11 && w.startsWith("55") ? w.slice(2) : w });
       const query = {}; new URLSearchParams(location.search).forEach((val, k) => query[k] = val);
       if (CONFIG.WEBHOOK_URL) { try { fetch(CONFIG.WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ name: n, phone: w, email: e, origem: "diagnostico-organizadora", evento: "profissao-personal-organizer", respostas: A, query, data: new Date().toISOString() }), keepalive: true }).catch(() => {}); } catch (x) {} }
       setTimeout(next, 300);
@@ -323,7 +326,12 @@ function render() {
   app.classList.toggle("fill", !!s.fill);
   if (s.type === "sales") videoVSL();
   app.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", buy));
-  if (s.type === "form") document.getElementById("f").addEventListener("submit", e => { e.preventDefault(); s.onSubmit(); });
+  if (s.type === "form") {
+    const f = document.getElementById("f");
+    f.addEventListener("submit", e => { e.preventDefault(); s.onSubmit(); });
+    const ok = () => { btn.disabled = !(document.getElementById("f-nome").value.trim() && /^\S+@\S+\.\S+$/.test(document.getElementById("f-email").value.trim()) && document.getElementById("f-whats").value.replace(/\D/g, "").length >= 10); };
+    f.addEventListener("input", ok); ok();
+  }
 }
 
 /* vídeo da página de vendas: começa sozinho, sem pausar nem avançar; só dá para recomeçar.
