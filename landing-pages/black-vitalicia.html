@@ -89,6 +89,10 @@ h2 em { font-family: var(--serif); font-style: italic; color: var(--gold); }
 .paty img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 20%; }
 .paty ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .paty li { padding: 10px 12px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); }
+.center { text-align: center; }
+h2.center em { display: block; }
+.paty li { display: flex; align-items: center; gap: 10px; }
+.emo { flex: none; display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; font-size: 17px; line-height: 1; }
 .faq details { border-bottom: 1px solid var(--line); padding: 15px 0; }
 .faq summary { font-size: 16.5px; font-weight: 600; cursor: pointer; }
 .faq p { margin: 10px 0 0; color: var(--muted); }
@@ -167,8 +171,8 @@ footer { margin-top: 30px; text-align: center; font-size: 12px; color: #7d776d; 
   </section>
 
   <section aria-labelledby="t-cursos">
-    <h2 id="t-cursos">Tudo isso pode ficar com você <em>para sempre</em></h2>
-    <p class="intro">Os cursos da Paty, e os que ainda vão nascer, sem prazo para acabar.</p>
+    <h2 id="t-cursos" class="center">Você vai ter acesso a tudo isso <em>para sempre</em></h2>
+    <p class="intro center">Os cursos da Paty, e os que ainda vão nascer, sem prazo para acabar.</p>
     <div class="cursos" id="cursos"></div>
     <p class="swipe">Arraste para o lado →</p>
   </section>
@@ -187,10 +191,10 @@ footer { margin-top: 30px; text-align: center; font-size: 12px; color: #7d776d; 
       <div>
         <p class="intro">A Paty começou como empregada doméstica. Hoje é organizadora de alto padrão e já ensinou mais de 10 mil mulheres a transformar a organização em profissão.</p>
         <ul>
-          <li>🧹 Começou como <b>empregada doméstica</b></li>
-          <li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li>
-          <li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li>
-          <li>🏆 Criadora do <b>Método Organizadas</b>, com certificado reconhecido pelo MEC</li>
+          <li><span class="emo">🧹</span><span>Começou como <b>empregada doméstica</b></span></li>
+          <li><span class="emo">👩‍💼</span><span>Mais de <b>11 anos</b> como personal organizer</span></li>
+          <li><span class="emo">🎓</span><span>Mais de <b>10 mil alunas</b> no Brasil e no exterior</span></li>
+          <li><span class="emo">🏆</span><span>Criadora do <b>Método Organizadas</b>, com certificado reconhecido pelo MEC</span></li>
         </ul>
       </div>
     </div>
@@ -217,7 +221,7 @@ var WEBHOOK_URL = '';   /* PENDENTE: para onde vai o lead (planilha ou ferrament
 var OBRIGADO_URL = 'obrigado-black.html'; /* página de obrigado com o link do grupo VIP (GRUPO_URL fica nela) */
 /* Cursos do carrossel (confirmar com a Paty quais entram na Black) */
 var CURSOS = [
-  ['metodo', 'Método Organizadas'], ['natal-v2', 'Natal que Encanta e Vende'], ['casa', 'Treinamento Casa Organizada'], ['empregada', 'Treinamento de Empregada Doméstica, Lavadeira e Passadeira'],
+  ['metodo', 'Método Organizadas'], ['natal-v2', 'Como faturar no Natal'], ['casa', 'Treinamento Casa Organizada'], ['empregada', 'Treinamento de Empregada Doméstica, Lavadeira e Passadeira'],
   ['lojas', 'Organização de Lojas Comerciais e Varejo'], ['mudanca', 'Treinamento Pré e Pós Mudança'], ['malas', 'Organização de Malas de Viagem'],
   ['imersao', 'Imersão Organização'], ['gavetas', 'Curso de Organização de Gavetas'], ['renda', 'Treinamento Renda Extra'],
   ['rota', 'Rota dos Mil'], ['redes', 'Redes Sociais para Personal Organizer'], ['comunidade', 'Comunidade Paty Organizer']
