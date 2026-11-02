@@ -473,16 +473,15 @@ document.querySelectorAll('#heroForm, #leadForm, #popForm').forEach(function (fo
   });
 });
 
-/* popup de segunda chance: aos 40% de rolagem ou na intenção de saída, uma vez por sessão */
+/* popup de segunda chance: só quando a pessoa chega ao fim da página (depois de ler a proposta), uma vez por sessão */
 (function () {
   try { if (sessionStorage.getItem('po_lead') || sessionStorage.getItem('po_pop')) return; } catch (x) {}
   var feito = false;
   function disparar() { if (feito || jaCadastrou) return; feito = true; try { sessionStorage.setItem('po_pop', '1'); } catch (x) {} abrirPop(); }
   window.addEventListener('scroll', function () {
     var h = document.documentElement.scrollHeight - innerHeight;
-    if (h > 0 && scrollY / h >= 0.4) disparar();
+    if (h > 0 && scrollY >= h - 40) disparar();
   }, { passive: true });
-  document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY <= 0) disparar(); });
 })();
 
 /* barra fixa do celular some enquanto o formulário do topo está na tela */
