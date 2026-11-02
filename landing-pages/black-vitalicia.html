@@ -110,7 +110,11 @@ footer { margin-top: 30px; text-align: center; font-size: 12px; color: #7d776d; 
 @media (min-width: 880px) {
   .wrap { padding-top: 26px; }
   .logo { width: 170px; }
-  .hero { grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 24px; }
+  .hero { grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 16px; }
+  h1 { font-size: 38px; }
+  .sub { font-size: 15px; }
+  .form { margin-top: 10px; padding: 12px; }
+  .form input { padding: 11px 13px; }
   .photo { order: 2; }
   .photo img { aspect-ratio: 4 / 4.6; }
   .band { margin-inline: 0; border-radius: 12px; border: 1px solid var(--line); }
@@ -120,8 +124,9 @@ footer { margin-top: 30px; text-align: center; font-size: 12px; color: #7d776d; 
 }
 @media (max-width: 879px) {
   body { overflow-x: hidden; }
+  h1 { text-align: center; }
   h1 { font-size: clamp(24px, 6.9vw, 32px); }
-  .sub { font-size: 15px; margin-top: 8px; }
+  .sub { font-size: 15px; margin-top: 8px; color: var(--ink); }
   .when { margin-top: 8px; font-size: 13px; }
   .form { margin-top: 10px; padding: 12px; }
   .form input { padding: 12px 13px; }
@@ -144,7 +149,7 @@ footer { margin-top: 30px; text-align: center; font-size: 12px; color: #7d776d; 
     <div>
       <p class="eyebrow">Black Vitalícia Organizadas</p>
       <h1>A maior Black Friday da história da Paty Domingos: <em class="h1-destaque">Método Organizadas para sempre</em></h1>
-      <p class="sub">Em 1 aula, a Paty mostra como transformar a organização em renda extra, e até em uma nova profissão, e revela a condição da Black Vitalícia Organizadas.</p>
+      <p class="sub"><b>Chegou a hora de transformar o que você já faz hoje em um serviço pelo qual pode cobrar. Nessa aula gratuita, a Paty vai te mostrar como ganhar dinheiro organizando a casa das suas clientes e revelar a oferta da Black Friday.</b></p>
       <p class="when" data-quando>Data e horário em breve · ao vivo e online</p>
       <form class="form" id="leadForm" novalidate>
         <label class="sr" for="fName">Seu nome</label><input id="fName" type="text" name="name" required autocomplete="name" placeholder="Seu nome">
