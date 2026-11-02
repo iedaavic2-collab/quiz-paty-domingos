@@ -187,7 +187,7 @@ const STEPS = [
     cta: "RECEBER MEU CAMINHO" },
   { id: "i_diaria", type: "info", fill: true, img: "img/paty-closet-diaria.jpg", pos: "20% 42%",
     title: "Você sabia que uma personal organizer cobra de R$400 a R$600 por dia?",
-    body: g => `<p>É o mesmo trabalho que você já faz em casa: arrumar o guarda-roupa, a cozinha, as gavetas.</p>
+    body: g => `<p>É o mesmo trabalho que você já faz: arrumar o guarda-roupa, a cozinha, as gavetas.</p>
       <p>A diferença é que a personal organizer faz isso <span class="hl">com técnica e com método</span>, e é paga como profissional.</p>
       ${g.diarista === "sim" ? `<p>E a primeira cliente costuma vir de quem já te conhece: <b>uma cliente para quem você já presta serviço de limpeza</b>, uma vizinha, alguém da família.</p>` : `<p>E a primeira cliente costuma vir de quem já te conhece: uma amiga, uma vizinha, alguém da família.</p>`}` },
   { id: "frase", type: "q", title: "Qual frase mais combina com você?",
@@ -217,7 +217,7 @@ const STEPS = [
       <p>Foi assim que ela transformou a vida de mais de 10 mil mulheres e formou um verdadeiro <b>exército de organizadoras</b>: mulheres que saíram do "isso não é pra mim" e hoje se apoiam e crescem juntas, porque ela pega na sua mão e não solta até você se desenvolver.</p>
       <p><span class="hl">Um exército que não luta contra ninguém. Luta pela própria liberdade de crescimento.</span></p>
       <div class="exe"><span><b>+10 mil</b>alunas</span><span><b>🌎</b>Brasil e exterior</span><span><b>🫂</b>Comunidade Paty Organizer</span></div>` },
-  { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 3500 },
+  { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 4000 },
   { id: "resultado", type: "result" },
   { id: "i_familia", type: "info",
     body: g => {
@@ -238,7 +238,7 @@ const STEPS = [
     body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"], ["img/prova-elizete-destaque.jpg", "Depoimento da aluna Elizete"]]) },
   { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse esse passo a passo nas mãos?",
     options: [{ v: "a", label: "✅ Sim, estou pronta para isso." }, { v: "b", label: "😃 Com certeza, só preciso de direção." }, { v: "c", label: "🤔 Acho que sim... quero tentar." }] },
-  { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3000 },
+  { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3500 },
   { id: "vendas", type: "sales" }
 ];
 
@@ -368,7 +368,7 @@ function render() {
     h = sales(); setCta(null);
   }
   app.innerHTML = h;
-  app.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => { A[s.id] = b.dataset.v; b.classList.add("on"); setTimeout(next, 220); }));
+  app.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => { preVideo(); A[s.id] = b.dataset.v; b.classList.add("on"); setTimeout(next, 220); }));
   app.querySelectorAll("[data-m]").forEach(b => b.addEventListener("click", () => {
     let cur = A[s.id] || []; const v = b.dataset.m;
     if (b.hasAttribute("data-none")) cur = cur.includes(v) ? [] : [v];
@@ -430,7 +430,7 @@ function sales() {
   return `<p class="s-eyebrow">DOIS DIAS AO VIVO COM A PATY DOMINGOS</p>
     <h1>Ei ${nome() || "você"}...</h1>
     <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Você limpa e ainda organiza, mas só recebe pela limpeza. Em 2 dias, a Paty te mostra que <b>organizar é outro serviço</b>, como cobrar à parte por ele e como isso pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
-    <div class="vid" id="vid"><video src="video/diagnostico-paty-v1.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
+    <div class="vid" id="vid"><video src="video/diagnostico-paty-v2.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
       <button type="button" class="v-som" id="v-som" hidden>🔊 Toque para ouvir</button>
       <button type="button" class="v-re" id="v-re" aria-label="Recomeçar o vídeo" hidden>↺ Recomeçar</button></div>
     ${price}
@@ -457,6 +457,15 @@ function sales() {
     ${price}
     <p class="foot">Evento online educacional. Garantia legal de 7 dias (art. 49 do CDC).</p>`;
 }
+
+/* ===================== PRÉ-CARREGAMENTO =====================
+   As fotos de todas as telas baixam logo que o quiz abre, para aparecerem na hora, sem atraso.
+   O vídeo da página de venda começa a baixar depois da primeira resposta. */
+const PRE_IMGS = ["img/antes-depois-closet-v2.jpg", "img/idade-mulher-1.webp", "img/idade-mulher-2.webp", "img/idade-mulher-3.webp", "img/idade-mulher-4.webp", "img/logo-paty-verde.jpg", "img/paty-closet-diaria.jpg", "img/paty-verde-rosto-v2.jpg", "img/paty-vinho-sofa-v1.jpg", "img/prova-elizete-destaque.jpg", "img/prova-elizete-wa-v1.jpg", "img/prova-jane-2600.jpg", "img/prova-slide3a.jpg", "img/prova-wa1.jpg", "img/prova-wa3.jpg"];
+const preImgs = () => PRE_IMGS.forEach(src => { const im = new Image(); im.decoding = "async"; im.src = src; });
+let vidPre = false;
+const preVideo = () => { if (vidPre) return; vidPre = true; const pv = document.createElement("video"); pv.preload = "auto"; pv.muted = true; pv.src = "video/diagnostico-paty-v2.mp4"; pv.style.display = "none"; document.body.appendChild(pv); pv.load(); };
+if (document.readyState === "complete") setTimeout(preImgs, 200); else window.addEventListener("load", () => setTimeout(preImgs, 200));
 
 render();
 </script>

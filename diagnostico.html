@@ -373,7 +373,7 @@ function render() {
     h = sales(); setCta(null);
   }
   app.innerHTML = h;
-  app.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => { A[s.id] = b.dataset.v; b.classList.add("on"); setTimeout(next, 220); }));
+  app.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => { preVideo(); A[s.id] = b.dataset.v; b.classList.add("on"); setTimeout(next, 220); }));
   app.querySelectorAll("[data-m]").forEach(b => b.addEventListener("click", () => {
     let cur = A[s.id] || []; const v = b.dataset.m;
     if (b.hasAttribute("data-none")) cur = cur.includes(v) ? [] : [v];
@@ -430,7 +430,7 @@ function sales() {
   return `<p class="s-eyebrow">WORKSHOP AO VIVO COM A PATY DOMINGOS</p>
     <h1>Ei ${nome() || "você"}...</h1>
     <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Em 2 dias, a Paty vai te ensinar organização do zero. E ela pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
-    <div class="vid" id="vid"><video src="video/diagnostico-paty-v1.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
+    <div class="vid" id="vid"><video src="video/diagnostico-paty-v2.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
       <button type="button" class="v-som" id="v-som" hidden>🔊 Toque para ouvir</button>
       <button type="button" class="v-re" id="v-re" aria-label="Recomeçar o vídeo" hidden>↺ Recomeçar</button></div>
     ${price}
@@ -456,6 +456,15 @@ function sales() {
     ${price}
     <p class="foot">Evento online educacional. Garantia legal de 7 dias (art. 49 do CDC).</p>`;
 }
+
+/* ===================== PRÉ-CARREGAMENTO =====================
+   As fotos de todas as telas baixam logo que o quiz abre, para aparecerem na hora, sem atraso.
+   O vídeo da página de venda começa a baixar depois da primeira resposta. */
+const PRE_IMGS = ["img/antes-depois-closet-v2.jpg", "img/idade-mulher-1.webp", "img/idade-mulher-2.webp", "img/idade-mulher-3.webp", "img/idade-mulher-4.webp", "img/organizando-closet-v1.jpg", "img/paty-verde-rosto-v1.jpg", "img/paty-vinho-sofa-v1.jpg", "img/prova-elizete-destaque.jpg", "img/prova-elizete-wa-v1.jpg", "img/prova-jane-2600.jpg", "img/prova-slide3a.jpg", "img/prova-wa1.jpg", "img/prova-wa3.jpg"];
+const preImgs = () => PRE_IMGS.forEach(src => { const im = new Image(); im.decoding = "async"; im.src = src; });
+let vidPre = false;
+const preVideo = () => { if (vidPre) return; vidPre = true; const pv = document.createElement("video"); pv.preload = "auto"; pv.muted = true; pv.src = "video/diagnostico-paty-v2.mp4"; pv.style.display = "none"; document.body.appendChild(pv); pv.load(); };
+if (document.readyState === "complete") setTimeout(preImgs, 200); else window.addEventListener("load", () => setTimeout(preImgs, 200));
 
 render();
 </script>
