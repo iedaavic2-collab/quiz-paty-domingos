@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Programação enviada · Profissão Personal Organizer · Paty Domingos</title>
+<script>
+/* Pixel Easy Tráfego: carrega só no domínio da Paty (lp.patydomingos.com.br). No preview do GitHub fica desligado. */
+if (/(^|\.)patydomingos\.com\.br$/.test(location.hostname)) { var px = document.createElement('script'); px.async = true; px.src = 'https://app.easytrafego.com.br/px.js'; px.setAttribute('data-site', 'eff5f336-fc76-4449-8375-edbf3b9b5c6b'); document.head.appendChild(px); }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #2a0813; --line: rgba(222, 186, 106, .32); --gold: #e2c07a; --green: #35c46a; --ink: #f6f0e2; --muted: #dcc7cb; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; font-family: var(--font); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  background: radial-gradient(90% 60% at 50% 0%, #5e1a31 0%, var(--bg) 70%) fixed, var(--bg); }
+main { min-height: 100%; display: flex; align-items: center; justify-content: center;
+  padding: calc(20px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left)); }
+.card { width: 100%; max-width: 460px; text-align: center; padding: 26px 20px 24px; border-radius: 26px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, #430f22 0%, #340a19 100%); box-shadow: 0 30px 80px #0009; }
+.logo { display: block; width: 150px; height: auto; margin: 0 auto 16px; }
+.ok { width: 54px; height: 54px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--green); }
+.ok svg { width: 28px; height: 28px; }
+h1 { margin: 14px 0 6px; font-size: clamp(22px, 6.4vw, 30px); line-height: 1.2; }
+h1 em { font-family: var(--serif); color: var(--gold); }
+p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+.when { font-size: 13px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold); }
+.btn { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; padding: 16px 14px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: .4px; }
+.btn-wa { background: var(--green); color: #fff; }
+.btn-wa svg { width: 22px; height: 22px; fill: #fff; }
+.btn-gold { color: #2c1f06; background: linear-gradient(100deg, #fcefc4 0%, #edcd82 24%, #dcae4c 54%, #c2942f 100%); border: 1px solid #f6dea4; text-transform: uppercase; }
+.sep { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <img class="logo" src="../img/logo-paty-branco.png" width="640" height="223" alt="Patricia Domingos · Organizadora e Mentora">
+    <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h1>Pronto<span id="nome"></span>! A <em>programação</em> vai chegar no seu WhatsApp.</h1>
+    <p class="when"><span data-dc>Sábado 7 e domingo 8/11</span><span data-hr-dot></span></p>
+    <p id="txtGrupo">Entre no grupo do evento para receber a programação e os avisos da Paty.</p>
+    <a class="btn btn-wa" id="btnGrupo" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>Entrar no grupo do evento</a>
+    <div class="sep">
+      <p>Quer garantir o seu lugar ao vivo nos 2 dias?</p>
+      <a class="btn btn-gold" id="btnIngresso" href="#">Quero meu ingresso · R$ 19,90</a>
+    </div>
+  </div>
+</main>
+<script>
+/* ================= PONTOS QUE DEPENDEM DO TIME ================= */
+var DATAS = 'Sábado 7 e domingo 8 de novembro'; /* PENDENTE: confirmar (domingo em dúvida). Ex.: 'Sábado, 7 de novembro' */
+var DATAS_CURTA = 'Sábado 7 e domingo 8/11';      /* versão curta usada no topo */
+var HORARIO = '';       /* PENDENTE: horário em aberto. Ex.: 'das 9h às 15h'. Vazio = o horário não aparece na página */
+var GRUPO_URL = '';     /* PENDENTE: link do grupo de WhatsApp do evento (Victor Gabriel e Mayara) */
+var CHECKOUT_URL = 'https://payfast.greenn.com.br/200810/offer/qPw1Kb'; /* ingresso R$ 19,90 (Greenn, oferta 200810) */
+/* =============================================================== */
+
+/* preenche data e horário a partir de DATAS / DATAS_CURTA / HORARIO (horário vazio = não aparece) */
+(function () {
+  var H = (HORARIO || '').trim();
+  function cada(sel, fn) { document.querySelectorAll(sel).forEach(function (e) { e.textContent = fn(); }); }
+  cada('[data-d]', function () { return DATAS; });
+  cada('[data-d-low]', function () { return DATAS.charAt(0).toLowerCase() + DATAS.slice(1); });
+  cada('[data-dc]', function () { return DATAS_CURTA; });
+  cada('[data-hr-dot]', function () { return H ? ' · ' + H : ''; });
+  cada('[data-hr-comma]', function () { return H ? ', ' + H : ''; });
+  cada('[data-hr-cap]', function () { return H ? H.charAt(0).toUpperCase() + H.slice(1) + ' · ' : ''; });
+  cada('[data-faq-hr]', function () { return H ? 'O evento é ao vivo, ' + H + ', e você pode assistir pelo celular de onde estiver. Entre no horário que conseguir.' : 'O horário exato é enviado no seu WhatsApp. O evento é ao vivo e online, e você assiste pelo celular de onde estiver.'; });
+})();
+var q = new URLSearchParams(location.search);
+var nome = (q.get('nome') || '').trim().split(/\s+/)[0];
+if (nome) document.getElementById('nome').textContent = ', ' + nome;
+var bg = document.getElementById('btnGrupo');
+if (GRUPO_URL) bg.href = GRUPO_URL;
+else { bg.hidden = true; document.getElementById('txtGrupo').textContent = 'Fique de olho no seu WhatsApp: a programação e os avisos da Paty chegam por lá.'; }
+var u = new URL(CHECKOUT_URL);
+q.forEach(function (v, k) { if (k !== 'nome' && !u.searchParams.has(k)) u.searchParams.set(k, v); });
+if (nome) u.searchParams.set('name', q.get('nome'));
+document.getElementById('btnIngresso').href = u.toString();
+</script>
+</body>
+</html>

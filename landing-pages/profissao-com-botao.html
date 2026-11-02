@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Profissão Personal Organizer · Paty Domingos · 7 e 8 de novembro</title>
+<meta name="description" content="Tem mulher cobrando de R$400 a R$600 por dia para organizar casas. Em 2 dias ao vivo e online, a Paty Domingos te ensina a organizar como uma profissional. 7 e 8 de novembro, ao vivo e online. Ingresso para os dois dias: R$ 19,90.">
+<script>
+/* Pixel Easy Tráfego: carrega só no domínio da Paty (lp.patydomingos.com.br). No preview do GitHub fica desligado. */
+if (/(^|\.)patydomingos\.com\.br$/.test(location.hostname)) { var px = document.createElement('script'); px.async = true; px.src = 'https://app.easytrafego.com.br/px.js'; px.setAttribute('data-site', 'eff5f336-fc76-4449-8375-edbf3b9b5c6b'); document.head.appendChild(px); }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #2a0813; --card: #3b0d1c; --card2: #4a1226; --line: rgba(222, 186, 106, .32);
+  --gold: #e2c07a; --gold-d: #b98e3e; --red: #e0444c; --green: #35c46a;
+  --ink: #f6f0e2; --muted: #dcc7cb; --font: "Jost", system-ui, sans-serif; --serif: "Playfair Display", Georgia, serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font-family: var(--font); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  background: radial-gradient(90% 60% at 50% 0%, #5e1a31 0%, var(--bg) 70%) fixed, var(--bg); }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 18px 14px 28px; }
+.call-card { position: relative; border-radius: 26px; padding: 18px 18px 22px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, #430f22 0%, #340a19 100%); box-shadow: 0 30px 80px #0009, inset 0 1px 0 #ffffff10; }
+.rise { animation: rise .7s ease-out both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* cabeçalho do card */
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.logo-img { display: block; width: 150px; height: auto; flex: none; filter: drop-shadow(0 4px 10px #0008); }
+@media (min-width: 880px) { .logo-img { width: 210px; } }
+.logo { font-family: var(--serif); line-height: 1.1; text-align: left; }
+.logo small { display: block; font-family: var(--font); font-size: 9px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 3px; }
+.logo b { display: block; font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: .3px; }
+.logo b em { font-style: italic; color: var(--ink); }
+.live-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #0007; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex: none; animation: blink 1.2s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+.pill-h { display: none; }
+
+/* chamada */
+.call-grid { display: grid; gap: 18px; margin-top: 16px; }
+.incoming { display: grid; grid-template-columns: 56px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; column-gap: 12px; align-items: center;
+  padding: 12px 14px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #561730, #380b1b); }
+.incoming .st { grid-area: st; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+.incoming .st .live-dot { background: var(--green); width: 7px; height: 7px; }
+.av { grid-area: av; position: relative; width: 56px; height: 56px; }
+.av img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 18%; border: 2px solid var(--gold); }
+.rg { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); opacity: 0; animation: ring 2.4s ease-out infinite; }
+.rg.b { animation-delay: .8s; } .rg.c { animation-delay: 1.6s; }
+@keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+.nm { grid-area: nm; margin: 0; font-size: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sb { grid-area: sb; margin: 0; font-size: 13px; color: var(--muted); }
+.acts { grid-area: acts; display: flex; gap: 10px; }
+.acts .no, .acts .yes { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; }
+.acts .no { background: var(--red); }
+.acts .yes { background: var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 #35c46aaa; } 70% { box-shadow: 0 0 0 12px #35c46a00; } 100% { box-shadow: 0 0 0 0 #35c46a00; } }
+.acts svg { width: 21px; height: 21px; fill: #fff; }
+.acts .no svg { transform: rotate(135deg); }
+.yes-link { display: block; border-radius: 50%; }
+
+.hero-ph { position: relative; width: 100%; margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
+.hero-ph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% 20%; }
+.hero-ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, #2a0813dd); }
+@media (min-width: 880px) { .hero-ph { max-width: none; } }
+.countdown { margin: 10px 0 0; font-size: 13.5px; color: var(--gold); }
+.countdown b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.countdown[hidden] { display: none; }
+@media (min-width: 880px) { .cta-m .countdown { text-align: left; } }
+/* copy */
+.call-copy { text-align: center; }
+h1 { margin: 6px 0 0; font-family: var(--font); font-size: clamp(30px, 8.4vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
+h1 em { font-family: var(--serif); font-style: italic; font-weight: 700; color: var(--gold); }
+.nw { white-space: nowrap; }
+.eyebrow { margin: 4px 0 0; font-size: 11px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); }
+h1 em { font-size: .62em; line-height: 1.25; display: block; margin-top: 10px; font-weight: 700; }
+.btn-wrap { display: block; margin-top: 18px; }
+.btn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 14px; border-radius: 10px; text-decoration: none; color: #2c1f06;
+  background: linear-gradient(100deg, #fcefc4 0%, #edcd82 24%, #dcae4c 54%, #c2942f 100%); border: 1px solid #f6dea4;
+  box-shadow: 0 22px 46px -16px #000e, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 26px -8px #e0b64f66;
+  font-weight: 700; font-size: 15px; letter-spacing: 1.4px; text-transform: uppercase; cursor: pointer; width: 100%; font-family: inherit;
+  transition: transform .38s cubic-bezier(.2, .7, .3, 1), box-shadow .38s; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px #000f, 0 2px 1px #fff7dd inset, 0 -3px 7px #8c66241f inset, 0 0 46px -4px #e8be63; }
+.btn::after { content: ""; position: absolute; top: 0; left: -130%; width: 48%; height: 100%; transform: skewX(-22deg); background: linear-gradient(100deg, transparent, #ffffffcc, transparent); animation: sheen 5.5s ease-in-out infinite; pointer-events: none; }
+@keyframes sheen { 0%, 55% { left: -130%; } 80%, 100% { left: 160%; } }
+@media (prefers-reduced-motion: reduce) { .btn::after { animation: none; } }
+.btn svg { transition: transform .35s; } .btn:hover svg { transform: translateX(5px); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.hero-urg { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.hero-urg b { color: var(--ink); }
+.proof { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #e2c07a12; font-size: 13.5px; color: var(--muted); }
+.proof b { color: var(--gold); }
+.proof svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2; flex: none; }
+.call-copy p.txt { margin: 16px auto 0; max-width: 520px; font-size: 16.5px; color: var(--muted); }
+.call-copy p.txt b { color: var(--ink); }
+.pun { margin: 14px auto 0; max-width: 520px; font-size: 18px; font-weight: 600; color: var(--gold); }
+.pun b { color: var(--ink); }
+
+/* aprendizados */
+.learn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; text-align: left; }
+.learn li { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #340a19; font-size: 13.5px; line-height: 1.3; }
+.learn li i { font-style: normal; font-size: 18px; }
+
+/* depoimentos */
+.deps-l { margin-top: 30px; }
+.deps-t { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.deps-t::before, .deps-t::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line)); }
+.deps-t::after { background: linear-gradient(90deg, var(--line), transparent); }
+.deps-g { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -18px; padding: 0 18px 8px; scrollbar-width: none; }
+.deps-g::-webkit-scrollbar { display: none; }
+.deps-g figure { display: flex; flex-direction: column; flex: 0 0 78%; scroll-snap-align: center; margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px #0006; }
+.deps-g img { display: block; width: 100%; height: 440px; object-fit: contain; object-position: top; background: #fff; }
+.deps-g figcaption { padding: 9px 12px; font-size: 13px; line-height: 1.35; color: #3a3a3a; background: #f4efe3; border-top: 1px solid #e6dcc4; flex: 1; }
+.deps-g figcaption b { color: #3b0d1c; }
+.deps-sw { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--gold); }
+.deps-n { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* passos */
+.call-steps { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.call-steps li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card2); font-size: 16px; }
+.call-steps b { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #22180a; font-weight: 700; }
+.call-cta { margin-top: 8px; text-align: center; }
+.call-fine { margin: 22px 0 0; text-align: center; font-size: 11.5px; line-height: 1.55; color: #bfa6ac; }
+
+@media (min-width: 880px) {
+  .wrap { padding: 40px 24px; }
+  .call-card { padding: 28px 40px 36px; }
+  .logo b { font-size: 22px; }
+  .pill-h { display: inline; }
+  .call-grid { grid-template-columns: 290px 1fr; gap: 48px; align-items: center; margin-top: 30px; }
+  .incoming { grid-template-columns: 1fr; grid-template-areas: "st" "av" "nm" "sb" "acts"; justify-items: center; text-align: center; row-gap: 10px; padding: 34px 20px 30px; border-radius: 40px; min-height: 420px; align-content: center; }
+  .av { width: 116px; height: 116px; margin: 16px 0 6px; }
+  .nm { font-size: 22px; }
+  .acts { gap: 46px; margin-top: 26px; }
+  .acts .no, .acts .yes { width: 60px; height: 60px; }
+  .acts svg { width: 27px; height: 27px; }
+  .call-copy { text-align: left; }
+  .call-copy p.txt, .pun { margin-left: 0; }
+  .btn-wrap { max-width: 520px; }
+  .hero-urg { text-align: left; }
+  .deps-g { margin: 0; padding: 0 0 8px; }
+  .deps-g figure { flex: 0 0 300px; }
+  .deps-g img { height: 460px; }
+  .call-steps { grid-template-columns: repeat(3, 1fr); }
+  .call-cta .btn-wrap { max-width: 520px; margin-left: auto; margin-right: auto; }
+}
+
+/* modal de cadastro */
+.lead-modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+.lead-modal.on { display: flex; }
+.lead-bd { position: absolute; inset: 0; background: #000b; }
+.lead-card { position: relative; width: 100%; max-width: 460px; max-height: 92vh; overflow: auto; padding: 24px 20px 22px; border-radius: 22px 22px 0 0; border: 1px solid var(--line); background: #3b0d1c; animation: up .25s ease-out; }
+@media (min-width: 600px) { .lead-modal { align-items: center; } .lead-card { border-radius: 22px; } }
+@keyframes up { from { transform: translateY(30px); opacity: 0; } }
+.lead-x { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff12; color: var(--ink); font-size: 22px; cursor: pointer; }
+.lead-ey { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+.lead-card h3 { margin: 6px 0 4px; font-size: 22px; line-height: 1.2; }
+.lead-card h3 em { font-family: var(--serif); color: var(--gold); }
+.lsub { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+.lead-card label { display: block; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-card input { display: block; width: 100%; margin-top: 5px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #2a0813; color: var(--ink); font: inherit; font-size: 16px; }
+.lead-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.lead-q { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.lead-opts { display: grid; gap: 6px; margin-top: 6px; }
+.lead-opts label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: #2a0813; color: var(--ink); font-weight: 500; font-size: 14px; cursor: pointer; }
+.lead-opts input { width: 18px; height: 18px; margin: 0; flex: none; accent-color: var(--gold); }
+.lead-opts label:has(input:checked) { border-color: var(--gold); background: #5e1a31; }
+.lead-hint { display: block; margin-top: 6px; font-size: 12px; color: #bfa6ac; }
+.lead-go { margin-top: 16px; }
+.lead-err { margin: 10px 0 0; font-size: 13px; color: #ff9a9f; }
+.lead-sec { margin: 10px 0 0; text-align: center; font-size: 12px; color: #bfa6ac; }
+/* computador: foto maior, alinhada ao topo do texto (não afeta o celular) */
+@media (min-width: 880px) {
+  .call-grid { grid-template-columns: minmax(360px, 440px) 1fr; gap: 44px; align-items: stretch; }
+  .hero-ph { height: 100%; }
+  .hero-ph img { height: 100%; min-height: 520px; aspect-ratio: auto; object-fit: cover; object-position: 55% 25%; }
+  h1 { font-size: 42px; }
+}
+
+/* celular: logo e faixa do topo na mesma linha; card de chamada compacto */
+@media (max-width: 879px) {
+  .logo-img { width: 132px; }
+  .live-pill { padding: 7px 11px; font-size: 10.5px; letter-spacing: 1.2px; white-space: nowrap; }
+  .ph-d { display: none; }
+  .incoming { column-gap: 10px; padding: 12px; }
+  .nm { font-size: 16.5px; }
+  .acts { gap: 8px; }
+  .acts .no, .acts .yes { width: 40px; height: 40px; }
+}
+
+/* Revisão de oferta: leitura e inscrição */
+.hero-sub{font-size:18px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:600px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.hero-facts span{border:1px solid var(--line);border-radius:30px;padding:6px 12px;font-size:13px;color:var(--gold)}
+.offer-section{padding-top:38px;margin-top:30px;border-top:1px solid var(--line)}
+.offer-section h2{font-size:clamp(25px,5.5vw,35px);line-height:1.2;margin:0 0 16px;color:var(--ink)}
+.section-intro{color:var(--muted);max-width:740px;font-size:17px}.offer-grid{display:grid;gap:14px;margin-top:22px}.offer-box{padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--card2)}
+.offer-box h3{margin:0 0 8px;font-size:19px;color:var(--gold)}.offer-box p{margin:0;color:var(--muted)}
+.offer-list{padding-left:21px;color:var(--muted)}.offer-list li{padding:6px 0}.offer-note{font-size:13px;color:var(--muted);line-height:1.6}
+.price-box{text-align:center;padding:28px 20px;background:#220712;border:1px solid var(--gold);border-radius:20px;margin-top:28px}.price-box .price{display:block;color:var(--gold);font-size:54px;font-weight:700;line-height:1.2;margin:10px}.price-box h2{margin-bottom:8px}.price-box .btn-wrap{max-width:540px;margin:20px auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{font-size:17px;font-weight:600;cursor:pointer}.faq details p{color:var(--muted);max-width:760px;margin:12px 0 0}
+.mobile-buy{display:none}.btn:focus-visible,summary:focus-visible,[role=button]:focus-visible{outline:3px solid white;outline-offset:4px}
+@media(min-width:720px){.offer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:719px){body{padding-bottom:96px}.mobile-buy{display:block;position:fixed;bottom:0;left:0;right:0;z-index:20;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#2a0813f5;border-top:1px solid var(--line)}.mobile-buy .btn{padding:14px 10px;font-size:12px;letter-spacing:.5px}.hero-sub{font-size:16px}.hero-ph img{aspect-ratio:5/4;object-position:center 25%}.offer-section{padding-top:28px;margin-top:24px}.call-card{padding-left:16px;padding-right:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.incoming{min-width:0;grid-template-columns:56px minmax(0,1fr) auto}.incoming .st{letter-spacing:.6px}.incoming .sb{overflow-wrap:anywhere;font-size:12px}.call-copy{min-width:0}
+/* desktop: card de ligação deitado em cima da foto (coluna da esquerda), texto à direita */
+@media (min-width: 880px) {
+  .call-grid { grid-template-areas: "call copy" "photo copy"; grid-template-rows: auto 1fr; row-gap: 18px; }
+  .call-grid > .incoming { grid-area: call; grid-template-columns: 64px 1fr auto; grid-template-areas: "av st acts" "av nm acts" "av sb acts"; justify-items: start; text-align: left; row-gap: 0; padding: 14px 16px; border-radius: 20px; min-height: 0; }
+  .call-grid > .incoming .av { width: 64px; height: 64px; margin: 0; }
+  .call-grid > .incoming .nm { font-size: 19px; }
+  .call-grid > .incoming .acts { gap: 10px; margin-top: 0; }
+  .call-grid > .incoming .acts .no, .call-grid > .incoming .acts .yes { width: 46px; height: 46px; }
+  .call-grid > .incoming .acts svg { width: 21px; height: 21px; }
+  .call-grid > .hero-ph { grid-area: photo; }
+  .call-grid > .call-copy { grid-area: copy; align-self: center; }
+  .hero-ph img { min-height: 420px; }
+}
+
+/* ===== V2: formulário na primeira dobra + popup ===== */
+.v2 h1 { font-size: clamp(25px, 6.8vw, 42px); margin-top: 0; }
+.v2 h1 em { font-size: .68em; margin-top: 8px; }
+.hero-when { margin: 10px 0 0; font-size: 13.5px; font-weight: 600; color: var(--gold); }
+.hero-form { margin: 14px 0 0; padding: 14px; border-radius: 16px; border: 1px solid var(--line); background: #2a0813cc; text-align: left; }
+.hero-form label, .pop-card label { display: block; font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.hero-form label + label { margin-top: 8px; }
+.hero-form input, .pop-card input { display: block; width: 100%; margin-top: 4px; padding: 12px 13px; border-radius: 10px; border: 1px solid var(--line); background: #1f060e; color: var(--ink); font: inherit; font-size: 16px; }
+.hero-form input:focus, .pop-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.hero-form .btn { margin-top: 12px; padding: 15px 12px; }
+.form-note { margin: 8px 0 0; font-size: 12px; color: #bfa6ac; text-align: center; }
+.form-err { margin: 8px 0 0; font-size: 13px; color: #ff9a9f; }
+.opt { font-weight: 400; color: #bfa6ac; }
+.mid-cta { max-width: 520px; margin: 22px auto 0; }
+.pop { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+.pop.on { display: flex; }
+.pop-bd { position: absolute; inset: 0; background: #000c; }
+.pop-card { position: relative; width: 100%; max-width: 420px; padding: 24px 20px 20px; border-radius: 22px; border: 1px solid var(--gold); background: #3b0d1c; animation: up .25s ease-out; }
+.pop-card h3 { margin: 6px 0 6px; font-size: 21px; line-height: 1.25; }
+.pop-card h3 em { font-family: var(--serif); color: var(--gold); }
+.pop-card p { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.pop-card label + label { margin-top: 8px; }
+.pop-card .btn { margin-top: 14px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hero-form input + input { margin-top: 8px; }
+.mobile-buy.off { transform: translateY(110%); }
+.mobile-buy { transition: transform .25s ease; }
+@media (max-width: 879px) {
+  .v2 .wrap { padding-top: calc(10px + env(safe-area-inset-top)); }
+  .v2 .call-card { padding-top: 14px; }
+  .v2 .call-grid { gap: 12px; margin-top: 10px; }
+  .v2 .incoming { grid-template-columns: 44px 1fr auto; padding: 8px 10px; border-radius: 16px; }
+  .v2 .av { width: 44px; height: 44px; }
+  .v2 .incoming .sb { display: none; }
+  .v2 .incoming .st { font-size: 9.5px; letter-spacing: 1.2px; }
+  .v2 .nm { font-size: 16px; }
+  .v2 .acts .no, .v2 .acts .yes { width: 38px; height: 38px; }
+  .v2 .acts svg { width: 18px; height: 18px; }
+  .v2 .hero-when { font-size: 12.5px; margin-top: 8px; }
+  .v2 .hero-form { margin-top: 10px; padding: 12px; }
+  .v2 .hero-form input { padding: 11px 12px; }
+  .v2 .call-copy .hero-sub { font-size: 15.5px; }
+  .v2 .hero-ph { order: 3; }
+}
+</style>
+</head>
+<body>
+<main class="v2">
+<section id="ligacao">
+  <div class="wrap">
+    <div class="call-card rise">
+      <div class="card-head">
+        <img class="logo-img" src="../img/logo-paty-branco.png" width="640" height="223" alt="Patricia Domingos · Organizadora e Mentora">
+        <span class="live-pill"><i class="live-dot" aria-hidden="true"></i><span>Ao vivo · 7 e 8/11</span></span>
+      </div>
+
+      <div class="call-grid">
+        <div class="incoming" data-cta role="button" tabindex="0" aria-label="Ver inscrição no encontro com Paty" style="cursor:pointer">
+          <span class="st" aria-hidden="true"><i class="live-dot"></i>Um convite da Paty</span>
+          <div class="av" aria-hidden="true"><span class="rg"></span><span class="rg b"></span><span class="rg c"></span><img src="../img/paty-profissao-avatar2.jpg" width="480" height="480" alt=""></div>
+          <p class="nm">Paty Domingos</p>
+          <p class="sb" aria-hidden="true">para conhecer uma nova profissão</p>
+          <div class="acts">
+            <span class="no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
+            <a class="yes-link" href="#" data-cta aria-label="Ver inscrição"><span class="yes"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span></a>
+          </div>
+        </div>
+
+        <figure class="hero-ph"><img src="../img/paty-profissao-sofa.jpg" width="858" height="900" fetchpriority="high" decoding="async" alt="Paty Domingos sorrindo, sentada em um sofá, ao lado de uma planta"></figure>
+
+        <div class="call-copy">
+          <h1>Tem mulher cobrando de <span class="nw">R$400 a R$600</span> por dia para organizar casas. <em>Em 2 dias, eu te ensino a organizar como uma profissional.</em></h1>
+          <p class="hero-when"><span data-dc>Sábado 7 e domingo 8/11</span><span data-hr-dot></span> · ao vivo e online</p>
+          <form class="hero-form" id="heroForm" data-origem="hero" novalidate>
+            <label class="sr" for="hName">Seu nome</label><input id="hName" type="text" name="name" required autocomplete="name" placeholder="Seu nome">
+            <label class="sr" for="hPhone">Seu WhatsApp com DDD</label><input id="hPhone" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="Seu WhatsApp com DDD">
+            <p class="form-err" role="alert" hidden></p>
+            <button type="submit" class="btn">Quero meu lugar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <p class="form-note">Na próxima tela você garante o ingresso dos 2 dias por R$&nbsp;19,90.</p>
+          </form>
+          <p class="countdown" data-countdown>Ingresso de 2 dias por R$&nbsp;19,90 · faltam <b data-cd>…</b></p>
+          <p class="hero-sub">Primeiro na sua casa, depois na casa das suas clientes, até a organização virar a sua profissão. Com Paty Domingos, criadora do Método Organizadas.</p>
+          <p class="proof"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>Mais de 10 mil alunas</b> já aprenderam com a Paty</span></p>
+          <p class="txt">Eu comecei como empregada doméstica. Hoje sou organizadora de alto padrão e já ensinei mais de 10 mil alunas. Nesses dois dias, eu te mostro o caminho que eu fiz, do jeito mais simples.</p>
+          <ul class="learn"><li><i>🧽</i>A diferença entre limpar e organizar, e como cobrar por cada um</li><li><i>💰</i>Quanto se cobra: diária e projeto</li><li><i>🏠</i>Como praticar na sua casa antes da primeira cliente</li><li><i>📋</i>Como montar o seu primeiro orçamento</li><li><i>📍</i>Como conseguir as primeiras clientes perto de você</li><li><i>🎓</i>O caminho até a sua primeira organização prática, com acompanhamento, e o certificado reconhecido pelo MEC</li></ul>
+          <span class="btn-wrap"><a href="#" class="btn" data-cta>Quero meu lugar por R$&nbsp;19,90</a></span>
+        </div>
+      </div>
+
+
+<section class="offer-section" aria-labelledby="why-title">
+<p class="eyebrow">A programação</p>
+<h2 id="why-title">O que você vai aprender em cada dia</h2>
+<p class="section-intro">No primeiro dia você entende a profissão por dentro. No segundo, monta o caminho até a sua primeira cliente.</p>
+<div class="offer-grid">
+<article class="offer-box"><h3>Sábado, 7/11 · A profissão por dentro</h3><p>O que faz uma personal organizer no dia a dia, quem contrata, o que essas clientes procuram e como se cobra: diária e projeto.</p></article>
+<article class="offer-box"><h3>Domingo, 8/11 · O seu primeiro projeto</h3><p>Como praticar na sua casa antes da primeira cliente, como montar o seu primeiro orçamento e como conseguir as primeiras clientes perto de você.</p></article>
+</div>
+<span class="btn-wrap mid-cta"><a href="#" class="btn" data-cta>Quero meu lugar nos 2 dias</a></span>
+</section>
+<section class="offer-section" aria-labelledby="serv-title">
+<p class="eyebrow">O seu trabalho tem valor</p>
+<h2 id="serv-title">Limpeza é um serviço. Organização é outro.</h2>
+<p class="section-intro">A gente dá um jeitinho em tudo: o cliente pede pra arrumar o armário "já que você está aí", e você organiza junto com a limpeza, pelo mesmo valor. <b>Só que esse jeitinho cobra do seu corpo, sobrecarrega e não paga.</b></p>
+<p class="section-intro">A personal organizer não faz limpeza. Ela organiza guarda-roupa, cozinha e cobra por isso. Foi assim que a Paty saiu da limpeza e construiu a vida dela.</p>
+</section>
+<section class="offer-section" aria-labelledby="for-title">
+<h2 id="for-title">Esse evento é pra você se:</h2>
+<ul class="offer-list"><li>Você trabalha com limpeza, é paga pela diária, faz muito, chega em casa com o corpo dolorido e ganha pouco.</li><li>O cliente já te pede pra organizar o guarda-roupa, os armários da cozinha ou qualquer outro lugar, e ainda assim você tem que fazer a limpeza.</li><li>Você acha isso normal, porque nem sabia que esse serviço existia.</li></ul>
+<p class="offer-note">Ninguém precisa chegar sabendo. Eu comecei do zero, e a maioria das minhas alunas também.</p>
+</section>
+
+      <div class="deps-l">
+        <p class="deps-t">Histórias de quem já estudou com a Paty</p>
+        <div class="deps-g">
+          <figure><img src="../img/prova-elizete-destaque.jpg" width="461" height="782" alt="Print de mensagem real da Elizete: trabalhava em casa de família, o primeiro dinheiro com a organização veio de uma amiga da patroa e ela seguiu a carreira de personal organizer" loading="lazy" decoding="async"><figcaption><b>Elizete</b> · de casa de família ao primeiro guarda-roupa pago</figcaption></figure>
+          <figure><img src="../img/prova-wa6.jpg" width="460" height="1000" alt="Print de mensagem real da Claudia: pensou em desistir e fechou um projeto de dez mil reais" loading="lazy" decoding="async"><figcaption><b>Claudia</b> · fechou um projeto de R$10 mil</figcaption></figure>
+          <figure><img src="../img/prova-dep2.jpg" width="978" height="1000" alt="Print de mensagem real da Mary: era a menos indicada e hoje tira de 3 a 4 mil por semana" loading="lazy" decoding="async"><figcaption><b>Mary</b> · hoje tira de R$3 a 4 mil por semana</figcaption></figure>
+        </div>
+        <p class="deps-sw">arraste para o lado →</p>
+        <p class="deps-n">Relatos reais de alunas do Método Organizadas. O resultado de cada uma depende da prática e da dedicação.</p>
+        <span class="btn-wrap mid-cta"><a href="#" class="btn" data-cta>Quero começar também · R$&nbsp;19,90</a></span>
+      </div>
+
+      <ol class="call-steps">
+        <li><b>1</b><span>Garanta o seu ingresso.</span></li>
+        <li><b>2</b><span>Informe o WhatsApp certo, com DDD. É nele que chega o link da live.</span></li>
+        <li><b>3</b><span>Assista ao vivo, <span data-d-low>sábado 7 e domingo 8 de novembro</span><span data-hr-comma></span>, do celular ou do computador.</span></li>
+      </ol>
+
+
+<section class="offer-section faq" aria-labelledby="faq-title"><h2 id="faq-title">Antes de garantir sua vaga</h2>
+<details><summary>Não tenho experiência. Posso participar?</summary><p>Pode. Eu comecei do zero, como empregada doméstica, e o evento foi pensado para quem nunca atendeu uma cliente. Você começa praticando na sua casa.</p></details>
+<details><summary>Funciona para mim?</summary><p>Se você gosta de ver a casa em ordem e quer uma renda com um trabalho que dá pra aprender, sim. Nesses dois dias você vai entender a profissão por dentro e decidir se ela combina com você antes de investir num curso completo.</p></details>
+<details><summary>E se eu não puder no horário?</summary><p data-faq-hr>O horário exato é enviado no seu WhatsApp. O evento é ao vivo e online, e você assiste pelo celular de onde estiver.</p></details>
+<details><summary>R$ 19,90 inclui os dois dias?</summary><p>Sim. Um ingresso, os dois dias: <span data-d-low>sábado 7 e domingo 8 de novembro</span>.</p></details>
+<details><summary>Como recebo o acesso?</summary><p>Pelo WhatsApp que você informar, com DDD. O link do evento chega por lá depois da confirmação do ingresso.</p></details>
+</section>
+<div class="price-box"><p class="eyebrow" data-d>Sábado 7 e domingo 8 de novembro</p><h2>Profissão Personal Organizer</h2><p><span data-hr-cap></span>Ao vivo e online</p><span class="price">R$ 19,90</span><p>Ingresso para os dois dias com Paty Domingos.</p><span class="btn-wrap"><a href="#" class="btn" data-cta>Quero meu ingresso</a></span></div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="lead-modal" id="leadModal" aria-hidden="true">
+  <div class="lead-bd" data-close></div>
+  <div class="lead-card" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <button class="lead-x" type="button" data-close aria-label="Fechar">&times;</button>
+    <p class="lead-ey">Garanta o seu lugar</p>
+    <h3 id="leadTitle">Garanta a sua vaga na <em>Profissão Personal Organizer</em></h3>
+    <p class="lsub">Preencha e siga para o pagamento do ingresso de R$&nbsp;19,90.</p>
+    <form id="leadForm" data-origem="modal" novalidate>
+      <label>Nome<input type="text" name="name" required autocomplete="name" placeholder="Seu nome"></label>
+      <label>WhatsApp<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999"></label>
+      <label>E-mail <span class="opt">(opcional)</span><input type="email" name="email" autocomplete="email" placeholder="seu@email.com"></label>
+      <small class="lead-hint">Confira o número com DDD. É nele que chega o link do evento.</small>
+      <p class="form-err" role="alert" hidden></p>
+      <button type="submit" class="btn lead-go">Ir para o pagamento <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <p class="lead-sec">&#128274; Seus dados estão seguros.</p>
+    </form>
+  </div>
+</div>
+
+<div class="pop" id="pop" aria-hidden="true">
+  <div class="pop-bd" data-pclose></div>
+  <div class="pop-card" role="dialog" aria-modal="true" aria-labelledby="popTitle">
+    <button class="lead-x" type="button" data-pclose aria-label="Fechar">&times;</button>
+    <p class="lead-ey">Antes de sair</p>
+    <h3 id="popTitle">Receba a <em>programação dos 2 dias</em> no seu WhatsApp</h3>
+    <p>Veja o que a Paty vai ensinar no sábado e no domingo e decida com calma.</p>
+    <form id="popForm" data-origem="popup-programacao" novalidate>
+      <label>Nome<input type="text" name="name" required autocomplete="name" placeholder="Seu nome"></label>
+      <label>WhatsApp<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999"></label>
+      <p class="form-err" role="alert" hidden></p>
+      <button type="submit" class="btn">Quero receber a programação</button>
+    </form>
+  </div>
+</div>
+
+<div class="mobile-buy"><a href="#" class="btn" data-cta>Quero meu lugar · R$ 19,90</a></div>
+<script>
+/* ================= PONTOS QUE DEPENDEM DO TIME ================= */
+var DATAS = 'Sábado 7 e domingo 8 de novembro'; /* PENDENTE: confirmar (domingo em dúvida). Ex.: 'Sábado, 7 de novembro' */
+var DATAS_CURTA = 'Sábado 7 e domingo 8/11';      /* versão curta usada no topo */
+var HORARIO = '';       /* PENDENTE: horário em aberto. Ex.: 'das 9h às 15h'. Vazio = o horário não aparece na página */
+var CHECKOUT_URL = 'https://payfast.greenn.com.br/200810/offer/qPw1Kb'; /* ingresso R$ 19,90 (Greenn, oferta 200810) */
+var WEBHOOK_URL = '';   /* PENDENTE: para onde vai o lead (planilha ou ferramenta de disparo). Recebe JSON: name, phone, email, origem, evento, query, pagina, data */
+var OBRIGADO_URL = 'obrigado.html'; /* página de obrigado do popup (link do grupo fica nela, em GRUPO_URL) */
+var FIM_LOTE = '';      /* PENDENTE: fim do lote, ex.: '2026-11-06T23:59:59-03:00'. Vazio = contagem escondida */
+/* =============================================================== */
+
+var modal = document.getElementById('leadModal'), pop = document.getElementById('pop');
+var jaCadastrou = false;
+function abrir(e) { e.preventDefault(); fecharPop(); modal.classList.add('on'); modal.setAttribute('aria-hidden', 'false'); setTimeout(function () { modal.querySelector('input[name=name]').focus(); }, 50); }
+function fechar() { modal.classList.remove('on'); modal.setAttribute('aria-hidden', 'true'); }
+function abrirPop() { if (jaCadastrou || modal.classList.contains('on')) return; pop.classList.add('on'); pop.setAttribute('aria-hidden', 'false'); }
+function fecharPop() { pop.classList.remove('on'); pop.setAttribute('aria-hidden', 'true'); }
+document.querySelectorAll('[data-cta]').forEach(function (a) { a.addEventListener('click', abrir); });
+document.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', fechar); });
+document.querySelectorAll('[data-pclose]').forEach(function (b) { b.addEventListener('click', fecharPop); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { fechar(); fecharPop(); } });
+
+/* máscara do WhatsApp */
+document.querySelectorAll('input[name=phone]').forEach(function (tel) {
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11);
+    tel.value = d.length > 6 ? '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4) : d.length > 2 ? '(' + d.slice(0, 2) + ') ' + d.slice(2) : d;
+  });
+});
+
+/* repassa toda a query string que chegou (UTMs, fbclid etc.), sem fixar nenhuma */
+function comQuery(url, extra) {
+  var u = new URL(url, location.href);
+  new URLSearchParams(location.search).forEach(function (v, k) { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+  Object.keys(extra || {}).forEach(function (k) { if (extra[k]) u.searchParams.set(k, extra[k]); });
+  return u.toString();
+}
+
+function enviarLead(dados) {
+  if (!WEBHOOK_URL) return;
+  var corpo = JSON.stringify(dados);
+  try {
+    if (navigator.sendBeacon && navigator.sendBeacon(WEBHOOK_URL, new Blob([corpo], { type: 'text/plain' }))) return;
+    fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: corpo, keepalive: true });
+  } catch (x) {}
+}
+
+document.querySelectorAll('#heroForm, #leadForm, #popForm').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = form.querySelector('.form-err');
+    var el = form.elements, nome = el['name'].value.trim(), fone = el['phone'].value.replace(/\D/g, ''), email = el['email'] ? el['email'].value.trim() : '';
+    var msg = !nome ? 'Preencha o seu nome.' : fone.length < 10 ? 'Confira o WhatsApp com DDD.' : email && !/^\S+@\S+\.\S+$/.test(email) ? 'Confira o seu e-mail.' : '';
+    if (msg) { err.textContent = msg; err.hidden = false; return; }
+    err.hidden = true;
+    jaCadastrou = true;
+    try { sessionStorage.setItem('po_lead', '1'); } catch (x) {}
+    var query = {};
+    new URLSearchParams(location.search).forEach(function (v, k) { query[k] = v; });
+    var origem = form.getAttribute('data-origem');
+    enviarLead({ name: nome, phone: fone, email: email, origem: origem, evento: 'profissao-personal-organizer', query: query, pagina: location.pathname, data: new Date().toISOString() });
+    /* pequena espera para o pixel registrar o cadastro antes de sair da página */
+    setTimeout(function () {
+      if (origem === 'popup-programacao') { location.href = comQuery(OBRIGADO_URL, { nome: nome }); return; }
+      if (!CHECKOUT_URL) { err.textContent = 'Checkout em configuração. Volte em instantes.'; err.hidden = false; return; }
+      location.href = comQuery(CHECKOUT_URL, { name: nome, phone: fone, email: email });
+    }, 350);
+  });
+});
+
+/* popup de segunda chance: só quando a pessoa chega ao fim da página (depois de ler a proposta), uma vez por sessão */
+(function () {
+  try { if (sessionStorage.getItem('po_lead') || sessionStorage.getItem('po_pop')) return; } catch (x) {}
+  var feito = false;
+  function disparar() { if (feito || jaCadastrou) return; feito = true; try { sessionStorage.setItem('po_pop', '1'); } catch (x) {} abrirPop(); }
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    if (h > 0 && scrollY >= h - 40) disparar();
+  }, { passive: true });
+})();
+
+/* barra fixa do celular some enquanto o formulário do topo está na tela */
+(function () {
+  var bar = document.querySelector('.mobile-buy'), hf = document.getElementById('heroForm');
+  if (!bar || !hf || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (en) { bar.classList.toggle('off', en[0].isIntersecting); }).observe(hf);
+})();
+
+
+/* preenche data e horário a partir de DATAS / DATAS_CURTA / HORARIO (horário vazio = não aparece) */
+(function () {
+  var H = (HORARIO || '').trim();
+  function cada(sel, fn) { document.querySelectorAll(sel).forEach(function (e) { e.textContent = fn(); }); }
+  cada('[data-d]', function () { return DATAS; });
+  cada('[data-d-low]', function () { return DATAS.charAt(0).toLowerCase() + DATAS.slice(1); });
+  cada('[data-dc]', function () { return DATAS_CURTA; });
+  cada('[data-hr-dot]', function () { return H ? ' · ' + H : ''; });
+  cada('[data-hr-comma]', function () { return H ? ', ' + H : ''; });
+  cada('[data-hr-cap]', function () { return H ? H.charAt(0).toUpperCase() + H.slice(1) + ' · ' : ''; });
+  cada('[data-faq-hr]', function () { return H ? 'O evento é ao vivo, ' + H + ', e você pode assistir pelo celular de onde estiver. Entre no horário que conseguir.' : 'O horário exato é enviado no seu WhatsApp. O evento é ao vivo e online, e você assiste pelo celular de onde estiver.'; });
+})();
+
+/* contagem do lote */
+(function () {
+  var els = document.querySelectorAll('[data-countdown]');
+  if (!FIM_LOTE) { els.forEach(function (e) { e.hidden = true; }); return; }
+  var fim = new Date(FIM_LOTE).getTime();
+  function dois(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var r = fim - Date.now();
+    if (r <= 0) { els.forEach(function (e) { e.hidden = true; }); return; }
+    var d = Math.floor(r / 864e5), h = Math.floor(r / 36e5) % 24, m = Math.floor(r / 6e4) % 60, s = Math.floor(r / 1e3) % 60;
+    var t = (d ? d + 'd ' : '') + dois(h) + 'h ' + dois(m) + 'min ' + dois(s) + 's';
+    els.forEach(function (e) { e.querySelector('[data-cd]').textContent = t; });
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
