@@ -190,11 +190,11 @@ const STEPS = [
     body: g => `<p>É o mesmo trabalho que você já faz em casa: arrumar o guarda-roupa, a cozinha, as gavetas.</p>
       <p>A diferença é que a personal organizer faz isso <span class="hl">com técnica e com método</span>, e é paga como profissional.</p>
       ${g.diarista === "sim" ? `<p>Para quem já trabalha em casa de família, a virada é ainda mais natural: <b>você já conhece a rotina de uma casa como poucas pessoas</b>.</p>` : `<p>E a primeira cliente costuma vir de quem já te conhece: uma amiga, uma vizinha, alguém da família.</p>`}` },
-  { id: "frase", type: "q", title: "Qual frase mais ressoa com você?",
-    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Trabalho muito, mas o dinheiro nunca é suficiente." },
-      { v: "b", dim: "reconhecimento", label: "😐 Organizo para todo mundo, mas ninguém me paga por isso." },
+  { id: "frase", type: "q", title: "Qual frase mais combina com você?",
+    options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Trabalho muito, mas o dinheiro nunca sobra." },
+      { v: "b", dim: "reconhecimento", label: "😐 Organizo para a casa toda, mas ninguém me paga por isso." },
       { v: "c", dim: "tecnica", label: "🤔 Gosto de organizar, mas não sei se tenho técnica." },
-      { v: "d", dim: "liberdade", label: "😔 Queria trabalhar nos meus horários e ficar mais com a família." }] },
+      { v: "d", dim: "liberdade", label: "😔 Queria ter horários certos para trabalhar e poder ficar mais com a família." }] },
   { id: "dinheiro", type: "q", title: "Com o dinheiro, o que mais frustra?",
     options: [{ v: "a", dim: "financeiro", label: "😮‍💨 Chega o fim do mês e não sobra nada." },
       { v: "b", dim: "financeiro", label: "😨 Depender de outra pessoa para as minhas coisas." },
@@ -203,8 +203,8 @@ const STEPS = [
   { id: "i_paty", type: "info", fill: true, img: "img/paty-verde-rosto-v2.jpg", pos: "50% 20%",
     title: "A Paty começou como empregada doméstica.",
     body: () => `<p>Hoje ela é <b>organizadora de alto padrão</b>, com mais de 11 anos de profissão e mais de 10 mil alunas no Brasil e no exterior.</p>
-      <p>Ela não nasceu sabendo. Ela aprendeu a técnica, fez o primeiro laboratório e começou a cobrar.</p>
-      <p><span class="hl">O que faltava não era talento. Era o método.</span></p>` },
+      <p>Ela não nasceu sabendo. Ela enxergou uma possibilidade, desenvolveu uma técnica e começou a cobrar.</p>
+      <p><span class="hl">O que faltava não era força de vontade. Era visão e método.</span></p>` },
   { id: "cobrar", type: "q", title: "Quando você pensa em cobrar para organizar, o que acontece?",
     options: [{ v: "a", dim: "reconhecimento", label: "😳 Dá vergonha, parece que não mereço." },
       { v: "b", dim: "tecnica", label: "🧐 Não sei quanto cobrar." },
@@ -214,8 +214,8 @@ const STEPS = [
     title: "O grande diferencial da Paty: ela trabalha a sua mentalidade.",
     body: () => `<p>Técnica se aprende. O que mais trava uma mulher é acreditar, primeiro, que ela <b>é capaz</b>, que tem potencial, que entrega, que não só pode, mas <b>deve cobrar</b>, e que merece ser chamada de profissional.</p>
       <p>Por isso, no treinamento da Paty, você organiza a casa <b>e a cabeça</b>.</p>
-      <p>Foi assim que ela transformou a vida de mais de 10 mil mulheres e formou um verdadeiro <b>exército de organizadoras</b>: mulheres que saíram do "isso não é pra mim" e hoje se apoiam e crescem juntas.</p>
-      <p><span class="hl">Um exército que não luta contra ninguém. Luta pela própria liberdade.</span></p>
+      <p>Foi assim que ela transformou a vida de mais de 10 mil mulheres e formou um verdadeiro <b>exército de organizadoras</b>: mulheres que saíram do "isso não é pra mim" e hoje se apoiam e crescem juntas, porque ela pega na sua mão e não solta até você se desenvolver.</p>
+      <p><span class="hl">Um exército que não luta contra ninguém. Luta pela própria liberdade de crescimento.</span></p>
       <div class="exe"><span><b>+10 mil</b>alunas</span><span><b>🌎</b>Brasil e exterior</span><span><b>🫂</b>Comunidade Paty Organizer</span></div>` },
   { id: "calc", type: "loading", title: "Montando o seu Diagnóstico da Organizadora...", ms: 3500 },
   { id: "resultado", type: "result" },
@@ -241,6 +241,31 @@ const STEPS = [
   { id: "prep", type: "loading", title: "Preparamos um caminho para você começar a sua nova profissão.", ms: 3000 },
   { id: "vendas", type: "sales" }
 ];
+
+/* ===================== VALIDAÇÃO DOS DADOS ===================== */
+/* WhatsApp: celular brasileiro (DDD existente + 9 + 8 dígitos), sem números repetidos ou em sequência.
+   E-mail: formato válido, sem e-mails de teste, e o domínio precisa existir (consulta DNS pública do Google). */
+const DDDS = [11,12,13,14,15,16,17,18,19,21,22,24,27,28,31,32,33,34,35,37,38,41,42,43,44,45,46,47,48,49,51,53,54,55,61,62,63,64,65,66,67,68,69,71,73,74,75,77,79,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,98,99];
+const foneLimpo = t => { let d = String(t).replace(/\D/g, ""); if (d.length > 11 && d.startsWith("55")) d = d.slice(2); return d; };
+const foneOk = d => {
+  if (!/^\d{11}$/.test(d) || !DDDS.includes(+d.slice(0, 2)) || d[2] !== "9") return false;
+  const num = d.slice(3);
+  if (/^(\d)\1+$/.test(num) || "0123456789012345".includes(num) || "9876543210987654".includes(num)) return false;
+  return true;
+};
+const FALSOS = /^(teste?|test|exemplo|example|asdf|qwerty|aaa+|abc|nome|email|fulan[oa])@|@(teste?|test|exemplo|example|email|dominio)\.|@.*\.(test|example|invalid|local)$/;
+const emailOk = e => /^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(e) && !FALSOS.test(e) && !/\.\./.test(e);
+const TYPO = { "gmial.com": "gmail.com", "gmal.com": "gmail.com", "gamil.com": "gmail.com", "gmail.co": "gmail.com", "gmail.com.br": "gmail.com", "gmai.com": "gmail.com", "gnail.com": "gmail.com", "gmeil.com": "gmail.com", "hotmial.com": "hotmail.com", "hotmal.com": "hotmail.com", "hotmai.com": "hotmail.com", "hotmail.co": "hotmail.com", "hotamil.com": "hotmail.com", "outlok.com": "outlook.com", "outllok.com": "outlook.com", "yaho.com": "yahoo.com", "yahoo.com.b": "yahoo.com.br", "icloud.co": "icloud.com", "iclod.com": "icloud.com" };
+async function dominioExiste(dom) {
+  const pergunta = tipo => fetch("https://dns.google/resolve?name=" + encodeURIComponent(dom) + "&type=" + tipo, { signal: AbortSignal.timeout ? AbortSignal.timeout(3500) : undefined }).then(r => r.json());
+  try {
+    const mx = await pergunta("MX");
+    if (mx.Status === 3) return false;
+    if (mx.Answer && mx.Answer.length) return true;
+    const a = await pergunta("A");
+    return !!(a.Answer && a.Answer.length);
+  } catch (x) { return true; } /* sem internet para conferir: não trava a pessoa */
+}
 
 /* ===================== MOTOR ===================== */
 const A = {};
@@ -299,11 +324,16 @@ function render() {
     setCta(s.cta, false);
     /* o botão de baixo dispara o submit do <form>, para o pixel contar o cadastro */
     s.onCta = () => { document.getElementById("f").requestSubmit(); return false; };
-    s.onSubmit = () => {
-      const n = document.getElementById("f-nome").value.trim(), e = document.getElementById("f-email").value.trim(), w = document.getElementById("f-whats").value.replace(/\D/g, "");
+    s.onSubmit = async () => {
+      const n = document.getElementById("f-nome").value.trim(), e = document.getElementById("f-email").value.trim().toLowerCase(), w = foneLimpo(document.getElementById("f-whats").value);
       const err = document.getElementById("f-err");
-      const bad = !n ? "Preencha o seu nome." : !/^\S+@\S+\.\S+$/.test(e) ? "Confira o seu e-mail." : w.length < 10 ? "Confira o seu WhatsApp com DDD." : "";
+      const dom = e.split("@")[1] || "";
+      const bad = n.length < 2 ? "Preencha o seu nome." : !emailOk(e) ? "Confira o seu e-mail: ele precisa ser um e-mail de verdade." : TYPO[dom] ? "Você quis dizer @" + TYPO[dom] + "? Confira o seu e-mail." : !foneOk(w) ? "Confira o seu WhatsApp: DDD + número de celular (11 dígitos)." : "";
       if (bad) { err.textContent = bad; err.hidden = false; return; }
+      btn.disabled = true; btn.textContent = "Conferindo...";
+      const existe = await dominioExiste(e.split("@")[1]);
+      btn.textContent = s.cta;
+      if (!existe) { err.textContent = "Esse e-mail não existe. Confira se digitou certo (ex.: @gmail.com)."; err.hidden = false; btn.disabled = false; return; }
       Object.assign(A, { nome: n, email: e, whats: w.length > 11 && w.startsWith("55") ? w.slice(2) : w });
       const query = {}; new URLSearchParams(location.search).forEach((val, k) => query[k] = val);
       if (CONFIG.WEBHOOK_URL) { try { fetch(CONFIG.WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ name: n, phone: w, email: e, origem: "diagnostico-organizadora", evento: "profissao-personal-organizer", respostas: A, query, data: new Date().toISOString() }), keepalive: true }).catch(() => {}); } catch (x) {} }
@@ -356,7 +386,7 @@ function render() {
   if (s.type === "form") {
     const f = document.getElementById("f");
     f.addEventListener("submit", e => { e.preventDefault(); s.onSubmit(); });
-    const ok = () => { btn.disabled = !(document.getElementById("f-nome").value.trim() && /^\S+@\S+\.\S+$/.test(document.getElementById("f-email").value.trim()) && document.getElementById("f-whats").value.replace(/\D/g, "").length >= 10); };
+    const ok = () => { btn.disabled = !(document.getElementById("f-nome").value.trim().length >= 2 && emailOk(document.getElementById("f-email").value.trim().toLowerCase()) && foneOk(foneLimpo(document.getElementById("f-whats").value))); };
     f.addEventListener("input", ok); ok();
   }
 }
