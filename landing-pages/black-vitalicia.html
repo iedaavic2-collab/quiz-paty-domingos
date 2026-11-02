@@ -76,6 +76,7 @@ h2 em { font-family: var(--serif); font-style: italic; color: var(--gold); }
 .cursos::-webkit-scrollbar { display: none; }
 .cursos figure { flex: 0 0 150px; margin: 0; scroll-snap-align: start; }
 .cursos img { display: block; width: 150px; height: 212px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); background: var(--card2); }
+.cursos img[src*="natal"] { object-position: 50% 0; }
 .cursos figcaption { margin-top: 6px; font-size: 13px; line-height: 1.3; color: var(--muted); }
 .cursos .futuro { display: grid; place-items: center; width: 150px; height: 212px; border-radius: 12px; border: 1px dashed var(--gold); text-align: center; padding: 12px; color: var(--gold); font-weight: 700; font-size: 15px; }
 .swipe { margin: 0; font-size: 12px; color: #9d968a; }
@@ -216,7 +217,7 @@ var WEBHOOK_URL = '';   /* PENDENTE: para onde vai o lead (planilha ou ferrament
 var OBRIGADO_URL = 'obrigado-black.html'; /* página de obrigado com o link do grupo VIP (GRUPO_URL fica nela) */
 /* Cursos do carrossel (confirmar com a Paty quais entram na Black) */
 var CURSOS = [
-  ['metodo', 'Método Organizadas'], ['casa', 'Treinamento Casa Organizada'], ['empregada', 'Treinamento de Empregada Doméstica, Lavadeira e Passadeira'],
+  ['metodo', 'Método Organizadas'], ['natal', 'Natal que Encanta e Vende'], ['casa', 'Treinamento Casa Organizada'], ['empregada', 'Treinamento de Empregada Doméstica, Lavadeira e Passadeira'],
   ['lojas', 'Organização de Lojas Comerciais e Varejo'], ['mudanca', 'Treinamento Pré e Pós Mudança'], ['malas', 'Organização de Malas de Viagem'],
   ['imersao', 'Imersão Organização'], ['gavetas', 'Curso de Organização de Gavetas'], ['renda', 'Treinamento Renda Extra'],
   ['rota', 'Rota dos Mil'], ['redes', 'Redes Sociais para Personal Organizer'], ['comunidade', 'Comunidade Paty Organizer']
