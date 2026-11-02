@@ -119,6 +119,11 @@ h2 { font-size: clamp(17px, min(5.4vw, 3.2dvh), 23px); line-height: 1.22; margin
 .price .bn { background: var(--pri); font-weight: 800; padding: 9px; font-size: 14px; }
 .price .pv { font-size: 40px; font-weight: 800; margin: 10px 0 0; }
 .price small { display: block; color: var(--muted); font-size: 13px; padding: 4px 12px; }
+.mid-buy { display: block; width: 100%; max-width: 448px; margin: 14px auto 18px; border: 0; border-radius: 999px; background: var(--verde); color: #fff; font: inherit; font-weight: 800; font-size: 16px; padding: 16px; cursor: pointer; text-transform: uppercase; box-shadow: 0 6px 18px rgba(0,0,0,.15); }
+.buy-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); box-shadow: 0 -6px 18px rgba(0,0,0,.08); transition: transform .25s ease; }
+.buy-bar.off { transform: translateY(120%); }
+.buy-bar button { display: block; width: 100%; max-width: 448px; margin: 0 auto; border: 0; border-radius: 999px; background: var(--verde); color: #fff; font: inherit; font-weight: 800; font-size: 15px; padding: 15px; cursor: pointer; text-transform: uppercase; }
+main.sales { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
 .price button { margin: 12px 16px 16px; width: calc(100% - 32px); border: 0; border-radius: 999px; background: var(--verde); color: #fff; font: inherit; font-weight: 800; font-size: 16px; padding: 16px; cursor: pointer; text-transform: uppercase; }
 .car { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
 .car::-webkit-scrollbar { display: none; }
@@ -382,7 +387,14 @@ function render() {
   app.classList.toggle("sales", s.type === "sales");
   app.classList.toggle("fill", !!s.fill);
   if (s.type === "sales") videoVSL();
-  app.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", buy));
+  app.querySelectorAll("[data-buy], [data-buy-bar]").forEach(b => b.addEventListener("click", buy));
+  /* barra fixa de compra: aparece em toda rolagem em que nenhum outro botão de compra está na tela */
+  const bar = document.getElementById("buyBar");
+  if (bar && "IntersectionObserver" in window) {
+    const vis = new Set();
+    const io = new IntersectionObserver(es => { es.forEach(e => e.intersectionRatio >= 0.99 ? vis.add(e.target) : vis.delete(e.target)); bar.classList.toggle("off", vis.size > 0); }, { threshold: 1 });
+    app.querySelectorAll("[data-buy]").forEach(b => io.observe(b));
+  } else if (bar) bar.classList.remove("off");
   if (s.type === "form") {
     const f = document.getElementById("f");
     f.addEventListener("submit", e => { e.preventDefault(); s.onSubmit(); });
@@ -423,6 +435,7 @@ function buy() {
 
 function sales() {
   const TBD = `<span class="tbd">a definir</span>`;
+  const cta = `<button type="button" class="mid-buy" data-buy>Garantir minha vaga · ${CONFIG.PRECO}</button>`;
   const price = `<div class="price"><div class="bn">🎟️ INGRESSO · ${CONFIG.EVENTO.toUpperCase()}</div>
     <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS}${CONFIG.HORARIO ? " · " + CONFIG.HORARIO : ""}</small>
     <small>💳 Cartão · Pix · 🛡️ Garantia de 7 dias</small>
@@ -437,25 +450,31 @@ function sales() {
     <div class="s-box"><h3>ANTES DESSES 2 DIAS:</h3><ul>
       <li>❌ Limpar e ainda organizar, recebendo só a diária</li><li>❌ Chegar em casa com o corpo dolorido</li><li>❌ Achar isso normal, sem saber que organização é outro serviço</li>
       <li>❌ Não saber quanto cobrar pela organização</li><li>❌ Não ter o seu trabalho reconhecido</li><li>❌ Viver no horário dos outros</li></ul></div>
+    ${cta}
     <div class="s-box"><h3>EM 2 DIAS, VOCÊ VAI APRENDER:</h3><ul>
       <li>✅ A diferença entre limpar e organizar, e como cobrar por cada um</li><li>✅ O que faz uma personal organizer e onde ela atua</li><li>✅ Os fundamentos da técnica: categorização, desapego e descarte, gabarito${A.organizar ? " <b>(resolve a sua dificuldade)</b>" : ""}</li>
       <li>✅ Como fazer a sua primeira organização prática, com acompanhamento, até ganhar o seu certificado reconhecido pelo MEC</li><li>✅ Como conseguir as primeiras clientes por indicação</li><li>✅ A mentalidade de profissional: perder o medo de cobrar pelo que você sabe fazer</li>
       <li>✅ Como cobrar desde a primeira conversa com a cliente e chegar a R$400 a R$600 por dia</li><li>✅ A história da Paty: de empregada doméstica a organizadora de alto padrão</li></ul></div>
+    ${cta}
     <div class="s-box s-check"><h3>AO VIVO. NÃO É UM CURSO GRAVADO.</h3><ul>
       <li><b>✅ Aprendizado ao vivo</b><span>Você acompanha a Paty em tempo real, pelo celular.</span></li>
       <li><b>✅ Do zero</b><span>Feito para quem nunca cobrou pela organização.</span></li>
       <li><b>✅ Prática na sua casa</b><span>Você começa por um guarda-roupa, sem comprar organizadores caros.</span></li></ul></div>
+    ${cta}
     <div class="s-box"><h3>DEPOIS DESSES 2 DIAS:</h3><ul>
       <li>✅ Saber exatamente por onde começar</li><li>✅ Ter coragem de cobrar pelo que você já sabe fazer</li><li>✅ Ser chamada de profissional, não de ajudante</li>
       <li>✅ Ganhar mais pelo que você já sabe fazer</li><li>✅ Escolher os dias de trabalho e ${A.casada === "sim" && A.filhos === "sim" ? "ter mais tempo com o seu esposo e os seus filhos" : A.casada === "sim" ? "ter mais tempo com o seu esposo" : A.filhos === "sim" ? "ter mais tempo com os seus filhos" : "ter mais tempo para cuidar de você"}</li></ul></div>
+    ${cta}
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
     <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"><img src="img/prova-wa3.jpg" alt="Mensagem de aluna"></div>
+    ${cta}
     <h2>Quem vai te ensinar</h2>
     <img class="info-img" src="img/paty-vinho-sofa-v1.jpg" alt="Paty Domingos sorrindo, sentada no sofá">
     <p class="sub">A Paty conhece a sua realidade: antes de virar organizadora de alto padrão, ela trabalhou como <b>empregada doméstica</b>. Ela sabe o que é cuidar da casa dos outros e não ser valorizada por isso.</p>
     <div class="s-box"><ul><li>🧹 Começou como <b>empregada doméstica</b> e hoje é <b>organizadora de alto padrão</b></li><li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li><li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li><li>🏆 Criadora do <b>Método Organizadas</b></li><li>🧠 O diferencial: trabalha a <b>mentalidade</b>, não só a técnica</li><li>🫂 Formou um <b>exército de organizadoras</b> que se apoiam e crescem juntas</li></ul></div>
     ${price}
-    <p class="foot">Evento online educacional. Garantia legal de 7 dias (art. 49 do CDC).</p>`;
+    <p class="foot">Evento online educacional. Garantia legal de 7 dias (art. 49 do CDC).</p>
+    <div class="buy-bar off" id="buyBar"><button type="button" data-buy-bar>Garantir minha vaga · ${CONFIG.PRECO}</button></div>`;
 }
 
 /* ===================== PRÉ-CARREGAMENTO =====================
