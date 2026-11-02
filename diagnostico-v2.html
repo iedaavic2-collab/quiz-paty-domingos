@@ -429,25 +429,25 @@ function sales() {
     <button type="button" data-buy>Garantir minha vaga · ${CONFIG.PRECO}</button></div>`;
   return `<p class="s-eyebrow">DOIS DIAS AO VIVO COM A PATY DOMINGOS</p>
     <h1>Ei ${nome() || "você"}...</h1>
-    <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Em 2 dias, a Paty vai te ensinar organização do zero. E ela pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
+    <p class="sub"><b>O SEU DIAGNÓSTICO ESTÁ PRONTO!</b><br>Você limpa e ainda organiza, mas só recebe pela limpeza. Em 2 dias, a Paty te mostra que <b>organizar é outro serviço</b>, como cobrar à parte por ele e como isso pode virar uma renda de <span class="money">R$400 a R$600 por dia</span> e a sua nova profissão.</p>
     <div class="vid" id="vid"><video src="video/diagnostico-paty-v1.mp4" autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" aria-label="Vídeo da Paty Domingos sobre o seu diagnóstico"></video>
       <button type="button" class="v-som" id="v-som" hidden>🔊 Toque para ouvir</button>
       <button type="button" class="v-re" id="v-re" aria-label="Recomeçar o vídeo" hidden>↺ Recomeçar</button></div>
     ${price}
-    <div class="s-box"><h3>A SUA VIDA ANTES DO WORKSHOP:</h3><ul>
-      <li>❌ Organizar de graça para a família e as amigas</li><li>❌ Trabalho pesado e mal pago</li><li>❌ Achar que "isso não é para mim"</li>
-      <li>❌ Não saber por onde começar nem quanto cobrar</li><li>❌ Depender da renda de outra pessoa</li><li>❌ Viver no horário dos outros</li></ul></div>
+    <div class="s-box"><h3>ANTES DESSES 2 DIAS:</h3><ul>
+      <li>❌ Limpar e ainda organizar, recebendo só a diária</li><li>❌ Chegar em casa com o corpo dolorido</li><li>❌ Achar isso normal, sem saber que organização é outro serviço</li>
+      <li>❌ Não saber quanto cobrar pela organização</li><li>❌ Não ter o seu trabalho reconhecido</li><li>❌ Viver no horário dos outros</li></ul></div>
     <div class="s-box"><h3>EM 2 DIAS, VOCÊ VAI APRENDER:</h3><ul>
-      <li>✅ O que faz uma personal organizer e onde ela atua</li><li>✅ Os fundamentos da técnica: categorização, desapego e descarte, gabarito${A.organizar ? " <b>(resolve a sua dificuldade)</b>" : ""}</li>
-      <li>✅ O que é o laboratório e por que ele é o primeiro passo</li><li>✅ Como conseguir as primeiras clientes por indicação</li><li>✅ A mentalidade de profissional: perder o medo de cobrar pelo que você sabe fazer</li>
-      <li>✅ Como cobrar pela visita técnica e chegar a R$400 a R$600 por dia</li><li>✅ A história da Paty: de empregada doméstica a organizadora de alto padrão</li></ul></div>
+      <li>✅ A diferença entre limpar e organizar, e como cobrar por cada um</li><li>✅ O que faz uma personal organizer e onde ela atua</li><li>✅ Os fundamentos da técnica: categorização, desapego e descarte, gabarito${A.organizar ? " <b>(resolve a sua dificuldade)</b>" : ""}</li>
+      <li>✅ Como fazer a sua primeira organização prática, com acompanhamento, até ganhar o seu certificado reconhecido pelo MEC</li><li>✅ Como conseguir as primeiras clientes por indicação</li><li>✅ A mentalidade de profissional: perder o medo de cobrar pelo que você sabe fazer</li>
+      <li>✅ Como cobrar desde a primeira conversa com a cliente e chegar a R$400 a R$600 por dia</li><li>✅ A história da Paty: de empregada doméstica a organizadora de alto padrão</li></ul></div>
     <div class="s-box s-check"><h3>AO VIVO. NÃO É UM CURSO GRAVADO.</h3><ul>
       <li><b>✅ Aprendizado ao vivo</b><span>Você acompanha a Paty em tempo real, pelo celular.</span></li>
-      <li><b>✅ Do zero</b><span>Feito para quem nunca trabalhou com organização.</span></li>
+      <li><b>✅ Do zero</b><span>Feito para quem nunca cobrou pela organização.</span></li>
       <li><b>✅ Prática na sua casa</b><span>Você começa por um guarda-roupa, sem comprar organizadores caros.</span></li></ul></div>
-    <div class="s-box"><h3>A SUA VIDA DEPOIS DO WORKSHOP:</h3><ul>
+    <div class="s-box"><h3>DEPOIS DESSES 2 DIAS:</h3><ul>
       <li>✅ Saber exatamente por onde começar</li><li>✅ Ter coragem de cobrar pelo que você já sabe fazer</li><li>✅ Ser chamada de profissional, não de ajudante</li>
-      <li>✅ Ter o seu próprio dinheiro</li><li>✅ Escolher os dias de trabalho e ${A.casada === "sim" && A.filhos === "sim" ? "ter mais tempo com o seu esposo e os seus filhos" : A.casada === "sim" ? "ter mais tempo com o seu esposo" : A.filhos === "sim" ? "ter mais tempo com os seus filhos" : "ter mais tempo para cuidar de você"}</li></ul></div>
+      <li>✅ Ganhar mais pelo que você já sabe fazer</li><li>✅ Escolher os dias de trabalho e ${A.casada === "sim" && A.filhos === "sim" ? "ter mais tempo com o seu esposo e os seus filhos" : A.casada === "sim" ? "ter mais tempo com o seu esposo" : A.filhos === "sim" ? "ter mais tempo com os seus filhos" : "ter mais tempo para cuidar de você"}</li></ul></div>
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
     <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"><img src="img/prova-wa3.jpg" alt="Mensagem de aluna"></div>
     <h2>Quem vai te ensinar</h2>
