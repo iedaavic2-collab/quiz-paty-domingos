@@ -155,7 +155,7 @@ const CONFIG = {
   EVENTO: "Profissão Personal Organizer",
   DATAS: "7 e 8 de novembro",
   PRECO: "R$19,90",
-  HORARIO: "das 9h às 15h",
+  HORARIO: "",       /* PENDENTE: horário em aberto. Ex.: "das 9h às 15h". Vazio = não aparece */
   CHECKOUT_URL: "https://payfast.greenn.com.br/200810/offer/qPw1Kb",   /* ingresso R$ 19,90 (Greenn, oferta 200810); nome, e-mail e WhatsApp vão na URL */
   WEBHOOK_URL: ""     /* PENDENTE: para onde vai o lead (planilha ou ferramenta de disparo). Recebe JSON com name, phone, email, origem, respostas e query */
 };
@@ -362,7 +362,7 @@ function render() {
     h = `<h2>Veja a diferença entre quem organiza de graça e quem organiza como profissional</h2>
       <div class="cmp"><div class="a"><h3>DE GRAÇA</h3><ul><li>Faz a limpeza, organiza e não recebe nada a mais</li><li>Organiza no improviso</li><li>Não tem reconhecimento</li><li>Trabalho pesado e mal pago</li><li>Horário decidido pelos outros</li></ul></div>
       <div class="b"><h3>PROFISSIONAL</h3><ul><li>Cobra de R$400 a R$600 por dia</li><li>Trabalha com técnica e passo a passo</li><li>Personal organizer, profissão com nome</li><li>Clientes te procuram porque seu trabalho se torna diferenciado</li><li>Escolhe os dias de trabalho</li></ul></div></div>
-      <div class="ad-img"><img src="img/antes-depois-closet-v2.jpg" alt="Closet antes e depois da organização"><b>ANTES</b><b class="dp">DEPOIS</b></div>`;
+      <div class="ad-img"><img src="img/antes-depois-closet-v2.jpg" alt="Guarda-roupa antes e depois da organização"><b>ANTES</b><b class="dp">DEPOIS</b></div>`;
     setCta("Continuar");
   } else if (s.type === "sales") {
     h = sales(); setCta(null);
@@ -424,7 +424,7 @@ function buy() {
 function sales() {
   const TBD = `<span class="tbd">a definir</span>`;
   const price = `<div class="price"><div class="bn">🎟️ INGRESSO · ${CONFIG.EVENTO.toUpperCase()}</div>
-    <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS} · ${CONFIG.HORARIO}</small>
+    <p class="pv">${CONFIG.PRECO}</p><small>2 DIAS AO VIVO · 📅 ${CONFIG.DATAS}${CONFIG.HORARIO ? " · " + CONFIG.HORARIO : ""}</small>
     <small>💳 Cartão · Pix · 🛡️ Garantia de 7 dias</small>
     <button type="button" data-buy>Garantir minha vaga · ${CONFIG.PRECO}</button></div>`;
   return `<p class="s-eyebrow">DOIS DIAS AO VIVO COM A PATY DOMINGOS</p>
