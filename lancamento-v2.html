@@ -901,7 +901,7 @@ const S = [
       return `
       <h2>${DIF ? `A sua dificuldade para <span class="hl-ouro">${DIF}</span> tem aula` : `Cada etapa da organização <span class="hl-ouro">tem aula</span>`}</h2>
       <ol class="rot">${L.map((l, i) => `<li${i === AULA ? ' class="me"' : ""}><b>${l[0]}</b><span>${l[1]}</span></li>`).join("")}</ol>
-      <div class="echo" data-drop="1">A Paty ensina isso <b>ao vivo, no Dia 1 do ${EVENTO}</b> (7/11). Você assiste pelo celular e pratica na sua casa.</div>`; } },
+      <div class="echo" data-drop="1">A Paty ensina isso <b>ao vivo, no Dia 1 do ${EVENTO}</b> (14/11). Você assiste pelo celular e pratica na sua casa.</div>`; } },
 
   { n: 26, id: "trava", center: true, render: () => `
       <h2>O que mais te trava para começar nessa profissão?</h2>
@@ -1128,8 +1128,8 @@ const S = [
       <h2>O seu próximo passo é o <span class="hl-money" style="white-space:normal">${EVENTO}</span></h2>
       <div class="trilha fill" role="img" aria-label="Etapas: hoje, dia 1 do evento, dia 2 do evento, primeira diária">
         <div class="tr-step"><i></i><b>Hoje</b><span>Você já sabe organizar</span></div>
-        <div class="tr-step"><i></i><b>7/11 · Dia 1</b><span>A profissão e a técnica, ao vivo com a Paty</span></div>
-        <div class="tr-step"><i></i><b>8/11 · Dia 2</b><span>Como conseguir as primeiras clientes, trabalhando ${DIAS}</span></div>
+        <div class="tr-step"><i></i><b>14/11 · Dia 1</b><span>A profissão e a técnica, ao vivo com a Paty</span></div>
+        <div class="tr-step"><i></i><b>15/11 · Dia 2</b><span>Como conseguir as primeiras clientes, trabalhando ${DIAS}</span></div>
         <div class="tr-step goal"><i></i><b>Primeira diária</b><span>De R$400 a R$600 por dia</span></div>
       </div>
       <h2 style="font-size:clamp(15px,2.4dvh,18px)">Você acredita que conseguiria depois desses 2 dias com a Paty?</h2>
@@ -1149,11 +1149,11 @@ const S = [
       const nome = esc(A.nome || "");
       const TBD = `<span class="tbd">a definir</span>`;
       const lvl = (label, val, pct, kind) => `<div class="lv"><b>${label}</b><span>${val}</span><i class="lv-t ${kind}"><u style="width:${pct}%"></u><s style="left:calc(${pct}% - 9px)"></s></i></div>`;
-      const quando = `<div class="ev-card"><b>📅 7 e 8 de novembro</b><span>sábado e domingo · à noite · ao vivo e online</span><span>Horário: ${TBD}</span></div>`;
+      const quando = `<div class="ev-card"><b>📅 14 e 15 de novembro</b><span>sábado e domingo · à noite · ao vivo e online</span><span>Horário: ${TBD}</span></div>`;
       const priceBox = `<div class="mm-price">
           <div class="mm-price-h">INGRESSO · ${EVENTO.toUpperCase()}</div>
           <div class="mm-price-b"><b>Ingresso para ${nome || "você"} participar dos 2 dias ao vivo com a Paty</b>
-            <div class="mm-price-v"><small>pagamento único</small><strong>${brl(PRECO)}</strong><small>7 e 8/11 · ao vivo</small></div></div>
+            <div class="mm-price-v"><small>pagamento único</small><strong>${brl(PRECO)}</strong><small>14 e 15/11 · ao vivo</small></div></div>
           <ul class="mm-price-why">
             <li>Menos do que <b>uma diária de faxina</b></li>
             <li>2 noites ao vivo com a criadora do <b>Método Organizadas</b></li>
@@ -1165,7 +1165,7 @@ const S = [
       const faq = [
         ["Preciso ter experiência?", "Não. O evento é para quem nunca trabalhou com organização e quer conhecer a profissão do zero."],
         ["Onde vai ser?", "Online e ao vivo. Você assiste pelo celular. O link chega por e-mail e WhatsApp depois da compra."],
-        ["Que horas vai ser?", "À noite, nos dias 7 e 8 de novembro. O horário exato chega por e-mail e no grupo do WhatsApp."],
+        ["Que horas vai ser?", "À noite, nos dias 14 e 15 de novembro. O horário exato chega por e-mail e no grupo do WhatsApp."],
         ["E se eu não puder assistir ao vivo?", "No checkout você pode garantir a gravação dos 2 dias para assistir quando puder."],
         ["Preciso comprar algum material?", "Não. Você só precisa do celular e de um espaço da sua casa para praticar."],
         ["E se eu não gostar?", "Você tem 7 dias de garantia. Se não fizer sentido para você, devolvemos 100% do valor."]
@@ -1188,9 +1188,9 @@ const S = [
       <p class="mm-sign">Paty Domingos, aqui!</p>
       <p class="mm-sub">Nesses 2 dias, ao vivo, eu vou te ensinar ↓</p>
 
-      <article class="mm-card"><b>DIA 1 · 7/11 · A PROFISSÃO E A TÉCNICA</b><ol class="mm-steps">
+      <article class="mm-card"><b>DIA 1 · 14/11 · A PROFISSÃO E A TÉCNICA</b><ol class="mm-steps">
         ${DIA1.map(([t, k]) => `<li class="${k && A.dificil ? "hot" : ""}">${t}${k && A.dificil ? ` <em>resolve a sua dificuldade</em>` : ""}</li>`).join("")}</ol></article>
-      <article class="mm-card"><b>DIA 2 · 8/11 · AS PRIMEIRAS CLIENTES</b><ol class="mm-steps" start="5">
+      <article class="mm-card"><b>DIA 2 · 15/11 · AS PRIMEIRAS CLIENTES</b><ol class="mm-steps" start="5">
         <li>Como cobrar pela visita técnica</li><li>O primeiro laboratório, até na casa da patroa ou de uma amiga, e como ele vira indicação</li><li>Postura e posicionamento para cobrar de R$400 a R$600 por dia</li><li>A minha história: de empregada doméstica a organizadora de alto padrão</li></ol></article>
 
       <div class="mm-green">VOCÊ SAI SABENDO O QUE A PROFISSÃO FAZ, COMO SE TRABALHA E COMO CONSEGUIR AS PRIMEIRAS CLIENTES</div>
@@ -1209,8 +1209,8 @@ const S = [
       <p class="mm-lapis">O que você garante hoje:</p>
       <ul class="mm-stack">
         <li><b>INGRESSO ${EVENTO.toUpperCase()} · 2 DIAS AO VIVO</b></li>
-        <li><b>DIA 1: A PROFISSÃO E A TÉCNICA</b><span>7/11</span></li>
-        <li><b>DIA 2: AS PRIMEIRAS CLIENTES</b><span>8/11</span></li>
+        <li><b>DIA 1: A PROFISSÃO E A TÉCNICA</b><span>14/11</span></li>
+        <li><b>DIA 2: AS PRIMEIRAS CLIENTES</b><span>15/11</span></li>
       </ul>
       <p class="mm-porem">TUDO ISSO POR UM INGRESSO DE…</p>
       ${priceBox}
@@ -1257,7 +1257,7 @@ const S = [
       <div class="ck-top"><span>🔒 Pagamento 100% seguro</span><span>Plataforma ${TBD}</span></div>
       <div class="ck-prod">
         <img class="ck-cover" src="img/paty-tablet.jpg" alt="Paty Domingos">
-        <div><b>Ingresso · ${EVENTO}</b><small>7 e 8/11 · ao vivo e online · link por e-mail e WhatsApp</small><p class="ck-price">${brl(PRECO)}</p></div>
+        <div><b>Ingresso · ${EVENTO}</b><small>14 e 15/11 · ao vivo e online · link por e-mail e WhatsApp</small><p class="ck-price">${brl(PRECO)}</p></div>
       </div>
       <form class="ck-form" id="ck" novalidate>
         <h3 class="ck-h">1. Seus dados</h3>
@@ -1326,20 +1326,20 @@ const S = [
   { n: 0, id: "obrigado", scroll: true, cta: "ENTRAR NO GRUPO DO WHATSAPP", render: () => {
       const TBD = `<span class="tbd">a definir</span>`;
       const nome = esc(A.nome || "");
-      const itens = [`Ingresso ${EVENTO} · 7 e 8/11 ao vivo`, ...(A.bumps || [])];
+      const itens = [`Ingresso ${EVENTO} · 14 e 15/11 ao vivo`, ...(A.bumps || [])];
       return `
       <div class="ty-ok"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="var(--money)"/><path d="M19 33l9 9 17-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <h1 class="v-h1">${nome ? nome + ", sua" : "Sua"} vaga está garantida!</h1>
-      <p class="v-p center">Bem-vinda ao ${EVENTO}. Nos dias 7 e 8 de novembro, à noite, a Paty te ensina ao vivo a profissão de personal organizer.</p>
+      <p class="v-p center">Bem-vinda ao ${EVENTO}. Nos dias 14 e 15 de novembro, à noite, a Paty te ensina ao vivo a profissão de personal organizer.</p>
       <div class="ck-prod ty-prod">
         <img class="ck-cover" src="img/paty-tablet.jpg" alt="Paty Domingos">
-        <div><span class="v-pill">VAGA CONFIRMADA</span><b>${EVENTO}</b><small>7 e 8/11 · à noite · horário ${TBD}</small></div>
+        <div><span class="v-pill">VAGA CONFIRMADA</span><b>${EVENTO}</b><small>14 e 15/11 · à noite · horário ${TBD}</small></div>
       </div>
       <div class="ty-box"><b>O que você garantiu</b><ul class="v-best">${itens.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>
       <h2 class="v-h2">SEUS PRÓXIMOS 3 PASSOS</h2>
       <ol class="ty-steps">
         <li><b>Entre no grupo do WhatsApp do evento</b><span>É por lá que chegam o link das aulas, o horário e os lembretes. Link do grupo: ${TBD}.</span></li>
-        <li><b>Anote na agenda: 7 e 8 de novembro, à noite</b><span>Deixe o celular carregado e um caderno do lado.</span></li>
+        <li><b>Anote na agenda: 14 e 15 de novembro, à noite</b><span>Deixe o celular carregado e um caderno do lado.</span></li>
         <li><b>Escolha o espaço do seu primeiro laboratório</b><span>Uma gaveta ou um guarda-roupa da sua casa. A Paty vai usar isso nas aulas.</span></li>
       </ol>
       <button type="button" class="v-buy" data-vip>ENTRAR NO GRUPO DO WHATSAPP</button>
@@ -1398,7 +1398,7 @@ function resultado() {
   ].filter(Boolean).slice(0, 2);
   const falta = { comecar: "Um <b>passo a passo</b> para saber por onde começar.", perfil: "Acreditar que <b>organização é técnica</b>, e técnica se aprende.", caro: "Saber que dá para começar <b>sem organizadores caros</b>, com gabarito de custo baixo.", clientes: "Entender que a <b>primeira cliente costuma vir de quem já te conhece</b>.", tempo: "Ver que dá para começar <b>aos poucos</b>, sem largar o que você faz hoje." }[A.trava] || "Um <b>passo a passo</b> para saber por onde começar.";
   const aula = { decidir: "Diferença entre desapego e descarte", categorias: "O que é categorização", lugar: "O que é gabarito", manter: "Conhecendo o armário" }[A.dificil];
-  const passo = aula ? `Participar do <b>${EVENTO}</b> (7 e 8/11), onde a Paty ensina <b>“${aula}”</b>, e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.` : `Entender a profissão e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.`;
+  const passo = aula ? `Participar do <b>${EVENTO}</b> (14 e 15/11), onde a Paty ensina <b>“${aula}”</b>, e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.` : `Entender a profissão e fazer o seu primeiro laboratório ${({ closet: "no guarda-roupa", cozinha: "na cozinha", lavanderia: "na lavanderia", gavetas: "nas gavetas" })[A.canto] || "em casa"}.`;
   const prova = A.sit === "diarista"
     ? ["img/prova-elizete-wa-v1.jpg", "A <b>Elizete</b> trabalhava em casa de família e fez essa mesma virada."]
     : (A.sente === "amo" || A.pediram === "varias")
