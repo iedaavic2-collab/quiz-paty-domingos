@@ -113,7 +113,7 @@ main.sales { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 .s-box ul { margin: 0; padding: 0; list-style: none; }
 .s-box li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.4; }
 .s-box li:first-child { border-top: 0; }
-.mid-buy { margin: 14px auto 18px; }
+.mid-buy { margin: 14px auto 18px; font-size: 14px; padding: 16px 10px; white-space: nowrap; }
 .buy-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #0b0b0cf2; border-top: 1px solid var(--line); }
 .buy-bar .gold-btn { font-size: 14px; padding: 15px 10px; white-space: nowrap; }
 .car { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
@@ -143,7 +143,8 @@ main.sales { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 const CONFIG = {
   EVENTO: "Black Vitalícia Organizadas",
   AULA_TXT: "Sexta, 27/11, às 20h", /* mesma data da página da Black */
-  CHECKOUT_URL: "",   /* PENDENTE: link do ingresso da Black na Greenn, se o evento passar a ser pago. Vazio = cadastro gratuito, o botão leva ao obrigado da Black (grupo VIP) */
+  CHECKOUT_URL: "https://payfast.greenn.com.br/202664/offer/M4fXWY",   /* ingresso R$ 19,90 da Black (Greenn, o mesmo da lp.patydomingos.com.br/black) */
+  PRECO: "R$ 19,90",
   OBRIGADO_URL: "landing-pages/obrigado-black.html",
   WEBHOOK_URL: ""     /* PENDENTE: para onde vai o lead (planilha ou ferramenta de disparo). Recebe JSON com name, phone, email, origem, respostas e query */
 };
@@ -160,7 +161,7 @@ const DIMS = {
 const STEPS = [
   { id: "idade", type: "grid",
     title: "Você tem perfil para ganhar dinheiro organizando casas?",
-    sub: "Faça o teste e participe da aula gratuita da <b>Black Vitalícia Organizadas</b>, ao vivo com a Paty.",
+    sub: "Faça o teste e descubra se a aula ao vivo da <b>Black Vitalícia Organizadas</b> é para você.",
     foot: "⭐ Mais de 10 mil alunas da Paty · Leva 1 minuto · Grátis",
     options: [{ v: "18-29", label: "18 a 29", img: "img/idade-mulher-1.webp" }, { v: "30-39", label: "30 a 39", img: "img/idade-mulher-2.webp" }, { v: "40-49", label: "40 a 49", img: "img/idade-mulher-3.webp" }, { v: "50+", label: "50+", img: "img/idade-mulher-4.webp" }] },
   { id: "trabalho", type: "q", title: "Hoje você trabalha com o quê?",
@@ -403,26 +404,23 @@ function carrossel(list) {
 /* botão final: com CHECKOUT_URL vai para o ingresso na Greenn; sem ele, vai para o obrigado da Black (grupo VIP).
    Nome, e-mail, WhatsApp e UTMs seguem junto no link. */
 function buy() {
-  const u = new URL(CONFIG.CHECKOUT_URL || CONFIG.OBRIGADO_URL, location.href);
-  if (CONFIG.CHECKOUT_URL) { if (A.nome) u.searchParams.set("name", A.nome); if (A.email) u.searchParams.set("email", A.email); if (A.whats) u.searchParams.set("phone", A.whats); }
-  else if (A.nome) u.searchParams.set("nome", A.nome);
+  if (!CONFIG.CHECKOUT_URL) { toast("Link do pagamento · a definir"); return; }
+  const u = new URL(CONFIG.CHECKOUT_URL, location.href);
+  /* a Greenn pré-preenche com fn, em e ph (telefone com 55 na frente) */
+  if (A.nome) u.searchParams.set("fn", A.nome); if (A.email) u.searchParams.set("em", A.email); if (A.whats) u.searchParams.set("ph", "55" + A.whats);
   new URLSearchParams(location.search).forEach((v, k) => { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
   location.href = u.toString();
 }
 
 function sales() {
-  const rot = "Quero participar da aula";
+  const rot = "Garantir meu ingresso · " + CONFIG.PRECO;
   const cta = `<button type="button" class="gold-btn mid-buy" data-buy>${rot}</button>`;
-  return `<p class="eyebrow">Black Vitalícia Organizadas</p>
-    <h1>${nome() ? nome() + ", você" : "Você"} tem perfil para <em>ganhar dinheiro organizando</em>.</h1>
-    <p class="sub">Agora vem o próximo passo: a aula gratuita e ao vivo em que a Paty mostra como ganhar dinheiro organizando a casa das suas clientes e revela a oferta da maior Black Friday da história dela.</p>
-    <img class="arte" src="img/black-grupo-vip.jpg" width="900" height="900" alt="Black Vitalícia Organizadas · Método Organizadas para sempre · Paty Domingos">
-    <p class="when">${CONFIG.AULA_TXT} · ao vivo e online</p>
+  return `<img class="arte" src="img/black-organizadas.jpg" width="900" height="900" alt="Black Organizadas · Paty Domingos">
+    <p class="when">${CONFIG.AULA_TXT} · ao vivo e online · ingresso ${CONFIG.PRECO}</p>
     ${cta}
     <div class="s-box"><h3>O QUE A PATY VAI MOSTRAR NA AULA</h3><ul>
       <li>🧺 O método que a Paty usa para organizar guarda-roupa e cozinha, com passo a passo, das técnicas básicas às avançadas.</li>
       <li>💰 Como transformar a organização em renda o ano inteiro, cobrando pelo serviço e te diferenciando como profissional.</li>
-      <li>♾️ A maior Black Friday da história da Paty: o Método Organizadas para sempre.</li>
       <li>🎁 Os presentes que a Paty preparou só para quem entrar na Black.</li></ul></div>
     ${cta}
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
@@ -430,11 +428,11 @@ function sales() {
     <h2>Quem vai te ensinar</h2>
     <div class="s-box"><ul><li>🧹 Começou como <b>empregada doméstica</b> e hoje é <b>organizadora de alto padrão</b></li><li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li><li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li><li>🏆 Criadora do <b>Método Organizadas</b></li></ul></div>
     ${cta}
-    <div class="buy-bar" id="buyBar"><button type="button" class="gold-btn" data-buy-bar>Quero participar da aula gratuita</button></div>`;
+    <div class="buy-bar" id="buyBar"><button type="button" class="gold-btn" data-buy-bar>Garantir meu ingresso · ${CONFIG.PRECO}</button></div>`;
 }
 
 /* ===================== PRÉ-CARREGAMENTO ===================== */
-const PRE_IMGS = ["img/antes-depois-closet-v2.jpg", "img/idade-mulher-1.webp", "img/idade-mulher-2.webp", "img/idade-mulher-3.webp", "img/idade-mulher-4.webp", "img/logo-paty-branco.png", "img/paty-closet-diaria.jpg", "img/paty-verde-rosto-v2.jpg", "img/black-grupo-vip.jpg", "img/prova-elizete-destaque.jpg", "img/prova-elizete-wa-v1.jpg", "img/prova-jane-2600.jpg", "img/prova-slide3a.jpg", "img/prova-wa1.jpg"];
+const PRE_IMGS = ["img/antes-depois-closet-v2.jpg", "img/idade-mulher-1.webp", "img/idade-mulher-2.webp", "img/idade-mulher-3.webp", "img/idade-mulher-4.webp", "img/logo-paty-branco.png", "img/paty-closet-diaria.jpg", "img/paty-verde-rosto-v2.jpg", "img/black-organizadas.jpg", "img/prova-elizete-destaque.jpg", "img/prova-elizete-wa-v1.jpg", "img/prova-jane-2600.jpg", "img/prova-slide3a.jpg", "img/prova-wa1.jpg"];
 const preImgs = () => PRE_IMGS.forEach(src => { const im = new Image(); im.decoding = "async"; im.src = src; });
 if (document.readyState === "complete") setTimeout(preImgs, 200); else window.addEventListener("load", () => setTimeout(preImgs, 200));
 
