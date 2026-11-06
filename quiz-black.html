@@ -215,8 +215,6 @@ const STEPS = [
       { v: "d", dim: "liberdade", label: "⏰ Falta de tempo na rotina." }] },
   { id: "tempo", type: "q", title: "Quanto tempo por semana você teria para aprender?",
     options: [{ v: "1", dim: "liberdade", label: "⏱️ 1 a 2 horas" }, { v: "3", dim: "tecnica", label: "⏱️ 3 a 5 horas" }, { v: "5", dim: "tecnica", label: "⏱️ Mais de 5 horas" }] },
-  { id: "certificado", type: "q", title: "Ter um certificado reconhecido pelo MEC faria diferença para você?",
-    options: [{ v: "sim", dim: "reconhecimento", label: "🎓 Sim, me daria mais segurança para cobrar" }, { v: "talvez", dim: "tecnica", label: "🤔 Talvez, o mais importante é aprender" }] },
   { id: "i_mente", type: "info",
     title: "O grande diferencial da Paty: ela trabalha a sua mentalidade.",
     body: () => `<p>Técnica se aprende. O que mais trava uma mulher é acreditar, primeiro, que ela <b>é capaz</b>, que tem potencial e que não só pode, mas <b>deve cobrar</b>.</p>
@@ -240,7 +238,7 @@ const STEPS = [
   { id: "i_cmp", type: "compare", fill: true },
   { id: "i_prova", type: "info", title: "Veja o que aconteceu com quem aprendeu com a Paty...",
     body: () => carrossel([["img/prova-elizete-wa-v1.jpg", "Mensagem da aluna Elizete"], ["img/prova-slide3a.jpg", "Mensagem de aluna: em 20 dias ganhou quase 4 mil reais"], ["img/prova-jane-2600.jpg", "Mensagem da aluna Jane"], ["img/prova-wa1.jpg", "Mensagem de aluna"]]) },
-  { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse o método da Paty nas mãos?",
+  { id: "capaz", type: "q", title: "Você acredita que conseguiria começar se tivesse o passo a passo da Paty nas mãos?",
     options: [{ v: "a", label: "✅ Sim, estou pronta para isso." }, { v: "b", label: "😃 Com certeza, só preciso de direção." }, { v: "c", label: "🤔 Acho que sim... quero tentar." }] },
   { id: "aula", type: "sales" }
 ];
@@ -418,15 +416,17 @@ function sales() {
   return `<img class="arte" src="img/black-organizadas.jpg" width="900" height="900" alt="Black Organizadas · Paty Domingos">
     <p class="when">${CONFIG.AULA_TXT} · ao vivo e online · ingresso ${CONFIG.PRECO}</p>
     ${cta}
-    <div class="s-box"><h3>O QUE A PATY VAI MOSTRAR NA AULA</h3><ul>
-      <li>🧺 O método que a Paty usa para organizar guarda-roupa e cozinha, com passo a passo, das técnicas básicas às avançadas.</li>
-      <li>💰 Como transformar a organização em renda o ano inteiro, cobrando pelo serviço e te diferenciando como profissional.</li>
-      <li>🎁 Os presentes que a Paty preparou só para quem entrar na Black.</li></ul></div>
+    <div class="s-box"><h3>O QUE VOCÊ VAI DESCOBRIR NA AULA</h3><ul>
+      <li>💰 Por que uma personal organizer cobra de <b>R$400 a R$600 por dia</b>, e por que limpeza e organização são dois serviços, com dois preços.</li>
+      <li>🧺 O passo a passo que a Paty usa para organizar <b>um guarda-roupa e uma cozinha</b>, do jeito que a cliente paga para ver.</li>
+      <li>🤝 Como conseguir <b>as primeiras clientes</b>, começando por quem já te conhece.</li>
+      <li>🧠 Como perder o medo de cobrar e passar a ser tratada <b>como profissional</b>.</li></ul></div>
+    <div class="s-box"><h3>🔒 NO FINAL DA AULA</h3><ul><li>A maior Black Friday da história da Paty. O que é, quanto custa e os presentes só aparecem ao vivo, para quem estiver na aula.</li></ul></div>
     ${cta}
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
     <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"></div>
     <h2>Quem vai te ensinar</h2>
-    <div class="s-box"><ul><li>🧹 Começou como <b>empregada doméstica</b> e hoje é <b>organizadora de alto padrão</b></li><li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li><li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li><li>🏆 Criadora do <b>Método Organizadas</b></li></ul></div>
+    <div class="s-box"><ul><li>🧹 Começou como <b>empregada doméstica</b> e hoje é <b>organizadora de alto padrão</b></li><li>👩‍💼 Mais de <b>11 anos</b> como personal organizer</li><li>🎓 Mais de <b>10 mil alunas</b> no Brasil e no exterior</li><li>🏆 Organizadora de <b>alto padrão</b></li></ul></div>
     ${cta}
     <div class="buy-bar" id="buyBar"><button type="button" class="gold-btn" data-buy-bar>Garantir meu ingresso · ${CONFIG.PRECO}</button></div>`;
 }
