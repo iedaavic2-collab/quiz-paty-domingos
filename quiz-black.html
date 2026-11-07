@@ -77,6 +77,9 @@ h1 em, h2 em { font-family: var(--serif); font-style: italic; color: var(--pri);
 .exe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: clamp(10px, 2dvh, 18px); }
 .exe span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 10px 6px; border-radius: 14px; background: #241d10; border: 1px solid var(--line); text-align: center; font-size: 12px; line-height: 1.25; }
 .exe b { font-size: 18px; line-height: 1.1; color: var(--pri); }
+.lab { display: grid; gap: clamp(6px, 1.2dvh, 10px); margin: 4px 0 clamp(8px, 1.6dvh, 14px); }
+.lab div { display: flex; gap: 12px; align-items: center; padding: clamp(9px, 1.6dvh, 13px) 12px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); font-size: clamp(13.5px, 2.1dvh, 15px); line-height: 1.35; }
+.lab b.n { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--pri); color: #1a1408; font-size: 15px; }
 .money { color: var(--verde); font-weight: 800; }
 .loading { text-align: center; padding-top: 18vh; }
 .ring { width: 120px; height: 120px; margin: 0 auto 18px; position: relative; }
@@ -104,7 +107,7 @@ h1 em, h2 em { font-family: var(--serif); font-style: italic; color: var(--pri);
 .cmp .a h3 { color: var(--red); } .cmp .b h3 { color: var(--verde); }
 .cmp li { font-size: clamp(12.5px, 1.9dvh, 13.5px); line-height: 1.3; margin-bottom: clamp(4px, .9dvh, 8px); }
 .cmp ul { margin: 0; padding-left: 16px; }
-/* tela final: convite para a aula da Black */
+/* tela final: ingresso dos 2 dias da Black */
 main.sales { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 .arte { display: block; width: 100%; max-width: 340px; height: auto; aspect-ratio: 1; margin: 6px auto 4px; border-radius: 16px; border: 2px solid var(--pri); box-shadow: 0 14px 34px #0007; }
 .when { text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--pri); margin: 10px 0 0; }
@@ -161,21 +164,22 @@ const DIMS = {
 const STEPS = [
   { id: "idade", type: "grid",
     title: "Você tem perfil para ganhar dinheiro organizando casas?",
-    sub: "Faça o teste e descubra se a aula ao vivo da <b>Black Organizadas</b> é para você.",
-    foot: "⭐ Mais de 10 mil alunas da Paty · Leva 1 minuto · Grátis",
+    sub: "Faça o teste e descubra se os 2 dias ao vivo da <b>Black Organizadas</b> são para você.",
+    foot: "⭐ Mais de 10 mil alunas da Paty · Teste grátis · Leva 1 minuto",
     options: [{ v: "18-29", label: "18 a 29", img: "img/idade-mulher-1.webp" }, { v: "30-39", label: "30 a 39", img: "img/idade-mulher-2.webp" }, { v: "40-49", label: "40 a 49", img: "img/idade-mulher-3.webp" }, { v: "50+", label: "50+", img: "img/idade-mulher-4.webp" }] },
   { id: "trabalho", type: "q", title: "Hoje você trabalha com o quê?",
     options: [{ v: "domestica", dim: "financeiro", label: "🧹 Sou diarista ou empregada doméstica" },
       { v: "outro", dim: "liberdade", label: "💼 Tenho outro emprego" },
       { v: "casa", dim: "reconhecimento", label: "🏡 Cuido da minha casa e da família" },
-      { v: "po", dim: "tecnica", label: "🧺 Já trabalho com organização" }] },
+      { v: "po", dim: "tecnica", label: "🧺 Já trabalho com organização" },
+      { v: "mudar", dim: "liberdade", label: "🔄 Quero mudar de profissão ou recomeçar" }] },
   { id: "organiza", type: "q", title: "Você já organiza guarda-roupa, cozinha ou gavetas?",
     options: [{ v: "outras", dim: "reconhecimento", label: "✅ Sim, na minha casa e na casa de outras pessoas" },
       { v: "minha", dim: "tecnica", label: "🏠 Sim, só na minha casa" },
       { v: "quero", dim: "tecnica", label: "🤔 Ainda não, mas quero aprender" }] },
   { id: "lead", type: "form", title: "Já estamos montando o seu resultado...",
-    sub: "Deixe seus dados para ver o seu resultado e receber o convite da aula ao vivo.",
-    foot: "Usamos seu WhatsApp só para te enviar o link da aula. Sem spam.",
+    sub: "Deixe seus dados para ver o seu resultado e receber o convite do evento ao vivo.",
+    foot: "Usamos seu WhatsApp só para te enviar o link do evento. Sem spam.",
     cta: "VER MEU RESULTADO" },
   { id: "casada", type: "q", title: "Você é casada?",
     options: [{ v: "sim", label: "✅ Sim" }, { v: "nao", label: "❌ Não" }] },
@@ -213,6 +217,17 @@ const STEPS = [
       { v: "b", dim: "reconhecimento", label: "😟 Medo de cobrar e a cliente achar caro." },
       { v: "c", dim: "financeiro", label: "💸 Acho que preciso de dinheiro para começar." },
       { v: "d", dim: "liberdade", label: "⏰ Falta de tempo na rotina." }] },
+  { id: "segura", type: "q", title: "O que mais te segura para mudar de profissão?",
+    options: [{ v: "a", dim: "financeiro", label: "💸 Medo de largar a renda que eu já tenho." },
+      { v: "b", dim: "reconhecimento", label: "😟 Medo de tentar e não dar certo." },
+      { v: "c", dim: "tecnica", label: "🤝 Não saber como conseguir clientes." },
+      { v: "d", dim: "reconhecimento", label: "⏳ Achar que já passei da idade." }] },
+  { id: "i_lab", type: "info",
+    title: "Você não precisa largar nada para começar.",
+    body: () => `<div class="lab"><div><b class="n">1</b><span>Você aprende a organizar <b>um guarda-roupa</b> do jeito que a cliente paga para ver.</span></div>
+      <div><b class="n">2</b><span>Faz o seu <b>laboratório</b>: organiza o guarda-roupa de uma parente ou conhecida, ganha experiência e já pode cobrar de <b>R$150 a R$200</b>.</span></div>
+      <div><b class="n">3</b><span>Vira profissional e passa a cobrar de <b>R$400 a R$600 por dia</b>.</span></div></div>
+      <p><span class="hl">Comece com um guarda-roupa. Termine com uma nova profissão.</span></p>` },
   { id: "tempo", type: "q", title: "Quanto tempo por semana você teria para aprender?",
     options: [{ v: "1", dim: "liberdade", label: "⏱️ 1 a 2 horas" }, { v: "3", dim: "tecnica", label: "⏱️ 3 a 5 horas" }, { v: "5", dim: "tecnica", label: "⏱️ Mais de 5 horas" }] },
   { id: "i_mente", type: "info",
@@ -220,8 +235,6 @@ const STEPS = [
     body: () => `<p>Técnica se aprende. O que mais trava uma mulher é acreditar, primeiro, que ela <b>é capaz</b>, que tem potencial e que não só pode, mas <b>deve cobrar</b>.</p>
       <p>Por isso, com a Paty, você organiza a casa <b>e a cabeça</b>.</p>
       <div class="exe"><span><b>+10 mil</b>alunas</span><span><b>🌎</b>Brasil e exterior</span><span><b>11 anos</b>de profissão</span></div>` },
-  { id: "aovivo", type: "q", title: "Você já participou de alguma aula ao vivo com a Paty?",
-    options: [{ v: "sim", label: "✅ Sim, já participei" }, { v: "nao", label: "✨ Ainda não, vai ser a primeira vez" }] },
   { id: "calc", type: "loading", title: "Montando o seu resultado...", ms: 3500 },
   { id: "resultado", type: "result" },
   { id: "i_familia", type: "info",
@@ -361,8 +374,9 @@ function render() {
       ${ord.map(k => `<div class="area"><div class="area-t"><span>${DIMS[k].emoji} ${DIMS[k].label}</span><span>${p[k]}%</span></div><div class="area-bar"><i style="width:${p[k]}%"></i></div></div>`).join("")}`;
     setCta("Continuar");
   } else if (s.type === "compare") {
-    h = `<h2>Veja a diferença entre quem organiza junto com a limpeza e quem organiza como profissional</h2>
-      <div class="cmp"><div class="a"><h3>JUNTO COM A LIMPEZA</h3><ul><li>Organiza junto com a limpeza, pelo mesmo valor</li><li>Organiza no improviso</li><li>Não tem reconhecimento</li><li>Trabalho pesado e mal pago</li><li>Horário decidido pelos outros</li></ul></div>
+    const dom = A.trabalho === "domestica";
+    h = `<h2>Veja a diferença entre quem organiza ${dom ? "junto com a limpeza" : "no improviso"} e quem organiza como profissional</h2>
+      <div class="cmp">${dom ? `<div class="a"><h3>JUNTO COM A LIMPEZA</h3><ul><li>Organiza junto com a limpeza, pelo mesmo valor</li><li>Organiza no improviso</li><li>Não tem reconhecimento</li><li>Trabalho pesado e mal pago</li><li>Horário decidido pelos outros</li></ul></div>` : `<div class="a"><h3>NO IMPROVISO</h3><ul><li>Organiza sem método, cada vez de um jeito</li><li>Não sabe quanto cobrar</li><li>Fica presa ao trabalho de hoje por medo de mudar</li><li>Renda que não cresce</li><li>Horário decidido pelos outros</li></ul></div>`}
       <div class="b"><h3>PROFISSIONAL</h3><ul><li>Cobra de R$400 a R$600 por dia</li><li>Trabalha com técnica e passo a passo</li><li>Personal organizer, profissão com nome</li><li>Clientes te procuram porque seu trabalho se torna diferenciado</li><li>Escolhe os dias de trabalho</li></ul></div></div>
       <div class="ad-img"><img src="img/antes-depois-closet-v2.jpg" alt="Guarda-roupa antes e depois da organização"><b>ANTES</b><b class="dp">DEPOIS</b></div>`;
     setCta("Continuar");
@@ -413,15 +427,18 @@ function buy() {
 function sales() {
   const rot = "Garantir meu ingresso · " + CONFIG.PRECO;
   const cta = `<button type="button" class="gold-btn mid-buy" data-buy>${rot}</button>`;
-  return `<img class="arte" src="img/black-organizadas.jpg" width="900" height="900" alt="Black Organizadas · Paty Domingos">
+  return `<p class="eyebrow">Black Organizadas · 2 dias ao vivo</p>
+    <h1>${nome() ? nome() + ", comece" : "Comece"} com um guarda-roupa. <em>Termine com uma nova profissão.</em></h1>
+    <img class="arte" src="img/black-organizadas.jpg" width="900" height="900" alt="Black Organizadas · Paty Domingos">
     <p class="when">${CONFIG.AULA_TXT} · ao vivo e online · ingresso ${CONFIG.PRECO}</p>
     ${cta}
-    <div class="s-box"><h3>O QUE VOCÊ VAI DESCOBRIR NA AULA</h3><ul>
+    <div class="s-box"><h3>O QUE VOCÊ VAI DESCOBRIR NOS 2 DIAS</h3><ul>
       <li>💰 Por que uma personal organizer cobra de <b>R$400 a R$600 por dia</b>, e por que limpeza e organização são dois serviços, com dois preços.</li>
       <li>🧺 O passo a passo que a Paty usa para organizar <b>um guarda-roupa e uma cozinha</b>, do jeito que a cliente paga para ver.</li>
+      <li>🧪 Como fazer o seu <b>laboratório</b> no guarda-roupa de uma parente ou conhecida e já cobrar de <b>R$150 a R$200</b>, sem largar o que você faz hoje.</li>
       <li>🤝 Como conseguir <b>as primeiras clientes</b>, começando por quem já te conhece.</li>
       <li>🧠 Como perder o medo de cobrar e passar a ser tratada <b>como profissional</b>.</li></ul></div>
-    <div class="s-box"><h3>🔒 NO FINAL DA AULA</h3><ul><li>A maior Black Friday da história da Paty. O que é, quanto custa e os presentes só aparecem ao vivo, para quem estiver na aula.</li></ul></div>
+    <div class="s-box"><h3>🔒 NO DOMINGO</h3><ul><li>A maior Black Friday da história da Paty. O que é, quanto custa e os presentes só aparecem ao vivo, para quem estiver no evento.</li></ul></div>
     ${cta}
     <h2>Olha o que aconteceu com quem aprendeu com a Paty</h2>
     <div class="proofs"><img src="img/prova-wa1.jpg" alt="Mensagem de aluna"><img src="img/prova-elizete-destaque.jpg" alt="Depoimento da aluna Elizete"></div>
